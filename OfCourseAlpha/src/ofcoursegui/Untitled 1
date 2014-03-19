@@ -1,0 +1,252 @@
+JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("New tab", null, panel_2, null);
+		
+		FormLayout fl_panel = new FormLayout(new ColumnSpec[] {
+				new ColumnSpec(Sizes.pixel(100)),
+				new ColumnSpec(Sizes.pixel(100)),
+				new ColumnSpec(Sizes.pixel(100)),
+				new ColumnSpec(Sizes.pixel(100)),
+				new ColumnSpec(Sizes.pixel(100)),
+				new ColumnSpec(Sizes.pixel(100)),
+				new ColumnSpec(Sizes.pixel(100))},
+			new RowSpec[] {
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC});
+		
+		
+		fl_panel.setHonorsVisibility(false);
+		panel_2.setLayout(fl_panel);
+		
+		JLabel lblTL = new JLabel("");
+		panel_2.add(lblTL, "1, 1");
+		lblTL.setBorder(new LineBorder(new Color(99, 130, 191)));
+		lblTL.setMinimumSize(new java.awt.Dimension(100, 18));
+		lblTL.setMaximumSize(new java.awt.Dimension(100, 18));
+		lblTL.setPreferredSize(new java.awt.Dimension(100, 18));
+		
+		JLabel label_Mon = new JLabel("Mon");
+		panel_2.add(label_Mon, "2, 1");
+		label_Mon.setBorder(new LineBorder(new Color(99, 130, 191)));
+		label_Mon.setPreferredSize(new Dimension(100, 18));
+		label_Mon.setMinimumSize(new Dimension(100, 18));
+		label_Mon.setMaximumSize(new Dimension(100, 18));
+		
+		JLabel label_Tue = new JLabel("Tue");
+		panel_2.add(label_Tue, "3, 1");
+		label_Tue.setBorder(new LineBorder(new Color(99, 130, 191)));
+		label_Tue.setPreferredSize(new Dimension(100, 18));
+		label_Tue.setMinimumSize(new Dimension(100, 18));
+		label_Tue.setMaximumSize(new Dimension(100, 18));
+		
+		JLabel label_Wed = new JLabel("Wed");
+		panel_2.add(label_Wed, "4, 1");
+		label_Wed.setBorder(new LineBorder(new Color(99, 130, 191)));
+		label_Wed.setPreferredSize(new Dimension(100, 18));
+		label_Wed.setMinimumSize(new Dimension(100, 18));
+		label_Wed.setMaximumSize(new Dimension(100, 18));
+		
+		JLabel label_Thu = new JLabel("Thu");
+		panel_2.add(label_Thu, "5, 1");
+		label_Thu.setBorder(new LineBorder(new Color(99, 130, 191)));
+		label_Thu.setPreferredSize(new Dimension(100, 18));
+		label_Thu.setMinimumSize(new Dimension(100, 18));
+		label_Thu.setMaximumSize(new Dimension(100, 18));
+		
+		JLabel label_Fri = new JLabel("Fri");
+		panel_2.add(label_Fri, "6, 1");
+		label_Fri.setBorder(new LineBorder(new Color(99, 130, 191)));
+		label_Fri.setPreferredSize(new Dimension(100, 18));
+		label_Fri.setMinimumSize(new Dimension(100, 18));
+		label_Fri.setMaximumSize(new Dimension(100, 18));
+		
+		JLabel label_Sat = new JLabel("Sat");
+		panel_2.add(label_Sat, "7, 1");
+		label_Sat.setBorder(new LineBorder(new Color(99, 130, 191)));
+		label_Sat.setPreferredSize(new Dimension(100, 18));
+		label_Sat.setMinimumSize(new Dimension(100, 18));
+		label_Sat.setMaximumSize(new Dimension(100, 18));
+		
+		JLabel label_139 = new JLabel("0900-0930");
+		label_139.setPreferredSize(new Dimension(100, 18));
+		label_139.setMinimumSize(new Dimension(100, 18));
+		label_139.setMaximumSize(new Dimension(100, 18));
+		label_139.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_139, "1, 2");
+		
+		JLabel label_140 = new JLabel("0930-1000");
+		label_140.setPreferredSize(new Dimension(100, 18));
+		label_140.setMinimumSize(new Dimension(100, 18));
+		label_140.setMaximumSize(new Dimension(100, 18));
+		label_140.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_140, "1, 3");
+		
+		JLabel label_141 = new JLabel("1000-1030");
+		label_141.setPreferredSize(new Dimension(100, 18));
+		label_141.setMinimumSize(new Dimension(100, 18));
+		label_141.setMaximumSize(new Dimension(100, 18));
+		label_141.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_141, "1, 4");
+		
+		JLabel label_142 = new JLabel("1030-1100");
+		label_142.setPreferredSize(new Dimension(100, 18));
+		label_142.setMinimumSize(new Dimension(100, 18));
+		label_142.setMaximumSize(new Dimension(100, 18));
+		label_142.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_142, "1, 5");
+		
+		JLabel label_143 = new JLabel("1100-1130");
+		label_143.setPreferredSize(new Dimension(100, 18));
+		label_143.setMinimumSize(new Dimension(100, 18));
+		label_143.setMaximumSize(new Dimension(100, 18));
+		label_143.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_143, "1, 6");
+		
+		JLabel label_144 = new JLabel("1130-1200");
+		label_144.setPreferredSize(new Dimension(100, 18));
+		label_144.setMinimumSize(new Dimension(100, 18));
+		label_144.setMaximumSize(new Dimension(100, 18));
+		label_144.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_144, "1, 7");
+		
+		JLabel label_145 = new JLabel("1200-1230");
+		label_145.setPreferredSize(new Dimension(100, 18));
+		label_145.setMinimumSize(new Dimension(100, 18));
+		label_145.setMaximumSize(new Dimension(100, 18));
+		label_145.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_145, "1, 8");
+		
+		JLabel label_146 = new JLabel("1230-1300");
+		label_146.setPreferredSize(new Dimension(100, 18));
+		label_146.setMinimumSize(new Dimension(100, 18));
+		label_146.setMaximumSize(new Dimension(100, 18));
+		label_146.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_146, "1, 9");
+		
+		JLabel label_147 = new JLabel("1300-1330");
+		label_147.setPreferredSize(new Dimension(100, 18));
+		label_147.setMinimumSize(new Dimension(100, 18));
+		label_147.setMaximumSize(new Dimension(100, 18));
+		label_147.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_147, "1, 10");
+		
+		JLabel label_148 = new JLabel("1330-1400");
+		label_148.setPreferredSize(new Dimension(100, 18));
+		label_148.setMinimumSize(new Dimension(100, 18));
+		label_148.setMaximumSize(new Dimension(100, 18));
+		label_148.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_148, "1, 11");
+		
+		JLabel label_149 = new JLabel("1400-1430");
+		label_149.setPreferredSize(new Dimension(100, 18));
+		label_149.setMinimumSize(new Dimension(100, 18));
+		label_149.setMaximumSize(new Dimension(100, 18));
+		label_149.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_149, "1, 12");
+		
+		JLabel label_150 = new JLabel("1430-1500");
+		label_150.setPreferredSize(new Dimension(100, 18));
+		label_150.setMinimumSize(new Dimension(100, 18));
+		label_150.setMaximumSize(new Dimension(100, 18));
+		label_150.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_150, "1, 13");
+		
+		JLabel label_151 = new JLabel("1500-1530");
+		label_151.setPreferredSize(new Dimension(100, 18));
+		label_151.setMinimumSize(new Dimension(100, 18));
+		label_151.setMaximumSize(new Dimension(100, 18));
+		label_151.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_151, "1, 14");
+		
+		JLabel label_152 = new JLabel("1530-1600");
+		label_152.setPreferredSize(new Dimension(100, 18));
+		label_152.setMinimumSize(new Dimension(100, 18));
+		label_152.setMaximumSize(new Dimension(100, 18));
+		label_152.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_152, "1, 15");
+		
+		JLabel label_153 = new JLabel("1600-1630");
+		label_153.setPreferredSize(new Dimension(100, 18));
+		label_153.setMinimumSize(new Dimension(100, 18));
+		label_153.setMaximumSize(new Dimension(100, 18));
+		label_153.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_153, "1, 16");
+		
+		JLabel label_154 = new JLabel("1630-1700");
+		label_154.setPreferredSize(new Dimension(100, 18));
+		label_154.setMinimumSize(new Dimension(100, 18));
+		label_154.setMaximumSize(new Dimension(100, 18));
+		label_154.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_154, "1, 17");
+		
+		JLabel label_155 = new JLabel("1700-1730");
+		label_155.setPreferredSize(new Dimension(100, 18));
+		label_155.setMinimumSize(new Dimension(100, 18));
+		label_155.setMaximumSize(new Dimension(100, 18));
+		label_155.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_155, "1, 18");
+		
+		JLabel label_156 = new JLabel("1730-1800");
+		label_156.setPreferredSize(new Dimension(100, 18));
+		label_156.setMinimumSize(new Dimension(100, 18));
+		label_156.setMaximumSize(new Dimension(100, 18));
+		label_156.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_156, "1, 19");
+		
+		JLabel label_157 = new JLabel("1800-1830");
+		label_157.setPreferredSize(new Dimension(100, 18));
+		label_157.setMinimumSize(new Dimension(100, 18));
+		label_157.setMaximumSize(new Dimension(100, 18));
+		label_157.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_157, "1, 20");
+		
+		JLabel label_158 = new JLabel("1830-1900");
+		label_158.setPreferredSize(new Dimension(100, 18));
+		label_158.setMinimumSize(new Dimension(100, 18));
+		label_158.setMaximumSize(new Dimension(100, 18));
+		label_158.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_158, "1, 21");
+		
+		JLabel label_159 = new JLabel("1900-1930");
+		label_159.setPreferredSize(new Dimension(100, 18));
+		label_159.setMinimumSize(new Dimension(100, 18));
+		label_159.setMaximumSize(new Dimension(100, 18));
+		label_159.setBorder(new LineBorder(new Color(99, 130, 191)));
+		panel_2.add(label_159, "1, 22");
+		
+		
+		int rows = 21;
+		int cols = 6;
+		JLabel[][] jlabelarray = new JLabel[cols][rows];
+		
+		for(int r = 2; r <= 22; r++) {
+			for(int c = 2; c <= 7; c++) {
+				jlabelarray[c-2][r-2] = new JLabel(Integer.toString((c-1)*100+(r-2)));
+				String constraint = c + ", " + r;
+				panel_2.add(jlabelarray[c-2][r-2], constraint);
+				jlabelarray[c-2][r-2].setMaximumSize(new java.awt.Dimension(100, 18));
+				jlabelarray[c-2][r-2].setMinimumSize(new java.awt.Dimension(100, 18));
+				jlabelarray[c-2][r-2].setPreferredSize(new java.awt.Dimension(100, 18));
+				jlabelarray[c-2][r-2].setSize(new java.awt.Dimension(100, 18));
+				jlabelarray[c-2][r-2].setBorder(new LineBorder(new Color(239, 228, 176)));
+			}
+		}
