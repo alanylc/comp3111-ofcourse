@@ -19,6 +19,17 @@ public class TimePeriod {
 		this.startSlot = startSlot;
 		this.endSlot = endSlot;
 	}
+	public TimePeriod(String sub, String time){				//construct from "We", "03:30PM - 06:20PM" to obj
+		String StartTime=time.substring(1,time.indexOf(" - "));
+		String EndTime=time.substring(time.indexOf(" - ")+3);
+		//TimeSlot sTS=new TimeSlot(sub,StartTime);
+		TimeSlot sTS = TimeSlot.getTimeSlotByStrings(sub, StartTime);
+		//TimeSlot eTS=new TimeSlot(sub,EndTime);
+		//TODO: Wrong implementation?
+		TimeSlot eTS = TimeSlot.getTimeSlotByStrings(sub, EndTime);
+		this.startSlot=sTS;
+		this.endSlot=eTS;
+	}
 
 	public TimeSlot getStartSlot() {
 		return startSlot;
@@ -49,6 +60,10 @@ public class TimePeriod {
 		}
 		return l;
 	}
-	
-	
+	public int[] getStartEndID(){
+		int[] i=new int[2];
+		i[0]=startSlot.ID;
+		i[1]=endSlot.ID;
+		return i;
+	}
 }

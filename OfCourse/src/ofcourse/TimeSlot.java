@@ -1,12 +1,15 @@
 package ofcourse;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JLabel;
 
 public class TimeSlot {
 	public int ID;
 	
 	private static final int min = 0;
-	private static final int max = 26;
+	private static final int max = 27;
 	
 	private final int dayStart = 830; //day start at 09:00 am , 
 	
@@ -23,13 +26,76 @@ public class TimeSlot {
 		
 	}
 	
+	//can return null if provided strings cannot be parsed
+	public static TimeSlot getTimeSlotByStrings(String wd,String time) {
+		SimpleDateFormat ft = new SimpleDateFormat ("hh:mm"); //it cannot parse hh:mma :(
+		String map [] []=				//cannot use switch since 1.7 blahblahblah
+			{
+				{ "Su", "700" },
+				{ "Mo", "100" },
+				{ "Tu", "200" },
+				{ "We", "300" },
+				{ "Th", "400" },
+				{ "Fr", "500" },
+				{ "Sa", "600" }
+			};
+		for(String[] mapS:map){
+			if(wd.equals(mapS[0]))wd=mapS[1];
+		}
+		Date t; 
+		int identitiy;
+		try { 
+		    t = ft.parse(time); 
+		    //System.out.println(t); 
+		    //Any provided time at :20 and at :50 are round down to :00 and :30 respectively, 
+		    //They are mostly end time. The rounded down result is now the start time of the correct slot.
+		    //TODO: Might need to check some end time that end at :30 and :00?
+		    identitiy=(int) (Integer.parseInt(wd)+(t.getHours()-9)*2+Math.floor(t.getMinutes()/30.0));
+		    if(time.substring(5).equals("PM"))identitiy+=24;//if pm, add 12 hours
+		    //System.out.println(ID);
+		} catch (Exception e) { 
+			System.out.println("Unparseable using " + ft+time); 
+			return null;
+		}
+		//System.out.println(identitiy);
+		return getTimeSlotByID(identitiy);
+	}
+	
 	private TimeSlot(int id) {
 		if (id % 100 > max) throw new java.lang.IllegalArgumentException("Hour is too large");
 		ID = id;
 	}
 	
-	public TimeSlot(WeekDay day, int hour, boolean min) { //time must be between 0900 and 1900
+	private TimeSlot(WeekDay day, int hour, boolean min) { //time must be between 0900 and 1900
 		//TODO: missing implementation
+		//ID=day.getID()+(hour-9)*2+Math.ceil(min/30);
+	}
+	private TimeSlot(String wd,String time) { //wd is weekday
+		SimpleDateFormat ft = new SimpleDateFormat ("hh:mm"); //it cannot parse hh:mma :(
+		String map [] []=				//cannot use switch since 1.7 blahblahblah
+			{
+				{ "Su", "700" },
+				{ "Mo", "100" },
+				{ "Tu", "200" },
+				{ "We", "300" },
+				{ "Th", "400" },
+				{ "Fr", "500" },
+				{ "Sa", "600" }
+			};
+		for(String[] mapS:map){
+			if(wd.equals(mapS[0]))wd=mapS[1];
+		}
+		Date t; 
+		try { 
+		    t = ft.parse(time); 
+		    //System.out.println(t); 
+		    ID=(int) (Integer.parseInt(wd)+(t.getHours()-9)*2+Math.floor(t.getMinutes()/30.0));
+		    if(time.substring(5).equals("PM"))ID+=24;//if pm, add 12 hours
+		    //System.out.println(ID);
+		} catch (Exception e) { 
+			System.out.println("Unparseable using " + ft+time); 
+		}
+     
 	}
 	
 	public TimeSlot nextSlot() {

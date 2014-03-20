@@ -1,5 +1,5 @@
 package ofcourse;
 
 public enum SessionType {
-	Lecture, Tutorial, Laboratory;
+	Lecture, Tutorial, Laboratory, Research;
 }

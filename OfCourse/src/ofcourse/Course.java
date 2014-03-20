@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+
 //TODO: all finished class must be declared final
 /**
  * <tt>Course</tt> represents a course. It contains all information that 
@@ -20,6 +24,12 @@ public class Course extends Ratable {
 	private ArrayList<Session> sessions=new ArrayList<Session>();
 	private String description = "";
 	//private Course[] prerequsite = null;
+	private ArrayList<String> CC=new ArrayList<String>();
+	private String Attributes;
+	private String PreRequisite;
+	private String CoRequisite;
+	private String Exclusion;
+	private String PreviousCode;			//Useless(?) info from course page
 	
 	public static ArrayList<Course> AllCourses = new ArrayList<Course>();
 	
@@ -60,13 +70,69 @@ public class Course extends Ratable {
 		this.code = (Code) code.clone();//Must be a copy to prevent unexpected modification
 		setMatchSession(matchSession);
 	}
-	
+
+	public Course(Element e){
+		super(e.select("h2").text());//name
+		String c=e.select(".courseanchor a").first().attr("name");//code
+		try{
+		code = new Code(c.substring(0, 4), Integer.parseInt(c.substring(4, 8)), c.charAt(8));
+		}catch(Exception ex){																//use ' ' if modifier(H in COMP2012H) not exist
+			code = new Code(c.substring(0, 4), Integer.parseInt(c.substring(4, 8)), ' ');
+		}
+		if(!e.select(".matching").isEmpty())matchSession = true;
+
+		Elements ccES=e.select(".crseattrword");
+		for(Element ccE : ccES){
+			CC.add(ccE.val());
+			//System.out.println(ccE.text());
+		}
+		Elements popupTrES=e.select(".popupdetail tr th");
+		Elements popupTdES=e.select(".popupdetail tr td");	
+		for (int i=0;i<popupTrES.size();i++){
+			//System.out.println(popupTrES.get(i).text());
+			if(popupTrES.get(i).text().equals("ATTRIBUTES"))Attributes=popupTdES.get(i).text();
+			if(popupTrES.get(i).text().equals("PRE-REQUISITE"))PreRequisite=popupTdES.get(i).text();
+			if(popupTrES.get(i).text().equals("CO-REQUISITE"))CoRequisite=popupTdES.get(i).text();
+			if(popupTrES.get(i).text().equals("EXCLUSION"))Exclusion=popupTdES.get(i).text();
+			if(popupTrES.get(i).text().equals("PREVIOUS CODE"))PreviousCode=popupTdES.get(i).text();
+			if(popupTrES.get(i).text().equals("DESCRIPTION"))description=popupTdES.get(i).text();
+		}
+		//System.out.println(PreRequisite);
+		Elements sections=e.select(".sections tr[class]");
+		for (Element section : sections){
+			//System.out.println(section.className());
+			if(section.className().contains("new")){
+				Session temp=new Session(section);			//Parse sessions
+				sessions.add(temp);
+			}
+			else{
+				sessions.get(sessions.size()-1).extend(section);	//when the line is not a new session, then it contains extra info for the previous session
+			}
+
+			
+		}
+	}
 	/**
 	 * Gets the description of the course.
 	 * @return The string representation of the description
 	 */
 	public String getDescription() {
 		return description;
+	}
+	public String getAttributes() {
+		return Attributes;
+	}
+	public String getPreRequisite() {
+		return PreRequisite;
+	}
+	public String getCoRequisite() {
+		return CoRequisite;
+	}
+	public String getExclusion() {
+		return Exclusion;
+	}
+	public String getPreviousCode() {
+		return PreviousCode;
 	}
 	/**
 	 * Gets the <tt>Code</tt> object that represent the code of the course.
@@ -92,6 +158,12 @@ public class Course extends Ratable {
 	 */
 	public ArrayList<Session> getSessions() {
 		return sessions;
+	}
+	public int getMaxWaitList(){						//get the waitlist of all sessions, find the max one
+		ArrayList<Integer> i=new ArrayList<Integer>();
+		ArrayList<Session> ss=this.getSessions();
+		for(Session s:ss)i.add(s.wait);
+		return Collections.max(i);
 	}
 	/**
 	 * Sets the sessions of the course. Each session is identified by, 
@@ -194,12 +266,92 @@ public class Course extends Ratable {
 		private int sNo = 1;		//L1
 		private char Set=' ';		//The 'A' in T2A
 		
-		private ArrayList<TimePeriod> schedule = null;//TODO: Null or length = 0 for TBA
+		private Set<TimePeriod> schedule = new HashSet<TimePeriod>();//in Wk HH:MMAM - HH:MMPM
 		private int classNo;//usually 4-digit number for course enrollment
-		private ArrayList<Instructor> instructors= null;//TODO: Null or length = 0 for TBA
-		private int availableQuota = 0;
-		private int quota = 0;
+		private Set<Instructor> instructors= new HashSet<Instructor>();//This hashset does not prevent duplicate but others can, investigation pending.
+ 
+		//private int availableQuota = 0;
+		private int quota;
+		private int enrol;
+		private int availableQuota;
+		private int wait;
+		//TODO: every room has a ID; use ID?
+		private Set<String> room=new HashSet<String>(); 
+		private String remarks="";
+		/**
+		 * 
+		 */
+		private void AddDateTime(String datetime){
+			if(!datetime.equals("TBA") && !(datetime.length()>30)){	//ignore TBA and datetime which have yyyy-mm-dd (which is >30 long)
+				String wd=datetime.substring(0,datetime.indexOf(" "));
+				String time=datetime.substring(datetime.indexOf(" "));
+				String[] wdA=wd.split("(?<=\\G..)");//split every two chars for weekday part 
+				for(String sub:wdA){
+					TimePeriod t=new TimePeriod(sub,time);
+					schedule.add(t);
+				}
+			}
+		}
+		private Session(Element Esection) {
+			Elements datas=Esection.select("td");
+			String section=datas.get(0).text();
+			String subS="";
 			
+			if(section.substring(0,1).equals("T")){				//set L/T/LA and cut it away
+				setSType(SessionType.Tutorial);
+				subS=section.substring(1,section.indexOf(" "));
+			}
+			else if(section.substring(1,2).equals("A")){
+				setSType(SessionType.Laboratory);
+				subS=section.substring(2,section.indexOf(" "));
+			}
+			else if(section.substring(0,1).equals("R")){
+				setSType(SessionType.Research);
+				subS=section.substring(1,section.indexOf(" "));
+			}
+			else {
+				setSType(SessionType.Lecture);
+				subS=section.substring(1,section.indexOf(" "));
+			}
+			 
+			String[] subSA=subS.split("(?<=\\d)(?=\\p{L})");//	split "01B" into two	
+			setSNo(Integer.parseInt(subSA[0]));			//"01" in LA01B part
+			if(subSA.length==2)Set=subSA[1].charAt(0);	//'B' in LA01B part
+			//System.out.println(section);
+			setClassNo(Integer.parseInt(section.substring(section.indexOf("(")+1, section.indexOf(")"))));
+			
+			String datetime=datas.get(1).text();
+			//System.out.println(datetime);
+			AddDateTime(datetime);			
+			room.add(datas.get(2).text());
+			Elements tempEs=datas.get(3).select("a");
+			for (Element tempE: tempEs){				//There could be more than one Instructors on one line
+				Instructor tempI=new Instructor(tempE.text());
+				instructors.add(tempI);
+			}
+			try{quota=Integer.parseInt(datas.get(4).text());}	//Sometimes the quota is underlined and have an obj in it
+			catch(NumberFormatException e){
+				quota=Integer.parseInt(datas.get(4).select("span").text());
+				
+			}
+			enrol=Integer.parseInt(datas.get(5).text());
+			availableQuota=Integer.parseInt(datas.get(6).text());
+			wait=Integer.parseInt(datas.get(7).text());
+			remarks=datas.get(8).select(".popupdetail").text();
+			
+			// TODO Auto-generated constructor stub
+		}
+
+		private void extend(Element Esection) {			//ref line 99
+			// TODO Auto-generated method stub
+			Elements datas=Esection.select("td");
+
+			AddDateTime(datas.get(0).text());
+			room.add(datas.get(1).text());
+			Instructor tempI=new Instructor(datas.get(2).select("a").text());
+			instructors.add(tempI);
+
+		}
 		
 		/**
 		 * Construct a new Session with the specified session type: 
@@ -222,10 +374,29 @@ public class Course extends Ratable {
 		 * Gets the TOTAL quota of the session.
 		 * @return The total quota.
 		 */
+		public char getSet() {
+			return Set;
+		}
+		
+		public int getEnrol() {
+			return enrol;
+		}
+		
+		public int getavailableQuota() {
+			return availableQuota;
+		}
+		
 		public int getQuota() {
 			return quota;
 		}
 		
+		public int getwait() {
+			return wait;
+		}
+		
+		public String getRemarks() {
+			return remarks;
+		}
 		/** 
 		 * Sets the total quota of the session.
 		 * 
@@ -296,25 +467,30 @@ public class Course extends Ratable {
 		 * 
 		 * @return An array of <tt>TimePeriod</tt>. Each of them represent a continuous period of a lesson of this session.
 		 */
-		public ArrayList<TimePeriod> getSchedule() {
+		public Set<TimePeriod> getSchedule() {
 			return schedule;
 		}
+
 
 		/**
 		 * Sets the schedule of this session.
 		 * 
 		 * @param An array of <tt>TimePeriod</tt>. Each of them represent a continuous period of a lesson of this session.
 		 */
-		public void setSchedule(ArrayList<TimePeriod> schedule) {
-			this.schedule = (ArrayList<TimePeriod>) schedule.clone();//Must be a copy to prevent accidental modification
+		public void setSchedule(Set<TimePeriod> schedule) {
+			this.schedule = new HashSet<TimePeriod>(schedule);//Must be a copy to prevent accidental modification
 		}
-				
+		
+		public Set<String> getRoom() {
+			return room;
+		}
+		
 		/**
 		 * Gets all instructors teaching the session.
 		 * 
 		 * @return An array of <tt>Instructor</tt> that are teaching the course.
 		 */
-		public ArrayList<Instructor> getInstructors() {
+		public Set<Instructor> getInstructors() {
 			return instructors;
 		}
 
@@ -323,8 +499,8 @@ public class Course extends Ratable {
 		 * 
 		 * @param An array of <tt>Instructor</tt> that are teaching the course.
 		 */
-		public void setInstructors(ArrayList<Instructor> instructors) {
-			this.instructors = (ArrayList<Instructor>) instructors.clone();
+		public void setInstructors(Set<Instructor> instructors) {
+			this.instructors = new HashSet<Instructor>(instructors);//Must be a copy to prevent accidental modification
 		}
 		
 		@Override
