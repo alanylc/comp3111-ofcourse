@@ -12,7 +12,7 @@ import java.util.Set;
  * code, instructors and quota.
  * 
  * @author Bob
- */
+ */ 
 public class Course extends Ratable {
 	//TODO: check valid data at all times
 	private Code code;
