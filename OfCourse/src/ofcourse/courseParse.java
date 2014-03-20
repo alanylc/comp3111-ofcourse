@@ -152,6 +152,7 @@ public class courseParse {
 						System.in));
 				System.out.print("Lesson to search (COMP2012 ): ");	//Note that if you search course with out modifier(the H in COMP2012H, you MUST add a ' ' after it. eg:"COMP2012 ")
 				String text = buf.readLine();
+				if(text.length()==8) text = text + " ";
 				if(text.length()==9){									//if search COMP, list summary of COMP courses, if search COMP2012, list all course info for COMP2012
 					target = search(cpA, text);							//search function
 					if (target == null) {
