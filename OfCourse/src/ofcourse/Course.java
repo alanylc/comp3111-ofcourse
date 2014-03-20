@@ -282,6 +282,7 @@ public class Course extends Ratable {
 		 * 
 		 */
 		private void AddDateTime(String datetime){
+			if(datetime.length()>30)datetime=datetime.substring(26);
 			if(!datetime.equals("TBA") && !(datetime.length()>30)){	//ignore TBA and datetime which have yyyy-mm-dd (which is >30 long)
 				String wd=datetime.substring(0,datetime.indexOf(" "));
 				String time=datetime.substring(datetime.indexOf(" "));
