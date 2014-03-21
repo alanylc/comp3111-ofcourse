@@ -1,10 +1,15 @@
 package ofcourse;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,9 +31,10 @@ import org.jsoup.select.Elements;
  *
  */
 public class courseParse {
-	String subject;
-	ArrayList<Course> courses = new ArrayList<Course>();
-	final static String URL = "https://w5.ab.ust.hk/wcq/cgi-bin/1330/subject/";
+	private String subject;
+	private ArrayList<Course> courses = new ArrayList<Course>();
+	public final static String URL = "https://w5.ab.ust.hk/wcq/cgi-bin/1330/subject/";
+	public final static long expireTime = 300000; //TTL for the local cache of quota page 
 	//14 summer would change to /1340/, fall would change to /1410/, 
 	//need to figure out some ways to change semester
 
@@ -77,16 +83,93 @@ public class courseParse {
 	 */
 	public static courseParse parse(String subject) {
 		courseParse cp = new courseParse();
-		Document doc;
+		Document doc = null;
 		cp.subject = subject;
 		//////
 		Date dNow = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss:SSS");
 		System.out.println(ft.format(dNow));
 		System.out.println(subject);								//Just used for time chking, nothing else
+		
+		
+
+		java.io.File cache = new java.io.File(subject + ".txt");
+		java.io.File history = new java.io.File("history.txt");
+		java.io.PrintWriter historywriter = null;
+		
+		
 
 		try {
-			doc = Jsoup.connect(URL + subject).get();
+			boolean updateNeeded = false;
+			if (!cache.exists()) updateNeeded = true;
+			
+			//Read whole file as a String
+			StringBuilder historyContent = null;
+			if (history.exists()) {
+				java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(history));
+				String result = br.readLine();
+				br.close();
+				if (result != null && result.length() > 0)
+					historyContent = new StringBuilder(result);			
+				else updateNeeded = true;
+				// = new StringBuilder(s.useDelimiter("\\Z").next());
+			}
+			else history.createNewFile();
+			//''
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			int start = -1, end = -1;
+			if (historyContent != null && historyContent.length() > 0) {
+				Date d1 = null;
+				//Find subject last update time
+				start = historyContent.indexOf(subject);
+				end = historyContent.indexOf("", start);
+				if (start == -1) //this subject is not here
+					updateNeeded = true;
+				if (end == -1) { //parse error
+					System.out.println("parse error");
+					throw new IOException();
+				}
+				if(start != -1){
+					//start to end include whole entry
+					//start + subject.length() to  end incude date and time
+					d1 = dateFormat.parse(historyContent.substring(start + subject.length(), end));
+					//in milliseconds 
+					long diff = dNow.getTime() - d1.getTime();
+					/*long diffMinutes = diff / (60 * 1000) % 60;
+					long diffHours = diff / (60 * 60 * 1000) % 24;
+					long diffDays = diff / (24 * 60 * 60 * 1000);*/
+					if (diff >= expireTime) {//5 min
+						updateNeeded = true;
+					}
+				}
+			}
+						
+			if (updateNeeded){//Get, save in cache
+				System.out.println("Update is needed.");
+				if(historyContent == null) historyContent = new StringBuilder("");
+				//Get
+				doc = Jsoup.connect(URL + subject).get();
+				//save in cache
+				java.io.PrintWriter writer = new java.io.PrintWriter(cache);
+				writer.print(doc.outerHtml());
+				writer.close();
+				//Update last update time
+				if (start != -1) {//this subject is here: remove entry
+					historyContent.delete(start, end + 1);
+				}
+				//create entry at the end
+				historyContent.append(subject);
+				historyContent.append(dateFormat.format(dNow));
+				historyContent.append("");
+				//Write back
+				historywriter = new java.io.PrintWriter(history);
+				historywriter.print(historyContent);
+				historywriter.close();
+			}
+			else {//Read cache
+				System.out.println("Cache is used.");
+				doc = Jsoup.parse(cache, "UTF-8", URL);
+			}
 
 			Elements cs = doc.select("#classes .course");
 			for (Element courseE : cs) {
@@ -97,32 +180,42 @@ public class courseParse {
 		} catch (IOException e) {
 			System.out.println("Connection error");
 			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
+		
 		return cp;
 	}
 
 	/**
 	 * Parse all courses of all subjects in quota page automatically.
 	 * @return An ArrayList<> of courseParse objects, each represents a list of courses with the same subject.
+	 * @throws IOException 
 	 */
 	public static ArrayList<courseParse> fullparse() {
 		ArrayList<courseParse> cpA = new ArrayList<courseParse>();
 		Document doc;
 		String Subject = "COMP";
 		ArrayList<String> SubjectList = new ArrayList<String>();
-		try {
+		
+		try {	
 			doc = Jsoup.connect(URL + Subject).get();
+			//writer.println(doc.outerHtml());
+			//doc = Jsoup.parse(output, "UTF-8", "http://example.com/URL");
 			Elements courses = doc.select("#navigator .depts a");
 			for (Element courseE : courses) {
 				SubjectList.add(courseE.text());					//It first find a list of majors from /COMP,
 			}
 			for (String subject : SubjectList) {
+				
 				courseParse cp=parse(subject);						// then it parse major by major, each put in a seperate obj.
 				cpA.add(cp);
 			}
 
 		} catch (IOException e) {
 			System.out.println("Connection error");
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return cpA;
