@@ -244,6 +244,8 @@ public class Course extends Ratable {
 		public Object clone() {
 			return new Code(dept, number, modifier);
 		}
+
+		
 	}
 	
 	/**
