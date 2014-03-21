@@ -6,7 +6,7 @@ public class Instructor extends Ratable {
 	public Instructor(String name) {
 		super(name);
 	}
-
+	/*	DOES NOT WORK
 	private BigDecimal recordId = null;
 	private BigDecimal recSubNum = null;
 	private BigDecimal FileId = null;
@@ -48,6 +48,7 @@ public class Instructor extends Ratable {
 	  private static int hc(int hc, Object field) {
 	    return field == null ? hc : 43 + hc * field.hashCode();
 	  }
+	  */
 	  /*
 	@Override
 	public boolean equals(Object obj) {
