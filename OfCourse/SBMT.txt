@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>SBMT - HKUST Class Schedule &amp; Quota</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=980; maximum-scale=1.0;" /> 
+  <link rel="stylesheet" href="/wcq/css/flick/jquery-ui-1.8.16.custom.css" type="text/css" /> 
+  <link rel="stylesheet" href="/wcq/css/style.css" type="text/css" /> 
+  <link rel="shortcut icon" href="/wcq/images/favicon.png" /> 
+  <script src="/wcq/js/jquery.min.js"></script> 
+  <script src="/wcq/js/jquery-ui.min.js"></script> 
+ </head> 
+ <body> 
+  <div id="block">
+   &nbsp;
+  </div> 
+  <div id="navigator" class="nav"> 
+   <div id="HKUSTBar" style="margin:4px 0px 2px 0px"> 
+    <table style="border:0px;" width="100%" border="0" cellspacing="0" cellpadding="0" background="/wcq/images/lg_hkust_bar.gif"> 
+     <tbody>
+      <tr> 
+       <td style="padding:0;height:14px;"><a href="http://www.ust.hk/" target="_blank"><img src="/wcq/images/lg_hkust_nam.gif" border="0" /></a></td> 
+      </tr> 
+     </tbody>
+    </table> 
+   </div> 
+   <ul class="topbar clearfix"> 
+    <li class="logo">Class Schedule &amp; Quota</li> 
+    <li class="term">
+     <div class="termselect">
+      <a href="/wcq/cgi-bin/1330/">2013-14 Spring</a>
+      <a href="/wcq/cgi-bin/1320/">2013-14 Winter</a>
+      <a href="/wcq/cgi-bin/1310/">2013-14 Fall</a>
+      <a href="/wcq/cgi-bin/1240/">2012-13 Summer</a>
+     </div><a href="#" onclick="return false">2013-14 Spring <i></i></a></li> 
+    <li class="search"><input id="coursesearch" value="Course search.." /></li> 
+    <li class="search"><input id="instructorsearch" value="Instructor search.." /></li> 
+    <li class="crseattrsearchlink">
+     <ul class="crseattrsearch"> 
+      <li style="position:relative"><a href="/wcq/cgi-bin/1330/common_core/3Y10">CC for 3Y 2010 &amp; 2011 cohorts<span style="float:right">&raquo;</span></a>
+       <ul class="submenu">
+        <li><a href="/wcq/cgi-bin/1330/common_core/3Y10/01">Common Core (A&amp;H) for 2010 &amp; 2011 3Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/3Y10/02">CommonCore (A&amp;H special list) for 10&amp;11 3Yprograms</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/3Y10/03">Common Core (SA) for 2010 &amp; 2011 3Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/3Y10/04">Common Core (SA special list) for 10&amp;11 3Yprograms</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/3Y10/05">Common Core (S&amp;T) for 2010 &amp; 2011 3Y programs</a></li>
+       </ul></li>
+      <li style="position:relative"><a href="/wcq/cgi-bin/1330/common_core/3Y12">CC for 3Y 2012 cohort<span style="float:right">&raquo;</span></a>
+       <ul class="submenu">
+        <li><a href="/wcq/cgi-bin/1330/common_core/3Y12/06">Common Core (A&amp;H) for 2012 3Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/3Y12/07">Common Core (SA) for 2012 3Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/3Y12/08">Common Core (S&amp;T) for 2012 3Y programs</a></li>
+       </ul></li>
+      <li style="position:relative"><a href="/wcq/cgi-bin/1330/common_core/4Y">CC for 4Y 2012 and after<span style="float:right">&raquo;</span></a>
+       <ul class="submenu">
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/09">Common Core (SSC-H) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/10">Common Core (SSC-SA) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/11">Common Core (SSC-S&amp;T) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/12">Common Core (H) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/13">Common Core (SA) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/14">Common Core (S&amp;T) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/15">Common Core (QR) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/16">Common Core (Arts) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/17">Common Core (E-Comm) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/18">Common Core (C-Comm) for 4Y programs</a></li>
+        <li><a href="/wcq/cgi-bin/1330/common_core/4Y/19">Common Core (HLTH) for 4Y programs</a></li>
+       </ul></li>
+     </ul> <a href="#" onclick="return false"><b>Common Core Course</b> <i></i></a> </li> 
+    <li class="extlink">
+     <div class="extlinkselect"> 
+      <div>
+       The class information on this page will normally be updated every 15 to 20 minutes during class enrollment period.
+      </div> 
+      <a href="https://sisprod.psft.ust.hk/psp/SISPROD/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?pslnkid=Z_HC_SSS_STUDENT_CENTER_LNK&amp;FolderPath=PORTAL_ROOT_OBJECT.Z_HC_SSS_STUDENT_CENTER_LNK&amp;IsFolder=false&amp;IgnoreParamTempl=FolderPath%2cIsFolder" target="_blank">&raquo; Student Information System (SIS)</a>
+      <a href="https://w6.ab.ust.hk/jr_ta/ta_stdt_main.jsp" target="_blank">&raquo; Time Table Assistant (Official)</a>
+      <a href="http://publish.ust.hk/acadreg/index.html" target="_blank">&raquo; Academic Regulations</a>
+      <a href="http://publish.ust.hk/prog_crs/index.html" target="_blank">&raquo; Program/Course Catalog</a>
+      <a href="http://ugadmin.ust.hk/curriculum_hb/1314hb/index.html" target="_blank">&raquo; Curriculum Handbook for Existing Students</a>
+      <a href="http://arr.ust.hk/reg/in/pos/pos.html" target="_blank">&raquo; Recommended Study Pattern</a>
+      <a href="http://publish.ust.hk/prog_crs/ugprog/minor_index.html" target="_blank">&raquo; Minor Programs</a>
+     </div> <a href="#" onclick="return false"><b>Notes &amp; Links</b> <i></i></a> </li> 
+    <li class="acklink">
+     <div class="ackselect"> 
+      <div>
+       This service was first adapted from a student contribution in 2011-12 Fall. The efforts of all concerned are duly acknowledged.
+      </div> 
+     </div> <a href="#" onclick="return false">
+      <center>
+       <img src="/wcq/images/btn_ack_2.png" />
+      </center></a> </li> 
+   </ul> 
+   <div class="depts">
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/ACCT">ACCT</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/BIEN">BIEN</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/BTEC">BTEC</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/CBME">CBME</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/CENG">CENG</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/CHEM">CHEM</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/CIEM">CIEM</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/CIVL">CIVL</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/COMP">COMP</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/CSIT">CSIT</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/ECON">ECON</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/EEMT">EEMT</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/EESM">EESM</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/ELEC">ELEC</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/EMBA">EMBA</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/ENEG">ENEG</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/ENGG">ENGG</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/ENTR">ENTR</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/ENVR">ENVR</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/ENVS">ENVS</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/EVNG">EVNG</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/EVSM">EVSM</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/FINA">FINA</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/FYTG">FYTG</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/GBUS">GBUS</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/GFIN">GFIN</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/GNED">GNED</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/HART">HART</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/HLTH">HLTH</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/HUMA">HUMA</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/IBTM">IBTM</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/IDPO">IDPO</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/IELM">IELM</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/IMBA">IMBA</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/ISOM">ISOM</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/JEVE">JEVE</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/LABU">LABU</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/LANG">LANG</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/LIFS">LIFS</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/MAFS">MAFS</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/MARK">MARK</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/MATH">MATH</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/MECH">MECH</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/MESF">MESF</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/MGCS">MGCS</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/MGMT">MGMT</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/MIMT">MIMT</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/NANO">NANO</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/PHYS">PHYS</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/RMBI">RMBI</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/SBMT">SBMT</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/SCED">SCED</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/SCIE">SCIE</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/SHSS">SHSS</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/SOSC">SOSC</a>
+    <a class="pg" href="/wcq/cgi-bin/1330/subject/SSMA">SSMA</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/TEMG">TEMG</a>
+    <a class="ug" href="/wcq/cgi-bin/1330/subject/UROP">UROP</a>
+   </div> 
+  </div> 
+  <script type="text/javascript">
+	var navHeight = $('#navigator').outerHeight(true);
+	$('#block').css('height', navHeight + 'px');
+</script> 
+  <div id="classes"> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT1111">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>PREVIOUS CODE</th>
+          <td>SBMT 111</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>This is a year-long induction course designed for all year 1 students in the School of Business and Management. Students will be divided into 10 cohorts. They will be participating in a series of planned activities throughout the year, aiming to help them build bonds and simultaneously identity personal academic interest, examine educational goals, and develop plans to meet objectives through academic advising and other personal development workshops and programs. Graded PP, P or F.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 1111 - Business Student Induction (0 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">LA01 (3526)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>G007, LSK Bldg (80)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">84</td>
+       <td align="center">83</td>
+       <td align="center">1</td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">LA02 (3527)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">85</td>
+       <td align="center">83</td>
+       <td align="center">2</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Venue: LSKG007
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">LA03 (3528)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>Rm 1007, LSK Bldg (80)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">82</td>
+       <td align="center">82</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">LA04 (3529)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">82</td>
+       <td align="center">82</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Venue: LSK1007
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">LA05 (3530)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>Rm 1010, LSK Bldg (80)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">84</td>
+       <td align="center">84</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">LA06 (3531)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">81</td>
+       <td align="center">81</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Venue: LSK1010
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">LA07 (3532)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>Rm 1014, LSK Bldg (80)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">80</td>
+       <td align="center">80</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">LA08 (3533)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">85</td>
+       <td align="center">85</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Venue: LSK1014
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">LA09 (3534)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>Rm 1009, LSK Bldg (80)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">80</td>
+       <td align="center">79</td>
+       <td align="center">1</td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">LA10 (3535)</td> 
+       <td>We 06:00PM - 07:20PM</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">81</td>
+       <td align="center">80</td>
+       <td align="center">1</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Venue: LSK1009
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT2010">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="matching">
+      [Matching between Lecture &amp; Tutorial required]
+     </div> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>This course presents and exemplifies three major traditions of ethical thought in East and West moral philosophy - namely utilitarianism, principle-based ethics and virtue-based ethics. Employing guest speakers, lectures, cases, contemporary readings, role-plays, fieldwork, reflective student writing, and discussion groups, the course engages students in a serious consideration of their own ethical standards as applied to their present academic environment and their future careers. Students come to understand through this course that while an ethical dilemma may be viewed in various ways depending on one's guiding assumptions, a decision and course of action nevertheless must be chosen in harmony with one's own moral convictions. For Business students only.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 2010 - Business Ethics and the Individual (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (3536)</td> 
+       <td>We 03:30PM - 05:20PM</td>
+       <td>Rm 2406, Lift 17-18 (76)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/MIHOREAN, Mark Andrew">MIHOREAN, Mark Andrew</a></td>
+       <td align="center">72</td>
+       <td align="center">71</td>
+       <td align="center">1</td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">L2 (3538)</td> 
+       <td>Mo 09:30AM - 11:20AM</td>
+       <td>Rm 2306, Lift 17-18 (111)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/MIHOREAN, Mark Andrew">MIHOREAN, Mark Andrew</a></td>
+       <td align="center">71</td>
+       <td align="center">71</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">L3 (3540)</td> 
+       <td>Mo 02:30PM - 04:20PM</td>
+       <td>Rm 2406, Lift 17-18 (76)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/MIHOREAN, Mark Andrew">MIHOREAN, Mark Andrew</a></td>
+       <td align="center">71</td>
+       <td align="center">71</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">L4 (3542)</td> 
+       <td>We 10:30AM - 12:20PM</td>
+       <td>Rm 2304, Lift 17-18 (76)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/MIHOREAN, Mark Andrew">MIHOREAN, Mark Andrew</a></td>
+       <td align="center">70</td>
+       <td align="center">70</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">L5 (3544)</td> 
+       <td>Mo 09:30AM - 11:20AM</td>
+       <td>Rm 2304, Lift 17-18 (76)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/FORSTER, Paul Whitfield">FORSTER, Paul Whitfield</a></td>
+       <td align="center">70</td>
+       <td align="center">70</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">L6 (3546)</td> 
+       <td>Th 01:00PM - 02:50PM</td>
+       <td>Rm 1011, LSK Bldg (80)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/LAFON-VINAIS, Veronique J A">LAFON-VINAIS, Veronique J A</a></td>
+       <td align="center">72</td>
+       <td align="center">72</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">T1 (3548)</td> 
+       <td>Fr 09:30AM - 10:20AM</td>
+       <td>Rm 1003, LSK Bldg (70)</td>
+       <td>TBA</td>
+       <td align="center">72</td>
+       <td align="center">71</td>
+       <td align="center">1</td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">T2 (3550)</td> 
+       <td>Th 03:30PM - 04:20PM</td>
+       <td>G003, LSK Bldg (70)</td>
+       <td>TBA</td>
+       <td align="center">71</td>
+       <td align="center">71</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">T3 (3551)</td> 
+       <td>Th 01:30PM - 02:20PM</td>
+       <td>Rm 1001, LSK Bldg (70)</td>
+       <td>TBA</td>
+       <td align="center">71</td>
+       <td align="center">71</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">T4 (3552)</td> 
+       <td>Th 06:00PM - 06:50PM</td>
+       <td>Rm 1001, LSK Bldg (70)</td>
+       <td>TBA</td>
+       <td align="center">70</td>
+       <td align="center">70</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">T5 (3553)</td> 
+       <td>We 12:30PM - 01:20PM</td>
+       <td>Rm 1003, LSK Bldg (70)</td>
+       <td>TBA</td>
+       <td align="center">70</td>
+       <td align="center">70</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">T6 (3554)</td> 
+       <td>We 04:30PM - 05:20PM</td>
+       <td>G003, LSK Bldg (70)</td>
+       <td>TBA</td>
+       <td align="center">72</td>
+       <td align="center">72</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT2110B">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>PREVIOUS CODE</th>
+          <td>SBMT 112</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>The course is offered in two consecutive terms, such as Fall to Winter, Winter to Spring, or Spring to Summer. The course is in a form of a community project at a designated non-governmental organization (NGO) under the supervision of the School of Business and Management. Each project will consist of at least four elements, namely training workshops delivered by members at the host NGO, design, implementation and execution of the service-project as instructed by the host NGO. Approval from the course coordinator is needed prior to enrolling in the course. Graded PP, P or F. Students may repeat the course for credits if different topics are taken.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 2110B - Social Services Project (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">T1 (3555)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">16</td>
+       <td align="center">12</td>
+       <td align="center">4</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Project: Junior Achievement Hong Kong 
+          <br /> &gt; The credit load will usually be spread in the following pattern: Winter: 1 ; Spring: 1
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">T2 (3556)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">8</td>
+       <td align="center">4</td>
+       <td align="center">4</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Project: Regeneration Society 
+          <br /> &gt; The credit load will usually be spread in the following pattern: Winter: 1 ; Spring: 1
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+      <tr class="newsect secteven"> 
+       <td align="center">T3 (3557)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">20</td>
+       <td align="center">16</td>
+       <td align="center">4</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Project: Wofoo Grace Nursing Home
+          <br /> &gt; The credit load will usually be spread in the following pattern: Winter: 1 ; Spring: 1
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">T4 (3558)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">20</td>
+       <td align="center">19</td>
+       <td align="center">1</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Project: Habitat for Humanity China
+          <br /> &gt; The credit load will usually be spread in the following pattern: Winter: 1 ; Spring: 1
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT3200C">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>PREVIOUS CODE</th>
+          <td>SBMT 190</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>Students apply skills and knowledge learned from business courses to focus on specific projects in a corporation setting. Students will work on group projects sponsored by participating corporations and supervised by faculty members. Approval is required prior to enrolling in the course. May be graded P or F. Students may repeat the course for credits if different topics are taken.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 3200C - Corporate Project (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">T1 (3559)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">20</td>
+       <td align="center">16</td>
+       <td align="center">4</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Project: TVB
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT3210E">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>The course is offered in two consecutive terms, such as Fall to Winter, Winter to Spring, or Spring to Summer. Students apply skills and knowledge learned from business courses to focus on specific projects in a business corporation setting. Students will work on group projects sponsored by participating corporations and supervised by Faculty members. Approval from the course coordinator is needed prior to enrolling in the course. Graded PP, P or F. Students may repeat the course for credits if different topics are taken.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 3210E - Business Project (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">T1 (3727)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">20</td>
+       <td align="center">8</td>
+       <td align="center">12</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Project: GLOBAL Investigation and Security Consultancy Ltd
+          <br /> &gt; The credit load will usually be spread in the following pattern: Winter: 1 ; Spring: 1
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+      <tr class="newsect sectodd"> 
+       <td align="center">T2 (3728)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NASON, Emily M">NASON, Emily M</a></td>
+       <td align="center">21</td>
+       <td align="center">21</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; Project: Savills
+          <br /> &gt; The credit load will usually be spread in the following pattern: Winter: 1 ; Spring: 1
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT5020">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[3-0-0:3]</td>
+         </tr>
+         <tr>
+          <th>PREVIOUS CODE</th>
+          <td>SBMT 502</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>The first part of the course covers managerial economics: understanding of economics and the application of economic analysis in the context of the needs of management and of managerial decision-making in today's changing environment. The second part of the course covers the basic concepts in finance. Topics include time value of money, valuation of securities, capital budgeting including computation of cash flows, NPV, IRR, portfolio theory and capital asset pricing model, and rudimentary concepts about options and futures contracts. Registration is limited to students on the MSc program in Engineering Enterprise Management only.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 5020 - Fundamentals of Economics and Finance (3 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (1449)</td> 
+       <td>Mo 07:30PM - 10:20PM</td>
+       <td>Lecture Theater K (100)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/MACKAY, Peter">MACKAY, Peter</a><br /><a href="/wcq/cgi-bin/1330/instructor/YU, Yan">YU, Yan</a></td>
+       <td align="center">70</td>
+       <td align="center">61</td>
+       <td align="center">9</td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT5030">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[3-0-0:3]</td>
+         </tr>
+         <tr>
+          <th>PREVIOUS CODE</th>
+          <td>SBMT 503</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>The first part of this module covers marketing management using the framework of the 4P's (Product, Price, Promotion and Place). Topics include consumer needs and wants, marketing research, advertising and sales promotion, pricing theory, etc. The impact of the Internet on all aspects of marketing will also be examined. The second part will cover marketing and business policy from a strategic perspective. Decision making in a competitive environment in the face of environmental constraints will also be examined. Registration is limited to students on the MSc program in Engineering Enterprise Management only.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 5030 - Marketing Management and Strategy (3 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (1450)</td> 
+       <td>Th 07:30PM - 10:20PM</td>
+       <td>Lecture Theater K (100)</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/HONG, Jiewen">HONG, Jiewen</a></td>
+       <td align="center">70</td>
+       <td align="center">69</td>
+       <td align="center">1</td>
+       <td align="center">0</td>
+       <td align="center">&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT5460">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[1-0-0:1]</td>
+         </tr>
+         <tr>
+          <th>EXCLUSION</th>
+          <td>SBMT 6010J</td>
+         </tr>
+         <tr>
+          <th>PREVIOUS CODE</th>
+          <td>SBMT 546, SBMT 601H</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>The objective of this course is to provide hands on perspective of what it takes to start a successful business from the business plan, to funding, to beginning operations. Students will go overseas to participate in international business plan competitions. Graded P or F.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 5460 - Business Plans Competition (1 unit)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (3739)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td>TBA</td>
+       <td class="quota" align="center"><span>50</span>
+        <div style="position: relative;">
+         <div class="quotadetail">
+          <b>Quota/Enrol/Avail</b>
+          <br />MBA: 50/5/45
+          <br />
+         </div>
+        </div></td>
+       <td align="center">5</td>
+       <td align="center">45</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For FT-MBA students only
+          <br /> &gt; Add/Drop Deadline : 16-May-2014
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT5470">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[1-0-0:1]</td>
+         </tr>
+         <tr>
+          <th>EXCLUSION</th>
+          <td>SBMT 6010I</td>
+         </tr>
+         <tr>
+          <th>PREVIOUS CODE</th>
+          <td>SBMT 547, SBMT 601I</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>The objective of this course is to provide hands on perspective of what it takes to analyze a real-life business case. Students will go overseas to participant in international case competitions. Graded P or F.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 5470 - Case Analysis Competition (1 unit)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (3740)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td>TBA</td>
+       <td class="quota" align="center"><span>80</span>
+        <div style="position: relative;">
+         <div class="quotadetail">
+          <b>Quota/Enrol/Avail</b>
+          <br />MBA: 80/46/34
+          <br />
+         </div>
+        </div></td>
+       <td align="center">46</td>
+       <td align="center">34</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For MBA students only
+          <br /> &gt; Add/Drop Deadline : 16-May-2014
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT5482">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[2-0-0:2]</td>
+         </tr>
+         <tr>
+          <th>PRE-REQUISITE</th>
+          <td>ACCT 5100 AND ECON 5110 AND FINA 5120</td>
+         </tr>
+         <tr>
+          <th>PREVIOUS CODE</th>
+          <td>SBMT 6010D</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>The course is to provide participating students to gain hands-on experience in securities research and portfolio management. Students will manage HKUST Student-Managed Investment Fund (SMIF), and make investment decision to invest into the Hong Kong listed companies. Students will be assigned to cover different economic sectors, and submit research reports on the sectors and companies, and participate in the stock selection process. Students who wish to gain a year-long experience in managing SMIF may choose to take SBMT 5481 in Fall Term and then continue to take SBMT 5482 in Spring Term.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 5482 - HKUST Student-Managed Investment Fund (B) (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (1396)</td> 
+       <td>TuTh 09:00AM - 12:50PM</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/CHAN, Ka Lok">CHAN, Ka Lok</a><br /><a href="/wcq/cgi-bin/1330/instructor/LI, Xi">LI, Xi</a></td>
+       <td class="quota" align="center"><span>10</span>
+        <div style="position: relative;">
+         <div class="quotadetail">
+          <b>Quota/Enrol/Avail</b>
+          <br />MBA: 10/7/3
+          <br />
+         </div>
+        </div></td>
+       <td align="center">7</td>
+       <td align="center">3</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For FT-MBA Year 2 students only
+          <br /> &gt; Co-list with FINA 4723
+          <br /> &gt; Venue: LSKG009
+          <br /> &gt; Add/Drop Deadline : 17-Feb-2014
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT6010C">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[2-0-0:2]</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>The Asia Study Tour aims to provide a firsthand opportunity for students to learn about companies in the Asia Pacific region. Students will visit a range of companies and meet senior executives to hear first-hand of the successes and challenges they face. This course offers a very rich learning experience by visiting the companies in their home market and meeting with senior, well-informed and well-connected corporate leaders. Students will very rapidly gain a deep insiders view and understanding of the Indian market, economy and its unique challenges and opportunities. Graded P or F.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 6010C - Asia Study Tour (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (3810)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/NEW, Christopher">NEW, Christopher</a></td>
+       <td class="quota" align="center"><span>23</span>
+        <div style="position: relative;">
+         <div class="quotadetail">
+          <b>Quota/Enrol/Avail</b>
+          <br />MBA: 22/22/0
+          <br />
+         </div>
+        </div></td>
+       <td align="center">23</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For MBA students only
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT6010G">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[2-0-0:2]</td>
+         </tr>
+         <tr>
+          <th>EXCLUSION</th>
+          <td>FINA 4929G</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>Social Entrepreneurship and Venture Philanthropy are cornerstones of innovation around the world. Through the application of business principles and market funding practices, mission-driven businesses bring transformational social benefits. The course is targeted at students who are interested in the rapidly growing sustainable and high impact business opportunities in the Greater China region.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 6010G - Social Entrepreneurship and Venture Philanthropy (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center" rowspan="4">L1 (3682)</td> 
+       <td>04-FEB-2014 - 04-MAR-2014<br />Tu 07:00PM - 10:20PM</td>
+       <td>TBA</td>
+       <td>TBA</td>
+       <td class="quota" align="center" rowspan="4"><span>20</span>
+        <div style="position: relative;">
+         <div class="quotadetail">
+          <b>Quota/Enrol/Avail</b>
+          <br />MBA: 20/18/2
+          <br />
+         </div>
+        </div></td>
+       <td align="center" rowspan="4">18</td>
+       <td align="center" rowspan="4">2</td>
+       <td align="center" rowspan="4">0</td>
+       <td rowspan="4" align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For MBA and MBA Exchange students only
+          <br /> &gt; Co-list with FINA 4929G
+          <br /> &gt; Venue: Cliftons Limited, Level 5, Hutchison House, 10 Harcourt Road, Central
+          <br /> &gt; Add/Drop Deadline : 10-Feb-2014
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+      <tr class="secteven">
+       <td>18-MAR-2014 - 18-MAR-2014<br />Tu 07:00PM - 10:20PM</td>
+       <td>TBA</td>
+       <td>TBA</td>
+      </tr>
+      <tr class="secteven">
+       <td>29-APR-2014 - 29-APR-2014<br />Tu 07:00PM - 10:20PM</td>
+       <td>TBA</td>
+       <td>TBA</td>
+      </tr>
+      <tr class="secteven">
+       <td>27-MAY-2014 - 27-MAY-2014<br />Tu 07:00PM - 10:20PM</td>
+       <td>TBA</td>
+       <td>TBA</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT6010H">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[2-0-0:2]</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>This is a course for MBA students with non-Chinese language backgrounds. It enhances students' ability in understanding spoken Putonghua, and takes them to a higher level of communicative competence in speaking and writing Chinese in business situations. Applicants are expected to have at least 120 hours of prior tuition in Chinese language, or have passed the admission test for this course. Grade P or F.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 6010H - Business Chinese for MBA students (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (3767)</td> 
+       <td>07-FEB-2014 - 28-MAR-2014<br />Fr 06:00PM - 09:20PM</td>
+       <td>TBA</td>
+       <td>TBA</td>
+       <td class="quota" align="center"><span>10</span>
+        <div style="position: relative;">
+         <div class="quotadetail">
+          <b>Quota/Enrol/Avail</b>
+          <br />MBA: 10/5/5
+          <br />
+         </div>
+        </div></td>
+       <td align="center">5</td>
+       <td align="center">5</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For FT-MBA students only
+          <br /> &gt; Add/Drop Deadline : 10-Feb-2014
+         </div>
+        </div>
+        <div class="popup consent">
+         <div class="popupdetail">
+          Instructor Consent Required
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT6010K">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[2-0-0:2]</td>
+         </tr>
+         <tr>
+          <th>EXCLUSION</th>
+          <td>ELEC 6910I</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>This interdisciplinary class will combine a technical survey of emerging technologies/innovation and practical high-tech entrepreneurship training. The class will survey a few major areas of innovation that will change the future landscape of the high-tech industry, with notable guest lecturers providing business cases and industry perspective. The class will also introduce practical entrepreneurship principles for business development. Students will learn important skills such as building teams and attracting talent, developing a product/technology roadmap, marketing and selling an idea, company structuring, managing rapid growth, venture fund raising, forming strategic partnerships, and intellectual property strategy. Students will form multi-disciplinary teams for creating real-world business plans. Each team will develop a business model and execution plan based on individual interests/projects selected by students.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 6010K - High-Tech Innovation and Entrepreneurship (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (3793)</td> 
+       <td>Tu 07:00PM - 09:50PM</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/SUNG, Michael">SUNG, Michael</a></td>
+       <td class="quota" align="center"><span>15</span>
+        <div style="position: relative;">
+         <div class="quotadetail">
+          <b>Quota/Enrol/Avail</b>
+          <br />MBA: 15/0/15
+          <br />
+         </div>
+        </div></td>
+       <td align="center">1</td>
+       <td align="center">14</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For MBA and MBA Exchange students only
+          <br /> &gt; Co-list with EESM 5900E
+          <br /> &gt; Venue: LTH
+          <br /> &gt; Add/Drop Deadline : 10-Feb-2014
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT6010L">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[2-0-0:2]</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>The Israel Field Study tour offers UST MBA students a firsthand opportunity to learn about business and companies in Israel. Through this course, students will gain a better understanding of the nation and companies of Israel, its unique eco system that enables entrepreneurship and its experiences of successes and failures, challenges and opportunities. Graded P or F.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 6010L - Middle-East Study Tour (2 units)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">L1 (3809)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td><a href="/wcq/cgi-bin/1330/instructor/WANG, Caroline">WANG, Caroline</a></td>
+       <td class="quota" align="center"><span>30</span>
+        <div style="position: relative;">
+         <div class="quotadetail">
+          <b>Quota/Enrol/Avail</b>
+          <br />MBA: 30/30/0
+          <br />
+         </div>
+        </div></td>
+       <td align="center">30</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For MBA students only
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT6100A">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[1 credit]</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>This is a supervised study of a real-life issue faced by an organization, including identification of strategic questions, design of studies, collection and analysis of data, development and reporting recommendation. The projects selected should bring a meaningful economic performance impact to the sponsoring companies.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 6100A - Field Study Project (1 unit)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">R1 (3875)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td>TBA</td>
+       <td class="quota" align="center"><span>1</span>
+        <div style="position: relative;">
+         <div class="quotadetail">
+          <b>Quota/Enrol/Avail</b>
+          <br />MBA: 1/1/0
+          <br />
+         </div>
+        </div></td>
+       <td align="center">1</td>
+       <td align="center"><strong>0</strong></td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For MBA students only
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+   <div class="course"> 
+    <div class="courseanchor" style="position:relative; float:left; visibility:hidden;">
+     <a name="SBMT6770">&nbsp;</a>
+    </div> 
+    <div class="courseinfo"> 
+     <div class="courseattr popup"> 
+      <span style="font-size: 12px; color: #688; font-weight: bold;">COURSE INFO</span> 
+      <div class="popupdetail"> 
+       <table width="400"> 
+        <tbody>
+         <tr>
+          <th>VECTOR</th>
+          <td>[0-1-0:1]</td>
+         </tr>
+         <tr>
+          <th>DESCRIPTION</th>
+          <td>This one-credit course aims at providing research postgraduate students with basic training in ethics, teaching skills, research management, career development, and related professional skills. This course lasts for one year, and is composed of a number of mini-workshops, some of which are compulsory. Graded PP, P or F.</td>
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+    <h2>SBMT 6770 - Professional Development in Academia for Business (1 unit)</h2> 
+    <table class="sections" width="1012"> 
+     <tbody>
+      <tr>
+       <th width="85">Section</th>
+       <th width="190" style="text-align: left">Date &amp; Time</th>
+       <th width="160" style="text-align: left">Room</th>
+       <th width="190" style="text-align: left">Instructor</th>
+       <th width="45">Quota</th>
+       <th width="45">Enrol</th>
+       <th width="45">Avail</th>
+       <th width="45">Wait</th>
+       <th width="81">Remarks</th>
+      </tr> 
+      <tr class="newsect secteven"> 
+       <td align="center">T1 (1397)</td> 
+       <td>TBA</td>
+       <td>TBA</td>
+       <td>TBA</td>
+       <td align="center">30</td>
+       <td align="center">21</td>
+       <td align="center">9</td>
+       <td align="center">0</td>
+       <td align="center">
+        <div class="popup classnotes">
+         <div class="popupdetail">
+          &gt; For MPhil and PhD students in SBM only
+         </div>
+        </div>&nbsp;</td>
+      </tr>
+     </tbody>
+    </table> 
+   </div> 
+  </div> 
+  <script type="text/javascript">
+$(".courseanchor").css("top", (-navHeight - 15) + 'px');
+$("input#coursesearch").focus(function() {
+	if ($("input#coursesearch").val()=="Course search..") {
+		$("input#coursesearch").val("");
+	} else {
+		$("input#coursesearch").select();
+	}
+});
+$("input#instructorsearch").focus(function() {
+	if ($("input#instructorsearch").val()=="Instructor search..") {
+		$("input#instructorsearch").val("");
+	} else {
+		$("input#instructorsearch").select();
+	}
+});
+$("input#coursesearch").blur(function() {
+    if ($("input#coursesearch").val()=="") {
+        $("input#coursesearch").val("Course search..");
+    }
+});
+$("input#instructorsearch").blur(function() {
+    if ($("input#instructorsearch").val()=="") {
+        $("input#instructorsearch").val("Instructor search..");
+    }
+});
+var allcourses = ['ACCT 1010 - Accounting, Business and Society //// ACCT1010','ACCT 2010 - Principles of Accounting I (ACCT 101) //// ACCT2010, ACCT 101, ACCT101','ACCT 3020 - Financial Accounting II (ACCT 202) //// ACCT3020, ACCT 202, ACCT202','ACCT 3210 - Advanced Management Accounting (ACCT 221) //// ACCT3210, ACCT 221, ACCT221','ACCT 3610 - Functions of Law in Society and Business (ACCT 261) //// ACCT3610, ACCT 261, ACCT261','ACCT 3880 - Professional Excellence Program (ACCT 188) //// ACCT3880, ACCT 188, ACCT188','ACCT 4410 - Taxation (ACCT 341) //// ACCT4410, ACCT 341, ACCT341','ACCT 4610 - Company Law (ACCT 361) //// ACCT4610, ACCT 361, ACCT361','ACCT 5140 - Financial Statement Analysis (ACCT 514) //// ACCT5140, ACCT 514, ACCT514','ACCT 5160 - Corporate Financial Reporting I (ACCT 516) //// ACCT5160, ACCT 516, ACCT516','ACCT 5210 - Managerial Accounting Foundations (ACCT 521) //// ACCT5210, ACCT 521, ACCT521','ACCT 5630 - Business Law (ACCT 690O) //// ACCT5630, ACCT 690O, ACCT690O','ACCT 7720 - Analytical Research in Accounting (ACCT 772) //// ACCT7720, ACCT 772, ACCT772','ACCT 7990 - Doctoral Thesis Research (ACCT 799) //// ACCT7990, ACCT 799, ACCT799','BIEN 3010 - Biodesign: A Taste of Solving Real-Life Healthcare Problems //// BIEN3010','BIEN 5040 - Introduction to Bioengineering Research (BIEN 504) //// BIEN5040, BIEN 504, BIEN504','BIEN 5820 - Fundamentals of BioMEMS and Biomedical Microdevices //// BIEN5820','BIEN 6800F - Bioengineering Seminar //// BIEN6800F','BIEN 6990 - MPhil Thesis Research (BIEN 699) //// BIEN6990, BIEN 699, BIEN699','BIEN 7990 - Doctoral Thesis Research (BIEN 799) //// BIEN7990, BIEN 799, BIEN799','BTEC 5220 - Business Operations of Biotechnology (BTEC 522) //// BTEC5220, BTEC 522, BTEC522','BTEC 5260 - Bioanalytical Technology (BTEC 526) //// BTEC5260, BTEC 526, BTEC526','BTEC 5340 - Biomarkers and Medical Devices //// BTEC5340','BTEC 6930 - Directed Biotechnological Research (BTEC 693) //// BTEC6930, BTEC 693, BTEC693','BTEC 6940 - Advanced Biotechnological Research //// BTEC6940','CBME 5210 - Advanced Separation Processes //// CBME5210','CBME 5520 - Characterization of Polymers //// CBME5520','CBME 5610 - Advanced Biochemical Engineering //// CBME5610','CBME 5760 - Advanced Physico-Chemical Treatment Processes //// CBME5760','CBME 5860 - Chemical Product Engineering //// CBME5860','CBME 6980A - Independent Project //// CBME6980A','CBME 6980B - Independent Project //// CBME6980B','CENG 1000 - Introduction to Chemical and Biomolecular Engineering //// CENG1000','CENG 1600 - Biotechnology and Its Business Opportunities (CENG 109) //// CENG1600, CENG 109, CENG109','CENG 1980 - Industrial Training (CENG 098) //// CENG1980, CENG 098, CENG098','CENG 1990 - Industrial Training (CENG 099) //// CENG1990, CENG 099, CENG099','CENG 2030 - Products and Processes (CENG 103) //// CENG2030, CENG 103, CENG103','CENG 2110 - Process Principles and Engineering Economics //// CENG2110','CENG 2210 - Chemical Engineering Thermodynamics (CENG 131) //// CENG2210, CENG 131, CENG131','CENG 2220 - Process Fluid Mechanics (CENG 231) //// CENG2220, CENG 231, CENG231','CENG 3120 - Process Design and Integration (CENG 202) //// CENG3120, CENG 202, CENG202','CENG 3220 - Heat and Mass Transfer (CENG 241) //// CENG3220, CENG 241, CENG241','CENG 3920 - Chemical Engineering Laboratory II (CENG 298) //// CENG3920, CENG 298, CENG298','CENG 3926 - Bioproduct Engineering Laboratory (CENG 294) //// CENG3926, CENG 294, CENG294','CENG 3927 - Environmental Engineering Laboratory (CENG 296) //// CENG3927, CENG 296, CENG296','CENG 4130 - Plant Design and Economics (CENG 303) //// CENG4130, CENG 303, CENG303','CENG 4520 - Electronic Materials Processing for Chemical Engineers (CENG 382) //// CENG4520, CENG 382, CENG382','CENG 4630 - Food Processing Technology (CENG 4000C) //// CENG4630, CENG 4000C, CENG4000C','CENG 4670 - Pharmaceutical Engineering (CENG 367) //// CENG4670, CENG 367, CENG367','CENG 4720 - Environmental Impact Assessment and Management Systems (CENG 372, CENG 300C) //// CENG4720, CENG 372, CENG 300C, CENG372,CENG300C','CENG 4911 - Chemical Engineering Project //// CENG4911','CENG 4912 - Chemical and Environmental Engineering Project //// CENG4912','CENG 4913 - Chemical and Bioproduct Engineering Project //// CENG4913','CENG 4980A - Investigation Project //// CENG4980A','CENG 5760 - Advanced Physico-Chemical Treatment Processes (CENG 576) //// CENG5760, CENG 576, CENG576','CENG 5840 - Nanomaterials for Chemical Engineering Applications (CENG 584, CENG 600J) //// CENG5840, CENG 584, CENG 600J, CENG584,CENG600J','CENG 6770 - Professional Development in Chemical and Biomolecular Engineering //// CENG6770','CENG 6800F - Chemical and Biomolecular Engineering Seminar //// CENG6800F','CENG 6900C - Independent Study (CENG 690C) //// CENG6900C, CENG 690C, CENG690C','CENG 6990 - MPhil Thesis Research (CENG 699) //// CENG6990, CENG 699, CENG699','CENG 7990 - Doctoral Thesis Research (CENG 799) //// CENG7990, CENG 799, CENG799','CHEM 1010 - General Chemistry IA //// CHEM1010','CHEM 1020 - General Chemistry IB //// CHEM1020','CHEM 1030 - General Chemistry II //// CHEM1030','CHEM 1050 - Laboratory for General Chemistry I //// CHEM1050','CHEM 1055 - Laboratory for General Chemistry II //// CHEM1055','CHEM 2111 - Fundamentals of Organic Chemistry //// CHEM2111','CHEM 2150 - Organic Chemistry Laboratory //// CHEM2150','CHEM 2311 - Analytical Chemistry //// CHEM2311','CHEM 2350 - Analytical Chemistry Laboratory //// CHEM2350','CHEM 2578 - Molecular Characterization Laboratory I (CHEM 153) //// CHEM2578, CHEM 153, CHEM153','CHEM 3010 - Great Ideas in Chemistry //// CHEM3010','CHEM 3120 - Organic Chemistry II (CHEM 212) //// CHEM3120, CHEM 212, CHEM212','CHEM 3220 - Inorganic Chemistry II (CHEM 232) //// CHEM3220, CHEM 232, CHEM232','CHEM 3320 - Instrumental Analysis (CHEM 244) //// CHEM3320, CHEM 244, CHEM244','CHEM 3420 - Physical Chemistry II (CHEM 222) //// CHEM3420, CHEM 222, CHEM222','CHEM 3550 - Synthetic Chemistry Laboratory //// CHEM3550','CHEM 3918 - Chemical Information (CHEM 391) //// CHEM3918, CHEM 391, CHEM391','CHEM 3928 - Chemistry Undergraduate Seminar (CHEM 392) //// CHEM3928, CHEM 392, CHEM392','CHEM 4110 - Structural Elucidation in Organic Chemistry (CHEM 312) //// CHEM4110, CHEM 312, CHEM312','CHEM 4130 - Medicinal Chemistry //// CHEM4130','CHEM 4230 - Materials Characterization Method //// CHEM4230','CHEM 4330 - Separation Science //// CHEM4330','CHEM 4620 - Organometallic Chemistry (CHEM 332) //// CHEM4620, CHEM 332, CHEM332','CHEM 4640 - Chemistry for Advanced Solar Cell Technologies //// CHEM4640','CHEM 4680C - Undergraduate Research (CHEM 398C) //// CHEM4680C, CHEM 398C, CHEM398C','CHEM 4688 - Undergraduate Thesis (CHEM 399) //// CHEM4688, CHEM 399, CHEM399','CHEM 5160 - Advanced Medicinal Chemistry (CHEM 516) //// CHEM5160, CHEM 516, CHEM516','CHEM 5220 - Statistical Mechanics: Theory and Applications in Complex Systems //// CHEM5220','CHEM 5880 - Polymer Chemistry (CHEM 588) //// CHEM5880, CHEM 588, CHEM588','CHEM 6000F - Chemistry Seminar //// CHEM6000F','CHEM 6770 - Professional Development in Science (Chemistry) //// CHEM6770','CHEM 6980A - Research Project (CHEM 698A) //// CHEM6980A, CHEM 698A, CHEM698A','CHEM 6980B - Research Project //// CHEM6980B','CHEM 6990 - MPhil Thesis Research (CHEM 699) //// CHEM6990, CHEM 699, CHEM699','CHEM 7990 - Doctoral Thesis Research (CHEM 799) //// CHEM7990, CHEM 799, CHEM799','CIEM 5160 - Construction Financial Management (CIEM 516) //// CIEM5160, CIEM 516, CIEM516','CIEM 5320 - Computer Aided Design Optimization of Tall Buildings (CIEM 532) //// CIEM5320, CIEM 532, CIEM532','CIEM 5410 - Risk Assessment and Contaminated Land Cleanup (CIEM 541) //// CIEM5410, CIEM 541, CIEM541','CIEM 5630 - Traffic Control Fundamentals and Practice (CIEM 563) //// CIEM5630, CIEM 563, CIEM563','CIEM 5790 - Slope Engineering and Management (CIEM 6000B) //// CIEM5790, CIEM 6000B, CIEM6000B','CIEM 5810 - Engineering Risk, Reliability and Decision (CIEM 581) //// CIEM5810, CIEM 581, CIEM581','CIEM 6000E - Earthquake-resistant Design of Concrete Structures //// CIEM6000E','CIEM 6980 - MSc Project (CIEM 698) //// CIEM6980, CIEM 698, CIEM698','CIVL 1100 - Discovering Civil and Environmental Engineering //// CIVL1100','CIVL 1140 - Environmental Quality Control and Improvement (CIVL 142) //// CIVL1140, CIVL 142, CIVL142','CIVL 1160 - Civil Engineering and Modern Society (CIVL 161) //// CIVL1160, CIVL 161, CIVL161','CIVL 1170 - Climate Change Risk, Mitigation and Adaptations (CIVL 171) //// CIVL1170, CIVL 171, CIVL171','CIVL 2010 - Academic and Professional Development II (CIVL 002) //// CIVL2010, CIVL 002, CIVL002','CIVL 2020 - Industrial Training (CIVL 099) //// CIVL2020, CIVL 099, CIVL099','CIVL 2110 - Statics (CIVL 113) //// CIVL2110, CIVL 113, CIVL113','CIVL 2120 - Mechanics of Materials (CIVL 112) //// CIVL2120, CIVL 112, CIVL112','CIVL 2170 - Infrastructure Systems Engineering and Management //// CIVL2170','CIVL 2410 - Environmental Assessment and Management (CIVL 141) //// CIVL2410, CIVL 141, CIVL141','CIVL 2510 - Fluid Mechanics (CIVL 151) //// CIVL2510, CIVL 151, CIVL151','CIVL 2810 - Construction Materials (CIVL 111) //// CIVL2810, CIVL 111, CIVL111','CIVL 3010 - Academic and Professional Development III (CIVL 003) //// CIVL3010, CIVL 003, CIVL003','CIVL 3220 - Construction Engineering I (CIVL 202) //// CIVL3220, CIVL 202, CIVL202','CIVL 3310 - Structural Analysis (CIVL 231) //// CIVL3310, CIVL 231, CIVL231','CIVL 3320 - Reinforced Concrete Design (CIVL 232) //// CIVL3320, CIVL 232, CIVL232','CIVL 3520 - Hydraulics (CIVL 252) //// CIVL3520, CIVL 252, CIVL252','CIVL 3610 - Traffic and Transportation Engineering (CIVL 261) //// CIVL3610, CIVL 261, CIVL261','CIVL 3620 - Introduction to Transportation Systems (CIVL 262) //// CIVL3620, CIVL 262, CIVL262','CIVL 3720 - Soil Mechanics (CIVL 272) //// CIVL3720, CIVL 272, CIVL272','CIVL 4100D - Soil Slope Engineering (CIVL 300L) //// CIVL4100D, CIVL 300L, CIVL300L','CIVL 4270 - Construction Law and Contract Administration (CIVL 307, CIVL 300T) //// CIVL4270, CIVL 307, CIVL 300T, CIVL307,CIVL300T','CIVL 4370 - Computer Methods of Structural Analysis (CIVL 337) //// CIVL4370, CIVL 337, CIVL337','CIVL 4430 - Environmental Impact Assessment (CIVL 343, CIVL 300Q) //// CIVL4430, CIVL 343, CIVL 300Q, CIVL343,CIVL300Q','CIVL 4540 - Waves in Hydrosystems (CIVL 354, CIVL 300P) //// CIVL4540, CIVL 354, CIVL 300P, CIVL354,CIVL300P','CIVL 4760 - Introduction to Rock Mechanics (CIVL 376) //// CIVL4760, CIVL 376, CIVL376','CIVL 4900A - Directed Studies (CIVL 390A) //// CIVL4900A, CIVL 390A, CIVL390A','CIVL 4950 - Integrated Civil Engineering Design Project (CIVL 395) //// CIVL4950, CIVL 395, CIVL395','CIVL 4990 - Civil Engineering Project //// CIVL4990','CIVL 5110 - Engineering Risk, Reliability and Decision (CIVL 581) //// CIVL5110, CIVL 581, CIVL581','CIVL 5310 - Structural Analysis and Design of Tall Buildings (CIVL 531) //// CIVL5310, CIVL 531, CIVL531','CIVL 5340 - Optimal Structural Design (CIVL 534) //// CIVL5340, CIVL 534, CIVL534','CIVL 5430 - Aquatic Chemistry (CIVL 543) //// CIVL5430, CIVL 543, CIVL543','CIVL 5470 - Industrial Wastewater Treatment (CIVL 547) //// CIVL5470, CIVL 547, CIVL547','CIVL 5630 - Traffic Control Fundamentals (CIVL 563) //// CIVL5630, CIVL 563, CIVL563','CIVL 5720 - Advanced Foundation Design (CIVL 572) //// CIVL5720, CIVL 572, CIVL572','CIVL 5730 - Theoretical and Computational Soil Mechanics (CIVL 573) //// CIVL5730, CIVL 573, CIVL573','CIVL 5770 - Unsaturated Soil Mechanics and Engineering (CIVL 577) //// CIVL5770, CIVL 577, CIVL577','CIVL 5830 - Advanced Mechanics of Materials (CIVL 533) //// CIVL5830, CIVL 533, CIVL533','CIVL 6010A - Directed Studies (CIVL 610A) //// CIVL6010A, CIVL 610A, CIVL610A','CIVL 6010B - Directed Studies (CIVL 610B) //// CIVL6010B, CIVL 610B, CIVL610B','CIVL 6010C - Directed Studies (CIVL 610C) //// CIVL6010C, CIVL 610C, CIVL610C','CIVL 6050G - Civil Engineering Seminar I //// CIVL6050G','CIVL 6060J - Civil Engineering Seminar II //// CIVL6060J','CIVL 6100E - Financial Management in Engineering (CIVL 609I) //// CIVL6100E, CIVL 609I, CIVL609I','CIVL 6770 - Professional Development in Civil and Environmental Engineering //// CIVL6770','CIVL 6990 - MPhil Thesis Research (CIVL 699) //// CIVL6990, CIVL 699, CIVL699','CIVL 7990 - Doctoral Thesis Research (CIVL 799) //// CIVL7990, CIVL 799, CIVL799','COMP 1001 - Exploring Multimedia and Internet Computing (COMP 101) //// COMP1001, COMP 101, COMP101','COMP 1021 - Introduction to Computer Science //// COMP1021','COMP 1022P - Introduction to Computing with Java //// COMP1022P','COMP 1022Q - Introduction to Computing with Excel VBA //// COMP1022Q','COMP 1029C - C Programming Bridging Course //// COMP1029C','COMP 1029P - Python Programming Bridging Course //// COMP1029P','COMP 1029V - Excel VBA Programming Bridging Course //// COMP1029V','COMP 1900 - Academic and Professional Development I (COMP 001) //// COMP1900, COMP 001, COMP001','COMP 1942 - Exploring and Visualizing Data (COMP 192) //// COMP1942, COMP 192, COMP192','COMP 1999 - Industrial Training (COMP 2999, COMP 099) //// COMP1999, COMP 2999, COMP 099, COMP2999,COMP099','COMP 2011 - Introduction to Object-oriented Programming //// COMP2011','COMP 2012 - Object-Oriented Programming and Data Structures (COMP 152) //// COMP2012, COMP 152, COMP152','COMP 2012H - OOP and Data Structures (Honors Study Track) (COMP 152H) //// COMP2012H, COMP 152H, COMP152H','COMP 2021 - Unix and Script Programming (COMP 111) //// COMP2021, COMP 111, COMP111','COMP 2611 - Computer Organization (COMP 180) //// COMP2611, COMP 180, COMP180','COMP 2711 - Discrete Mathematical Tools for Computer Science (COMP 170) //// COMP2711, COMP 170, COMP170','COMP 2900 - Academic and Professional Development II (COMP 002) //// COMP2900, COMP 002, COMP002','COMP 3021 - Java Programming (COMP 201) //// COMP3021, COMP 201, COMP201','COMP 3071 - Honors Competitive Programming (COMP 291) //// COMP3071, COMP 291, COMP291','COMP 3111 - Software Engineering (COMP 211) //// COMP3111, COMP 211, COMP211','COMP 3111H - Honors Software Engineering (COMP 211H) //// COMP3111H, COMP 211H, COMP211H','COMP 3311 - Database Management Systems (COMP 231) //// COMP3311, COMP 231, COMP231','COMP 3511 - Operating Systems (COMP 252) //// COMP3511, COMP 252, COMP252','COMP 3711 - Design and Analysis of Algorithms (COMP 271) //// COMP3711, COMP 271, COMP271','COMP 3721 - Theory of Computation (COMP 272) //// COMP3721, COMP 272, COMP272','COMP 3900 - Academic and Professional Development III (COMP 003) //// COMP3900, COMP 003, COMP003','COMP 4021 - Internet Computing (COMP 303) //// COMP4021, COMP 303, COMP303','COMP 4311 - Principles of Database Design (COMP 332) //// COMP4311, COMP 332, COMP332','COMP 4332 - Big Data Mining and Management //// COMP4332','COMP 4411 - Computer Graphics (COMP 341) //// COMP4411, COMP 341, COMP341','COMP 4441 - Computer Music (COMP 342) //// COMP4441, COMP 342, COMP342','COMP 4521 - Embedded Systems Software (COMP 355) //// COMP4521, COMP 355, COMP355','COMP 4621 - Computer Communication Networks I (COMP 361) //// COMP4621, COMP 361, COMP361','COMP 4900 - Academic and Professional Development //// COMP4900','COMP 4971A - Independent Work (COMP 390A) //// COMP4971A, COMP 390A, COMP390A','COMP 4971B - Independent Work (COMP 390B) //// COMP4971B, COMP 390B, COMP390B','COMP 4971C - Independent Work (COMP 390C) //// COMP4971C, COMP 390C, COMP390C','COMP 4982 - Final Year Project //// COMP4982','COMP 4982H - Final Year Thesis (Honors Study Track) //// COMP4982H','COMP 4991 - Computer Engineering Final Year Project (COMP 391) //// COMP4991, COMP 391, COMP391','COMP 4992 - Computer Engineering Final Year Thesis (COMP 392) //// COMP4992, COMP 392, COMP392','COMP 5111 - Fundamentals of Software Analysis (COMP 511) //// COMP5111, COMP 511, COMP511','COMP 5211 - Advanced Artificial Intelligence (COMP 521) //// COMP5211, COMP 521, COMP521','COMP 5311 - Database Architecture and Implementation (COMP 530) //// COMP5311, COMP 530, COMP530','COMP 5421 - Computer Vision (COMP 524) //// COMP5421, COMP 524, COMP524','COMP 5531 - Green Computing //// COMP5531','COMP 5622 - Advanced Computer Communications and Networking (COMP 562) //// COMP5622, COMP 562, COMP562','COMP 5713 - Computational Geometry (COMP 573) //// COMP5713, COMP 573, COMP573','COMP 6511A - Large-Scale Distributed Systems //// COMP6511A','COMP 6770 - Professional Development in Computer Science and Engineering //// COMP6770','COMP 6911 - Computer Science and Engineering Seminar I (COMP 690) //// COMP6911, COMP 690, COMP690','COMP 6912 - Computer Science and Engineering Seminar II (COMP 691) //// COMP6912, COMP 691, COMP691','COMP 6921A - Research Project //// COMP6921A','COMP 6921D - Research Project //// COMP6921D','COMP 6921F - Research Project //// COMP6921F','COMP 6921H - Research Project //// COMP6921H','COMP 6921L - Research Project //// COMP6921L','COMP 6921N - Research Project //// COMP6921N','COMP 6921O - Research Project //// COMP6921O','COMP 6921P - Research Project //// COMP6921P','COMP 6921Q - Research Project //// COMP6921Q','COMP 6921R - Research Project //// COMP6921R','COMP 6931A - Independent Studies //// COMP6931A','COMP 6990 - MPhil Thesis Research (COMP 699) //// COMP6990, COMP 699, COMP699','COMP 7990 - Doctoral Thesis Research (COMP 799) //// COMP7990, COMP 799, COMP799','CSIT 5100 - Object-Oriented Software Development of Enterprise Systems (CSIT 510) //// CSIT5100, CSIT 510, CSIT510','CSIT 5130 - Building Applications for Computational Finance (CSIT 513, CSIT 600L) //// CSIT5130, CSIT 513, CSIT 600L, CSIT513,CSIT600L','CSIT 5300 - Advanced Database Systems (CSIT 530) //// CSIT5300, CSIT 530, CSIT530','CSIT 5400 - Computer Graphics (CSIT 540) //// CSIT5400, CSIT 540, CSIT540','CSIT 5600 - Internet Infrastructure: Switches and Routers (CSIT 560) //// CSIT5600, CSIT 560, CSIT560','CSIT 6910A - Independent Project (CSIT 691A) //// CSIT6910A, CSIT 691A, CSIT691A','CSIT 6910D - Independent Project (CSIT 691D) //// CSIT6910D, CSIT 691D, CSIT691D','ECON 1503 - Big Problems in Economics: Issues, Ideas, and Principles (ECON 150) //// ECON1503, ECON 150, ECON150','ECON 2103 - Principles of Microeconomics (ECON 110) //// ECON2103, ECON 110, ECON110','ECON 2123 - Macroeconomics (ECON 112) //// ECON2123, ECON 112, ECON112','ECON 3014 - Managerial Microeconomics (ECON 214) //// ECON3014, ECON 214, ECON214','ECON 3024 - Managerial Macroeconomics (ECON 216) //// ECON3024, ECON 216, ECON216','ECON 3113 - Microeconomic Theory I (ECON 198) //// ECON3113, ECON 198, ECON198','ECON 3123 - Macroeconomic Theory I (ECON 199) //// ECON3123, ECON 199, ECON199','ECON 3143 - Macroeconomic Theory II (ECON 201) //// ECON3143, ECON 201, ECON201','ECON 3334 - Introduction to Econometrics (ECON 233) //// ECON3334, ECON 233, ECON233','ECON 4114 - Industrial Organization and Competitive Strategy (ECON 311) //// ECON4114, ECON 311, ECON311','ECON 4204 - China\'s Economic Transformation (ECON 320) //// ECON4204, ECON 320, ECON320','ECON 4284 - Econometrics for Cross-Section and Panel Data (ECON 328) //// ECON4284, ECON 328, ECON328','ECON 4334 - Money and Banking (ECON 333) //// ECON4334, ECON 333, ECON333','ECON 4374 - International Macroeconomics and Finance //// ECON4374','ECON 4384 - Globalization: Trade, Investment and Exchange Rate (ECON 338) //// ECON4384, ECON 338, ECON338','ECON 4584 - Topics in Economic Growth (ECON 4999C) //// ECON4584, ECON 4999C, ECON4999C','ECON 4670 - Economics Research and Communication (ECON 367) //// ECON4670, ECON 367, ECON367','ECON 4959A - Independent Study //// ECON4959A','ECON 4959B - Independent Study //// ECON4959B','ECON 4959C - Independent Study //// ECON4959C','ECON 5110 - Managerial Microeconomics (ECON 511) //// ECON5110, ECON 511, ECON511','ECON 5180 - Strategy and Organization (ECON 518, ECON 612D) //// ECON5180, ECON 518, ECON 612D, ECON518,ECON612D','ECON 5220 - Microeconomic Theory II (ECON 522) //// ECON5220, ECON 522, ECON522','ECON 5260 - Macroeconomic Theory II (ECON 526) //// ECON5260, ECON 526, ECON526','ECON 5300 - Econometrics (ECON 530) //// ECON5300, ECON 530, ECON530','ECON 5350 - Banking and International Finance (ECON 535, ECON 612A) //// ECON5350, ECON 535, ECON 612A, ECON535,ECON612A','ECON 5400 - Money and Macroeconomics (ECON 540, ECON 610B) //// ECON5400, ECON 540, ECON 610B, ECON540,ECON610B','ECON 5410 - Value Investing from an Economic Perspective (ECON 541, ECON 610C) //// ECON5410, ECON 541, ECON 610C, ECON541,ECON610C','ECON 6100B - Topics in Psychology and Economics //// ECON6100B','ECON 6100D - Topics in Environmental Economics //// ECON6100D','ECON 6100E - Topics in Economic Theory //// ECON6100E','ECON 6100G - Topics in Applied Econometrics //// ECON6100G','ECON 6100H - Topics in Information Economics //// ECON6100H','ECON 6100I - Topics in Growth and Development //// ECON6100I','ECON 6100K - Topic in Labour Economics //// ECON6100K','ECON 6100L - Topics in Economic Development //// ECON6100L','ECON 6100M - Games and Strategic Behavior //// ECON6100M','ECON 6120G - Advanced International Trade and Investment //// ECON6120G','ECON 6950 - MSc Project (ECON 695) //// ECON6950, ECON 695, ECON695','ECON 6990 - MPhil Thesis Research (ECON 699) //// ECON6990, ECON 699, ECON699','ECON 7990 - Doctoral Thesis Research (ECON 799) //// ECON7990, ECON 799, ECON799','EEMT 5160 - Transportation and Logistics Management (EEMT 516) //// EEMT5160, EEMT 516, EEMT516','EEMT 5260 - Product Development Management (EEMT 526) //// EEMT5260, EEMT 526, EEMT526','EEMT 5360 - IT System for Global Enterprise (EEMT 536) //// EEMT5360, EEMT 536, EEMT536','EEMT 5500 - Engineering Statistics and Simulation (EEMT 550) //// EEMT5500, EEMT 550, EEMT550','EEMT 6900 - Independent Study //// EEMT6900','EESM 5020 - Digital VLSI System Design and Design Automation (EESM 516) //// EESM5020, EESM 516, EESM516','EESM 5120 - Advanced Analog IC Analysis and Design (EESM 504) //// EESM5120, EESM 504, EESM504','EESM 5540 - Introduction to Telecommunication Networks (EESM 540) //// EESM5540, EESM 540, EESM540','EESM 5546 - Wireless Communication Systems (EESM 546) //// EESM5546, EESM 546, EESM546','EESM 5547 - Multimedia Signal Processing (EESM 547) //// EESM5547, EESM 547, EESM547','EESM 5620 - Flat Panel Displays (EESM 525) //// EESM5620, EESM 525, EESM525','EESM 5670 - Advanced Computer and Networking Architectures (EESM 581) //// EESM5670, EESM 581, EESM581','EESM 5700 - Image and Video Signal Processing (EESM 532) //// EESM5700, EESM 532, EESM532','EESM 5720 - Signal Analysis and Pattern Recognition (EESM 534) //// EESM5720, EESM 534, EESM534','EESM 5900D - Project Management for Advanced Electronic and Computing Engineering //// EESM5900D','EESM 5900E - High-Tech Innovation and Entrepreneurship //// EESM5900E','EESM 5910 - Topics in Telecommunications and Network Convergence (EESM 691) //// EESM5910, EESM 691, EESM691','EESM 5920 - Topics in Analog IC Systems and Design (EESM 692) //// EESM5920, EESM 692, EESM692','EESM 6900 - Independent Study (EESM 690) //// EESM6900, EESM 690, EESM690','EESM 6900A - Independent Study (EESM 690A) //// EESM6900A, EESM 690A, EESM690A','EESM 6980G - MSc Project (EESM 698G) //// EESM6980G, EESM 698G, EESM698G','EESM 6980H - MSc Project (EESM 698H) //// EESM6980H, EESM 698H, EESM698H','EESM 6980I - MSc Project (EESM 698I) //// EESM6980I, EESM 698I, EESM698I','ELEC 1010 - Electronic and Information Technology (ELEC 001) //// ELEC1010, ELEC 001, ELEC001','ELEC 1100 - Introduction to Electro-Robot Design (ELEC 125, ELEC 300V) //// ELEC1100, ELEC 125, ELEC 300V, ELEC125,ELEC300V','ELEC 1200 - A System View of Communications: from Signals to Packets (ELEC 121, ELEC 300U) //// ELEC1200, ELEC 121, ELEC 300U, ELEC121,ELEC300U','ELEC 1970 - Industrial Training (ELEC 097) //// ELEC1970, ELEC 097, ELEC097','ELEC 1980 - Industrial Training (ELEC 098) //// ELEC1980, ELEC 098, ELEC098','ELEC 1990 - Industrial Training (ELEC 099) //// ELEC1990, ELEC 099, ELEC099','ELEC 2100 - Signals and Systems (ELEC 211) //// ELEC2100, ELEC 211, ELEC211','ELEC 2200 - Digital Circuits and Systems (ELEC 151) //// ELEC2200, ELEC 151, ELEC151','ELEC 2300 - Computer Organization (ELEC 152) //// ELEC2300, ELEC 152, ELEC152','ELEC 2400 - Electronic Circuits (ELEC 102) //// ELEC2400, ELEC 102, ELEC102','ELEC 2600 - Probability and Random Processes in Engineering (ELEC 210) //// ELEC2600, ELEC 210, ELEC210','ELEC 2910 - Academic and Professional Development I (ELEC 195) //// ELEC2910, ELEC 195, ELEC195','ELEC 2930 - Academic and Professional Development I (ELEC 010) //// ELEC2930, ELEC 010, ELEC010','ELEC 3100 - Signal Processing and Communications (ELEC 214) //// ELEC3100, ELEC 214, ELEC214','ELEC 3200 - System Modeling, Analysis and Control (ELEC 271) //// ELEC3200, ELEC 271, ELEC271','ELEC 3300 - Introduction to Embedded Systems (ELEC 254) //// ELEC3300, ELEC 254, ELEC254','ELEC 3600 - Electromagnetics: From Wireless to Photonic Applications (ELEC 241) //// ELEC3600, ELEC 241, ELEC241','ELEC 3910 - Academic and Professional Development II (ELEC 295) //// ELEC3910, ELEC 295, ELEC295','ELEC 3920 - Professional Development in Engineering Business II (ELEC 296) //// ELEC3920, ELEC 296, ELEC296','ELEC 3930 - Academic and Professional Development II (ELEC 020) //// ELEC3930, ELEC 020, ELEC020','ELEC 4010B - Mobile Embedded Systems: Hardware Platform, Software Development, and Applications //// ELEC4010B','ELEC 4010C - Fundamentals of Solar and Renewable Energy //// ELEC4010C','ELEC 4010E - Project Management for Electronic Engineering //// ELEC4010E','ELEC 4010F - Machine Learning and Information Processing for Robotics and UAV //// ELEC4010F','ELEC 4120 - Computer Communication Networks (ELEC 315) //// ELEC4120, ELEC 315, ELEC315','ELEC 4150 - Information Theory and Error-Correcting Codes (ELEC 332) //// ELEC4150, ELEC 332, ELEC332','ELEC 4160 - Introduction to Digital Speech Recognition (ELEC 333) //// ELEC4160, ELEC 333, ELEC333','ELEC 4170 - Digital Media and Multimedia Applications (ELEC 360) //// ELEC4170, ELEC 360, ELEC360','ELEC 4410 - CMOS VLSI Design (ELEC 301) //// ELEC4410, ELEC 301, ELEC301','ELEC 4430 - Integrated Power Electronics (ELEC 351) //// ELEC4430, ELEC 351, ELEC351','ELEC 4520 - Integrated Circuit Fabrication Technology (ELEC 322) //// ELEC4520, ELEC 322, ELEC322','ELEC 4610 - Engineering Optics (ELEC 308) //// ELEC4610, ELEC 308, ELEC308','ELEC 4903 - Computer Engineering Final Year Project (ELEC 363) //// ELEC4903, ELEC 363, ELEC363','ELEC 4904 - Computer Engineering Final Year Thesis (ELEC 364) //// ELEC4904, ELEC 364, ELEC364','ELEC 4907 - Final Year Project (ELEC 367) //// ELEC4907, ELEC 367, ELEC367','ELEC 4908 - Final Year Thesis (ELEC 368) //// ELEC4908, ELEC 368, ELEC368','ELEC 4909 - Final Year Project in Entrepreneurship (ELEC 369) //// ELEC4909, ELEC 369, ELEC369','ELEC 4930 - Academic and Professional Development III (ELEC 030) //// ELEC4930, ELEC 030, ELEC030','ELEC 5050 - Advanced CMOS Devices (ELEC 505) //// ELEC5050, ELEC 505, ELEC505','ELEC 5080 - Integrated-Circuit Fabrication Laboratory (ELEC 508) //// ELEC5080, ELEC 508, ELEC508','ELEC 5110 - Nanoelectronic Materials for Energy Technologies //// ELEC5110','ELEC 5220 - Applications of Nanotechnologies to Photonics and Displays (ELEC 522) //// ELEC5220, ELEC 522, ELEC522','ELEC 5280 - High Frequency Circuit Design (ELEC 528) //// ELEC5280, ELEC 528, ELEC528','ELEC 5320 - Digital Image Processing (ELEC 532) //// ELEC5320, ELEC 532, ELEC532','ELEC 5460 - Advanced Stochastic Optimization for Wireless Systems (ELEC 546) //// ELEC5460, ELEC 546, ELEC546','ELEC 5510 - Switch Mode Power Converters (ELEC 551) //// ELEC5510, ELEC 551, ELEC551','ELEC 5530 - Mixed-Signal Integrated Bio-Sensory Circuit Design (ELEC 6910C, ELEC 692W) //// ELEC5530, ELEC 6910C, ELEC 692W, ELEC6910C,ELEC692W','ELEC 5640 - Robot Manipulation (ELEC 564) //// ELEC5640, ELEC 564, ELEC564','ELEC 5810 - Introduction to Bioinformatics Algorithms (ELEC 581, ELEC 692T) //// ELEC5810, ELEC 581, ELEC 692T, ELEC581,ELEC692T','ELEC 5820 - Fundamentals of BioMEMS and Biomedical Microdevices (ELEC 6910D, ELEC 693B) //// ELEC5820, ELEC 6910D, ELEC 693B, ELEC6910D,ELEC693B','ELEC 5900 - Modern Engineering Research Methodologies (ELEC 590, ELEC692Y) //// ELEC5900, ELEC 590, ELEC692Y, ELEC590,ELEC692Y','ELEC 6770 - Professional Development in Electronic and Computer Engineering //// ELEC6770','ELEC 6900A - Independent Study (ELEC 690) //// ELEC6900A, ELEC 690, ELEC690','ELEC 6910H - Random Matrix Theory for Communications and Signal Processing //// ELEC6910H','ELEC 6910J - Error Control Coding //// ELEC6910J','ELEC 6910K - Advanced Computer Architecture //// ELEC6910K','ELEC 6950A - Departmental Seminar (ELEC 695A) //// ELEC6950A, ELEC 695A, ELEC695A','ELEC 6950B - Departmental Seminar (ELEC 695B) //// ELEC6950B, ELEC 695B, ELEC695B','ELEC 6990 - MPhil Thesis Research (ELEC 699) //// ELEC6990, ELEC 699, ELEC699','ELEC 7990 - Doctoral Thesis Research (ELEC 799) //// ELEC7990, ELEC 799, ELEC799','EMBA 5010 - Frameworks for Strategic Analysis (EMBA 501) //// EMBA5010, EMBA 501, EMBA501','EMBA 5070 - Statistical Decision Analysis (EMBA 507) //// EMBA5070, EMBA 507, EMBA507','EMBA 5660 - Capstone //// EMBA5660','EMBA 5670 - Founders\' Dilemmas //// EMBA5670','ENEG 5200 - Nanoelectronic Materials for Energy Technologies //// ENEG5200','ENEG 5450 - Green Computing //// ENEG5450','ENGG 1010 - Academic Orientation (ENGG 001) //// ENGG1010, ENGG 001, ENGG001','ENGG 1110 - Engineering Solutions to Grand Challenges of the 21st Century (ENGG 150B) //// ENGG1110, ENGG 150B, ENGG150B','ENGG 1130 - The Impact and Value of Technology Innovation (MECH 300J) //// ENGG1130, MECH 300J, MECH300J','ENGG 1150 - Information Technology Revolution: Past, Present and Future //// ENGG1150','ENGG 2990D - Engineering Team Airship Design //// ENGG2990D','ENGG 3000 - Legal Perspective of Engineering Practice and Operation (ENGG 220) //// ENGG3000, ENGG 220, ENGG220','ENGG 4950G - Engineering Special Project: MATE ROV 2014 //// ENGG4950G','ENGG 4950H - Engineering Special Project: ABU Robocon 2014 //// ENGG4950H','ENGG 4950I - Engineering Special Project: The Freescale Cup - Intelligent Car Competition 2014 //// ENGG4950I','ENGG 6770 - Professional Development in Engineering //// ENGG6770','ENTR 3010 - Structured Mentoring: Inspiring Leadership //// ENTR3010','ENVR 1030 - Environment and Health (ENVR 003) //// ENVR1030, ENVR 003, ENVR003','ENVR 1040 - The Environment and Society - A Comprehensive Perspective (ENVR 004) //// ENVR1040, ENVR 004, ENVR004','ENVR 2001 - Academic and Professional Development I (ENVR 1000) //// ENVR2001, ENVR 1000, ENVR1000','ENVR 3001 - Academic and Professional Development II (ENVR 2000) //// ENVR3001, ENVR 2000, ENVR2000','ENVR 3310 - Green Business Strategy //// ENVR3310','ENVR 3410 - Economics for Environmental Policy and Management //// ENVR3410','ENVR 4000E - Carbon Management Consulting Practicum //// ENVR4000E','ENVR 4001 - Academic and Professional Development III (ENVR 3000) //// ENVR4001, ENVR 3000, ENVR3000','ENVR 4310 - Green Innovation and Entrepreneurship //// ENVR4310','ENVR 4320 - Corporate Environmental Accounting and Reporting //// ENVR4320','ENVR 4330 - Environmental Geographical Information System //// ENVR4330','ENVR 4980 - Environmental Management and Technology Capstone Project I //// ENVR4980','ENVR 4990 - Environmental Management and Technology Capstone Project II //// ENVR4990','ENVR 5210 - Environmental Microbiology (ENVR 521, AMCE 521) //// ENVR5210, ENVR 521, AMCE 521, ENVR521,AMCE521','ENVR 5260 - Environmental Policy and Management (ENVR 526) //// ENVR5260, ENVR 526, ENVR526','ENVR 6010D - Postgraduate Seminar //// ENVR6010D','ENVR 6040B - Environmental Exposure and Risk Analysis //// ENVR6040B','ENVR 6100A - Independent Study (ENVR 610A) //// ENVR6100A, ENVR 610A, ENVR610A','ENVR 6770 - Professional Development in Environmental Science, Policy and Management //// ENVR6770','ENVR 6990 - MPhil Thesis Research (ENVR 699, AMCE 699) //// ENVR6990, ENVR 699, AMCE 699, ENVR699,AMCE699','ENVR 7990 - Doctoral Thesis Research (ENVR 799, AMCE 799) //// ENVR7990, ENVR 799, AMCE 799, ENVR799,AMCE799','ENVS 3001 - Pollution Monitoring and Measurement //// ENVS3001','ENVS 5115 - Food Safety Control //// ENVS5115','ENVS 5116 - Case Studies in Environmental Risk Assessment //// ENVS5116','ENVS 5117 - Pharmacology, Toxicology and Health //// ENVS5117','ENVS 5118 - Conservation and Sustainable Development //// ENVS5118','ENVS 6011D - Postgraduate Seminar //// ENVS6011D','ENVS 6012A - Microbial Oceanography, Marine Pollution and Climate Changes //// ENVS6012A','ENVS 6111 - Environmental Health Research Project //// ENVS6111','ENVS 6990 - MPhil Thesis Research //// ENVS6990','ENVS 7990 - Doctoral Thesis Research //// ENVS7990','EVNG 6050F - Environmental Engineering Seminar //// EVNG6050F','EVNG 6770 - Professional Development in Environmental Engineering //// EVNG6770','EVNG 6990 - MPhil Thesis Research (EVNG 699) //// EVNG6990, EVNG 699, EVNG699','EVNG 7990 - Doctoral Thesis Research (EVNG 799) //// EVNG7990, EVNG 799, EVNG799','EVSM 5220 - Advanced Environmental Chemistry (EVSM 522, ENVR 522, AMCE 522) //// EVSM5220, EVSM 522, ENVR 522, AMCE 522, EVSM522,ENVR522,AMCE522','EVSM 5270 - Environmental Law (EVSM 527) //// EVSM5270, EVSM 527, EVSM527','EVSM 6070 - Environmental Impact Assessment (EVSM 607, ENVR 607, AMCE 607) //// EVSM6070, EVSM 607, ENVR 607, AMCE 607, EVSM607,ENVR607,AMCE607','EVSM 6950A - MSc Project (EVSM 695A) //// EVSM6950A, EVSM 695A, EVSM695A','EVSM 6950B - MSc Project (EVSM 695B) //// EVSM6950B, EVSM 695B, EVSM695B','FINA 1303 - Introduction to Financial Markets (FINA 132) //// FINA1303, FINA 132, FINA132','FINA 2203 - Fundamentals of Business Finance (FINA 110) //// FINA2203, FINA 110, FINA110','FINA 2303 - Financial Management (FINA 111) //// FINA2303, FINA 111, FINA111','FINA 3104 - Investment Analysis and Portfolio Management (FINA 221) //// FINA3104, FINA 221, FINA221','FINA 3204 - Derivative Securities (FINA 222) //// FINA3204, FINA 222, FINA222','FINA 3304 - Financial Markets (FINA 232) //// FINA3304, FINA 232, FINA232','FINA 3404 - International Finance (FINA 342) //// FINA3404, FINA 342, FINA342','FINA 3504 - Management of Financial Institutions (FINA 331) //// FINA3504, FINA 331, FINA331','FINA 3820 - Thomson Reuters Certification Program (FINA 292) //// FINA3820, FINA 292, FINA292','FINA 4104 - Advanced Financial Management (FINA 321) //// FINA4104, FINA 321, FINA321','FINA 4304 - Fixed Income Securities (FINA 361) //// FINA4304, FINA 361, FINA361','FINA 4404 - Exotic Options and Equity Structured Products (FINA 333, FINA 399K) //// FINA4404, FINA 333, FINA 399K, FINA333,FINA399K','FINA 4502 - Asset-Liability Portfolio Management (FINA 335, FINA 399M) //// FINA4502, FINA 335, FINA 399M, FINA335,FINA399M','FINA 4602 - An Introduction to Modern Investment Banking (FINA 399O, FINA 4929E) //// FINA4602, FINA 399O, FINA 4929E, FINA399O,FINA4929E','FINA 4723 - HKUST Student-Managed Investment Fund (B) (FINA 4929F) //// FINA4723, FINA 4929F, FINA4929F','FINA 4810 - Finance Practicum I (FINA 396) //// FINA4810, FINA 396, FINA396','FINA 4814 - Finance Practicum II (FINA 397) //// FINA4814, FINA 397, FINA397','FINA 4929G - Social Entrepreneurship and Venture Philanthropy //// FINA4929G','FINA 5120 - Corporate Finance (FINA 512) //// FINA5120, FINA 512, FINA512','FINA 5150 - Corporate Risk Management (FINA 515) //// FINA5150, FINA 515, FINA515','FINA 5170 - Asset Securitization (FINA 517, FINA 690D) //// FINA5170, FINA 517, FINA 690D, FINA517,FINA690D','FINA 5180 - Valuing Companies (FINA 518, FINA 691D) //// FINA5180, FINA 518, FINA 691D, FINA518,FINA691D','FINA 5190 - Family Business (FINA 691K, SBMT 601R) //// FINA5190, FINA 691K, SBMT 601R, FINA691K,SBMT601R','FINA 5210 - Investment Analysis (FINA 521) //// FINA5210, FINA 521, FINA521','FINA 5290 - Derivatives Analysis (FINA 529) //// FINA5290, FINA 529, FINA529','FINA 5300 - Advanced Derivatives Analysis (FINA 530) //// FINA5300, FINA 530, FINA530','FINA 5330 - Investment and Finance in China (FINA 533) //// FINA5330, FINA 533, FINA533','FINA 5350 - Strategic Finance and Value Creation (FINA 535) //// FINA5350, FINA 535, FINA535','FINA 5360 - Fixed Income Analysis (FINA 536) //// FINA5360, FINA 536, FINA536','FINA 5380 - Raising Debt in the Financial Markets (FINA 538, FINA 690I) //// FINA5380, FINA 538, FINA 690I, FINA538,FINA690I','FINA 5390 - Venture Capital and Private Equity (FINA 539) //// FINA5390, FINA 539, FINA539','FINA 5420 - Behavioral Finance (FINA 542, FINA 690E) //// FINA5420, FINA 542, FINA 690E, FINA542,FINA690E','FINA 5440 - Risk Management for Financial Institutions (FINA 544, FINA 690N) //// FINA5440, FINA 544, FINA 690N, FINA544,FINA690N','FINA 5450 - Hedge Funds (FINA 545, FINA 690P) //// FINA5450, FINA 545, FINA 690P, FINA545,FINA690P','FINA 5580 - Advanced Derivative Applications (FINA 558, FINA 690U) //// FINA5580, FINA 558, FINA 690U, FINA558,FINA690U','FINA 5590 - Trading in Equity Markets (FINA 559, FINA 690X) //// FINA5590, FINA 559, FINA 690X, FINA559,FINA690X','FINA 5630 - Global Economy and Emerging Markets (FINA 691F) //// FINA5630, FINA 691F, FINA691F','FINA 6900F - Private Equity Investing //// FINA6900F','FINA 6970A - Independent Study (FINA 697S) //// FINA6970A, FINA 697S, FINA697S','FINA 6970B - Independent Study //// FINA6970B','FINA 6990 - MPhil Thesis Research (FINA 699) //// FINA6990, FINA 699, FINA699','FINA 7900A - Doctoral Seminar: Theoretical Corporate Finance //// FINA7900A','FINA 7900B - Doctoral Seminar: Theoretical Asset Pricing //// FINA7900B','FINA 7900D - Doctoral Seminar: Empirical Asset Pricing //// FINA7900D','FINA 7980F - Finance Workshops //// FINA7980F','FINA 7990 - Doctoral Thesis Research (FINA 799) //// FINA7990, FINA 799, FINA799','FYTG 5001 - Technology, Leadership and Entrepreneurship //// FYTG5001','FYTG 5101 - Data-Driven Processing //// FYTG5101','FYTG 5311 - Electrochemical Energy Conversion and Storage //// FYTG5311','FYTG 5412 - Advanced Engineering Materials //// FYTG5412','FYTG 6100 - Practical Training //// FYTG6100','FYTG 6990 - MPhil Thesis Research (FYTG 699) //// FYTG6990, FYTG 699, FYTG699','GBUS 1000 - Global Leadership Development (BMGB 100) //// GBUS1000, BMGB 100, BMGB100','GBUS 2010 - Global Business Analysis (BMGB 101) //// GBUS2010, BMGB 101, BMGB101','GBUS 2020 - Public Service Project (BMGB 102) //// GBUS2020, BMGB 102, BMGB102','GBUS 3010 - Global Perspectives on Contemporary Issues (BMGB 201) //// GBUS3010, BMGB 201, BMGB201','GBUS 3050 - Deal Making in Asia and Emerging Markets (BMGB 399E, GBUS 4000A) //// GBUS3050, BMGB 399E, GBUS 4000A, BMGB399E,GBUS4000A','GBUS 4910 - Capstone Project (BMGB 391) //// GBUS4910, BMGB 391, BMGB391','GFIN 5030 - Portfolio Management and Asset Allocation (GFIN 503) //// GFIN5030, GFIN 503, GFIN503','GFIN 5040 - Derivatives Markets (GFIN 504) //// GFIN5040, GFIN 504, GFIN504','GFIN 5050 - Applied Corporate Finance and Valuation (GFIN 505) //// GFIN5050, GFIN 505, GFIN505','GFIN 5080 - Fixed Income Instruments and Markets (GFIN 508) //// GFIN5080, GFIN 508, GFIN508','GFIN 5100 - Banking Reform and Corporate Risk Management in China (GFIN 510) //// GFIN5100, GFIN 510, GFIN510','GNED 2510 - Career Building (GNED 151, GNED 051) //// GNED2510, GNED 151, GNED 051, GNED151,GNED051','HART 1016 - Introduction to Installation Art //// HART1016','HART 1018 - Introduction and Appreciation of Chinese Dance //// HART1018','HART 1021 - A Contemporary Approach to Painting (GNED 2000B) //// HART1021, GNED 2000B, GNED2000B','HART 1026 - Connecting Acting with Public Speaking //// HART1026','HART 1027 - Fundamental Techniques in Stage Movement //// HART1027','HART 1028 - Devised Theatre: Contemporary Creative Process for Performance //// HART1028','HLTH 1010 - Healthy Lifestyle (HLTH 001) //// HLTH1010, HLTH 001, HLTH001','HUMA 1000 - Cultures and Values //// HUMA1000','HUMA 1030 - Structure of the Chinese Language (HUMA 2030, HUMA 103) //// HUMA1030, HUMA 2030, HUMA 103, HUMA2030,HUMA103','HUMA 1100 - Music of the World (HUMA 2100, HUMA 110) //// HUMA1100, HUMA 2100, HUMA 110, HUMA2100,HUMA110','HUMA 1102 - Enjoyment of Classical Music (HUMA 2102, HUMA 115) //// HUMA1102, HUMA 2102, HUMA 115, HUMA2102,HUMA115','HUMA 1210 - Chinese Women on Screen //// HUMA1210','HUMA 1220 - Chinese Literature in Translation (HUMA 022) //// HUMA1220, HUMA 022, HUMA022','HUMA 1520 - Modern East Asia (HUMA 052) //// HUMA1520, HUMA 052, HUMA052','HUMA 1630 - Popular Religion in South China (HUMA 2631, HUMA 256) //// HUMA1630, HUMA 2631, HUMA 256, HUMA2631,HUMA256','HUMA 1660 - Introduction to Chinese Art (HUMA 066) //// HUMA1660, HUMA 066, HUMA066','HUMA 1810 - Introduction to Chinese Philosophy (HUMA 081) //// HUMA1810, HUMA 081, HUMA081','HUMA 2031 - The Cantonese Language (HUMA 3060, HUMA 206) //// HUMA2031, HUMA 3060, HUMA 206, HUMA3060,HUMA206','HUMA 2103 - Introduction to Music Composition (HUMA 116) //// HUMA2103, HUMA 116, HUMA116','HUMA 2104 - Introduction to Music Theory (HUMA 117) //// HUMA2104, HUMA 117, HUMA117','HUMA 2260 - Contemporary Chinese Fiction (1949-present) (HUMA 126) //// HUMA2260, HUMA 126, HUMA126','HUMA 2280 - Identity Goes Global: From Border Crossing to Boundary Remaking //// HUMA2280','HUMA 2440 - 20th Century China in Documentary Films //// HUMA2440','HUMA 2481 - Common Beliefs in Pre-modern China (HUMA 249) //// HUMA2481, HUMA 249, HUMA249','HUMA 2589 - Mussolini, Stalin, Hitler: Dictators and their Regimes (HUMA 300R) //// HUMA2589, HUMA 300R, HUMA300R','HUMA 2590 - The Making of the Modern World: Renaissance to the Present (HUMA 159) //// HUMA2590, HUMA 159, HUMA159','HUMA 2622 - Heritage and Culture (HUMA 3621, HUMA 261A) //// HUMA2622, HUMA 3621, HUMA 261A, HUMA3621,HUMA261A','HUMA 2640 - Unofficial China: Social History 1800s-1930s (HUMA 164) //// HUMA2640, HUMA 164, HUMA164','HUMA 2670 - Understanding Western Painting (HUMA 167) //// HUMA2670, HUMA 167, HUMA167','HUMA 3030 - Language, Communication and Culture (HUMA 203) //// HUMA3030, HUMA 203, HUMA203','HUMA 3101 - Western Opera and Literature (HUMA 211) //// HUMA3101, HUMA 211, HUMA211','HUMA 3103 - Making Chamber Music B //// HUMA3103','HUMA 3800 - Guided Studies in Chinese Philosophical Classics (HUMA 382) //// HUMA3800, HUMA 382, HUMA382','HUMA 3900 - Philosophical Inquiry into the Modern World (HUMA 290) //// HUMA3900, HUMA 290, HUMA290','HUMA 4220 - Verbal and Visual Representation of China (HUMA 4110) //// HUMA4220, HUMA 4110, HUMA4110','HUMA 5160 - Chinese Historical Phonology (HUMA 516) //// HUMA5160, HUMA 516, HUMA516','HUMA 5230 - Languages of China: Anthropological and Cognitive Dimensions (HUMA 523, HUMA 600D) //// HUMA5230, HUMA 523, HUMA 600D, HUMA523,HUMA600D','HUMA 5380 - Modern Literary Theory (HUMA 538) //// HUMA5380, HUMA 538, HUMA538','HUMA 5460 - Historical Imagination: Literature, Film, and Culture (HUMA 546, HUMA 601K) //// HUMA5460, HUMA 546, HUMA 601K, HUMA546,HUMA601K','HUMA 5520 - Modern Chinese History (HUMA 552) //// HUMA5520, HUMA 552, HUMA552','HUMA 5580 - Theories and Methods in East Asian History (HUMA 558) //// HUMA5580, HUMA 558, HUMA558','HUMA 5650 - Narratives on Law in China from AD1000 //// HUMA5650','HUMA 5750 - Family and Lineage in South China (HUMA 575) //// HUMA5750, HUMA 575, HUMA575','HUMA 5800 - Fundamentals of Chinese Philosophy (HUMA 580) //// HUMA5800, HUMA 580, HUMA580','HUMA 6001Q - Lyricism in Literature and the Arts (HUMA 601Q) //// HUMA6001Q, HUMA 601Q, HUMA601Q','HUMA 6002Q - Topics in Ming-Qing History //// HUMA6002Q','HUMA 6003A - Topics in Chinese Philosophy (in English) //// HUMA6003A','HUMA 6100G - Independent Study //// HUMA6100G','HUMA 6200 - Research Project in Humanities //// HUMA6200','HUMA 6300 - Postgraduate Seminar //// HUMA6300','HUMA 6990 - MPhil Thesis Research (HUMA 699) //// HUMA6990, HUMA 699, HUMA699','HUMA 7990 - Doctoral Thesis Research (HUMA 799) //// HUMA7990, HUMA 799, HUMA799','IBTM 5010 - Intelligent Building Facility Management (IBTM 501) //// IBTM5010, IBTM 501, IBTM501','IBTM 5150 - Advanced HVAC Systems (IBTM 515) //// IBTM5150, IBTM 515, IBTM515','IBTM 5430 - Indoor Air Quality Technology and Management (IBTM 543) //// IBTM5430, IBTM 543, IBTM543','IBTM 5530 - Risk Management and Decision-Making in Intelligent Building (IBTM 553) //// IBTM5530, IBTM 553, IBTM553','IBTM 6010B - Mechanical Vibration //// IBTM6010B','IBTM 6950A - Independent Studies (IBTM 695A) //// IBTM6950A, IBTM 695A, IBTM695A','IBTM 6950B - Independent Studies (IBTM 695B) //// IBTM6950B, IBTM 695B, IBTM695B','IDPO 6770 - Professional Development for Interdisciplinary Programs //// IDPO6770','IELM 1010 - Academic and Professional Development I (IELM 001) //// IELM1010, IELM 001, IELM001','IELM 1020 - Academic and Professional Development II (IELM 002) //// IELM1020, IELM 002, IELM002','IELM 1990 - Industrial Training (IELM 099) //// IELM1990, IELM 099, IELM099','IELM 2010 - Industrial Engineering and Modern Logistics (IELM 101) //// IELM2010, IELM 101, IELM101','IELM 2100 - Computing in Industrial Applications (IELM 110) //// IELM2100, IELM 110, IELM110','IELM 2410 - Logistics and Freight Transportation Operations (IELM 141) //// IELM2410, IELM 141, IELM141','IELM 2510 - Engineering Probability and Statistics (IELM 151) //// IELM2510, IELM 151, IELM151','IELM 3150 - Manufacturing Processes (IELM 215) //// IELM3150, IELM 215, IELM215','IELM 3230 - Engineering Economy (IELM 223) //// IELM3230, IELM 223, IELM223','IELM 3250 - Operations Research II (IELM 225) //// IELM3250, IELM 225, IELM225','IELM 3270 - Quality Engineering (IELM 227) //// IELM3270, IELM 227, IELM227','IELM 4110 - Engineers in Society (IELM 311) //// IELM4110, IELM 311, IELM311','IELM 4130 - System Simulation (IELM 313) //// IELM4130, IELM 313, IELM313','IELM 4650 - Cognitive Engineering and Human Performance (IELM 365) //// IELM4650, IELM 365, IELM365','IELM 4930 - Logistics Management and Engineering Project //// IELM4930','IELM 4990 - Industrial Engineering Design Project //// IELM4990','IELM 5170 - Advanced Production Planning and Control (IELM 517, IEEM 517) //// IELM5170, IELM 517, IEEM 517, IELM517,IEEM517','IELM 5250 - Stochastic Models in Operations Research (IELM 525, IEEM 525) //// IELM5250, IELM 525, IEEM 525, IELM525,IEEM525','IELM 5500 - Global Manufacturing (IELM 550, IEEM 550) //// IELM5500, IELM 550, IEEM 550, IELM550,IEEM550','IELM 5570 - Network Optimization in Transportation Systems (IELM 557, IEEM 557) //// IELM5570, IELM 557, IEEM 557, IELM557,IEEM557','IELM 6770 - Professional Development in Industrial Engineering and Logistics Management //// IELM6770','IELM 6800F - Departmental Seminar //// IELM6800F','IELM 6850F - Advanced Seminar //// IELM6850F','IELM 6900A - Research Project (IELM 690A) //// IELM6900A, IELM 690A, IELM690A','IELM 6990 - MPhil Thesis Research (IELM 699, IEEM 699) //// IELM6990, IELM 699, IEEM 699, IELM699,IEEM699','IELM 7990 - Doctoral Thesis Research (IELM 799, IEEM 799) //// IELM7990, IELM 799, IEEM 799, IELM799,IEEM799','IMBA 5050 - Marketing Strategy (IMBA 505) //// IMBA5050, IMBA 505, IMBA505','IMBA 5060 - Accounting for Decision Making and Control (IMBA 506) //// IMBA5060, IMBA 506, IMBA506','IMBA 5070 - Corporate Finance (IMBA 507) //// IMBA5070, IMBA 507, IMBA507','IMBA 5110 - Operations and Value Chain Management (IMBA 511) //// IMBA5110, IMBA 511, IMBA511','IMBA 6970B - Independent Study //// IMBA6970B','ISOM 1380 - Technology and Innovation: Social and Business Perspectives (ISOM 139) //// ISOM1380, ISOM 139, ISOM139','ISOM 2010 - Introduction to Information Systems (ISOM 101, ISMT 101) //// ISOM2010, ISOM 101, ISMT 101, ISOM101,ISMT101','ISOM 2030 - Business Protections for Innovations (ISOM 125, ISMT 125) //// ISOM2030, ISOM 125, ISMT 125, ISOM125,ISMT125','ISOM 2310 - Chronicle of Internet Commerce (ISOM 131) //// ISOM2310, ISOM 131, ISOM131','ISOM 2500 - Business Statistics (ISOM 111, ISMT 111) //// ISOM2500, ISOM 111, ISMT 111, ISOM111,ISMT111','ISOM 2700 - Operations Management (ISOM 161, ISMT 161) //// ISOM2700, ISOM 161, ISMT 161, ISOM161,ISMT161','ISOM 3100 - Business Simulation and Strategic Decisions (ISOM 210, ISMT 200G) //// ISOM3100, ISOM 210, ISMT 200G, ISOM210,ISMT200G','ISOM 3180 - Telecommunications and Computer Networking Management (ISOM 235, ISMT 235) //// ISOM3180, ISOM 235, ISMT 235, ISOM235,ISMT235','ISOM 3210 - Information Systems Analysis and Design (ISOM 221, ISMT 221) //// ISOM3210, ISOM 221, ISMT 221, ISOM221,ISMT221','ISOM 3230 - Business Applications Programming (ISOM 223, ISMT 223) //// ISOM3230, ISOM 223, ISMT 223, ISOM223,ISMT223','ISOM 3260 - Database Design and Administration (ISOM 226, ISMT 226) //// ISOM3260, ISOM 226, ISMT 226, ISOM226,ISMT226','ISOM 3360 - Business Intelligence and Data Mining (ISOM 326) //// ISOM3360, ISOM 326, ISOM326','ISOM 3380 - Advanced Network Management (CISCO - ICND) (ISOM 219, ISMT 219) //// ISOM3380, ISOM 219, ISMT 219, ISOM219,ISMT219','ISOM 3710 - Management Science (ISOM 271, ISMT 271) //// ISOM3710, ISOM 271, ISMT 271, ISOM271,ISMT271','ISOM 4300 - Information Systems Control and Assurance (ISOM 341, ISMT 341) //// ISOM4300, ISOM 341, ISMT 341, ISOM341,ISMT341','ISOM 4400 - Information Systems Project //// ISOM4400','ISOM 4520 - Statistics for Financial Risk Management (ISOM 352, ISMT 352) //// ISOM4520, ISOM 352, ISMT 352, ISOM352,ISMT352','ISOM 4540 - Time Series Analysis and Forecasting (ISOM 354, ISMT 354) //// ISOM4540, ISOM 354, ISMT 354, ISOM354,ISMT354','ISOM 4550 - Bayesian Statistics (ISOM 355, ISMT 355) //// ISOM4550, ISOM 355, ISMT 355, ISOM355,ISMT355','ISOM 4580 - Elementary Sampling Methods (ISOM 358, ISMT 358) //// ISOM4580, ISOM 358, ISMT 358, ISOM358,ISMT358','ISOM 4750 - Business Project Management (ISOM 365, ISMT 365) //// ISOM4750, ISOM 365, ISMT 365, ISOM365,ISMT365','ISOM 4770 - Supply Chain Management (ISOM 367, ISMT 367) //// ISOM4770, ISOM 367, ISMT 367, ISOM367,ISMT367','ISOM 4820 - Revenue Management (ISOM 369C) //// ISOM4820, ISOM 369C, ISOM369C','ISOM 4880 - Operations Management Project (ISOM 388, ISOM 369B) //// ISOM4880, ISOM 388, ISOM 369B, ISOM388,ISOM369B','ISOM 5020 - Information and Technology Management (ISOM 502, ISMT 502) //// ISOM5020, ISOM 502, ISMT 502, ISOM502,ISMT502','ISOM 5030 - Business Simulation and Strategic Decisions (ISOM 503, ISMT 610X) //// ISOM5030, ISOM 503, ISMT 610X, ISOM503,ISMT610X','ISOM 5130 - Outsourcing Management (ISOM 611B) //// ISOM5130, ISOM 611B, ISOM611B','ISOM 5280 - Computer and Internet Security Management (ISOM 528, ISMT 528) //// ISOM5280, ISOM 528, ISMT 528, ISOM528,ISMT528','ISOM 5320 - Electronic Commerce (ISOM 532, ISMT 532) //// ISOM5320, ISOM 532, ISMT 532, ISOM532,ISMT532','ISOM 5380 - Information Systems Assurance and Forensic Investigation (ISOM 6000B, ISOM 611D) //// ISOM5380, ISOM 6000B, ISOM 611D, ISOM6000B,ISOM611D','ISOM 5420 - Integrated Business Simulation and Strategy (ISOM 542, SBMT 542) //// ISOM5420, ISOM 542, SBMT 542, ISOM542,SBMT542','ISOM 5460 - Project Management (ISOM 546, ISMT 546) //// ISOM5460, ISOM 546, ISMT 546, ISOM546,ISMT546','ISOM 5480 - Technology Entrepreneurship (ISOM 550, ISMT 610Y) //// ISOM5480, ISOM 550, ISMT 610Y, ISOM550,ISMT610Y','ISOM 5550 - Statistical Methods for Business and Economics I (ISOM 582, ISMT 582) //// ISOM5550, ISOM 582, ISMT 582, ISOM582,ISMT582','ISOM 5700 - Operations Management (ISOM 561, ISMT 561) //// ISOM5700, ISOM 561, ISMT 561, ISOM561,ISMT561','ISOM 5720 - ERP and Enterprise Systems Management (ISOM 564, ISMT 564) //// ISOM5720, ISOM 564, ISMT 564, ISOM564,ISMT564','ISOM 5730 - Global Supply Chain Management (ISOM 567, ISMT 567, ISMT 669G) //// ISOM5730, ISOM 567, ISMT 567, ISMT 669G, ISOM567,ISMT567,ISMT669G','ISOM 5740 - Managing Financial Services Operations //// ISOM5740','ISOM 5750 - Demand and Revenue Management //// ISOM5750','ISOM 5780 - Global Operations Strategy //// ISOM5780','ISOM 5800 - Business Modeling (ISOM 580, ISOM 669B, MGMT 650F) //// ISOM5800, ISOM 580, ISOM 669B, MGMT 650F, ISOM580,ISOM669B,MGMT650F','ISOM 5820 - OM Best Practices //// ISOM5820','ISOM 6790B - Operational Mindset - Key to Maximizing Career Potential //// ISOM6790B','ISOM 6990 - MPhil Thesis Research (ISOM 699, ISMT 699) //// ISOM6990, ISOM 699, ISMT 699, ISOM699,ISMT699','ISOM 7990 - Doctoral Thesis Research (ISOM 799, ISMT 799) //// ISOM7990, ISOM 799, ISMT 799, ISOM799,ISMT799','JEVE 5410 - Risk Assessment and Contaminated Land Cleanup (JEVE 541) //// JEVE5410, JEVE 541, JEVE541','JEVE 5460 - Design and Management of Physico/Chemical Processes of Environmental Engineering (JEVE 546) //// JEVE5460, JEVE 546, JEVE546','JEVE 5490 - Modeling of Biological Treatment (JEVE 549) //// JEVE5490, JEVE 549, JEVE549','JEVE 5760 - Advanced Physico-Chemical Treatment Processes (JEVE 576) //// JEVE5760, JEVE 576, JEVE576','JEVE 5900 - Carbon Management for Sustainable Environment (JEVE 590) //// JEVE5900, JEVE 590, JEVE590','JEVE 6980B - Independent Project (JEVE 698B) //// JEVE6980B, JEVE 698B, JEVE698B','LABU 2052 - Business Case Analyses II (LABU 104) //// LABU2052, LABU 104, LABU104','LANG 1003A - English for University Studies II //// LANG1003A','LANG 1003I - English for University Studies II //// LANG1003I','LANG 1003S - English for University Studies II //// LANG1003S','LANG 1112 - Chinese Business Communication I (LANG 111) //// LANG1112, LANG 111, LANG111','LANG 1113 - Effective Chinese Communication //// LANG1113','LANG 1113I - Effective Chinese Communication //// LANG1113I','LANG 1114 - Critical Reading and Writing in Chinese //// LANG1114','LANG 1115 - Critical Reading and Speaking in Chinese //// LANG1115','LANG 1120 - Chinese for Non-Chinese Language Background Students I (LANG 113) //// LANG1120, LANG 113, LANG113','LANG 1121 - Chinese for Non-Chinese Language Background Students II (LANG 114) //// LANG1121, LANG 114, LANG114','LANG 1122 - Chinese for Non-Chinese Language Background Students III (LANG 115) //// LANG1122, LANG 115, LANG115','LANG 1123 - Chinese for Non-Chinese Language Background Students IV (LANG 116) //// LANG1123, LANG 116, LANG116','LANG 1124 - Chinese for Non-Chinese Language Background Students V //// LANG1124','LANG 1125 - Chinese for Non-Chinese Language Background Students VI //// LANG1125','LANG 1127 - Chinese for Non-Chinese Language Background Students VIII //// LANG1127','LANG 1210 - Japanese Language and Related Culture I (LANG 024) //// LANG1210, LANG 024, LANG024','LANG 1220 - Arabic: a key to the Middle East (LANG 071) //// LANG1220, LANG 071, LANG071','LANG 1310 - French: World Language and Culture (LANG 031) //// LANG1310, LANG 031, LANG031','LANG 1320 - German in the World of Science and Technology (LANG 051) //// LANG1320, LANG 051, LANG051','LANG 1330 - Spanish and the Other America (LANG 061) //// LANG1330, LANG 061, LANG061','LANG 1410 - Latin and the Legacy of the Roman World (LANG 041) //// LANG1410, LANG 041, LANG041','LANG 2010 - English for Science I //// LANG2010','LANG 2030 - Technical Communication I //// LANG2030','LANG 2030H - Technical Communication I //// LANG2030H','LANG 2070 - English Communication for Global China Studies I //// LANG2070','LANG 2083 - Communication for Environmental Management and Technology II //// LANG2083','LANG 3069 - Business Communication (LANG 201) //// LANG3069, LANG 201, LANG201','LANG 3080 - Communication for International Management (LANG 307) //// LANG3080, LANG 307, LANG307','LANG 5000 - Foundation in Listening & Speaking for Postgraduate Students (LANG 500) //// LANG5000, LANG 500, LANG500','LANG 5001 - Postgraduate English for Academic Purposes (LANG 501) //// LANG5001, LANG 501, LANG501','LANG 5010 - Postgraduate English for Science Studies //// LANG5010','LANG 5071 - Postgraduate English for Humanities //// LANG5071','LANG 5081 - Research Writing Skills //// LANG5081','LANG 5330 - Basic Spanish for International Management //// LANG5330','LIFS 1011A - Selected Topics in Biology Enrichment Activities (BIOL 001A) //// LIFS1011A, BIOL 001A, BIOL001A','LIFS 1020 - Biology of Human Health (BISC 002) //// LIFS1020, BISC 002, BISC002','LIFS 1901 - General Biology I //// LIFS1901','LIFS 1902 - General Biology II //// LIFS1902','LIFS 1904 - Laboratory for General Biology II //// LIFS1904','LIFS 2030 - Nature of Biochemistry and Biotechnology (BISC 103) //// LIFS2030, BISC 103, BISC103','LIFS 2080 - Plant Biology (BIOL 108) //// LIFS2080, BIOL 108, BIOL108','LIFS 2220 - Intermediary Metabolism (BICH 122) //// LIFS2220, BICH 122, BICH122','LIFS 2280 - Plant Biology Laboratory (BIOL 128) //// LIFS2280, BIOL 128, BIOL128','LIFS 2720 - Introductory Biochemical Laboratory (BICH 172) //// LIFS2720, BICH 172, BICH172','LIFS 2820 - Biochemical Laboratory Techniques (BICH 182) //// LIFS2820, BICH 182, BICH182','LIFS 3020 - Molecular and Cellular Biochemistry II (BICH 202) //// LIFS3020, BICH 202, BICH202','LIFS 3040 - Animal Physiology (BIOL 202) //// LIFS3040, BIOL 202, BIOL202','LIFS 3060 - Microbiology (BIOL 206) //// LIFS3060, BIOL 206, BIOL206','LIFS 3070 - Biophysics and Physical Biochemistry (BISC 207) //// LIFS3070, BISC 207, BISC207','LIFS 3150 - Biostatistics (BISC 215) //// LIFS3150, BISC 215, BISC215','LIFS 3220 - Animal Physiology Laboratory (BIOL 222) //// LIFS3220, BIOL 222, BIOL222','LIFS 3240 - Introduction to Neurobiology (BISC 224) //// LIFS3240, BISC 224, BISC224','LIFS 3260 - Microbiology Laboratory (BIOL 226) //// LIFS3260, BIOL 226, BIOL226','LIFS 3520 - Junior Research Project II (BIOL 252) //// LIFS3520, BIOL 252, BIOL252','LIFS 3530 - Molecular Genetics Research Project III (BIOL 253) //// LIFS3530, BIOL 253, BIOL253','LIFS 4060 - Immunobiology (BISC 306) //// LIFS4060, BISC 306, BISC306','LIFS 4090 - Developmental Biology (BISC 309) //// LIFS4090, BISC 309, BISC309','LIFS 4190 - Advanced Cell Biology (BISC 319) //// LIFS4190, BISC 319, BISC319','LIFS 4360 - Aquaculture Biotechnology (BISC 336) //// LIFS4360, BISC 336, BISC336','LIFS 4540 - Structure and Function of Proteins (BISC 354) //// LIFS4540, BISC 354, BISC354','LIFS 4550 - Biochemistry of Nutrition (BISC 355) //// LIFS4550, BISC 355, BISC355','LIFS 4580 - Bioinformatics (BISC 358) //// LIFS4580, BISC 358, BISC358','LIFS 4620 - Advanced Biological Chemistry (BISC 362) //// LIFS4620, BISC 362, BISC362','LIFS 4660 - Biotechnology Seminar (BICH 366) //// LIFS4660, BICH 366, BICH366','LIFS 4910A - Independent Study (BIOL 391A) //// LIFS4910A, BIOL 391A, BIOL391A','LIFS 4910D - Independent Study //// LIFS4910D','LIFS 4950 - Neurochemistry (BISC 395) //// LIFS4950, BISC 395, BISC395','LIFS 4980 - Project Research II (BIOL 398) //// LIFS4980, BIOL 398, BIOL398','LIFS 4981 - Biochemistry and Cell Biology Project Research II (BICH 398) //// LIFS4981, BICH 398, BICH398','LIFS 4982 - Biomedical Sciences Research Project II (BISC 398) //// LIFS4982, BISC 398, BISC398','LIFS 5240 - Molecular and Developmental Neurobiology (BISC 524) //// LIFS5240, BISC 524, BISC524','LIFS 5260 - Biochemical and Molecular Basis of Diseases (BISC 526) //// LIFS5260, BISC 526, BISC526','LIFS 5320 - Ecotoxicology (BISC 532) //// LIFS5320, BISC 532, BISC532','LIFS 6120C - Life Science Seminar II //// LIFS6120C','LIFS 6170 - Special Topics in Molecular, Cell and Developmental Biology (BISC 617) //// LIFS6170, BISC 617, BISC617','LIFS 6410K - Independent Study //// LIFS6410K','LIFS 6410L - Independent Study //// LIFS6410L','LIFS 6420A - Project Research //// LIFS6420A','LIFS 6660 - Molecular Medicine (BISC 666) //// LIFS6660, BISC 666, BISC666','LIFS 6770 - Professional Development in Science (Life Science) //// LIFS6770','LIFS 6800 - Frontiers in Non-coding RNAs //// LIFS6800','LIFS 6990 - MPhil Thesis Research (BICH 699, BIOL 699) //// LIFS6990, BICH 699, BIOL 699, BICH699,BIOL699','LIFS 7990 - Doctoral Thesis Research (BICH 799, BIOL 799) //// LIFS7990, BICH 799, BIOL 799, BICH799,BIOL799','MAFS 5040 - Quantitative Methods for Fixed-Income Instruments (MAFS 504) //// MAFS5040, MAFS 504, MAFS504','MAFS 5130 - Quantitative Analysis of Financial Time Series (MAFS 513) //// MAFS5130, MAFS 513, MAFS513','MAFS 5210 - Mathematical Models of Investment (MAFS 521) //// MAFS5210, MAFS 521, MAFS521','MAFS 5220 - Quantitative and Statistical Risk Analysis (MAFS 522) //// MAFS5220, MAFS 522, MAFS522','MAFS 5250 - Computational Methods for Pricing Structured Products (MAFS 525) //// MAFS5250, MAFS 525, MAFS525','MAFS 6010F - Structuring and Trading Strategies in Derivative Markets //// MAFS6010F','MAFS 6100A - Independent Project //// MAFS6100A','MARK 1230 - Consumerism and Happiness //// MARK1230','MARK 2120 - Marketing Management (MARK 112) //// MARK2120, MARK 112, MARK112','MARK 3220 - Marketing Research (MARK 222) //// MARK3220, MARK 222, MARK222','MARK 3420 - Consumer Behavior (MARK 242) //// MARK3420, MARK 242, MARK242','MARK 3460 - Retailing //// MARK3460','MARK 4210 - Strategic Marketing (MARK 321) //// MARK4210, MARK 321, MARK321','MARK 4290A - The Art and Science of Digital and Direct Marketing //// MARK4290A','MARK 4450 - Brand Management (MARK 345) //// MARK4450, MARK 345, MARK345','MARK 4980D - Independent Study //// MARK4980D','MARK 5120 - Marketing Strategy and Policy (MARK 512) //// MARK5120, MARK 512, MARK512','MARK 5220 - The Art of War and Eastern Wisdom in Business Competition (MARK 691L, MARK 6900E) //// MARK5220, MARK 691L, MARK 6900E, MARK691L,MARK6900E','MARK 5290 - Understanding Consumers (MARK 529) //// MARK5290, MARK 529, MARK529','MARK 5310 - Marketing Research (MARK 531) //// MARK5310, MARK 531, MARK531','MARK 5330 - Brand Management (MARK 533, MARK 690C) //// MARK5330, MARK 533, MARK 690C, MARK533,MARK690C','MARK 5410 - Seminar in Quantitative Modeling (MARK 541) //// MARK5410, MARK 541, MARK541','MARK 6900F - Consumer Decision Processes //// MARK6900F','MARK 6900I - Entrepreneurial Marketing and Innovation //// MARK6900I','MARK 6970C - Independent Study //// MARK6970C','MARK 6990 - MPhil Thesis Research (MARK 699) //// MARK6990, MARK 699, MARK699','MARK 7990 - Doctoral Thesis Research (MARK 799) //// MARK7990, MARK 799, MARK799','MATH 1013 - Calculus I (MATH 013) //// MATH1013, MATH 013, MATH013','MATH 1014 - Calculus II (MATH 014) //// MATH1014, MATH 014, MATH014','MATH 1024 - Honors Calculus II (MATH 024) //// MATH1024, MATH 024, MATH024','MATH 2011 - Introduction to Multivariable Calculus (MATH 100) //// MATH2011, MATH 100, MATH100','MATH 2023 - Multivariable Calculus (MATH 101) //// MATH2023, MATH 101, MATH101','MATH 2033 - Mathematical Analysis (MATH 201) //// MATH2033, MATH 201, MATH201','MATH 2043 - Honors Mathematical Analysis (MATH 203) //// MATH2043, MATH 203, MATH203','MATH 2111 - Matrix Algebra and Applications (MATH 113) //// MATH2111, MATH 113, MATH113','MATH 2121 - Linear Algebra (MATH 111) //// MATH2121, MATH 111, MATH111','MATH 2343 - Discrete Structures (MATH 132) //// MATH2343, MATH 132, MATH132','MATH 2351 - Introduction to Differential Equations (MATH 150) //// MATH2351, MATH 150, MATH150','MATH 2352 - Differential Equations (MATH 151) //// MATH2352, MATH 151, MATH151','MATH 2411 - Applied Statistics (MATH 144) //// MATH2411, MATH 144, MATH144','MATH 2421 - Probability (MATH 241) //// MATH2421, MATH 241, MATH241','MATH 2741 - Geometric Constructions //// MATH2741','MATH 3131 - Honors in Linear and Abstract Algebra II (MATH 218) //// MATH3131, MATH 218, MATH218','MATH 3311 - Introduction to Numerical Methods (MATH 230) //// MATH3311, MATH 230, MATH230','MATH 3343 - Combinatorial Analysis (MATH 232) //// MATH3343, MATH 232, MATH232','MATH 3424 - Regression Analysis (MATH 342) //// MATH3424, MATH 342, MATH342','MATH 3425 - Stochastic Modeling (MATH 341) //// MATH3425, MATH 341, MATH341','MATH 3426 - Sampling (MATH 346) //// MATH3426, MATH 346, MATH346','MATH 4023 - Complex Analysis (MATH 304) //// MATH4023, MATH 304, MATH304','MATH 4051 - Theory of Ordinary Differential Equations (MATH 303) //// MATH4051, MATH 303, MATH303','MATH 4063 - Functional Analysis (MATH 371, MATH 300K) //// MATH4063, MATH 371, MATH 300K, MATH371,MATH300K','MATH 4225 - Topology (MATH 323) //// MATH4225, MATH 323, MATH323','MATH 4321 - Game Theory (MATH 310) //// MATH4321, MATH 310, MATH310','MATH 4333 - Mathematical Biology (MATH 365) //// MATH4333, MATH 365, MATH365','MATH 4335 - Introduction to Optimization //// MATH4335','MATH 4336 - Introduction to Mathematics of Image Processing //// MATH4336','MATH 4351 - Numerical Solutions of Partial Differential Equations (MATH 331) //// MATH4351, MATH 331, MATH331','MATH 4425 - Introductory Time Series (MATH 348) //// MATH4425, MATH 348, MATH348','MATH 4512 - Fundamentals of Mathematical Finance (MATH 362) //// MATH4512, MATH 362, MATH362','MATH 4513 - Life Contingencies Models and Insurance Risk //// MATH4513','MATH 4822C - Advanced Topics in Algebra: Special Functions //// MATH4822C','MATH 4824A - Mathematical Models in Economics and Finance //// MATH4824A','MATH 4981T - Independent Study: Number Theory with Application in Cryptography //// MATH4981T','MATH 4981U - Independent Study: Lunar Microwave Radiation Application //// MATH4981U','MATH 4981V - Independent Study: A Population Genetics Model of Recombination //// MATH4981V','MATH 4981W - Independent Study: Introduction to Strategy Theory //// MATH4981W','MATH 5030 - Complex Function Theory (MATH 503) //// MATH5030, MATH 503, MATH503','MATH 5112 - Advanced Algebra II (MATH 512) //// MATH5112, MATH 512, MATH512','MATH 5147 - Introduction to Algebraic Groups (MATH 516) //// MATH5147, MATH 516, MATH516','MATH 5240 - Algebraic Topology (MATH 524) //// MATH5240, MATH 524, MATH524','MATH 5261 - Algebraic Geometry II //// MATH5261','MATH 5312 - Advanced Numerical Methods II (MATH 532) //// MATH5312, MATH 532, MATH532','MATH 5352 - Mathematical Methods in Science and Engineering II (MATH 552) //// MATH5352, MATH 552, MATH552','MATH 5360 - Weather, Climate and Pollution (MATH 560) //// MATH5360, MATH 560, MATH560','MATH 5432 - Advanced Mathematical Statistics II (MATH 544) //// MATH5432, MATH 544, MATH544','MATH 5450 - Stochastic Processes (MATH 545) //// MATH5450, MATH 545, MATH545','MATH 6050A - Real Analysis II (MATH 605D) //// MATH6050A, MATH 605D, MATH605D','MATH 6150E - Representation Theory of Semisimple Lie Groups //// MATH6150E','MATH 6380A - Volatility Smile Models (MATH 685V) //// MATH6380A, MATH 685V, MATH685V','MATH 6385B - Numerical Methods for Non-equilibrium Flow Simulations //// MATH6385B','MATH 6770 - Professional Development in Science (Mathematics) //// MATH6770','MATH 6900B - Mathematics Seminar (MATH 600B) //// MATH6900B, MATH 600B, MATH600B','MATH 6900C - Mathematics Seminar (MATH 600C) //// MATH6900C, MATH 600C, MATH600C','MATH 6900D - Mathematics Seminar (MATH 600D) //// MATH6900D, MATH 600D, MATH600D','MATH 6911J - Reading Course: Mathematical Problems of Solid Mechanics //// MATH6911J','MATH 6911K - Reading Course: Bounded Analytic Functions //// MATH6911K','MATH 6915 - Scientific Computation Seminar //// MATH6915','MATH 6990 - MPhil Thesis Research (MATH 699) //// MATH6990, MATH 699, MATH699','MATH 7990 - Doctoral Thesis Research (MATH 799) //// MATH7990, MATH 799, MATH799','MECH 1020 - Academic and Professional Development I (MECH 002) //// MECH1020, MECH 002, MECH002','MECH 1030 - Academic and Professional Development II (MECH 003) //// MECH1030, MECH 003, MECH003','MECH 1902 - Energy Systems in a Sustainable World (MECH 108) //// MECH1902, MECH 108, MECH108','MECH 1905 - Buildings for Contemporary Living (MECH 113) //// MECH1905, MECH 113, MECH113','MECH 1990 - Industrial Training (MECH 099) //// MECH1990, MECH 099, MECH099','MECH 2020 - Statics and Dynamics //// MECH2020','MECH 2310 - Thermodynamics (MECH 131) //// MECH2310, MECH 131, MECH131','MECH 2410 - Engineering Materials I (MECH 141) //// MECH2410, MECH 141, MECH141','MECH 2800 - Intellectual Property Law in Engineering (MECH 180) //// MECH2800, MECH 180, MECH180','MECH 3300 - Energy Conversion (MECH 230) //// MECH3300, MECH 230, MECH230','MECH 3310 - Heat Transfer (MECH 231) //// MECH3310, MECH 231, MECH231','MECH 3520 - Design and Manufacturing II (MECH 252) //// MECH3520, MECH 252, MECH252','MECH 3610 - Control Principles (MECH 2610, MECH 261) //// MECH3610, MECH 2610, MECH 261, MECH2610,MECH261','MECH 3630 - Electrical Technology (MECH 263) //// MECH3630, MECH 263, MECH263','MECH 3840 - Laboratory II (MECH 284) //// MECH3840, MECH 284, MECH284','MECH 4010 - Materials Failure in Mechanical Applications (MECH 301) //// MECH4010, MECH 301, MECH301','MECH 4360 - Introduction to Intelligent Building Systems (MECH 336) //// MECH4360, MECH 336, MECH336','MECH 4620 - Aircraft Structure //// MECH4620','MECH 4630 - Gas Turbines and Jet Propulsion //// MECH4630','MECH 4740 - Numerical Methods in Engineering (MECH 374) //// MECH4740, MECH 374, MECH374','MECH 4900 - Final Year Design Project //// MECH4900','MECH 4910 - Final Year Design Project //// MECH4910','MECH 4950 - Co-op Program (MECH 395) //// MECH4950, MECH 395, MECH395','MECH 5010 - Foundation of Solid Mechanics (MECH 501) //// MECH5010, MECH 501, MECH501','MECH 5280 - Transport Phenomena and Its Application in Energy Systems //// MECH5280','MECH 5410 - Advanced Mechanical Behavior of Materials (MECH 541) //// MECH5410, MECH 541, MECH541','MECH 5930 - Finite Element Methods (MECH 593) //// MECH5930, MECH 593, MECH593','MECH 5950 - Introduction to Microsystems: Technology and Devices (MECH 595) //// MECH5950, MECH 595, MECH595','MECH 6090F - Seminar in Mechanical Engineering //// MECH6090F','MECH 6770 - Professional Development in Mechanical Engineering //// MECH6770','MECH 6910G - Turbulent Flows //// MECH6910G','MECH 6950C - Independent Studies (MECH 695C) //// MECH6950C, MECH 695C, MECH695C','MECH 6990 - MPhil Thesis Research (MECH 699) //// MECH6990, MECH 699, MECH699','MECH 7990 - Doctoral Thesis Research (MECH 799) //// MECH7990, MECH 799, MECH799','MESF 5550 - Robotics (MESF 555, MESF 691A) //// MESF5550, MESF 555, MESF 691A, MESF555,MESF691A','MESF 5920 - Fundamentals of Electronic Packaging (MESF 592) //// MESF5920, MESF 592, MESF592','MESF 6910D - Advanced Numerical Methods in Engineering //// MESF6910D','MESF 6910E - Application of FEA to the Design of Mechanical Systems //// MESF6910E','MESF 6910F - Intermediate Heat and Mass Transfer //// MESF6910F','MESF 6950A - Independent Project (MESF 695A) //// MESF6950A, MESF 695A, MESF695A','MESF 6950C - Independent Project (MESF 695C) //// MESF6950C, MESF 695C, MESF695C','MGCS 5002 - The Economy and Society in Imperial China //// MGCS5002','MGCS 5003 - Comparative Study of State Formation //// MGCS5003','MGCS 5020 - Chinese Social Stratification in Comparative Perspective //// MGCS5020','MGCS 5022 - Political Economy of China //// MGCS5022','MGMT 1110 - Introduction to Management (MGMT 120, MGTO 120) //// MGMT1110, MGMT 120, MGTO 120, MGMT120,MGTO120','MGMT 1120 - Developing the Leader in You (MGMT 233) //// MGMT1120, MGMT 233, MGMT233','MGMT 1130 - Traps and Pitfalls in Judgment and Decision Making //// MGMT1130','MGMT 2120 - Business, Society and the Individual (MGMT 222, MGTO 222) //// MGMT2120, MGMT 222, MGTO 222, MGMT222,MGTO222','MGMT 3120 - Managerial Leadership (MGMT 234, MGTO 234) //// MGMT3120, MGMT 234, MGTO 234, MGMT234,MGTO234','MGMT 3130 - Judgement and Decision Making in Organizations (MGMT 332, MGTO 332) //// MGMT3130, MGMT 332, MGTO 332, MGMT332,MGTO332','MGMT 3140 - Negotiation (MGMT 235, MGTO 235) //// MGMT3140, MGMT 235, MGTO 235, MGMT235,MGTO235','MGMT 4210 - Corporate Strategy (MGMT 321, MGTO 321) //// MGMT4210, MGMT 321, MGTO 321, MGMT321,MGTO321','MGMT 4220 - Entrepreneurship and Small Business Studies (MGMT 331, MGTO 331) //// MGMT4220, MGMT 331, MGTO 331, MGMT331,MGTO331','MGMT 5110 - Managerial Communication (MGMT 511, SBMT 511) //// MGMT5110, MGMT 511, SBMT 511, MGMT511,SBMT511','MGMT 5230 - Management of Organizations (MGMT 523, MGTO 523) //// MGMT5230, MGMT 523, MGTO 523, MGMT523,MGTO523','MGMT 5250 - Corporate Entrepreneurship and New Business Venturing (MGMT 525, MGTO 525) //// MGMT5250, MGMT 525, MGTO 525, MGMT525,MGTO525','MGMT 5410 - Strategic Management (MGMT 541, MGTO 541) //// MGMT5410, MGMT 541, MGTO 541, MGMT541,MGTO541','MGMT 5470 - Strategic Management of Human Assets (MGMT 547, MGTO 547, MGTO 630D) //// MGMT5470, MGMT 547, MGTO 547, MGTO 630D, MGMT547,MGTO547,MGTO630D','MGMT 5480 - Strategic Management in China (MGMT 548, MGTO 548, MGTO 650U) //// MGMT5480, MGMT 548, MGTO 548, MGTO 650U, MGMT548,MGTO548,MGTO650U','MGMT 5510 - Applied Strategic Thinking (MGMT 551, MGTO 651Q) //// MGMT5510, MGMT 551, MGTO 651Q, MGMT551,MGTO651Q','MGMT 5540 - Consulting Skills for Managers (MGMT 554, MGMT 650B, MGTO 651Y) //// MGMT5540, MGMT 554, MGMT 650B, MGTO 651Y, MGMT554,MGMT650B,MGTO651Y','MGMT 5550 - Effective Negotiations (MGMT 555, MGTO 651V) //// MGMT5550, MGMT 555, MGTO 651V, MGMT555,MGTO651V','MGMT 5570 - Applied Merger and Acquisition (MGMT 557, MGMT 650G) //// MGMT5570, MGMT 557, MGMT 650G, MGMT557,MGMT650G','MGMT 5580 - China\'s External Relations and Their Economic Impact (MGMT 558, SBMT 541, SBMT 601D) //// MGMT5580, MGMT 558, SBMT 541, SBMT 601D, MGMT558,SBMT541,SBMT601D','MGMT 5590 - Responsible Leadership and Ethics (MGMT 559, SBMT 543) //// MGMT5590, MGMT 559, SBMT 543, MGMT559,SBMT543','MGMT 5630 - Challenges, Opportunities and Options of Starting Up (MGMT 6500A, MGMT 650I) //// MGMT5630, MGMT 6500A, MGMT 650I, MGMT6500A,MGMT650I','MGMT 5650 - Venture Capital Perspective on Entrepreneurship (MGMT 650J, MGMT 6500H) //// MGMT5650, MGMT 650J, MGMT 6500H, MGMT650J,MGMT6500H','MGMT 5690 - Southeast Asia\'s Economies in Transition: Bubble, Crisis, and Renewal (SBMT 6010F) //// MGMT5690, SBMT 6010F, SBMT6010F','MGMT 5700 - Understanding China\'s Reforms (SBMT 6010E) //// MGMT5700, SBMT 6010E, SBMT6010E','MGMT 6500J - Business Transformation: Implementing Change In Organizations //// MGMT6500J','MGMT 6500K - Energy and Sustainability //// MGMT6500K','MGMT 6500L - Emerging Challenges in International Business for Managers //// MGMT6500L','MGMT 6510A - Doctoral Seminar in Cognition //// MGMT6510A','MGMT 6510E - Strategic Management Research //// MGMT6510E','MGMT 6970A - Independent Study //// MGMT6970A','MGMT 6990 - MPhil Thesis Research (MGMT 699, MGTO 699) //// MGMT6990, MGMT 699, MGTO 699, MGMT699,MGTO699','MGMT 7990 - Doctoral Thesis Research (MGMT 799, MGTO 799) //// MGMT7990, MGMT 799, MGTO 799, MGMT799,MGTO799','MIMT 5110 - Doing Business in Asia //// MIMT5110','MIMT 5200 - Responsible Global Leadership //// MIMT5200','MIMT 5210 - Managing Global Complexity //// MIMT5210','MIMT 5310 - Understanding Consumers: A Strategic Approach //// MIMT5310','MIMT 5360 - Enhancing Human Capital //// MIMT5360','MIMT 5370 - Building Effective Teams in Organizations //// MIMT5370','MIMT 6120 - Skill Seminar II //// MIMT6120','MIMT 6200 - Business Project //// MIMT6200','NANO 5350 - Nanomaterials for Chemical Engineering Applications (NANO 535) //// NANO5350, NANO 535, NANO535','NANO 6990 - MPhil Thesis Research (NANO 699) //// NANO6990, NANO 699, NANO699','NANO 7990 - Doctoral Thesis Research (NANO 799) //// NANO7990, NANO 799, NANO799','PHYS 1001 - Physics and the Modern Society //// PHYS1001','PHYS 1002 - Introduction to Astrophysics and Astronomy (PHYS 002) //// PHYS1002, PHYS 002, PHYS002','PHYS 1003 - Energy and Related Environmental Issues (PHYS 006) //// PHYS1003, PHYS 006, PHYS006','PHYS 1005 - Physics in Movies (PHYS 009) //// PHYS1005, PHYS 009, PHYS009','PHYS 1112 - General Physics I with Calculus //// PHYS1112','PHYS 1114 - General Physics II //// PHYS1114','PHYS 1115 - Laboratory for General Physics II //// PHYS1115','PHYS 1314 - Honors General Physics II //// PHYS1314','PHYS 2080 - Physics Seminar (PHYS 180) //// PHYS2080, PHYS 180, PHYS180','PHYS 2090 - Directed Studies in Physics I (PHYS 191) //// PHYS2090, PHYS 191, PHYS191','PHYS 2124 - Mathematical Methods in Physics I //// PHYS2124','PHYS 3032 - Classical Mechanics (PHYS 221) //// PHYS3032, PHYS 221, PHYS221','PHYS 3034 - Electricity and Magnetism II (PHYS 224) //// PHYS3034, PHYS 224, PHYS224','PHYS 3036 - Quantum Mechanics I (PHYS 234) //// PHYS3036, PHYS 234, PHYS234','PHYS 3037 - Honors Quantum Mechanics I (PHYS 236) //// PHYS3037, PHYS 236, PHYS236','PHYS 3041 - Introduction to Materials Processing (PHYS 251) //// PHYS3041, PHYS 251, PHYS251','PHYS 3090 - Directed Studies in Physics II (PHYS 291) //// PHYS3090, PHYS 291, PHYS291','PHYS 3411 - Methods of Experimental Physics (PHYS 211) //// PHYS3411, PHYS 211, PHYS211','PHYS 4050 - Thermodynamics and Statistical Physics (PHYS 321) //// PHYS4050, PHYS 321, PHYS321','PHYS 4052 - Introductory Solid State Physics (PHYS 332) //// PHYS4052, PHYS 332, PHYS332','PHYS 4053 - Lasers and Optical Electronics (PHYS 335) //// PHYS4053, PHYS 335, PHYS335','PHYS 4054 - Introduction to Astrophysics (PHYS 340) //// PHYS4054, PHYS 340, PHYS340','PHYS 4059 - Physics of Management Science (PHYS 371) //// PHYS4059, PHYS 371, PHYS371','PHYS 4060 - Computational Physics (PHYS 381) //// PHYS4060, PHYS 381, PHYS381','PHYS 4080 - Physics Seminar and Tutorial III (PHYS 380) //// PHYS4080, PHYS 380, PHYS380','PHYS 4090 - Directed Studies in Physics III (PHYS 391) //// PHYS4090, PHYS 391, PHYS391','PHYS 4090A - Directed Studies in Physics III //// PHYS4090A','PHYS 4411 - Advanced Physics Laboratory (PHYS 311) //// PHYS4411, PHYS 311, PHYS311','PHYS 4498 - Independent Study Project (PHYS 398) //// PHYS4498, PHYS 398, PHYS398','PHYS 5310 - Statistical Mechanics I (PHYS 531) //// PHYS5310, PHYS 531, PHYS531','PHYS 5410 - Numerical Modeling in Physics //// PHYS5410','PHYS 6000F - Physics Seminar //// PHYS6000F','PHYS 6100A - Individual Study in Physics //// PHYS6100A','PHYS 6100B - Individual Study in Physics //// PHYS6100B','PHYS 6770 - Professional Development in Science (Physics) //// PHYS6770','PHYS 6810B - Solid State II //// PHYS6810B','PHYS 6810C - Advanced Cosmology //// PHYS6810C','PHYS 6990 - MPhil Thesis Research (PHYS 699) //// PHYS6990, PHYS 699, PHYS699','PHYS 7990 - Doctoral Thesis Research (PHYS 799) //// PHYS7990, PHYS 799, PHYS799','RMBI 1020 - Business Intelligence in Contemporary Society //// RMBI1020','RMBI 4220 - Life Contingencies Models and Insurance Risk //// RMBI4220','RMBI 4310 - Advanced Data Mining for Risk Management and Business Intelligence //// RMBI4310','RMBI 4980 - Risk Management and Business Intelligence Capstone Project I //// RMBI4980','RMBI 4990 - Risk Management and Business Intelligence Capstone Project II //// RMBI4990','SBMT 1111 - Business Student Induction (SBMT 111) //// SBMT1111, SBMT 111, SBMT111','SBMT 2010 - Business Ethics and the Individual //// SBMT2010','SBMT 2110B - Social Services Project (SBMT 112) //// SBMT2110B, SBMT 112, SBMT112','SBMT 3200C - Corporate Project (SBMT 190) //// SBMT3200C, SBMT 190, SBMT190','SBMT 3210E - Business Project //// SBMT3210E','SBMT 5020 - Fundamentals of Economics and Finance (SBMT 502) //// SBMT5020, SBMT 502, SBMT502','SBMT 5030 - Marketing Management and Strategy (SBMT 503) //// SBMT5030, SBMT 503, SBMT503','SBMT 5460 - Business Plans Competition (SBMT 546, SBMT 601H) //// SBMT5460, SBMT 546, SBMT 601H, SBMT546,SBMT601H','SBMT 5470 - Case Analysis Competition (SBMT 547, SBMT 601I) //// SBMT5470, SBMT 547, SBMT 601I, SBMT547,SBMT601I','SBMT 5482 - HKUST Student-Managed Investment Fund (B) (SBMT 6010D) //// SBMT5482, SBMT 6010D, SBMT6010D','SBMT 6010C - Asia Study Tour //// SBMT6010C','SBMT 6010G - Social Entrepreneurship and Venture Philanthropy //// SBMT6010G','SBMT 6010H - Business Chinese for MBA students //// SBMT6010H','SBMT 6010K - High-Tech Innovation and Entrepreneurship //// SBMT6010K','SBMT 6010L - Middle-East Study Tour //// SBMT6010L','SBMT 6100A - Field Study Project //// SBMT6100A','SBMT 6770 - Professional Development in Academia for Business //// SBMT6770','SCED 4140 - Curriculum and Assessment (SCED 314) //// SCED4140, SCED 314, SCED314','SCED 4150 - Teacher Leadership and Professionalism in Changing Content (SCED 315) //// SCED4150, SCED 315, SCED315','SCED 4590 - Problem-Solving and Assessment in Mathematics (SCED 359) //// SCED4590, SCED 359, SCED359','SCED 4620 - Supporting Information Technology in Schools (SCED 362) //// SCED4620, SCED 362, SCED362','SCED 4640 - Field Experience for Teaching Mathematics and IT (II) (SCED 364) //// SCED4640, SCED 364, SCED364','SCIE 1000 - Science School Induction //// SCIE1000','SCIE 1050 - Gastronomy (SCIE 005, SCIE 003A) //// SCIE1050, SCIE 005, SCIE 003A, SCIE005,SCIE003A','SCIE 1100 - Career Building for Science Students //// SCIE1100','SCIE 1110 - Great Ideas in Science //// SCIE1110','SCIE 1120 - Chemistry and Life //// SCIE1120','SCIE 1500 - Guided Study on Research I //// SCIE1500','SHSS 1010 - First-year Seminar (SHSS 101) //// SHSS1010, SHSS 101, SHSS101','SHSS 4991 - Capstone Project (SHSS 302) //// SHSS4991, SHSS 302, SHSS302','SHSS 4993 - Honors Research (SHSS 301) //// SHSS4993, SHSS 301, SHSS301','SHSS 6770 - Professional Development in Humanities and Social Science //// SHSS6770','SOSC 1000B - Education Psychology //// SOSC1000B','SOSC 1130 - Science, Technology and Business (SOSC 113) //// SOSC1130, SOSC 113, SOSC113','SOSC 1170 - Environmental and Energy Governance in China //// SOSC1170','SOSC 1270 - International Law (SOSC 127) //// SOSC1270, SOSC 127, SOSC127','SOSC 1350 - Contemporary China: Continuity and Change (SOSC 135) //// SOSC1350, SOSC 135, SOSC135','SOSC 1420 - Poverty (SOSC 142) //// SOSC1420, SOSC 142, SOSC142','SOSC 1440 - Introduction to Economics (SOSC 144) //// SOSC1440, SOSC 144, SOSC144','SOSC 1460 - Japan: Change and Continuity (SOSC 146) //// SOSC1460, SOSC 146, SOSC146','SOSC 1662 - Contemporary Hong Kong: Society (SOSC 166, SOSC 103F) //// SOSC1662, SOSC 166, SOSC 103F, SOSC166,SOSC103F','SOSC 1780 - Population and Development in China (SOSC 178) //// SOSC1780, SOSC 178, SOSC178','SOSC 1960 - Discovering Mind and Behavior (SOSC 196) //// SOSC1960, SOSC 196, SOSC196','SOSC 1980 - Psychology and Everyday Life (SOSC 198) //// SOSC1980, SOSC 198, SOSC198','SOSC 2140 - Research Methods in the Social Sciences (SOSC 3140, SOSC 211) //// SOSC2140, SOSC 3140, SOSC 211, SOSC3140,SOSC211','SOSC 2740 - Gender and Society (SOSC 274) //// SOSC2740, SOSC 274, SOSC274','SOSC 2970 - Abnormal Psychology //// SOSC2970','SOSC 2980 - Personality Psychology (SOSC 298) //// SOSC2980, SOSC 298, SOSC298','SOSC 3130 - Hong Kong Culture (SOSC 313) //// SOSC3130, SOSC 313, SOSC313','SOSC 3150 - Science, Technology and Environment (SOSC 215) //// SOSC3150, SOSC 215, SOSC215','SOSC 3520 - Understanding Comparative Politics (SOSC 152) //// SOSC3520, SOSC 152, SOSC152','SOSC 3880 - Social Inequality and Social Mobility (SOSC 288) //// SOSC3880, SOSC 288, SOSC288','SOSC 4000A - China in Comparative Perspective //// SOSC4000A','SOSC 4260 - China\'s Economic Transformation //// SOSC4260','SOSC 4610 - Quantitative Methods in the Social Sciences (SOSC 361) //// SOSC4610, SOSC 361, SOSC361','SOSC 5170 - Systematic Methods in Qualitative Research (SOSC 517) //// SOSC5170, SOSC 517, SOSC517','SOSC 5300 - Critical Perspectives on Global Development (SOSC 530) //// SOSC5300, SOSC 530, SOSC530','SOSC 5340 - Quantitative Analysis in Social Science (SOSC 534) //// SOSC5340, SOSC 534, SOSC534','SOSC 5480 - Issues in Contemporary Chinese Politics (SOSC 548) //// SOSC5480, SOSC 548, SOSC548','SOSC 6030E - China in Comparative Perspective //// SOSC6030E','SOSC 6100A - Independent Study (SOSC 610A) //// SOSC6100A, SOSC 610A, SOSC610A','SOSC 6100C - Independent Study (SOSC 610C) //// SOSC6100C, SOSC 610C, SOSC610C','SOSC 6990 - MPhil Thesis Research (SOSC 699) //// SOSC6990, SOSC 699, SOSC699','SOSC 7990 - Doctoral Thesis Research (SOSC 799) //// SOSC7990, SOSC 799, SOSC799','SSMA 5030 - Social Stratification and Mobility (SSMA 503) //// SSMA5030, SSMA 503, SSMA503','SSMA 5040 - Understanding Human Behavior (SSMA 504) //// SSMA5040, SSMA 504, SSMA504','SSMA 5060 - Political Changes and Political Participation (SSMA 506) //// SSMA5060, SSMA 506, SSMA506','SSMA 5160 - A New History for a New China, 1700-2000: Medium //// SSMA5160','TEMG 1010 - Technology and Management Professional Activities (TEMG 001) //// TEMG1010, TEMG 001, TEMG001','TEMG 4950K - Special Project: Talent Recruitment Challenge: How to Re-Strategize for NextGen? //// TEMG4950K','UROP 1100H - Undergraduate Research Opportunities Series 1 (UROP 110) //// UROP1100H, UROP 110, UROP110','UROP 1200H - Undergraduate Research Opportunities Series 2 (UROP 120) //// UROP1200H, UROP 120, UROP120','UROP 1300H - Undergraduate Research Opportunities Series 3 (UROP 130) //// UROP1300H, UROP 130, UROP130'];
+var allinstructors = ['ADAVAL, Rashmi','ALDRIDGE, Jacqueline','APABHAI, Mohammed Zuned','ARYA, Sunil','AU, Chui Han Anita','AU, Oscar Chi Lim','AU, Yim Lee','BAARK, Erik','BANFIELD, David Karl','BARFORD, John Patrick','BECZAK, Thaddeus','BENSAOU, Brahim','BENZ, Entela','BERMAK, Amine','CAI, Lilong','CAI, Ning','CAI, Yongshun','CAMPBELL, Cameron Dougall','CARMICHAEL, Sarah','CHAN, Charles Wing Hoi','CHAN, Chi Ming','CHAN, Chun Man','CHAN, Dennis Ho Wai','CHAN, Dennis Suk Sun','CHAN, Gary Shueng Han','CHAN, Ho Bun','CHAN, Jimmy Wai Man','CHAN, Ka Lok','CHAN, Kim Wan','CHAN, Kin Sek Raymond','CHAN, Kwing Lam','CHAN, Man Sun','CHAN, Miu Ying','CHAN, Pak To','CHAN, Timothy','CHAN, Wan','CHAN, Yui Bun','CHANG, Chih-chen','CHANG, David Cheng','CHANG, Huai-Liang','CHANG, Mang Yee','CHANG, Sue Chee Fong','CHAO, Melody Man Chi','CHAO, Yu Hang Christopher','CHASNOV, Jeffrey Robert','CHAU, Ying','CHEN, Beifang','CHEN, Eva E','CHEN, Guanghao','CHEN, Guohua','CHEN, Kai','CHEN, Kani','CHEN, Kevin Chien-Wen','CHEN, Kevin Jing','CHEN, Kim Heng','CHEN, Lei','CHEN, Li Fen','CHEN, Peter Fusheng','CHEN, Songnian','CHEN, Tai-Yuan','CHEN, Tian Wen','CHEN, Xi','CHEN, Zhihong','CHENG, Chi Honn','CHENG, Jack Chin Pang','CHENG, Jinping','CHENG, Philip','CHENG, Roger Shu Kwan','CHENG, Shiu Yuen','CHENG, Siu Wing','CHENG, Wai Yi Rosita','CHEUNG, Helen','CHEUNG, Ka Man Annie','CHEUNG, Man Fung','CHEUNG, Shing Chi','CHEUNG, Tom','CHEUNG, Yat Ming','CHEW, Chiat Thian','CHI, Man Lai Amy','CHIANG, Yik Man','CHIGRINOV, Vladimir','CHIN, Vincent','CHING, Avery','CHING, Frank','CHIU, Chun Wah Andrew','CHO, Jang Ok','CHOI, Ricky Yiu Kee','CHOI, Timture','CHONG, Doreen','CHONG, Kim Chong','CHONG, Siu Chung','CHOW, Kim Chiu','CHOW, King Lau','CHUNG, Albert Chi Shing','CHUNG, Ching','CHUNG, Esther LC','CHUNG, Kenny K','CIUCCI, Francesco','CLARK, Theodore Henry King','CLAYTON, Anne Catherine','CONWAY, Austin Eugene','DAI, Wei Min','DALTON, Amy Nicole','DASGUPTA, Sudipto','DERMAN, Joshua','DIAS, Garvin Percy','DIMITRAKOPOULOS, Ilias','DING, Cunsheng','DING, Fei','DISSANAYAKE, K. Sarath Kumara','DORAN, Christopher','DROSCHA, Isaac David','DU, Daisy Yan','DU, Shengwang','DUCLOS, Rod','ENGLAND, Graham James Fisher','FAN, Guangxin','FAN, Zhiyong','FARH, Ching-ping Patty','FENG, Yue','FONG, Yuk Fai','FOO, Pionie Kim Ling','FOREMAN, Bradley Alan','FORSTER, Paul Whitfield','FRANKLIN, Laurence Craig','FREEMAN, Danyal Jonathan','FREY, Henry Christopher','FU, Kit Yu','FU, Li-tsui','FUNG, Jimmy Chi Hung','FUNG, John','FUNG, Pascale','GADD, Morgan','GAN, Jianping','GAO, Ping','GAO, Yiqin','GAO, Yongsheng','GARG, Sam','GASKELL, Delian Dawn','GEORGE, Elizabeth','GHIDAOUI, Mohamed Salah Ben Habib','GOLIN, Mordecai Jay','GONG, Yaping','GOONETILLEKE, Ravindra Stephen','GOYAL, Vidhan Krishan','GROVES, Julian Mcallister','GU, Lin','GUO, Zhihong','HA, Albert Yiu Cheung','HAN, Yilong','HE, Jinyu','HE, Wenkai','HERRUP, Karl','HO, Hon Ming','HO, Susanna Pui San','HO, Vincent','HO, Virgil Kit Yiu','HOLZ, Carsten Andreas','HONG, Jeff Liu','HONG, Jiewen','HOPKINS, Mark','HORNER, Andrew Brian','HSU, Charles Youyang','HSU, Chin Tsau','HU, Inchi','HU, Jishan','HU, Wei Chung','HU, Xijun','HUA, Xinyu','HUANG, Baoling','HUANG, Jingsong','HUANG, Pingbo','HUANG, Xuhui','HUCKSTEP, Nigel John','HUI, Chi Wai','HUI, Kai Lung','HUI, Pan','HUNG, Chang Tai','HUNG, Siu Chun','HUSSIN, Nora Anniesha Binte','ISHIBASHI, Toyotaka','JAISINGH, Jeevan','JAMES, Lancelot Fitzgerald','JIA, Guocheng','JIA, Jia','JING, Bing-yi','JO, Gyu Boong','JONEJA, Ajay','KARHADE, Prasanna','KASTEN, Keven Sterling','KATAFYGIOTIS, Lambros','KI, Wing Hung','KIKKERT, Gustaaf Adriaan','KIM, Ho Young Harold','KIM, Jang Kyo','KIM, Jun Beom','KIM, Sung Hun','KING, Roger','KO, Ice Wai Ping','KO, Robert Kam Ming','KOH, Ping Sheng','KOH, Tat Koon','KU, Shuk Mei Agnes','KU, Yin Bon','KUANG, Jun Shang','KUO, Allen Chung','KURSUN, Volkan','KWAN, Calvin Lee','KWAN, Charles Chi-Fong','KWAN, Joseph Kai Cho','KWAN, Yuen Tung Gloria','KWOK, Hoi Sing','KWOK, James Sai Ho','KWOK, James Tin Yau','KWOK, Yue Kuen','KWONG, Yee Ngan','LADAO, Miguel Antonio','LAFON-VINAIS, Veronique J A','LAI, Edwin','LAI, Kwok On','LAI, Man Kit','LAI, Pui Yee','LAI, Tai Wai David','LAM, Chak Yan Jessie Teresa','LAM, Charles','LAM, David Chuen Chun','LAM, Gibson','LAM, Henry Hei Ning','LAM, Ka Sin Cindy','LAM, Lap Sam Sammy','LAM, Leung Yuk Frank','LAM, Levi','LAM, Toni','LAM, Tsz Kin','LAM, Yeung','LAM, Yin','LAU, Alexis Kai Hon','LAU, Condon','LAU, Jack','LAU, Kei May','LAU, Pui Sang','LAU, Ronald','LAU, Sau Mui','LAU, Stanley Chun Kwan','LAU, Vincent Kin Nang','LAU, Wai Ling','LAW, Kam Tuen','LAW, Sum Po Jamsen','LAWSON, Mark Alexander','LEA, Chin-Tau','LEE, Byung Ho','LEE, Chung-Yee','LEE, Dik Lun','LEE, Hoi Ming','LEE, Hong Seng Daniel','LEE, James','LEE, Joyce Yuen Yee','LEE, Ping Chung Eric','LEE, Pui','LEE, Wai Hong','LEE, William Wai Lam','LEE, Wing Lung','LEE, Yi-Kuen','LEE, Zardas Shuk-man','LENG, Yang','LEUNG, Chi Sun Benjamin','LEUNG, Christopher Kin Ying','LEUNG, Kar Wah','LEUNG, Pak Wo','LEUNG, Shing Yu','LEUNG, Siu Fai','LEUNG, Tsung Hsien Johnny','LEUNG, Wa Hung','LEUNG, Wai Ting','LEUNG, Yee Man Yvonne','LEVERMORE, Roger John','LHABITANT, Francois-Serge','LI, Angie Eugenia','LI, Bo','LI, Bozhong','LI, Chengjin','LI, Edward Siu Leung','LI, Hung Ha Wendy','LI, J.T.','LI, Jian-Shu','LI, Kai','LI, Kin Yin','LI, Ning','LI, Po Lung','LI, Qiang','LI, Qing','LI, Weiping','LI, Xi','LI, Xiaoyuan','LI, Xin','LI, Yingying','LI, Zexiang','LI, Zhigang','LI, Zongjin','LIAN, Huiwen','LIANG, Chun','LIANG, Samuel Xin','LIANG, Xin','LIM, Dennis Tan','LIM, Woo Young','LIN, Betty Fwei-chien','LIN, Fangzhen','LIN, Nian','LIN, Sze Wai','LIN, Yi-Min','LIN, Zhenyang','LING, Carrie Hang-yin','LING, Shiqing','LIU, An','LIU, Chi Leung','LIU, Hongbin','LIU, Jianmei','LIU, Kai','LIU, Ming','LIU, Tao','LIU, Tik Sang','LIU, Yuanshuai','LO, Albert Yee-lap','LO, Hong Kam','LO, Irene Man Chi','LO, Ming Yam','LOCHOVSKY, Frederick Horst','LORTZ, Rolf Walter','LOY, Michael Ming-tak','LU, Xun','LU, Zongli','LUO, Jun','LUO, Qiong','LUO, Zhengtang','MA, Jianxiong','MA, John Zhongdong','MA, Kwong Wai Bruce','MA, Lok Wang','MA, Siu Lei Candy','MACKAY, Peter','MADAN, Manohar S','MAK, Brian Kan Wing','MAK, Ho Yi','MAK, Ho Yin','MAK, Kelvin P','MAK, Linda Yeung Oi','MCKAY, Gordon','MCKAY, Matthew Robert','MCMINN, Sean William John','MEGAN, Melissa Jane','MENG, Guowu','MI, Yongli','MICKLEBOROUGH, Neil Colin','MIHOREAN, Mark Andrew','MILLER, Andrew Leitch','MOK, Helen W','MOK, Philip Kwok Tai','MOW, Wai Ho','MOY, Allen','MU, Mo','MUKHOPADHYAY, Anirban','MUPPALA, Kumaraswamy R Jogesh','MURCH, Ross','NASIRY, Javad','NASON, Emily M','NASON, Stephen William','NEU, Peter A','NEW, Christopher','NG, Charles Wang Wai','NG, Irene Wai Yee','NG, Ka Man','NG, Kwok Kwan Kenny','NG, Lung Fai Moses','NG, Shi Chung','NG, Shu Ming','NG, Tai Kai','NG, Tze Ling','NG, Yee Fai','NIELSEN, Kasper Meisner','NUO, Min','PAN, Baoqian','PAN, Ping','PANAYOTOV, George Kamenov','PAPADIAS, Dimitrios','PARK, Albert Francis','PATCHELL, Gerald Roe','PENG, Hsiaoming Benjamin','PENG, Xianhua','PEREZ PALOMAR, Daniel','PHI, Joseph C','PI, Lynn','PONG, James Kenneth','PONG, Ting Chuen','POON, Andrew Wing On','POON, Randy Yat Choi','POPLE, Jan','PUN, Kwok Leung','PUN, Wing Man Winnie','QI, Lian','QI, Qi','QI, Robert Zhong','QI, Xiangtong','QIAN, Peiyuan','QIAN, Tiezheng','QIU, Huihe','QIU, Li','QU, Jianan','QUAN, Long','RAITT, Gene','RAO, Milind Shankar','RAO, Yu Jing','REN, Tao','RENNEBERG, Alfred Herbert Reinhard','ROSSITER, David','RUTLEDGE, Ann Elaine','SABOURIAN, Hamid','SADHWANI, Dinesh Arjan','SAENYASIRI, Ekkachai','SALVACRUZ, Joseph','SANVICENTE GARGALLO, Emilio','SAUTMAN, Barry Victor','SCHULTE, Paul','SEK, Man Chi Ivy','SENGUPTA, Jaideep','SHANG, Chii','SHARIF, Naubahar','SHAW, May-yi','SHE, James','SHEN, Helen Chi Man','SHEN, Herman','SHENG, Ping','SHI, Bertram Emil','SHI, Ling','SHIEH, Tony','SHIMOKAWA, Satoru','SHIU, Gary','SHUM, Chung Dak','SHUM, Kwok Leung','SHUM, Stephen Wan-Hang','SIN, Johnny Kin On','SIN, Kathy Mun Yee','SINCLAIR, Lynn','SIU, Kam Wing','SIU, Wai Sze Grace','SNOWDEN, Steven Dewey','SO, Alvin Yiu-cheong','SO, Billy Kee Long','SO, Richard Hau Yue','SOLNIK, Bruno Henri','SONG, Shenghui','SOU, Iam Keong','STAM, Wouter','SULLIVAN, Bilian NI','SUN, Jianwei','SUN, Jingtao','SUN, Qingping','SUNG, Michael','SZE, Amy','SZETO, Kwok Yip','TAI, Chiew Lan','TAKEUCHI, Riki','TAM, Kevin Kim-Pong','TAM, Wing Yim','TANG TANG, Raymundo Saijong','TANG, Benzhong','TANG, Chi Keung','TANG, Eunice','TANG, Jessica Ce Mun','TANG, Kai','TANG, Kin Hun','TEH, Jack Her Hock','TERRY, Edith Buchanan','THONG, James Yeong Liang','TOMMASINI, Matthew William','TONG, Henry Hoi Yee','TONG, Keith Sai-Tao','TONG, Penger','TONG, Rongbiao','TONG, Shilu','TONG, Tommy','TOOGOOD, Sarah','TSAI, Kellee Sing','TSANG, Alfred Jones','TSANG, Danny Hin Kwok','TSANG, Ming Wai Emily','TSAO, Min','TSE, Kam Tim','TSE, Sheung Hei Chris','TSENG, Mitchell M','TSIM, Karl Wah Keung','TSUI, Chi Ying','TSUI, Herman Yik Wai','TSUI, Ka Kin Kevin','TSUI, Wai Man','TSUNG, Fugee','TUNG, Joanne Wai Ting','VAN DER LANS, Ralf','VISARIA, Sujata','WAN, Xuhu','WANG, Caroline','WANG, Gang','WANG, Jiannong','WANG, Jin','WANG, Jui Pin','WANG, Shiheng','WANG, Susheng','WANG, Wenbo','WANG, Wenxiong','WANG, Xiangrong','WANG, Xiaoping','WANG, Yong','WANG, Yu-Hsing','WEI, Kuo-chiang','WEN, Weijia','WEN, Zilong','WEST, Leonard Kip','WILLIAMS, Ian Duncan','WONG, Chiu Fai','WONG, Chun Ho','WONG, Elaine Suk Yi','WONG, Ellick Kin Fai','WONG, Grace Hoi Yee','WONG, James K.','WONG, Joseph Tin Yum','WONG, Ka Yue','WONG, Kai Hung','WONG, Kai Sun Albert','WONG, Kam Sing','WONG, Lisa L. M.','WONG, Man','WONG, Man Yu','WONG, Michael Kwok Yee','WONG, Ngam Susan','WONG, Raymond Chi Wing','WONG, Raymond Sze Chung','WONG, Simon Man Ho','WONG, Wai Yin','WONG, Wan Keung','WONG, Wei Wah','WONG, Yung Hou','WOO, Kam Tim','WU, Chi Hang','WU, Dekai','WU, Hongkai','WU, Kam Yin','WU, Lixin','WU, Madeline Chang-sun','WU, Po Chi','WU, Ting Him','WU, Xiaogang','WU, Zhenguo','XIA, Jun','XIANG, Yang','XIE, Xiaohui','XIN, Hai','XIONG, Maosheng','XU, Hong','XU, Jiang','XU, Juanyi','XU, Kun','XU, Xiufen','XUE, Hong','YAN, An','YAN, He','YAN, Min','YAN, Yan','YAN, Yijing','YANG, Hai','YANG, Qiang','YANG, Shihe','YANG, Zhi Yu','YAO, Shuhuai','YE, Wenjing','YEN, Jerome','YEUNG, Alex H.L.','YEUNG, Dit Yan','YEUNG, King Lun','YEUNG, Lam Lung','YEUNG, Pui-kuen','YEW, Liza Sook Yee','YI, Ke','YIK, Michelle','YIK, Ping Chui','YIM, Bobby Tsz Kin','YIM, Tsz Kit','YIP, Kam Ming','YIP, Victor Chi Lok','YIP, Wing Ping','YIU, Yuk Man Carine','YOBAS, Levent','YOU, Haifeng','YU, Anna Po Shan','YU, Anna Wai Yin','YU, Chi Wai','YU, Jialin','YU, Jianzhen','YU, Man','YU, Samuel Chung Toi','YU, Weichuan','YU, Yan','YUAN, George Jie','YUE, Chik Patrick','YUE, Po Lock','YUEN, Ka Ming','YUEN, Matthew Ming Fai','YUEN, Pui Lam Brenda','YUNG, Hoi Hei','ZALDOKAS, Alminas','ZENG, Qinglu','ZHANG, Charles Chuan','ZHANG, Chu','ZHANG, Guochang','ZHANG, Hongtao','ZHANG, Jiheng','ZHANG, Jun','ZHANG, Li Min','ZHANG, Min','ZHANG, Mingjie','ZHANG, Nevin Lianwen','ZHANG, Qian','ZHANG, Rachel Quan','ZHANG, Ting','ZHANG, Wei','ZHANG, Xiangru','ZHANG, Xiaoquan','ZHANG, Xiaowei','ZHANG, Xueqing','ZHANG, Xuning','ZHANG, Yi Qin Jane','ZHAO, Jidong','ZHAO, Jimin','ZHAO, Tianshou','ZHAO, Xiaojian','ZHAO, Ying','ZHAO, Yue Oliver','ZHENG, Wendong','ZHENG, Xinghua','ZHOU, Rongrong','ZHOU, Tong','ZHOU, Wenwen','ZHU, Guang','ZHU, Tao','ZHU, Xiaonong','ZHU, Yichao','ZHU, Yongchang','ZWEIG, David Stephen'];
+var suggestc = function(q, ret) {
+	q = q.term.toLowerCase();
+	var prefix = [];
+	var others = [];
+	for (var i=0; i<allcourses.length; i++) {
+		var s = allcourses[i].toLowerCase();
+		if (s.indexOf(q)!=-1) {
+      var subj = allcourses[i];
+      var cls = subj.substr(5,subj.indexOf(' - ')-5);
+  		subj = subj.substr(0,4);
+      var loc = "/wcq/cgi-bin/1330/subject/"+subj+'#'+subj+cls;
+			if (s.indexOf(q)==0) {
+				prefix.push({'label':allcourses[i].substr(0,allcourses[i].indexOf(' //// ')), 'location':loc});
+			} else {
+				others.push({'label':allcourses[i].substr(0,allcourses[i].indexOf(' //// ')), 'location':loc});
+			}
+		}
+	}
+	ret($.merge(prefix, others));
+}
+var suggesti = function(q, ret) {
+	q = q.term.toLowerCase();
+	var prefix = [];
+	var others = [];
+	for (var i=0; i<allinstructors.length; i++) {
+		var s = allinstructors[i].toLowerCase();
+		if (s.indexOf(q)!=-1) {
+      var loc = "/wcq/cgi-bin/1330/instructor/"+allinstructors[i];
+			if (s.indexOf(q)==0) {
+				prefix.push({'label':allinstructors[i], 'location':loc});
+			} else {
+				others.push({'label':allinstructors[i], 'location':loc});
+			}
+		}
+	}
+	ret($.merge(prefix, others));
+}
+$("input#coursesearch").autocomplete({
+  source: suggestc,
+  delay: 0, minLength: 3, 
+  select: function(event, ui) {
+    location = ui.item.location;
+  }
+});
+$("input#instructorsearch").autocomplete({
+    source: suggesti,
+    delay: 0, minLength: 2,
+    select: function(event, ui) {
+    	location = ui.item.location;
+    }
+});
+$(document).ready(function () {
+    $(window).scroll(function (event) {
+		$('#navigator').css('left',-($(this).scrollLeft()));
+    });
+});
+</script>   
+ </body>
+</html>
