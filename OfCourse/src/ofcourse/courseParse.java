@@ -36,6 +36,16 @@ public class courseParse {
 
 	}
 	
+	
+	
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
 	/**
 	 * Add a <tt>Course</tt> to this courseParse
 	 * 
