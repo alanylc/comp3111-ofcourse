@@ -164,6 +164,35 @@ public class TimeSlot {
 		java.text.DecimalFormat df = new java.text.DecimalFormat("0000");
 		return df.format(b);
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ID;
+		result = prime * result + ((day == null) ? 0 : day.hashCode());
+		result = prime * result + dayStart;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TimeSlot other = (TimeSlot) obj;
+		if (ID != other.ID)
+			return false;
+		if (day != other.day)
+			return false;
+		if (dayStart != other.dayStart)
+			return false;
+		return true;
+	}
+	
 }
 
 

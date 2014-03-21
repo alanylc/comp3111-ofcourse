@@ -68,7 +68,39 @@ public class TimePeriod {
 		return i;
 	}
 	
-
+	//Problem on Same Time Period solved
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((endSlot == null) ? 0 : endSlot.hashCode());
+		result = prime * result
+				+ ((startSlot == null) ? 0 : startSlot.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TimePeriod other = (TimePeriod) obj;
+		if (endSlot == null) {
+			if (other.endSlot != null)
+				return false;
+		} else if (!endSlot.equals(other.endSlot))
+			return false;
+		if (startSlot == null) {
+			if (other.startSlot != null)
+				return false;
+		} else if (!startSlot.equals(other.startSlot))
+			return false;
+		return true;
+	}
+	
+	/*DOES NOT WORK
 	private BigDecimal recordId = null;
 	private BigDecimal recSubNum = null;
 	private BigDecimal FileId = null;
@@ -94,12 +126,12 @@ public class TimePeriod {
 	    if (ob == null) return false;
 	    if (ob.getClass() != TimePeriod.class) return false;
 	    TimePeriod r = (TimePeriod)ob;
-	    if (!eq(r.recordId, recordId)) return false;
-	    if (!eq(r.recSubNum, recSubNum)) return false;
+	    //if (!eq(r.recordId, recordId)) return false;
+	    //if (!eq(r.recSubNum, recSubNum)) return false;
 	    if (!eq(r.FileId, FileId)) return false;
-	    if (!eq(r.category, category)) return false;
-	    if (!eq(r.status, status)) return false;
-	    if (!eq(r.errorCode, errorCode)) return false;
+	    //if (!eq(r.category, category)) return false;
+	    //if (!eq(r.status, status)) return false;
+	    //if (!eq(r.errorCode, errorCode)) return false;
 	    return true;
 	  }
 
@@ -110,4 +142,5 @@ public class TimePeriod {
 	  private static int hc(int hc, Object field) {
 	    return field == null ? hc : 43 + hc * field.hashCode();
 	  }
+	  */
 }
