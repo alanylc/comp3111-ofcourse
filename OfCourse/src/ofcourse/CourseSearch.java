@@ -5,6 +5,22 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ArrayList;
 
+/**
+ * This abstract class is the main interface for one course 
+ * search function, and itself represents the result of the search 
+ * by inheriting from Collection<Course>. Each additional search 
+ * criterion can be "nested", as in decorator pattern, by using 
+ * the constructor. Any class inheriting from this can include 
+ * other parameters in their constructors, but must ask for the 
+ * other Collection<Course> as the base of this new search, and call 
+ * the super class constructor. This means other CourseSearch instance 
+ * can be provided in terms of polymorphism.
+ * Any class inheriting from this must also implement 
+ * <tt>boolean checkCriteria(Course)</tt>, meaning that the new class 
+ * is a new type of criteria.
+ * @author Bob Lee
+ *
+ */
 public abstract class CourseSearch implements Collection<Course> {
 	
 	public Collection<Course> prevPipe = null;
@@ -17,6 +33,18 @@ public abstract class CourseSearch implements Collection<Course> {
 	
 	public abstract boolean checkCriteria(Course course);
 
+	public Course get(int index) {
+		if (index < 0) return null;
+		int count = 0;
+		Iterator<Course> i = this.iterator();
+		while(i.hasNext()) {
+			Course next = i.next();
+			if (count == index) return next;
+			count++;
+		}
+		return null;
+	}
+	
 	@Override
 	public boolean add(Course e) {
 		throw new UnsupportedOperationException();
@@ -117,37 +145,57 @@ public abstract class CourseSearch implements Collection<Course> {
 		return null;
 	}
 	
-
+	/**
+	 * This iterator implements peeking, by using NoSuchElementException.
+	 * This is necessary because if not, it is unknown whether the result 
+	 * of the previous search contains any more element that satisfies 
+	 * current search criteria.
+	 * 
+	 * @author Bob Lee
+	 *
+	 */
 	private class CourseSearchIterator implements Iterator<Course> {
-		private int pos = -1;
 		Iterator<Course> prev = null;
+		private Course next = null;
 		
+		/**
+		 * Initialize a new CourseSearchIterator. It must be based on the
+		 * result of the previous/outer "pipe".
+		 */
 		public CourseSearchIterator() {
 			if(prevPipe != null) {
 				prev = prevPipe.iterator();
+				//Error based peeking is easier to implement
+				try {
+					do {
+						next = prev.next();
+					} while (!checkCriteria(next));
+				}
+				catch (NoSuchElementException e) {
+					next = null;
+				}
+				
 			}
 		}
 		
 		@Override
 		public boolean hasNext() {
-			if (prev != null && prev.hasNext()) {
-				return true;
-			}
-			return false;
+			return (next != null);
 		}
 
 		@Override
 		public Course next() {
-			while (prev != null && prev.hasNext()) {
-				Course next = prev.next();
-				if (checkCriteria(next)) {
-					pos += 1;
-					return next;
-				}
-				else {
-					continue;
-				}
+			Course toReturn = next;
+			//Error based peeking is easier to implement
+			try {
+				do {
+					next = prev.next();
+				} while (!checkCriteria(next));
 			}
+			catch (NoSuchElementException e) {
+				next = null;
+			}
+			if(toReturn != null) return toReturn;
 			throw new NoSuchElementException();
 		}
 
