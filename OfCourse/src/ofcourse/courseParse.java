@@ -51,6 +51,10 @@ public class courseParse {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
+	
+	public ArrayList<Course> getCourses() {
+		return courses;
+	}
 
 	/**
 	 * Add a <tt>Course</tt> to this courseParse
