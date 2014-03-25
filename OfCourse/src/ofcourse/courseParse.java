@@ -305,7 +305,7 @@ public class courseParse {
 		System.out.println("Match session: "+t.isMatchSession());
 		System.out.println("Description: "+t.getDescription());
 		System.out.println("Attributes: "+t.getAttributes());		//show only if not null?
-		System.out.println("Co-List with: "+t.getCoList());	//
+		System.out.println("Co-List with: "+t.getCoList());			//
 		System.out.println("PreRequsite: "+t.getPreRequisite());	//
 		System.out.println("CoRequsite: "+t.getCoRequisite());		//
 		System.out.println("Exclusion: "+t.getExclusion());			//
