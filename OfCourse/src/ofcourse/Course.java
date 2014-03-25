@@ -31,7 +31,8 @@ public class Course extends Ratable {
 	private String CoRequisite;
 	private String Exclusion;
 	private String PreviousCode;			//Useless(?) info from course page
-	
+	private String CoList;
+
 	public static ArrayList<Course> AllCourses = new ArrayList<Course>();
 	
 	public static Course getCourseByName(String name) {
@@ -97,6 +98,8 @@ public class Course extends Ratable {
 			if(popupTrES.get(i).text().equals("EXCLUSION"))Exclusion=popupTdES.get(i).text();
 			if(popupTrES.get(i).text().equals("PREVIOUS CODE"))PreviousCode=popupTdES.get(i).text();
 			if(popupTrES.get(i).text().equals("DESCRIPTION"))description=popupTdES.get(i).text();
+			if(popupTrES.get(i).text().equals("CO-LIST WITH"))description=popupTdES.get(i).text();
+			
 		}
 		//System.out.println(PreRequisite);
 		Elements sections=e.select(".sections tr[class]");
@@ -135,6 +138,11 @@ public class Course extends Ratable {
 	public String getPreviousCode() {
 		return PreviousCode;
 	}
+	public String getCoList() {
+		return CoList;
+	}
+
+
 	/**
 	 * Gets the <tt>Code</tt> object that represent the code of the course.
 	 * For example, COMP3111H a course code.
@@ -278,7 +286,7 @@ public class Course extends Ratable {
 		private int enrol;
 		private int availableQuota;
 		private int wait;
-		//TODO: every room has a ID; use ID?
+		//TODO: every room has a ID; use ID? No, some rooms has no ID.
 		private Set<String> room=new HashSet<String>(); 
 		private String remarks="";
 		/**
