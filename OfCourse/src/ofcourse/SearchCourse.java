@@ -21,11 +21,11 @@ import java.util.ArrayList;
  * @author Bob Lee
  *
  */
-public abstract class CourseSearch implements Collection<Course> {
+public abstract class SearchCourse implements Collection<Course> {
 	
 	public Collection<Course> prevPipe = null;
 	
-	public CourseSearch(Collection<Course> prevPipe) {
+	public SearchCourse(Collection<Course> prevPipe) {
 		this.prevPipe = prevPipe;
 	}
 

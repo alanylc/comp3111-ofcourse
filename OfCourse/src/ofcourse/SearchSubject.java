@@ -3,7 +3,7 @@ package ofcourse;
 import java.util.Collection;
 import java.util.ArrayList;;
 
-public class SearchSubject extends CourseSearch {
+public class SearchSubject extends SearchCourse {
 
 	private ArrayList<String> subjects = new ArrayList<String>();
 	

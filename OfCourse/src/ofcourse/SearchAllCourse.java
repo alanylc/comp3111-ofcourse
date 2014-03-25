@@ -2,7 +2,7 @@ package ofcourse;
 
 import java.util.Collection;
 
-public class SearchAllCourse extends CourseSearch {
+public class SearchAllCourse extends SearchCourse {
 
 	public SearchAllCourse(Collection<Course> prevPipe) {
 		super(prevPipe);
