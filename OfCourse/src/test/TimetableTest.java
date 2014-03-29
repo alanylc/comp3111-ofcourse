@@ -106,6 +106,21 @@ public class TimetableTest {
 		HashMap<Course, ArrayList<Course.Session>> enrolled = table.getEnrolled();
 		assertEquals(1, enrolled.get(Course.getCourseByName("COMP1001 ")).size());
 	}
+	
+	@Test
+	public void testAddCourseStringStringArray03() { // return true
+		assertTrue(table.addCourse("COMP1001 ", new String[]{"L1"}));
+	}
+	
+	@Test
+	public void testAddCourseStringStringArray04() { // invalid session string
+		assertFalse(table.addCourse("COMP1001 ", new String[]{"K1"}));
+	}
+	
+	@Test
+	public void testAddCourseStringStringArray05() { // invalid course id
+		assertFalse(table.addCourse("COMP1001K", new String[]{"L1"}));
+	}
 
 	@Test
 	public void testAddCourseCourseSessionArray01() { // check course added
@@ -120,6 +135,43 @@ public class TimetableTest {
 		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")});
 		assertEquals(1, table.getEnrolled().get(Course.getCourseByName("COMP1001 ")).size());
 	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray03() { // return true
+		Course comp = Course.getCourseByName("COMP1001 ");
+		assertTrue(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")}));
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray04() { // add course that enrolled
+		Course comp = Course.getCourseByName("COMP2611 ");
+		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")}));
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray05() { // not exist session, will still run, but not added, check return true
+		Course comp = Course.getCourseByName("COMP1001 ");
+		assertTrue(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L8")}));
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray06() { // not exist session, will still run, but not added, check no session added
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L8")});
+		assertEquals(0, table.getEnrolled().get(comp).size());
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray07() { // time conflicts between sessions within a course, return false
+		Course comp = Course.getCourseByName("COMP2900 ");
+		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("T1"), comp.getSessionByString("T2")}));
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray08() { // time conflicts with enrolled
+		Course comp = Course.getCourseByName("COMP3721 ");
+		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")}));
+	}
 
 	@Test
 	public void testDropCourseString() {
@@ -128,9 +180,19 @@ public class TimetableTest {
 	}
 
 	@Test
-	public void testDropCourseCourse() {
+	public void testDropCourseCourse01() { // drop an enrolled course
 		table.dropCourse(Course.getCourseByName("COMP2611 "));
 		assertEquals(0, table.getEnrolled().size());
+	}
+	
+	@Test
+	public void testDropCourseCourse02() { // null parameter
+		assertFalse(table.dropCourse(Course.getCourseByName("COMP1000K")));
+	}
+	
+	@Test
+	public void testDropCourseCourse03() { // course not enrolled
+		assertFalse(table.dropCourse(Course.getCourseByName("COMP1001 ")));
 	}
 
 	@Test
@@ -152,6 +214,42 @@ public class TimetableTest {
 		Course comp = Course.getCourseByName("COMP1001 ");
 		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
 		assertNull(table.getEnrolled().get(Course.getCourseByName("COMP2611 ")));
+	}
+	
+	@Test
+	public void testSwapCourse04() { // return true
+		Course comp = Course.getCourseByName("COMP1001 ");
+		assertTrue(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")}));
+	}
+	
+	@Test
+	public void testSwapCourse05() { // add one more course which will conflict with course to swap, return false
+		table.addCourse("COMP3711 ", new String[]{"L1"});
+		Course comp = Course.getCourseByName("COMP1001 ");
+		assertFalse(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")}));
+	}
+	
+	@Test
+	public void testSwapCourse06() { // conflict case, old course not removed
+		table.addCourse("COMP3711 ", new String[]{"L1"});
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
+		assertNotNull(table.getEnrolled().get(Course.getCourseByName("COMP2611 ")));
+	}
+	
+	@Test
+	public void testSwapCourse07() { // conflict case, new course not added
+		table.addCourse("COMP3711 ", new String[]{"L1"});
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
+		assertNull(table.getEnrolled().get(Course.getCourseByName("COMP1001 ")));
+	}
+	
+	@Test
+	public void testSwapCourse08() { // swap with enrolled
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")});
+		assertFalse(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")}));
 	}
 
 	@Test
