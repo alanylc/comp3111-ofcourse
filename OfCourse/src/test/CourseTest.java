@@ -33,7 +33,6 @@ public class CourseTest {
 
 	@Before
 	public void setUp() throws Exception {
-		c=Course.getCourseByName("COMP3111 ");
 	}
 
 	@After
@@ -180,6 +179,8 @@ public class CourseTest {
 		assertEquals(expected, c.isMatchSession());
 	}
 
+	
+	@Test	
 	public void testIsMatchSession2() {//check if false is returned
 		boolean expected=false;
 		c=Course.getCourseByName("COMP2011 ");
