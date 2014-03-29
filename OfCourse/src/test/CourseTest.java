@@ -246,6 +246,14 @@ public class CourseTest {
 			assertEquals(classList[i],s.getClassNo());
 		}
 	}
+	
+	@Test
+	public void testGetSessionByClassNumber2() {
+		c=Course.getCourseByName("COMP3111 ");
+		Session s=c.getSessionByClassNumber(6666);
+		assertNull(s);
+	}
+	
 
 	@Test
 	public void testToString() {
