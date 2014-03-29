@@ -177,6 +177,7 @@ public class courseParse {
 
 			Elements cs = doc.select("#classes .course");
 			for (Element courseE : cs) {
+				//System.out.println(courseE.toString());
 				Course temp = new Course(courseE); // Parse course by course
 				// temp.out();
 				cp.add(temp);

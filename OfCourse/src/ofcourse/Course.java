@@ -101,7 +101,7 @@ public class Course extends Ratable {
 			if(popupTrES.get(i).text().equals("EXCLUSION"))Exclusion=popupTdES.get(i).text();
 			if(popupTrES.get(i).text().equals("PREVIOUS CODE"))PreviousCode=popupTdES.get(i).text();
 			if(popupTrES.get(i).text().equals("DESCRIPTION"))description=popupTdES.get(i).text();
-			if(popupTrES.get(i).text().equals("CO-LIST WITH"))description=popupTdES.get(i).text();
+			if(popupTrES.get(i).text().equals("CO-LIST WITH"))CoList=popupTdES.get(i).text();
 			
 		}
 		//System.out.println(PreRequisite);
