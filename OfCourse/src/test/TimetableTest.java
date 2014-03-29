@@ -4,10 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import ofcourse.Course;
-import ofcourse.Course.Session;
+import ofcourse.TimeSlot;
 import ofcourse.Timetable;
 import ofcourse.courseParse;
 
@@ -80,12 +79,20 @@ public class TimetableTest {
 		actuals[3] = enrolled.get(Course.getCourseByName("COMP2011 ")).size();
 		assertArrayEquals(expected, actuals);
 	}
-//
-//	@Test
-//	public void testGetOccupied() {
-//		fail("Not yet implemented");
-//	}
-//
+
+	@Test
+	public void testGetOccupied() {
+		table.dropCourse(Course.getCourseByName("COMP2611 "));
+		table.addCourse("COMP1900 ", new String[]{"T1"});
+		ArrayList<TimeSlot> occupied = table.getOccupied();
+		TimeSlot actuals[] = new TimeSlot[occupied.size()];  
+		occupied.toArray(actuals);
+		TimeSlot expected[] = new TimeSlot[2];
+		expected[0] = TimeSlot.getTimeSlotByStrings("We", "18:00");
+		expected[1] = TimeSlot.getTimeSlotByStrings("We", "18:30");
+		assertArrayEquals(expected, actuals);
+	}
+
 	@Test
 	public void testAddCourseStringStringArray01() { // check course added
 		table.addCourse("COMP1001 ", new String[]{"L1"});
@@ -99,26 +106,53 @@ public class TimetableTest {
 		HashMap<Course, ArrayList<Course.Session>> enrolled = table.getEnrolled();
 		assertEquals(1, enrolled.get(Course.getCourseByName("COMP1001 ")).size());
 	}
-//
-//	@Test
-//	public void testAddCourseCourseSessionArray() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testDropCourseString() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testDropCourseCourse() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testSwapCourse() {
-//		fail("Not yet implemented");
-//	}
+
+	@Test
+	public void testAddCourseCourseSessionArray01() { // check course added
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")});
+		assertNotNull(table.getEnrolled().get(Course.getCourseByName("COMP1001 ")));
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray02() { // check only 1 session registered
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")});
+		assertEquals(1, table.getEnrolled().get(Course.getCourseByName("COMP1001 ")).size());
+	}
+
+	@Test
+	public void testDropCourseString() {
+		table.dropCourse("COMP2611 ");
+		assertEquals(0, table.getEnrolled().size());
+	}
+
+	@Test
+	public void testDropCourseCourse() {
+		table.dropCourse(Course.getCourseByName("COMP2611 "));
+		assertEquals(0, table.getEnrolled().size());
+	}
+
+	@Test
+	public void testSwapCourse01() { // Course added
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
+		assertNotNull(table.getEnrolled().get(Course.getCourseByName("COMP1001 ")));
+	}
+	
+	@Test
+	public void testSwapCourse02() { // only 1 session registered
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
+		assertEquals(1, table.getEnrolled().get(Course.getCourseByName("COMP1001 ")).size());
+	}
+	
+	@Test
+	public void testSwapCourse03() { // old course removed
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
+		assertNull(table.getEnrolled().get(Course.getCourseByName("COMP2611 ")));
+	}
 
 	@Test
 	public void testExportString01() {
