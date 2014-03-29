@@ -72,7 +72,10 @@ public class Course extends Ratable {
 		this.code = (Code) code.clone();//Must be a copy to prevent unexpected modification
 		setMatchSession(matchSession);
 	}
-
+	/**
+	 * Construct a new course with the html element parsed from html parser.
+	 * @param e 
+	 */
 	public Course(Element e){
 		super(e.select("h2").text());//name
 		String c=e.select(".courseanchor a").first().attr("name");//code
@@ -123,21 +126,45 @@ public class Course extends Ratable {
 	public String getDescription() {
 		return description;
 	}
+	/**
+	 * Gets the attributes of the course.
+	 * @return The string representation of the attributes
+	 */
 	public String getAttributes() {
 		return Attributes;
 	}
+	/**
+	 * Gets the pre-requisite of the course.
+	 * @return The string representation of the pre-requisite
+	 */
 	public String getPreRequisite() {
 		return PreRequisite;
 	}
+	/**
+	 * Gets the co-requisite of the course.
+	 * @return The string representation of the co-requisite
+	 */
 	public String getCoRequisite() {
 		return CoRequisite;
 	}
+	/**
+	 * Gets the exclusion of the course.
+	 * @return The string representation of the exclusion
+	 */
 	public String getExclusion() {
 		return Exclusion;
 	}
+	/**
+	 * Gets the previous code of the course.
+	 * @return The string representation of the previous code
+	 */
 	public String getPreviousCode() {
 		return PreviousCode;
 	}
+	/**
+	 * Gets the "co-list with" of the course.
+	 * @return The string representation of the "co-list with"
+	 */
 	public String getCoList() {
 		return CoList;
 	}
@@ -168,6 +195,10 @@ public class Course extends Ratable {
 	public ArrayList<Session> getSessions() {
 		return sessions;
 	}
+	/**
+	 * Gets the maximum value of wait list for all the sessions of the course
+	 * @return maximum value of wait list of that course
+	 */
 	public int getMaxWaitList(){						//get the waitlist of all sessions, find the max one
 		ArrayList<Integer> i=new ArrayList<Integer>();
 		ArrayList<Session> ss=this.getSessions();
@@ -217,6 +248,11 @@ public class Course extends Ratable {
 		return null;
 	}
 	
+	/**
+	 * Gets the string representation of the Code object that represent the code of the course.
+	 * For example, COMP3111H a course code.
+	 * @return The String representation of the Code object
+	 */
 	public String toString() {
 		return code.toString();
 	}
@@ -304,6 +340,10 @@ public class Course extends Ratable {
 				}
 			}
 		}
+		/**
+		 * Construct a new session with the html element parsed from html parser.
+		 * @param Esection 
+		 */
 		private Session(Element Esection) {
 			Elements datas=Esection.select("td");
 			String section=datas.get(0).text();
@@ -354,6 +394,10 @@ public class Course extends Ratable {
 			// TODO Auto-generated constructor stub
 		}
 
+		/**
+		 * Add additional information to the session with the html element parsed from html parser.
+		 * @param Esection 
+		 */
 		private void extend(Element Esection) {			//ref line 99
 			// TODO Auto-generated method stub
 			Elements datas=Esection.select("td");
@@ -383,29 +427,50 @@ public class Course extends Ratable {
 		
 		
 		/**
-		 * Gets the TOTAL quota of the session.
-		 * @return The total quota.
+		 * Gets the "Set" of the session.
+		 * e.g LA2B, B is the set of the session.
+		 * @return The character representing Set.
 		 */
 		public char getSet() {
 			return Set;
 		}
 		
+		/**
+		 * Gets the number of students enrolled to that session.
+		 * @return The number of students enrolled to that session.
+		 */
 		public int getEnrol() {
 			return enrol;
 		}
 		
+		/**
+		 * Gets the available quota of the session.
+		 * @return The available quota.
+		 */
 		public int getavailableQuota() {
 			return availableQuota;
 		}
 		
+		/**
+		 * Gets the TOTAL quota of the session.
+		 * @return The total quota.
+		 */
 		public int getQuota() {
 			return quota;
 		}
 		
+		/**
+		 * Gets the number of student wait-listed to that session.
+		 * @return The number of student wait-listed.
+		 */
 		public int getwait() {
 			return wait;
 		}
 		
+		/**
+		 * Gets the Remarks of the session.
+		 * @return The String representation of the remarks.
+		 */
 		public String getRemarks() {
 			return remarks;
 		}
@@ -422,7 +487,7 @@ public class Course extends Ratable {
 		/**
 		 * Gets the session type of this session.
 		 * 
-		 * @return A <tt>SessionType</tt> enum. Lecture, Laboratory or Tutorial
+		 * @return A <tt>SessionType</tt> enum. Lecture, Laboratory, Tutorial or Research
 		 */
 		public SessionType getSType() {
 			return sType;
@@ -431,7 +496,7 @@ public class Course extends Ratable {
 		/**
 		 * Sets the session type of this session.
 		 * 
-		 * @param A <tt>SessionType</tt> enum. Lecture, Laboratory or Tutorial
+		 * @param A <tt>SessionType</tt> enum. Lecture, Laboratory, Tutorial or Research
 		 */
 		public void setSType(SessionType sType) {
 			this.sType = sType;
@@ -493,6 +558,11 @@ public class Course extends Ratable {
 			this.schedule = new HashSet<TimePeriod>(schedule);//Must be a copy to prevent accidental modification
 		}
 		
+		/**
+		 * Gets the room of this session.
+		 * 
+		 * @return An array of <tt>String</tt> representing the location of session being held.
+		 */
 		public Set<String> getRoom() {
 			return room;
 		}
