@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -178,7 +176,7 @@ public class Timetable {
 		boolean conflict = false;
 		
 		// if target course has already been enrolled, fails
-		if (getEnrolled().containsKey(origin)) {
+		if (getEnrolled().containsKey(target)) {
 			return false;
 		}
 		//List all time slots to if the original course is dropped
