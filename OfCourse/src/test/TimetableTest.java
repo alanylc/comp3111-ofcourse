@@ -20,6 +20,8 @@ public class TimetableTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		courseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
+
 	}
 
 	@AfterClass
@@ -29,7 +31,6 @@ public class TimetableTest {
 	@Before
 	public void setUp() throws Exception {
 		table = new Timetable(5); // TID = 5
-		courseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
 		table.addCourse("COMP2611 ", new String[]{"L1", "T1", "LA1"}); // the table now has olny 1 course
 	}
 
