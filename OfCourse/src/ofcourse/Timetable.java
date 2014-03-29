@@ -2,9 +2,13 @@ package ofcourse;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -211,5 +215,46 @@ public class Timetable {
 
 		return true;
 	}
+	
+	
+	
+	public String exportString() {
+		String returnStr = new String();
+		HashMap<Course, ArrayList<Course.Session>> map = getEnrolled();
+		Comparator<Course> comparator = new Comparator<Course>() {
+			public int compare(Course c1, Course c2) {
+				return (c1.toString().compareTo(c2.toString()));
+			}
+		};
+		SortedSet<Course> keys = new TreeSet<Course>(comparator);
+		keys.addAll(map.keySet());
+		int count = 0, size = map.size();
+		for (Course key : keys) {
+			count++;
+			ArrayList<Course.Session> value = map.get(key);
+			returnStr += key.toString() + delim;
+			int count2 = 0, size2 = value.size();
+			for (Course.Session s : value) {
+				count2++;
+				returnStr += s.toString();
+				if (count2 != size2) returnStr += innerDelim;
+			}
+			if (count != size) returnStr += delim;
+		}
+		return returnStr;
+	}
+	
+	public boolean importFrom(String inStr) {
+		String tmp[] = inStr.split(delim);
+		String tmpSs[] = null;
+		if (tmp.length % 2 != 0) return false;
+		for (int i=0; i<tmp.length; i+=2) {
+			tmpSs = tmp[i+1].split(innerDelim);
+			addCourse(tmp[i], tmpSs);
+		}
+		return true;
+	}
+	
+	private String delim = ";", innerDelim = ",";
 
 }
