@@ -89,8 +89,8 @@ public class TimetableTest {
 		TimeSlot actuals[] = new TimeSlot[occupied.size()];  
 		occupied.toArray(actuals);
 		TimeSlot expected[] = new TimeSlot[2];
-		expected[0] = TimeSlot.getTimeSlotByStrings("We", "18:00");
-		expected[1] = TimeSlot.getTimeSlotByStrings("We", "18:30");
+		expected[0] = TimeSlot.getTimeSlotByStrings("We", "06:00PM");
+		expected[1] = TimeSlot.getTimeSlotByStrings("We", "06:30PM");
 		assertArrayEquals(expected, actuals);
 	}
 
