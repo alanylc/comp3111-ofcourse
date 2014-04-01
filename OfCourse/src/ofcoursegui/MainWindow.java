@@ -95,7 +95,7 @@ public class MainWindow extends JFrame {
 	public JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
 
 	
-	public Timetable own_table = new Timetable(20097657, timetableTabpage);
+	public Timetable own_table;
 	
 	//JList: subjectJList, for showing the subjects
 	//ListModel: subjectList, the backing data for the JList
@@ -179,6 +179,7 @@ public class MainWindow extends JFrame {
 		timetableTabpage.setBounds(557, 52, 705, 603);
 		contentPane.add(timetableTabpage);
 		
+		own_table = new Timetable(20097657, timetableTabpage);
 		
 		//Buttons
 		JButton btnNewButton = new JButton("New One");
