@@ -38,9 +38,9 @@ public class Timetable {
 		table_id = id;
 	}
 	
-	public JPanel getPanel() {
+	/*public JPanel getPanel() {
 		return gui.getParentPanel();
-	}
+	}*/
 	
 	public HashMap<Course, ArrayList<Course.Session>> getEnrolled() {
 		return enrolled;

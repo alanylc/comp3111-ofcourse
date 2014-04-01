@@ -19,14 +19,14 @@ import com.jgoodies.forms.factories.FormFactory;
 import java.awt.Color;
 import java.awt.Dimension;
 
-public class TimeTableGUI {
+public class TimeTableGUI extends JPanel{
 	private static int rows = 28;
 	private static int cols = 6;
 	
 	private JLabel[][] jlabelarray = new JLabel[cols][rows];
 	private HashMap<String, ArrayList<JLabel>> filledSlots = new HashMap<String, ArrayList<JLabel>>();
 	
-	private JPanel parentPanel = new JPanel();
+	//private JPanel parentPanel = new JPanel();
 
 	public static String[] weekDays = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 
@@ -34,9 +34,9 @@ public class TimeTableGUI {
 		
 	}
 	
-	public JPanel getParentPanel() {
+	/*public JPanel getParentPanel() {
 		return parentPanel;
-	}
+	}*/
 
 	public JLabel[][] getSlots() {
 		return jlabelarray;
@@ -140,7 +140,7 @@ public class TimeTableGUI {
 		return new Dimension(100, 18);
 	}
 
-	public JPanel initilizeGUIComponent() {
+	public TimeTableGUI initilizeGUIComponent() {
 		ColumnSpec[] cs = new ColumnSpec[cols + 1];
 		for (int i = 0; i < cols + 1; i ++) {
 			cs[i] = new ColumnSpec(Sizes.pixel(100));
@@ -152,11 +152,13 @@ public class TimeTableGUI {
 		
 		FormLayout fl_panel  = new FormLayout(cs, rs);
 		fl_panel.setHonorsVisibility(false);
-		parentPanel.setLayout(fl_panel);
-		
+		//parentPanel.setLayout(fl_panel);
+		setLayout(fl_panel);
 
+		//Top-left cell, which is a placeholder
 		JLabel lblTL = new JLabel("");
-		parentPanel.add(lblTL, "1, 1");
+		//parentPanel.add(lblTL, "1, 1");
+		add(lblTL, "1, 1");
 		lblTL.setBorder(new LineBorder(new Color(99, 130, 191)));
 		lblTL.setMinimumSize(getNewStandardCellDimensionInstance());
 		lblTL.setMaximumSize(getNewStandardCellDimensionInstance());
@@ -165,7 +167,8 @@ public class TimeTableGUI {
 		// Add the week days slots on the top row
 		for (int i = 0; i < 6; i++) {
 			JLabel label = new JLabel(weekDays[i]);
-			parentPanel.add(label, Integer.toString((2 + i)) + ", 1");
+			//parentPanel.add(label, Integer.toString((2 + i)) + ", 1");
+			add(label, Integer.toString((2 + i)) + ", 1");
 			label.setBorder(new LineBorder(new Color(99, 130, 191)));
 			label.setPreferredSize(getNewStandardCellDimensionInstance());
 			label.setMinimumSize(getNewStandardCellDimensionInstance());
@@ -196,7 +199,8 @@ public class TimeTableGUI {
 			labelTime.setMaximumSize(getNewStandardCellDimensionInstance());
 			labelTime.setBorder(new LineBorder(new Color(99, 130, 191)));
 
-			parentPanel.add(labelTime, "1, " + i);
+			//parentPanel.add(labelTime, "1, " + i);
+			add(labelTime, "1, " + i);
 
 		}
 
@@ -207,7 +211,8 @@ public class TimeTableGUI {
 						Integer.toString((c - 1) * 100 + (r - 2)));
 				this.jlabelarray[c - 2][r - 2].setText("");
 				String constraint = c + ", " + r;
-				parentPanel.add(this.jlabelarray[c - 2][r - 2], constraint);
+				//parentPanel.add(this.jlabelarray[c - 2][r - 2], constraint);
+				add(this.jlabelarray[c - 2][r - 2], constraint);
 				this.jlabelarray[c - 2][r - 2]
 						.setMaximumSize(getNewStandardCellDimensionInstance());
 				this.jlabelarray[c - 2][r - 2]
@@ -222,7 +227,7 @@ public class TimeTableGUI {
 			}
 		}
 
-		return parentPanel;
+		return this;
 	}
 	
 	/*public static TimeTableGUI createNewTimetableGUIPanel() {
