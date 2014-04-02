@@ -33,7 +33,8 @@ public class TimeTableGUI extends JPanel{
 	private static int cols = 6;
 	
 	private JLabel[][] jlabelarray = new JLabel[cols][rows];
-	private HashMap<String, ArrayList<JLabel>> filledSlots = new HashMap<String, ArrayList<JLabel>>();
+	//private HashMap<String, ArrayList<JLabel>> filledSlots_old = new HashMap<String, ArrayList<JLabel>>();
+	private HashMap<String, ArrayList<ArrayList<JLabel>>> filledSlots_new = new HashMap<String, ArrayList<ArrayList<JLabel>>>();
 	
 	private ArrayList<CourseSelectListener> courseSelectListeners = new ArrayList<CourseSelectListener>();
 	
@@ -41,11 +42,13 @@ public class TimeTableGUI extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			for(Entry<String, ArrayList<JLabel>> kvpair : filledSlots.entrySet()) {
-				for(JLabel l : kvpair.getValue()) {
-					if(e.getSource() == l) {
-						for(CourseSelectListener csl : courseSelectListeners) {
-							csl.courseSelected(kvpair.getKey());
+			for(Entry<String, ArrayList<ArrayList<JLabel>>> kvpair : filledSlots_new.entrySet()) {
+				for(ArrayList<JLabel> lession : kvpair.getValue()){
+					for(JLabel slot : lession) {
+						if(e.getSource() == slot) {
+							for(CourseSelectListener csl : courseSelectListeners) {
+								csl.courseSelected(kvpair.getKey());
+							}
 						}
 					}
 				}
@@ -157,26 +160,71 @@ public class TimeTableGUI extends JPanel{
 			l.addMouseListener(mouselistener);
 		}
 		//add filled slots to list
-		if (filledSlots.containsKey(key)) {
-			ArrayList<JLabel> old = filledSlots.get(key);
-			old.addAll(labels);
-			filledSlots.put(key, old);
+		if (filledSlots_new.containsKey(key)) {
+			ArrayList<ArrayList<JLabel>> old = filledSlots_new.get(key);
+			old.add(labels);
+			filledSlots_new.put(key, old);
 		}
-		else filledSlots.put(key, labels);
+		else {
+			ArrayList<ArrayList<JLabel>> newlist = new ArrayList<ArrayList<JLabel>>();
+			newlist.add(labels);
+			filledSlots_new.put(key, newlist);
+		}
 	}
 	
 	//Whether the slots are occupied are not managed in this class. Only the visual is changed.
 	public void unfillSlots(String key) {
-		ArrayList<JLabel> labels = filledSlots.get(key);
+		ArrayList<ArrayList<JLabel>> labels = filledSlots_new.get(key);
 		if (labels == null || labels.size() == 0) return;
-		for(JLabel l : labels) {
-			l.setText("");
-			l.setBackground(Color.WHITE);
-			l.setOpaque(true);
-			//remove any click listener
-			l.removeMouseListener(mouselistener);
+		for(ArrayList<JLabel> lession : labels) {
+			for(JLabel l : lession) {
+				l.setText("");
+				l.setBackground(Color.WHITE);
+				l.setOpaque(true);
+				//remove any click listener
+				l.removeMouseListener(mouselistener);
+			}
 		}
-		filledSlots.remove(key);
+		filledSlots_new.remove(key);
+	}
+	
+	//Whether the slots are selected are not managed in this class. Only the visual is changed.
+	public void selectSlots(String key) {
+		ArrayList<ArrayList<JLabel>> labels = filledSlots_new.get(key);
+		for(ArrayList<JLabel> lession : labels) {
+			for(int i = 0; i < lession.size(); i++) {
+				//Other than those needed, remaining should be background color to "hide" itself
+
+				/*lblTL.setBorder(new LineBorder(new Color(99, 130, 191)));
+				Border oldBorder = lblTL.getBorder();
+				Border redBorder = BorderFactory.createMatteBorder(0, 0, 0, 5, Color.RED);
+				Border newBorder = BorderFactory.createCompoundBorder(redBorder, oldBorder);
+				lblTL.setBorder(newBorder);*/
+				JLabel target = lession.get(i);
+				target.setBorder(new LineBorder(target.getBackground()));
+				Border oldBorder = target.getBorder();
+				if(i == 0) { //border is top , left and right.
+					Border neededBorder = BorderFactory.createMatteBorder(2, 2, 0, 2, Color.RED);
+					Border newBorder = BorderFactory.createCompoundBorder(neededBorder, oldBorder);
+					target.setBorder(newBorder);
+				}
+				else if(i == lession.size() - 1) { //border is down , left and right.
+					Border neededBorder = BorderFactory.createMatteBorder(0, 2, 2, 2, Color.RED);
+					Border newBorder = BorderFactory.createCompoundBorder(neededBorder, oldBorder);
+					target.setBorder(newBorder);
+				}
+				else { //border is left and right
+					Border neededBorder = BorderFactory.createMatteBorder(0, 2, 0, 2, Color.RED);
+					Border newBorder = BorderFactory.createCompoundBorder(neededBorder, oldBorder);
+					target.setBorder(newBorder);
+				}
+			}
+		}
+	}
+	
+	//Whether the slots are selected are not managed in this class. Only the visual is changed.
+	public void unselectSlots(String key) {
+		
 	}
 	
 	private static Color[] preset = {new Color(167, 252, 250),
@@ -194,6 +242,7 @@ public class TimeTableGUI extends JPanel{
 			new Color(255, 204, 255),
 			new Color(253, 157, 191),
 			new Color(252, 255, 191)};
+	private static int presetUsed = 0;
 	
 	public static Color getRandomBgColor() {
 		Random r = new Random();
@@ -214,9 +263,9 @@ public class TimeTableGUI extends JPanel{
 			rs[i] = FormFactory.DEFAULT_ROWSPEC;
 		}
 		
-		//FormLayout fl_panel  = new FormLayout(cs, rs);
+		FormLayout fl_panel  = new FormLayout(cs, rs);
 
-		FormLayout fl_panel_new  = new FormLayout(new ColumnSpec[] {
+		/*FormLayout fl_panel_new  = new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("100px"),
 				ColumnSpec.decode("100px"),
 				ColumnSpec.decode("100px"),
@@ -253,23 +302,16 @@ public class TimeTableGUI extends JPanel{
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,});
-		fl_panel_new.setHonorsVisibility(false);
+				FormFactory.DEFAULT_ROWSPEC,});*/
+		fl_panel.setHonorsVisibility(false);
 		//parentPanel.setLayout(fl_panel);
-		setLayout(fl_panel_new);
+		setLayout(fl_panel);
 
 		//Top-left cell, which is a placeholder
 		JLabel lblTL = new JLabel("");
 		//parentPanel.add(lblTL, "1, 1");
 		add(lblTL, "1, 1");
-		//TODO:
 		
-		lblTL.setBorder(new LineBorder(new Color(99, 130, 191)));
-		Border oldBorder = lblTL.getBorder();
-		Border redBorder = BorderFactory.createMatteBorder(0, 0, 0, 5, Color.RED);
-		Border newBorder = BorderFactory.createCompoundBorder(redBorder, oldBorder);
-		lblTL.setBorder(newBorder);
-
 		lblTL.setBackground(Color.WHITE);
 		lblTL.setOpaque(true);
 		lblTL.setMinimumSize(getNewStandardCellDimensionInstance());

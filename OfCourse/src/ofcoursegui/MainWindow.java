@@ -211,14 +211,14 @@ public class MainWindow extends JFrame {
 		btnNewButton_1.setBounds(667, 12, 98, 28);
 		contentPane.add(btnNewButton_1);
 
-		ofcourse.Course comp3111 = new ofcourse.Course("COMP", 3111, ' ', "Software Engineering", false);
+		/*ofcourse.Course comp3111 = new ofcourse.Course("COMP", 3111, ' ', "Software Engineering", false);
 		ArrayList<ofcourse.Course.Session> ss = new ArrayList<ofcourse.Course.Session>();
 		ofcourse.Course.Session session = comp3111.new Session(ofcourse.SessionType.Lecture, 1, 1234);
 		Set<ofcourse.TimePeriod> tp = new HashSet<ofcourse.TimePeriod>();
 		tp.add(new ofcourse.TimePeriod(ofcourse.TimeSlot.getTimeSlotByID(206), ofcourse.TimeSlot.getTimeSlotByID(212)));
 		session.setSchedule(tp);
 		ss.add(session);
-		comp3111.setSessions(ss);
+		comp3111.setSessions(ss);*/
 		
 		
 		JButton btnNewButton_2 = new JButton("Enroll in COMP3111 ");
@@ -233,8 +233,9 @@ public class MainWindow extends JFrame {
 						e.printStackTrace();
 					}
 				}*/
-				boolean result =  own_table.addCourse("COMP3111 ", new String[] { "L1" } );
-				//DEBUG System.out.println(result);
+				boolean result =  own_table.addCourse("COMP2012 ", new String[] { "L1", "LA1A" } );
+				//DEBUG 
+				System.out.println(result);
 				
 			}
 		});

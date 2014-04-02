@@ -1,5 +1,6 @@
 package ofcourse;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -44,7 +45,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		table_id = id;
 	}
 		
-	public JPanel getGUI() {
+	public ofcoursegui.TimeTableGUI getGUI() {
 		return gui;
 	}
 	
@@ -89,19 +90,24 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		for (Course.Session s : c.getSessions()) {
 			for(String sessionid : sessions_id) {
 				//DEBUG System.out.println(s.toString());
+				System.out.println(sessionid + " " + s.toString());
 				if (s.toString().equals(sessionid)) {
+					//DEBUG System.out.println("equal");
 					sessions.add(s);
 				}
 			}
 		}
 		if (sessions == null || sessions.size() == 0) 
 			return false;
+
 		return addCourse(c, sessions.toArray(new Course.Session[sessions.size()]));
 	}
 	
 	public boolean addCourse(Course course, Course.Session[] sessions) {
 		// if the course has already been enrolled, fails
 		if (getEnrolled().containsKey(course)) {
+
+			System.out.println("0reached");
 			return false;
 		}
 		// ensure all provided sessions belong to the course
@@ -123,6 +129,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 			}
 		}
 		if (!ctype.containsAll(stype)) {
+			//Debug System.out.println("1reached");
 			return false;
 		}
 		
@@ -136,6 +143,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		for (int i = 0; i < timeSlots.size(); i++) {
             for (int j = 0; j < timeSlots.size(); j++) {
                 if (timeSlots.get(i).equals(timeSlots.get(j)) && i != j) {
+                	//Debug System.out.println("2reached");
                     return false;
                 }
             }
@@ -149,6 +157,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 			}
 		}
 		if (conflict) {
+			//Debug System.out.println("3reached");
 			return false;
 		}
 		else {
@@ -160,13 +169,14 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		}
 
 		//GUI call
+		Color c = TimeTableGUI.getRandomBgColor();
 		for (Course.Session s : trueSessions) {
 			for (TimePeriod tp : s.getSchedule()) {
 				try {
 					gui.fillSlots(
 							tp.getStartSlot().getID(), 
 							tp.getEndSlot().getID(), 
-							TimeTableGUI.getRandomBgColor(), 
+							c, 
 							new String[] { course.toString(), s.toString() }, 
 							course.toString());
 				} catch (Exception e) {
@@ -366,8 +376,10 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	public void courseSelected(String courseCode) {
 		for(Course c : this.enrolled.keySet()) {
 			if (c.getCode().toString().equals(courseCode)) {
+				if (selectedCourse != null) this.gui.unselectSlots(selectedCourse.getCode().toString());
 				selectedCourse = c;
 				//DEBUG: JOptionPane.showMessageDialog(null, courseCode);
+				this.gui.selectSlots(courseCode);
 				return;
 			}
 			else throw new java.util.NoSuchElementException("Cannot find the course for selection.");

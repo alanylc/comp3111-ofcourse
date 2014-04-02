@@ -334,8 +334,9 @@ public class courseParse {
 			for(String r:room)System.out.print(r+"\t");
 			System.out.println();
 			Set<TimePeriod> time=s.getSchedule();
-			System.out.print("Time: ");
+			System.out.println("Time: ");
 			for(TimePeriod tp:time)System.out.println("From " +  tp.getStartEndID()[0]+"\t to: "+tp.getStartEndID()[1]);//empty if TBA
+			System.out.println("SessionString: " + s.toString());
 			System.out.println();
 		}
 		t.parseComments();
