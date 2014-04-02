@@ -5,9 +5,11 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import com.jgoodies.forms.layout.FormLayout;
@@ -18,6 +20,9 @@ import com.jgoodies.forms.factories.FormFactory;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.border.TitledBorder;
 
 public class TimeTableGUI extends JPanel{
 	private static int rows = 28;
@@ -31,7 +36,7 @@ public class TimeTableGUI extends JPanel{
 	public static String[] weekDays = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 
 	public TimeTableGUI() {
-		
+		initilizeGUIComponent();
 	}
 	
 	/*public JPanel getParentPanel() {
@@ -110,7 +115,8 @@ public class TimeTableGUI extends JPanel{
 		if (labels == null || labels.size() == 0) return;
 		for(JLabel l : labels) {
 			l.setText("");
-			l.setOpaque(false);
+			l.setBackground(Color.WHITE);
+			l.setOpaque(true);
 		}
 		filledSlots.remove(key);
 	}
@@ -150,22 +156,71 @@ public class TimeTableGUI extends JPanel{
 			rs[i] = FormFactory.DEFAULT_ROWSPEC;
 		}
 		
-		FormLayout fl_panel  = new FormLayout(cs, rs);
-		fl_panel.setHonorsVisibility(false);
+		//FormLayout fl_panel  = new FormLayout(cs, rs);
+
+		FormLayout fl_panel_new  = new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("100px"),
+				ColumnSpec.decode("100px"),
+				ColumnSpec.decode("100px"),
+				ColumnSpec.decode("100px"),
+				ColumnSpec.decode("100px"),
+				ColumnSpec.decode("100px"),
+				ColumnSpec.decode("100px"),},
+			new RowSpec[] {
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,});
+		fl_panel_new.setHonorsVisibility(false);
 		//parentPanel.setLayout(fl_panel);
-		setLayout(fl_panel);
+		setLayout(fl_panel_new);
 
 		//Top-left cell, which is a placeholder
 		JLabel lblTL = new JLabel("");
 		//parentPanel.add(lblTL, "1, 1");
 		add(lblTL, "1, 1");
+		//TODO:
+		
 		lblTL.setBorder(new LineBorder(new Color(99, 130, 191)));
+		Border oldBorder = lblTL.getBorder();
+		Border redBorder = BorderFactory.createMatteBorder(0, 0, 0, 5, Color.RED);
+		Border newBorder = BorderFactory.createCompoundBorder(redBorder, oldBorder);
+		lblTL.setBorder(newBorder);
+
+		lblTL.setBackground(Color.WHITE);
+		lblTL.setOpaque(true);
 		lblTL.setMinimumSize(getNewStandardCellDimensionInstance());
 		lblTL.setMaximumSize(getNewStandardCellDimensionInstance());
 		lblTL.setPreferredSize(getNewStandardCellDimensionInstance());
 
 		// Add the week days slots on the top row
 		for (int i = 0; i < 6; i++) {
+			//Create the weekday table with the text
 			JLabel label = new JLabel(weekDays[i]);
 			//parentPanel.add(label, Integer.toString((2 + i)) + ", 1");
 			add(label, Integer.toString((2 + i)) + ", 1");
@@ -173,7 +228,8 @@ public class TimeTableGUI extends JPanel{
 			label.setPreferredSize(getNewStandardCellDimensionInstance());
 			label.setMinimumSize(getNewStandardCellDimensionInstance());
 			label.setMaximumSize(getNewStandardCellDimensionInstance());
-
+			label.setBackground(Color.WHITE);
+			label.setOpaque(true);
 			label.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 
@@ -193,7 +249,8 @@ public class TimeTableGUI extends JPanel{
 				b = b - 60 + 100;
 			String s = df.format(a) + "-" + df.format(b);
 			labelTime.setText(s);
-
+			labelTime.setBackground(Color.WHITE);
+			labelTime.setOpaque(true);
 			labelTime.setPreferredSize(getNewStandardCellDimensionInstance());
 			labelTime.setMinimumSize(getNewStandardCellDimensionInstance());
 			labelTime.setMaximumSize(getNewStandardCellDimensionInstance());
@@ -223,16 +280,12 @@ public class TimeTableGUI extends JPanel{
 						.setSize(getNewStandardCellDimensionInstance());
 				this.jlabelarray[c - 2][r - 2].setBorder(new LineBorder(new Color(239, 228, 176)));
 				this.jlabelarray[c - 2][r - 2].setHorizontalAlignment(SwingConstants.CENTER);
-				
+
+				this.jlabelarray[c - 2][r - 2].setBackground(Color.WHITE);
+				this.jlabelarray[c - 2][r - 2].setOpaque(true);
 			}
 		}
 
 		return this;
 	}
-	
-	/*public static TimeTableGUI createNewTimetableGUIPanel() {
-		TimeTableGUI newPage = new TimeTableGUI();
-		MainWindow.timetableTabpage.add(newPage.initilizeGUIComponent());
-		return newPage;
-	}*/
 }

@@ -35,7 +35,7 @@ public class courseParse {
 	private String subject;
 	private ArrayList<Course> courses = new ArrayList<Course>();
 	public final static String URL = "https://w5.ab.ust.hk/wcq/cgi-bin/1330/subject/";
-	public final static long expireTime = 300000; //TTL for the local cache of quota page 
+	public final static long expireTime = 30000000; //TTL for the local cache of quota page 
 	//14 summer would change to /1340/, fall would change to /1410/, 
 	//need to figure out some ways to change semester
 

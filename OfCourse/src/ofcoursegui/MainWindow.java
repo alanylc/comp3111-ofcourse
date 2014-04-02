@@ -191,9 +191,9 @@ public class MainWindow extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				TimeTableGUI test = new TimeTableGUI();
-				JPanel testp = test.initilizeGUIComponent();
-				timetableTabpage.addTab("Whole New World", null, testp, null);
-				linkage.put(testp, test);
+				//JPanel testp = test.initilizeGUIComponent();
+				timetableTabpage.addTab("Whole New World", null, test, null);
+				linkage.put(test, test);
 			}
 		});
 		btnNewButton.setBounds(557, 12, 98, 28);
