@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -16,20 +17,23 @@ import ofcourse.Course.Session;
 import ofcoursegui.TimeTableGUI;
 
 
-public class Timetable {
+public class Timetable implements ofcoursegui.CourseSelectListener {
 	
 	private int table_id = -1;
 	private HashMap<Course, ArrayList<Course.Session>> enrolled = new HashMap<Course, ArrayList<Course.Session>>();
 	private ofcoursegui.TimeTableGUI gui = new ofcoursegui.TimeTableGUI();
 	
+	{
+		gui.addcourseSelectListener(this);
+	}
+	
 	public Timetable(int tid) {
-		gui.initilizeGUIComponent();
 		table_id = tid;
 	}
 	
 	public Timetable(int tid, JTabbedPane targetTabbedPage) {
-		targetTabbedPage.add(Integer.toString(tid), gui.initilizeGUIComponent());
 		table_id = tid;
+		targetTabbedPage.add(Integer.toString(tid), gui);
 	}
 	
 	public int getTableId() {
@@ -39,10 +43,10 @@ public class Timetable {
 	public void setTableId(int id) {
 		table_id = id;
 	}
-	
-	/*public JPanel getPanel() {
-		return gui.getParentPanel();
-	}*/
+		
+	public JPanel getGUI() {
+		return gui;
+	}
 	
 	public HashMap<Course, ArrayList<Course.Session>> getEnrolled() {
 		return enrolled;
@@ -344,5 +348,36 @@ public class Timetable {
 //	}
 	
 	public static String delim = ";", innerDelim = ",";
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private Course selectedCourse = null;
+	
+	
+	@Override
+	public void courseSelected(String courseCode) {
+		for(Course c : this.enrolled.keySet()) {
+			if (c.getCode().toString().equals(courseCode)) {
+				selectedCourse = c;
+				//DEBUG: JOptionPane.showMessageDialog(null, courseCode);
+				return;
+			}
+			else throw new java.util.NoSuchElementException("Cannot find the course for selection.");
+		}
+		
+	}
+
+	@Override
+	public void courseUnselected(String courseCode) {
+		selectedCourse = null;
+	}
 
 }

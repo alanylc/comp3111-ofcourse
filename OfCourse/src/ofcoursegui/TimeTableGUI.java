@@ -3,6 +3,7 @@ package ofcoursegui;
 
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
@@ -20,6 +21,9 @@ import com.jgoodies.forms.factories.FormFactory;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.border.TitledBorder;
@@ -31,12 +35,61 @@ public class TimeTableGUI extends JPanel{
 	private JLabel[][] jlabelarray = new JLabel[cols][rows];
 	private HashMap<String, ArrayList<JLabel>> filledSlots = new HashMap<String, ArrayList<JLabel>>();
 	
+	private ArrayList<CourseSelectListener> courseSelectListeners = new ArrayList<CourseSelectListener>();
+	
+	private MouseListener mouselistener = new MouseListener() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			for(Entry<String, ArrayList<JLabel>> kvpair : filledSlots.entrySet()) {
+				for(JLabel l : kvpair.getValue()) {
+					if(e.getSource() == l) {
+						for(CourseSelectListener csl : courseSelectListeners) {
+							csl.courseSelected(kvpair.getKey());
+						}
+					}
+				}
+			}
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	};
+	
+	
+	
 	//private JPanel parentPanel = new JPanel();
 
 	public static String[] weekDays = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 
 	public TimeTableGUI() {
 		initilizeGUIComponent();
+	}
+	
+	public void addcourseSelectListener(CourseSelectListener listener) {
+		courseSelectListeners.add(listener);
 	}
 	
 	/*public JPanel getParentPanel() {
@@ -98,7 +151,10 @@ public class TimeTableGUI extends JPanel{
 			for(int i = 0 ; i < lineCount; i++) {
 				textLabels[i].setText(text[i]);
 			}
-			
+		}
+		//add click listener to each filled slot
+		for(JLabel l : labels) {
+			l.addMouseListener(mouselistener);
 		}
 		//add filled slots to list
 		if (filledSlots.containsKey(key)) {
@@ -117,6 +173,8 @@ public class TimeTableGUI extends JPanel{
 			l.setText("");
 			l.setBackground(Color.WHITE);
 			l.setOpaque(true);
+			//remove any click listener
+			l.removeMouseListener(mouselistener);
 		}
 		filledSlots.remove(key);
 	}
