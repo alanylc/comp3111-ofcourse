@@ -596,7 +596,7 @@ public class Course extends Ratable {
 		
 		@Override
 		public String toString() {
-			//TODO: sesion type is invalid case
+			//TODO: session type is invalid case
 			String type = getSType() == SessionType.Laboratory ? "LA" : getSType().toString().substring(0, 1).toUpperCase();
 			return type + getSNo() + (getSet()==' '? "" : getSet());
 		}
