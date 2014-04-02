@@ -151,6 +151,7 @@ public class Network {
 	}
 
 	public String comment(String Course, String Grade, String Comment) {// Leave a comment, output 100 if ok
+		if (ourNetwork.username.equals(""))return "200";
 		byte[] bb = Comment.getBytes();
 		try {
 			bb = Comment.getBytes("UTF-8");
@@ -287,7 +288,7 @@ public class Network {
 		// 004 duplicate entry when insert 
 		// 005 entry not exist when update
 		// 100 ok
-		// 200 not logined but doing activities that need to login(friend get/set, myfav,etc)
+		// 200 not loggined but doing activities that need to login(friend get/set, myfav,etc)
 		// 404 Query return false: SQL server connection failed
 		// TODO Auto-generated method stub
 
@@ -389,6 +390,50 @@ public class Network {
 		
 		System.out.println("Get A's friend list");
 		System.out.println(x.getFriendList());// friend1!friend2!....!
+		
+		System.out.println("Behavior when logged out: All the following should return 200");
+		logout();
+
+		System.out.println("Set nobody's favourite");
+		MyFav = "COMP3111";// Still not decided how to do this
+		
+		
+		System.out.println(x.setMyFav(MyFav));// if 100 then ok
+
+		System.out.println("Get nobody's favourite");
+		System.out.println(x.getMyFav());// myfav
+
+		System.out.println("Get nobody's firends");
+		System.out.println(x.getFriendList());// friend1!friend2!....!
+
+		System.out.println("Get nobody's requests");
+		System.out.println(x.getReqFriendList());// reqfriend1!reqfriend2!....!
+
+		System.out.println("Post nobody's comment");
+		Course = "COMP3111";
+		Grade = "4";
+		Comment = "¤W¸ü¤é´Á";
+
+		System.out.println(x.comment(Course, Grade, Comment));// if 100 then ok
+		
+		System.out.println("Send a friend request to B");
+		friendB = "testaab";
+		System.out.println(x.friendReq(friendB));// if 100 then ok
+
+		System.out.println("All the following does not need to login, should return appropriate value");
+		System.out.println("Get a comment");
+		x.printArray(x.getCourse(Course));// get course comments(2d array)
+
+		Course = "COMP";
+		System.out.println("Get summary for all course in one department: " + Course);
+		x.printArray(x.getSummary(Course));// show all comp course with their
+												// avg ratings
+		Course = "COMP3111";
+		System.out.println("Get avg rating in one course: " + Course);
+		x.printArray(x.getSummary(Course));// show one comp course with its
+												// avg rating
+
+
 	}
 
 }

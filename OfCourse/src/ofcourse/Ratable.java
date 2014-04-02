@@ -49,16 +49,22 @@ public abstract class Ratable {
 		return comments;
 	}
 	public void parseComments() {
-		//this.comments = comments;
-	}
-	public void parseAvgRating() {
 		Network a=Network.getOurNetwork();
 		try{
-			avgRating=Float.parseFloat(a.getSummary(name)[0][1]);
+			String[][] commentsForCourse=a.getCourse(name.substring(0, 4)+name.substring(5, 9));
+			for(String[] cm:commentsForCourse){
+				try{
+					Comments c=new Comments(cm[0],Float.parseFloat(cm[1]),cm[2],cm[3]);
+					this.comments.add(c);
+				}catch(Exception e){
+					//do nothing
+				}
+			}
 		}catch(Exception e){
-			avgRating=0;
+			//do nothing
 		}
 	}
+
 	public void addComments(Comments comments) {
 		this.comments.add(comments);
 	}

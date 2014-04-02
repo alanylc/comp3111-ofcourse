@@ -16,6 +16,7 @@ import java.util.Set;
 
 
 import ofcourse.Course.Session;
+import ofcourse.Ratable.Comments;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -336,6 +337,14 @@ public class courseParse {
 			System.out.print("Time: ");
 			for(TimePeriod tp:time)System.out.println("From " +  tp.getStartEndID()[0]+"\t to: "+tp.getStartEndID()[1]);//empty if TBA
 			System.out.println();
+		}
+		t.parseComments();
+		System.out.println("Comments: ");
+		for(Comments c:t.getComments()){
+			System.out.println("By: "+c.getCommentorName());
+			System.out.println("Rating: "+c.getRating());
+			System.out.println("Comment: "+c.getComments());
+			System.out.println("Date: "+c.getDate());
 		}
 		//comments and ratings here
 	}
