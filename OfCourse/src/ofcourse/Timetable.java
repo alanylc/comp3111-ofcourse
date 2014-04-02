@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -11,6 +12,7 @@ import java.util.TreeSet;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import ofcourse.Course.Session;
 import ofcoursegui.TimeTableGUI;
 
 
@@ -214,45 +216,115 @@ public class Timetable {
 		return true;
 	}
 	
-	
-	
-	public String exportString() {
-		String returnStr = new String();
-		HashMap<Course, ArrayList<Course.Session>> map = getEnrolled();
-		Comparator<Course> comparator = new Comparator<Course>() {
-			public int compare(Course c1, Course c2) {
-				return (c1.toString().compareTo(c2.toString()));
+	/** Export the attributes of the timetable (TID, Enrolled). Enrolled courses are exported as a list of class numbers.
+	 * 
+	 * @return A String which can be split for import
+	 */
+	public String exportTable() {
+		String returnStr = new String(this.getTableId()+delim);
+		HashMap<Course, ArrayList<Course.Session>> enrolled = this.getEnrolled();
+		Iterator<ArrayList<Session>> it = enrolled.values().iterator();
+		while (it.hasNext()) {
+			ArrayList<Session> sessionsOfOneCourse = it.next();
+			for (Session session : sessionsOfOneCourse) {
+				returnStr += session.getClassNo() + innerDelim;
 			}
-		};
-		SortedSet<Course> keys = new TreeSet<Course>(comparator);
-		keys.addAll(map.keySet());
-		int count = 0, size = map.size();
-		for (Course key : keys) {
-			count++;
-			ArrayList<Course.Session> value = map.get(key);
-			returnStr += key.toString() + delim;
-			int count2 = 0, size2 = value.size();
-			for (Course.Session s : value) {
-				count2++;
-				returnStr += s.toString();
-				if (count2 != size2) returnStr += innerDelim;
-			}
-			if (count != size) returnStr += delim;
+			returnStr += delim;
 		}
 		return returnStr;
 	}
 	
-	public boolean importFrom(String inStr) {
-		String tmp[] = inStr.split(delim);
-		String tmpSs[] = null;
-		if (tmp.length % 2 != 0) return false;
-		for (int i=0; i<tmp.length; i+=2) {
-			tmpSs = tmp[i+1].split(innerDelim);
-			addCourse(tmp[i], tmpSs);
+	/** Import timetable from String, replacing the original one, unchanged if failed
+	 * 
+	 * @param instr (should consist of integers only)
+	 * @return True if the timetable is replaced by the import one, False means import failure and the timetable is unchanged
+	 */
+	public boolean importTable(String instr) {
+		String[] tuples = instr.trim().split(delim);
+		try {
+			Integer.parseInt(tuples[0]);
+			for (int i=1; i<tuples.length; i++) {
+				String[] ss = tuples[i].split(innerDelim);
+				for (String s : ss) { // s is class number of a single session
+					int class_num = Integer.parseInt(s);
+					Course.getCourseByClassNum(class_num).getSessionByClassNumber(class_num);
+				}
+			}
+		}
+		catch (NumberFormatException e1) { // if contains any non-integer, return false
+			return false;
+		}
+		catch (NullPointerException e2) {// non existing session
+			return false;
+		}
+		boolean consistent = true; // used in checking whether a list of class numbers belong to the same course
+		boolean addSuccess = true; // check whether all courses are added successfully
+		// back up old data
+		int old_tid = this.getTableId();
+		HashMap<Course, ArrayList<Course.Session>> old_enrolled = this.getEnrolled();
+		this.setTableId(Integer.parseInt(tuples[0]));
+		this.setEnrolled(new HashMap<Course, ArrayList<Course.Session>>()); // empty the timetable
+		for (int i=1; i<tuples.length && consistent && addSuccess; i++) {
+			String[] classnums = tuples[i].trim().split(innerDelim);
+			Course acourse = Course.getCourseByClassNum(Integer.parseInt(classnums[0]));
+			Session[] sessions = new Session[classnums.length];
+			for (int j=0; j<classnums.length; j++) {
+				if (acourse != Course.getCourseByClassNum(Integer.parseInt(classnums[j]))) {
+					consistent = false;
+				}
+				else {
+					sessions[j] = acourse.getSessionByClassNumber(Integer.parseInt(classnums[j]));
+				}
+			}
+			if (consistent) {
+				addSuccess = this.addCourse(acourse, sessions);
+			}
+		}
+		if (!consistent || !addSuccess) {
+			this.setTableId(old_tid);
+			this.setEnrolled(old_enrolled);
+			return false;
 		}
 		return true;
 	}
 	
-	private String delim = ";", innerDelim = ",";
+//	public String exportString() {
+//		String returnStr = new String();
+//		HashMap<Course, ArrayList<Course.Session>> map = getEnrolled();
+//		Comparator<Course> comparator = new Comparator<Course>() {
+//			public int compare(Course c1, Course c2) {
+//				return (c1.toString().compareTo(c2.toString()));
+//			}
+//		};
+//		SortedSet<Course> keys = new TreeSet<Course>(comparator);
+//		keys.addAll(map.keySet());
+//		int count = 0, size = map.size();
+//		for (Course key : keys) {
+//			count++;
+//			ArrayList<Course.Session> value = map.get(key);
+//			returnStr += key.toString() + delim;
+//			int count2 = 0, size2 = value.size();
+//			for (Course.Session s : value) {
+//				count2++;
+//				returnStr += s.toString();
+//				if (count2 != size2) returnStr += innerDelim;
+//			}
+//			if (count != size) returnStr += delim;
+//		}
+//		return returnStr;
+//	}
+//	
+//	public boolean importFrom(String inStr) {
+//		String tmp[] = inStr.split(delim);
+//		String tmpSs[] = null;
+//		if (tmp.length % 2 != 0) return false;
+//		for (int i=0; i<tmp.length; i+=2) {
+//			tmpSs = tmp[i+1].split(innerDelim);
+//			addCourse(tmp[i], tmpSs);
+//		}
+//		return true;
+//	}
+	
+	public static String delim = ";", innerDelim = ",";
 
 }
