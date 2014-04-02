@@ -182,6 +182,17 @@ public class courseParse {
 				// temp.out();
 				cp.add(temp);
 			}
+			
+			//After that, parse the avg ratings into the course
+			Network a=Network.getOurNetwork();
+			String[][] RatingSummary=a.getSummary(subject); //{{COMP0001,3.000},{COMP0002,4.233},...}
+			a.printArray(RatingSummary);
+			try{
+			for(int i=0;i<RatingSummary.length;i++)cp.findByCode(RatingSummary[i][0]+" ").setAvgRating(Float.parseFloat(RatingSummary[i][1]));
+			}catch (NullPointerException e){
+				//if found an invalid course(comp6666), do nothing
+			}
+			
 		} catch (IOException e) {
 			System.out.println("Connection error");
 			e.printStackTrace();
@@ -305,6 +316,7 @@ public class courseParse {
 		System.out.println("Code: "+t.getCode().toString());
 		System.out.println("Match session: "+t.isMatchSession());
 		System.out.println("Description: "+t.getDescription());
+		System.out.println("Avg rating:"+t.getAvgRating());
 		System.out.println("Attributes: "+t.getAttributes());		//show only if not null?
 		System.out.println("Co-List with: "+t.getCoList());			//
 		System.out.println("PreRequsite: "+t.getPreRequisite());	//

@@ -113,6 +113,7 @@ public class Course extends Ratable {
 			if(popupTrES.get(i).text().equals("CO-LIST WITH"))CoList=popupTdES.get(i).text();
 			
 		}
+		
 		//System.out.println(PreRequisite);
 		Elements sections=e.select(".sections tr[class]");
 		for (Element section : sections){

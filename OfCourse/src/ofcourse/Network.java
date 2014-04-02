@@ -20,19 +20,27 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 public class Network {
-	String username;
-	String password; //store user password, always encrypted
+	private String username;
+	private String password; //store user password, always encrypted
 	private final String URL = "http://vtnetwork.synology.me/3111/";
 	private final String USER_AGENT = "Mozilla/5.0";
-
-	public Network(String username, String password) { // Constructor
-		this.username = username;
-		this.password = encryptPW(password);
-	}
-
-	public Network() { // empty constructor
+	private static Network ourNetwork=new Network();
+	
+	private Network() { // empty constructor
 		username = "";
 		password = "";
+	}
+	public static Network getOurNetwork(){
+		return ourNetwork;
+	}
+	public static Network login(String username, String password){
+		ourNetwork.username=username;
+		ourNetwork.password=encryptPW(password);
+		return ourNetwork;
+	}
+	public static void logout(){
+		ourNetwork.username="";
+		ourNetwork.password="";
 	}
 
 	public String[][] dataCut(String line, int b) { // use ASCII HEX 11-14 (DC1-DC4), don't tell me anyone is typing them.
@@ -86,47 +94,52 @@ public class Network {
 
 	public String register(String username) { // input name for register. Will send an email. Output 100 if ok.
 		String[][] empty = { { "", "" } };
-		this.username = username;
+		ourNetwork.username = username;
 		return this.POST("insert.php", empty);
 	}
 
 	public String registerB(String username) { // Same as above, but no email sent(debug only)
 		String[][] empty = { { "", "" } };
-		this.username = username;
+		ourNetwork.username = username;
 		return this.POST("insertB.php", empty);
 	}
 
 	public String getMyFav() { // My Favorites as output
 		String[][] empty = { { "", "" } };
+		if (ourNetwork.username.equals(""))return "200";
 		return this.POST("select.php", empty);
 	}
 
 	public String getFriendList() { // Get my friend list, output as friend1!friend2!...!
 		String[][] empty = { { "", "" } };
+		if (ourNetwork.username.equals(""))return "200";
 		return this.POST("getfriend.php", empty);
 	}
 
 	public String getReqFriendList() { // Get ppl who have sent friend request to you, output as reqfriend1!reqfriend2!...!
 		String[][] empty = { { "", "" } };
+		if (ourNetwork.username.equals(""))return "200";
 		return this.POST("getreqfriend.php", empty);
 	}
 
 	public String firstNewPW(String ppw, String npw) { // Change Password FOR FIRST TIME, output 100 if ok
+		if (ourNetwork.username.equals(""))return "200";
 		npw = encryptPW(npw);
 		String[][] newpwA = { { "ppw", ppw }, { "npw", npw } };
 		String newpw = this.POST("newpw.php", newpwA);
 		if (newpw.equals("100"))
-			password = npw;
+			ourNetwork.password = npw;
 		return newpw;
 	}
 
 	public String newPW(String opw, String npw) { // Change Password, output 100 if ok
+		if (ourNetwork.username.equals(""))return "200";
 		opw = encryptPW(opw);
 		npw = encryptPW(npw);
 		String[][] newpwA = { { "opw", opw }, { "npw", npw } };
 		String newpw = this.POST("newpw.php", newpwA);
 		if (newpw.equals("100"))
-			password = npw;
+			ourNetwork.password = npw;
 		return newpw;
 	}
 	
@@ -145,7 +158,7 @@ public class Network {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String[][] commentA = { { "Course", Course }, { "Grade", Grade },
+		String[][] commentA = { { "Course", Course }, { "Grade", Grade },	//TODO only allow grade of 1/2/3/4/5
 				{ "Comment", convertToHex(bb) } };
 		return this.POST("comment.php", commentA);
 	}
@@ -163,16 +176,19 @@ public class Network {
 	}
 
 	public String friendReq(String friendB) { // Send a friend request
+		if (ourNetwork.username.equals(""))return "200";
 		String[][] reqfriendA = { { "Nameb", friendB } };
 		return this.POST("reqfriend.php", reqfriendA);
 	}
 
 	public String friendSet(String friendB) { // Confirm a friend request
+		if (ourNetwork.username.equals(""))return "200";
 		String[][] setfriendA = { { "Nameb", friendB } };
 		return this.POST("setfriend.php", setfriendA);
 	}
 
-	public String setMyFav(String MyFav) { // Change your MyFav and upload
+	public String setMyFav(String MyFav) { // Change your MyFav and upload (NOT WORKING)
+		if (ourNetwork.username.equals(""))return "200";
 		String[][] setfavA = { { "Myfav", MyFav } };
 		return this.POST("setfav.php", setfavA);
 	}
@@ -181,7 +197,7 @@ public class Network {
 //		password = encryptPW(p);
 //	}
 
-	private String convertToHex(byte[] data) { // byte to hash string(0-F)
+	private static String convertToHex(byte[] data) { // byte to hash string(0-F)
 		StringBuilder buf = new StringBuilder();
 		for (byte b : data) {
 			int halfbyte = (b >>> 4) & 0x0F;
@@ -195,7 +211,7 @@ public class Network {
 		return buf.toString();
 	}
 
-	private String encryptPW(String pw) { // One way function for password
+	private static String encryptPW(String pw) { // One way function for password
 		String salt = "5oD1uM Chl0RiD3";// do not change
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -254,10 +270,15 @@ public class Network {
 		String[][] newpwA = { { "ppw", a }, { "npw", a } };
 		String newpw = this.POST("newpw.php", newpwA);
 		if (newpw.equals("100"))
-			password = a;
+			ourNetwork.password = a;
 		return newpw;
 	}
-	
+	/**
+	 * test run:
+	 * 1. Go to server and remove testaaa user 
+	 * 2. remove A and B's entry on friend.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// 000 char error
 		// 001 Name registered
@@ -266,12 +287,13 @@ public class Network {
 		// 004 duplicate entry when insert 
 		// 005 entry not exist when update
 		// 100 ok
+		// 200 not logined but doing activities that need to login(friend get/set, myfav,etc)
 		// 404 Query return false: SQL server connection failed
 		// TODO Auto-generated method stub
 
 		System.out.println("New Network");
-		Network x = new Network();
-		String ITSC = "hlleeab";
+		Network x = getOurNetwork();
+		String ITSC = "testaaa";
 		System.out.println("Registering " + ITSC);
 		System.out.println(x.registerB(ITSC));// if 100 then ok (insertB is used
 												// since I don't want to send
@@ -284,83 +306,89 @@ public class Network {
 		
 		//ITSC = "xxx";
 		//System.out.println("Another New Network " + ITSC + "pwd=aaa");
-		Network a = new Network(ITSC, "aaa");
 		
 		System.out.print("Recieved Pasword: ");
 		String s = new Scanner(System.in).nextLine();
-		
+		/*
 		System.out.println("Test password");
-		System.out.println(a.testPassword(s));// if 100 then ok
+		System.out.println(x.testPassword(s));// if 100 then ok
 		
-		
-		System.out.println("Set pwd first time " + "pwd=aaa to pwd=aab" );
-		System.out.println(a.firstNewPW(s, s + "6"));// if 100 then ok
+*/
+		System.out.println("Set pwd first time " + "pwd=(original) to pwd=666" );
+		System.out.println(x.firstNewPW(s, "666"));// if 100 then ok
 
-		System.out.println("Set new pwd "+ "pwd=aab to pwd=aaa");
-		System.out.println(a.newPW(s, "aaa"));// if 100 then ok
+		System.out.println("Set new pwd "+ "pwd=666 to pwd=aaa");
+		System.out.println(x.newPW("666", "aaa"));// if 100 then ok
 
+		
+		
+		System.out.println("Login with new pwd");
+		x = login(ITSC, "aaa");
 
-		
-		
-		
-		
-		System.out.println("Another New Network to login with new pwd");
-		Network a2 = new Network(ITSC, "aaa");
-
-		System.out.println("Set my favourite");
+		System.out.println("Set A's favourite");
 		String MyFav = "COMP3111";// Still not decided how to do this
 		
 		
-		System.out.println(a2.setMyFav(MyFav));// if 100 then ok
+		System.out.println(x.setMyFav(MyFav));// if 100 then ok
 
-		System.out.println("Get my favourite");
-		System.out.println(a2.getMyFav());// myfav
+		System.out.println("Get A's favourite");
+		System.out.println(x.getMyFav());// myfav
 
-		System.out.println("Get my firends");
-		System.out.println(a2.getFriendList());// friend1!friend2!....!
+		System.out.println("Get A's firends");
+		System.out.println(x.getFriendList());// friend1!friend2!....!
 
-		System.out.println("Get firend requests");
-		System.out.println(a2.getReqFriendList());// reqfriend1!reqfriend2!....!
+		System.out.println("Get A's requests");
+		System.out.println(x.getReqFriendList());// reqfriend1!reqfriend2!....!
 
 		System.out.println("Post a comment");
-		String Course = "COMP6666";
+		String Course = "COMP3111";
 		String Grade = "4";
 		String Comment = "¤W¸ü¤é´Á";
 
-		System.out.println(a2.comment(Course, Grade, Comment));// if 100 then ok
+		System.out.println(x.comment(Course, Grade, Comment));// if 100 then ok
 
 
 		System.out.println("Get a comment");
-		a2.printArray(a2.getCourse(Course));// get course comments(2d array)
+		x.printArray(x.getCourse(Course));// get course comments(2d array)
 
-		Course = "ABCD";
+		Course = "COMP";
 		System.out.println("Get summary for all course in one department: " + Course);
-		a2.printArray(a2.getSummary(Course));// show all comp course with their
+		x.printArray(x.getSummary(Course));// show all comp course with their
+												// avg rating
+		Course = "COMP3111";
+		System.out.println("Get avg rating in one course: " + Course);
+		x.printArray(x.getSummary(Course));// show all comp course with their
 												// avg rating
 
-		System.out.println("Send a friend request to friendB");
-		String friendB = "ylchungaa";
-		System.out.println(a2.friendReq(friendB));// if 100 then ok
+		System.out.println("Send a friend request to B");
+		String friendB = "testaab";
+		System.out.println(x.friendReq(friendB));// if 100 then ok
 
 
-		System.out.println("Another Network, login as friendB");
-		ITSC = "ylchungaa";
-		Network b = new Network(ITSC, "bbb");
-
+		System.out.println("Login as B");
+		ITSC = "testaab";
+		x = login(ITSC, "bbb");
+/*
 		System.out.println("Set friendB pwd for first time");
-		System.out.println(b.firstNewPW("bbb", "bbb"));// if 100 then ok
-
-		System.out.println("Get friendB s friend request");
-		System.out.println(b.getReqFriendList());// reqfriend1!reqfriend2!....!
+		System.out.println(x.firstNewPW("bbb", "bbb"));// if 100 then ok
+*/
+		System.out.println("Get B s friend request");
+		System.out.println(x.getReqFriendList());// reqfriend1!reqfriend2!....!
 
 		System.out.println("Accept friend request");
-		friendB = "thkong";
-		System.out.println(b.friendSet(friendB));// if 100 then ok
+		friendB = "testaaa";
+		System.out.println(x.friendSet(friendB));// if 100 then ok
 
 
-		System.out.println("Get friend list");
-		System.out.println(b.getFriendList());// friend1!friend2!....!
-
+		System.out.println("Get B's friend list");
+		System.out.println(x.getFriendList());// friend1!friend2!....!
+		
+		System.out.println("Login back as A");
+		ITSC = "testaaa";
+		x = login(ITSC, "aaa");
+		
+		System.out.println("Get A's friend list");
+		System.out.println(x.getFriendList());// friend1!friend2!....!
 	}
 
 }
