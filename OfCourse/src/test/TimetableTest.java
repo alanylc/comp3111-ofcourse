@@ -95,87 +95,80 @@ public class TimetableTest {
 	}
 
 	@Test
-	public void testAddCourseStringStringArray01() { // check course added
-		table.addCourse("COMP1001 ", new String[]{"L1"});
+	public void testAddCourseStringStringArray01() { // check: course added
+		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
 		HashMap<Course, ArrayList<Course.Session>> enrolled = table.getEnrolled();
 		assertNotNull(enrolled.get(Course.getCourseByName("COMP1001 ")));
 	}
 	
 	@Test
-	public void testAddCourseStringStringArray02() { // check only 1 session registered
-		table.addCourse("COMP1001 ", new String[]{"L1"});
+	public void testAddCourseStringStringArray02() { // check: 2 session registered
+		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
 		HashMap<Course, ArrayList<Course.Session>> enrolled = table.getEnrolled();
-		assertEquals(1, enrolled.get(Course.getCourseByName("COMP1001 ")).size());
+		assertEquals(2, enrolled.get(Course.getCourseByName("COMP1001 ")).size());
 	}
 	
 	@Test
 	public void testAddCourseStringStringArray03() { // return true
-		assertTrue(table.addCourse("COMP1001 ", new String[]{"L1"}));
+		assertTrue(table.addCourse("COMP1001 ", new String[]{"L1", "LA1"}));
 	}
 	
 	@Test
 	public void testAddCourseStringStringArray04() { // invalid session string
-		assertFalse(table.addCourse("COMP1001 ", new String[]{"K1"}));
+		assertFalse(table.addCourse("COMP1001 ", new String[]{"K1", "LA1"}));
 	}
 	
 	@Test
 	public void testAddCourseStringStringArray05() { // invalid course id
-		assertFalse(table.addCourse("COMP1001K", new String[]{"L1"}));
+		assertFalse(table.addCourse("COMP1001K", new String[]{"L1", "LA1"}));
 	}
 
 	@Test
 	public void testAddCourseCourseSessionArray01() { // check course added
 		Course comp = Course.getCourseByName("COMP1001 ");
-		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")});
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
 		assertNotNull(table.getEnrolled().get(Course.getCourseByName("COMP1001 ")));
 	}
 	
 	@Test
-	public void testAddCourseCourseSessionArray02() { // check only 1 session registered
+	public void testAddCourseCourseSessionArray02() { // check: 2 session registered
 		Course comp = Course.getCourseByName("COMP1001 ");
-		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")});
-		assertEquals(1, table.getEnrolled().get(Course.getCourseByName("COMP1001 ")).size());
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
+		assertEquals(2, table.getEnrolled().get(Course.getCourseByName("COMP1001 ")).size());
 	}
 	
 	@Test
 	public void testAddCourseCourseSessionArray03() { // return true
 		Course comp = Course.getCourseByName("COMP1001 ");
-		assertTrue(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")}));
+		assertTrue(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
 	public void testAddCourseCourseSessionArray04() { // add course that enrolled
 		Course comp = Course.getCourseByName("COMP2611 ");
-		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")}));
+		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("T2"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
-	public void testAddCourseCourseSessionArray05() { // not exist session, will still run, but not added, check return true
+	public void testAddCourseCourseSessionArray05() { // not exist session, L8 will not be in trueSessions, thus failing the test that all session type included
 		Course comp = Course.getCourseByName("COMP1001 ");
-		assertTrue(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L8")}));
+		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L8"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
-	public void testAddCourseCourseSessionArray06() { // not exist session, will still run, but not added, check no session added
-		Course comp = Course.getCourseByName("COMP1001 ");
-		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L8")});
-		assertEquals(0, table.getEnrolled().get(comp).size());
-	}
-	
-	@Test
-	public void testAddCourseCourseSessionArray07() { // time conflicts between sessions within a course, return false
+	public void testAddCourseCourseSessionArray06() { // time conflicts between sessions within a course, return false
 		Course comp = Course.getCourseByName("COMP2900 ");
 		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("T1"), comp.getSessionByString("T2")}));
 	}
 	
 	@Test
-	public void testAddCourseCourseSessionArray08() { // time conflicts with enrolled
+	public void testAddCourseCourseSessionArray07() { // time conflicts with enrolled
 		Course comp = Course.getCourseByName("COMP3721 ");
-		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")}));
+		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("T1")}));
 	}
 
 	@Test
-	public void testDropCourseString() {
+	public void testDropCourseString() { // drop an enrolled course
 		table.dropCourse("COMP2611 ");
 		assertEquals(0, table.getEnrolled().size());
 	}
@@ -187,7 +180,7 @@ public class TimetableTest {
 	}
 	
 	@Test
-	public void testDropCourseCourse02() { // null parameter
+	public void testDropCourseCourse02() { // null parameter due to non-exist course
 		assertFalse(table.dropCourse(Course.getCourseByName("COMP1000K")));
 	}
 	
@@ -199,90 +192,226 @@ public class TimetableTest {
 	@Test
 	public void testSwapCourse01() { // Course added
 		Course comp = Course.getCourseByName("COMP1001 ");
-		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
 		assertNotNull(table.getEnrolled().get(Course.getCourseByName("COMP1001 ")));
 	}
 	
 	@Test
-	public void testSwapCourse02() { // only 1 session registered
+	public void testSwapCourse02() { // 2 session registered
 		Course comp = Course.getCourseByName("COMP1001 ");
-		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
-		assertEquals(1, table.getEnrolled().get(Course.getCourseByName("COMP1001 ")).size());
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
+		assertEquals(2, table.getEnrolled().get(Course.getCourseByName("COMP1001 ")).size());
 	}
 	
 	@Test
 	public void testSwapCourse03() { // old course removed
 		Course comp = Course.getCourseByName("COMP1001 ");
-		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
 		assertNull(table.getEnrolled().get(Course.getCourseByName("COMP2611 ")));
 	}
 	
 	@Test
 	public void testSwapCourse04() { // return true
 		Course comp = Course.getCourseByName("COMP1001 ");
-		assertTrue(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")}));
+		assertTrue(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
 	public void testSwapCourse05() { // add one more course which will conflict with course to swap, return false
-		table.addCourse("COMP3711 ", new String[]{"L1"});
+		table.addCourse("COMP3711 ", new String[]{"L1", "T1"});
 		Course comp = Course.getCourseByName("COMP1001 ");
-		assertFalse(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")}));
+		assertFalse(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
 	public void testSwapCourse06() { // conflict case, old course not removed
-		table.addCourse("COMP3711 ", new String[]{"L1"});
+		table.addCourse("COMP3711 ", new String[]{"L1", "T1"});
 		Course comp = Course.getCourseByName("COMP1001 ");
-		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
 		assertNotNull(table.getEnrolled().get(Course.getCourseByName("COMP2611 ")));
 	}
 	
 	@Test
 	public void testSwapCourse07() { // conflict case, new course not added
-		table.addCourse("COMP3711 ", new String[]{"L1"});
+		table.addCourse("COMP3711 ", new String[]{"L1", "T1"});
 		Course comp = Course.getCourseByName("COMP1001 ");
-		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")});
+		table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("L1")});
 		assertNull(table.getEnrolled().get(Course.getCourseByName("COMP1001 ")));
 	}
 	
 	@Test
 	public void testSwapCourse08() { // swap with enrolled
 		Course comp = Course.getCourseByName("COMP1001 ");
-		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1")});
-		assertFalse(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1")}));
-	}
-
-	@Test
-	public void testExportString01() {
-		String expected = "COMP2611 ;L1,T1,LA1";
-		assertEquals(expected, table.exportString());
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
+		assertFalse(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
-	public void testExportString02() {
+	public void testExportTable01() {
+		String[] expected = new String[] {"5", "1851", "1860", "1855"}; // TID, L1, T1, LA1
+		String exportLine = table.exportTable();
+		String[] results = exportLine.split(Timetable.delim);
+		int count = 0; // check number of integers in the string
+		for (String s : results) {
+			count += s.split(Timetable.innerDelim).length;
+		}
+		String[] actuals = new String[count];
+		actuals[0] = new String(results[0]);
+		count = 1; // change the use to be index of array actuals
+		for (int i=1; i<results.length; i++) {
+			String[] ss = results[i].split(Timetable.innerDelim);
+			for (String s : ss) {
+				actuals[count] = new String(s);
+				count++;
+			}
+		}
+		java.util.Arrays.sort(actuals);
+		java.util.Arrays.sort(expected);
+		assertArrayEquals(expected, actuals);
+	}
+	
+	@Test
+	public void testExportTable02() {
 		table.addCourse("COMP1900 ", new String[]{"T1"});
-		table.addCourse("COMP1001 ", new String[]{"L1"});
-		String expected = "COMP1001 ;L1;COMP1900 ;T1;COMP2611 ;L1,T1,LA1";
-		assertEquals(expected, table.exportString());
-	}
-
-	@Test
-	public void testImportFrom01() {
-		Timetable table2 = new Timetable(9);
-		table2.importFrom(table.exportString());
-		String expected = "COMP2611 ;L1,T1,LA1";
-		assertEquals(expected, table2.exportString());
+		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
+		String[] expected = new String[] {"5", "1851", "1860", "1855", "1823", "1780", "1784"};
+		String exportLine = table.exportTable();
+		String[] results = exportLine.split(Timetable.delim);
+		int count = 0; // check number of integers in the string
+		for (String s : results) {
+			count += s.split(Timetable.innerDelim).length;
+		}
+		String[] actuals = new String[count];
+		actuals[0] = new String(results[0]);
+		count = 1; // change the use to be index of array actuals
+		for (int i=1; i<results.length; i++) {
+			String[] ss = results[i].split(Timetable.innerDelim);
+			for (String s : ss) {
+				actuals[count] = new String(s);
+				count++;
+			}
+		}
+		java.util.Arrays.sort(actuals);
+		java.util.Arrays.sort(expected);
+		assertArrayEquals(expected, actuals);
 	}
 	
 	@Test
-	public void testImportFrom02() {
+	public void testImportTable01() {
 		Timetable table2 = new Timetable(9);
-		table2.addCourse("COMP1001 ", new String[]{"L1"});
-		table2.importFrom(table.exportString());
-		String expected = "COMP1001 ;L1;COMP2611 ;L1,T1,LA1";
-		assertEquals(expected, table2.exportString());
+		String exportLine = table.exportTable();
+		boolean success = table2.importTable(exportLine);
+		assertTrue(success);
 	}
+	
+	@Test
+	public void testImportTable02() {
+		Timetable table2 = new Timetable(9);
+		assertTrue(table2.importTable(table.exportTable()));
+		String[] expected = new String[] {"5", "1851", "1860", "1855"};
+		String exportLine = table2.exportTable();
+		String[] results = exportLine.split(Timetable.delim);
+		int count = 0; // check number of integers in the string
+		for (String s : results) {
+			count += s.split(Timetable.innerDelim).length;
+		}
+		String[] actuals = new String[count];
+		actuals[0] = new String(results[0]);
+		count = 1; // change the use to be index of array actuals
+		for (int i=1; i<results.length; i++) {
+			String[] ss = results[i].split(Timetable.innerDelim);
+			for (String s : ss) {
+				actuals[count] = new String(s);
+				count++;
+			}
+		}
+		java.util.Arrays.sort(actuals);
+		java.util.Arrays.sort(expected);
+		assertArrayEquals(expected, actuals);
+	}
+	
+	@Test
+	public void testImportTable03() {
+		table.addCourse("COMP1900 ", new String[]{"T1"});
+		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
+		Timetable table2 = new Timetable(9);
+		table2.importTable(table.exportTable());
+		String[] expected = new String[] {"5", "1851", "1860", "1855", "1823", "1780", "1784"};
+		String exportLine = table2.exportTable();
+		String[] results = exportLine.split(Timetable.delim);
+		int count = 0; // check number of integers in the string
+		for (String s : results) {
+			count += s.split(Timetable.innerDelim).length;
+		}
+		String[] actuals = new String[count];
+		actuals[0] = new String(results[0]);
+		count = 1; // change the use to be index of array actuals
+		for (int i=1; i<results.length; i++) {
+			String[] ss = results[i].split(Timetable.innerDelim);
+			for (String s : ss) {
+				actuals[count] = new String(s);
+				count++;
+			}
+		}
+		java.util.Arrays.sort(actuals);
+		java.util.Arrays.sort(expected);
+		assertArrayEquals(expected, actuals);
+	}
+	
+	@Test
+	public void testImportTable04() {
+		String importLine = "5;1823,;33,1860,1855,;1780,1784,;";  // 33 is invalid class number
+		assertFalse(table.importTable(importLine));
+	}
+	
+	@Test
+	public void testImportTable05() {
+		String importLine = "5;1823,;1780,1860,1855,;1780,1784,;";  // 1780 does not belong to the same course 
+		assertFalse(table.importTable(importLine));
+	}
+	
+	@Test
+	public void testImportTable06() {
+		String importLine = "5;1823,;178..0,1860,1855,;1780,1784,;";  // non-integer
+		assertFalse(table.importTable(importLine));
+	}
+	
+	@Test
+	public void testImportTable07() {
+		String importLine = "5;1823,;1851,1860,1855,;1780,1784,;1823;";  // add duplicated course, to make addCourse fails
+		assertFalse(table.importTable(importLine));
+	}
+	
+//	@Test
+//	public void testExportString01() {
+//		String expected = "COMP2611 ;L1,T1,LA1";
+//		assertEquals(expected, table.exportString());
+//	}
+//	
+//	@Test
+//	public void testExportString02() {
+//		table.addCourse("COMP1900 ", new String[]{"T1"});
+//		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
+//		String expected = "COMP1001 ;L1,LA1;COMP1900 ;T1;COMP2611 ;L1,T1,LA1";
+//		assertEquals(expected, table.exportString());
+//	}
+//
+//	@Test
+//	public void testImportFrom01() {
+//		Timetable table2 = new Timetable(9);
+//		table2.importFrom(table.exportString());
+//		String expected = "COMP2611 ;L1,T1,LA1";
+//		assertEquals(expected, table2.exportString());
+//	}
+//	
+//	@Test
+//	public void testImportFrom02() {
+//		Timetable table2 = new Timetable(9);
+//		table2.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
+//		table2.importFrom(table.exportString());
+//		String expected = "COMP1001 ;L1,LA1;COMP2611 ;L1,T1,LA1";
+//		assertEquals(expected, table2.exportString());
+//	}
 	
 	private Timetable table;
 

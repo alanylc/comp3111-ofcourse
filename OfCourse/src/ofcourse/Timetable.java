@@ -96,16 +96,34 @@ public class Timetable {
 	}
 	
 	public boolean addCourse(Course course, Course.Session[] sessions) {
-		//TODO: Need advanced checking for if lab/tutorial is included
 		// if the course has already been enrolled, fails
 		if (getEnrolled().containsKey(course)) {
 			return false;
 		}
-		//Ensure all provided sessions belong to the course
+		// ensure all provided sessions belong to the course
 		ArrayList<Course.Session> trueSessions = new ArrayList<Course.Session>();
 		for (Course.Session s : sessions) {
 			if(course.getSessions().contains(s)) trueSessions.add(s);
 		}
+		
+		// advanced checking for if all session types (lecture/lab/tutorial) are included
+		ArrayList<SessionType> stype = new ArrayList<SessionType>(), ctype = new ArrayList<SessionType>();
+		for (Course.Session s : course.getSessions()) {
+			if (!stype.contains(s.getSType())) {
+				stype.add(s.getSType());
+			}
+		}
+		for (Course.Session s : trueSessions) {
+			if (!ctype.contains(s.getSType())) {
+				ctype.add(s.getSType());
+			}
+		}
+		if (!ctype.containsAll(stype)) {
+			return false;
+		}
+		
+		// TODO: check whether matching between lecture, tutorial, and lab is needed
+		
 		//List all time slots to be used by this course registration
 		ArrayList<TimeSlot> timeSlots = sessionsToSlots(trueSessions.toArray(new Course.Session[trueSessions.size()]));
 		
