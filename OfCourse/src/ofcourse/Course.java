@@ -44,6 +44,15 @@ public class Course extends Ratable {
 		return null;
 	}
 	
+	public static Course getCourseByClassNum(int classno) {
+		Session s = null;
+		for (Course c : AllCourses) {
+			s = c.getSessionByClassNumber(classno);
+			if (s!=null) return c;
+		}
+		return null;
+	}
+	
 	{
 		AllCourses.add(this);
 	}
@@ -589,7 +598,7 @@ public class Course extends Ratable {
 		public String toString() {
 			//TODO: sesion type is invalid case
 			String type = getSType() == SessionType.Laboratory ? "LA" : getSType().toString().substring(0, 1).toUpperCase();
-			return type+ getSNo();
+			return type + getSNo() + (getSet()==' '? "" : getSet());
 		}
 
 	}
