@@ -37,11 +37,11 @@ public class TimeTableGUI extends JPanel{
 	private HashMap<String, ArrayList<ArrayList<JLabel>>> filledSlots_new = new HashMap<String, ArrayList<ArrayList<JLabel>>>();
 	
 	private ArrayList<CourseSelectListener> courseSelectListeners = new ArrayList<CourseSelectListener>();
+	private ArrayList<CourseSelectListener> panelUnselectListeners = new ArrayList<CourseSelectListener>();
 	
-	private MouseListener mouselistener = new MouseListener() {
+	private MouseListener labelMouseListener = new MouseListener() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
 			for(Entry<String, ArrayList<ArrayList<JLabel>>> kvpair : filledSlots_new.entrySet()) {
 				for(ArrayList<JLabel> lession : kvpair.getValue()){
 					for(JLabel slot : lession) {
@@ -81,7 +81,42 @@ public class TimeTableGUI extends JPanel{
 		
 	};
 	
-	
+	private MouseListener panelMouseListener = new MouseListener() {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			for(CourseSelectListener csl : panelUnselectListeners) {
+				//Debug System.out.println("Panel is clicked!");
+				
+				csl.courseUnselected();
+			}
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	};
 	
 	//private JPanel parentPanel = new JPanel();
 
@@ -89,10 +124,15 @@ public class TimeTableGUI extends JPanel{
 
 	public TimeTableGUI() {
 		initilizeGUIComponent();
+		this.addMouseListener(panelMouseListener);
 	}
 	
 	public void addcourseSelectListener(CourseSelectListener listener) {
 		courseSelectListeners.add(listener);
+	}
+	
+	public void addpanelUnselectListener(CourseSelectListener listener) {
+		panelUnselectListeners.add(listener);
 	}
 	
 	/*public JPanel getParentPanel() {
@@ -157,7 +197,7 @@ public class TimeTableGUI extends JPanel{
 		}
 		//add click listener to each filled slot
 		for(JLabel l : labels) {
-			l.addMouseListener(mouselistener);
+			l.addMouseListener(labelMouseListener);
 		}
 		//add filled slots to list
 		if (filledSlots_new.containsKey(key)) {
@@ -182,7 +222,7 @@ public class TimeTableGUI extends JPanel{
 				l.setBackground(Color.WHITE);
 				l.setOpaque(true);
 				//remove any click listener
-				l.removeMouseListener(mouselistener);
+				l.removeMouseListener(labelMouseListener);
 			}
 		}
 		filledSlots_new.remove(key);
@@ -194,12 +234,6 @@ public class TimeTableGUI extends JPanel{
 		for(ArrayList<JLabel> lession : labels) {
 			for(int i = 0; i < lession.size(); i++) {
 				//Other than those needed, remaining should be background color to "hide" itself
-
-				/*lblTL.setBorder(new LineBorder(new Color(99, 130, 191)));
-				Border oldBorder = lblTL.getBorder();
-				Border redBorder = BorderFactory.createMatteBorder(0, 0, 0, 5, Color.RED);
-				Border newBorder = BorderFactory.createCompoundBorder(redBorder, oldBorder);
-				lblTL.setBorder(newBorder);*/
 				JLabel target = lession.get(i);
 				target.setBorder(new LineBorder(target.getBackground()));
 				Border oldBorder = target.getBorder();
@@ -224,7 +258,14 @@ public class TimeTableGUI extends JPanel{
 	
 	//Whether the slots are selected are not managed in this class. Only the visual is changed.
 	public void unselectSlots(String key) {
-		
+		ArrayList<ArrayList<JLabel>> labels = filledSlots_new.get(key);
+		for(ArrayList<JLabel> lession : labels) {
+			for(int i = 0; i < lession.size(); i++) {
+				//All border should be background color to "hide" itself
+				JLabel target = lession.get(i);
+				target.setBorder(new LineBorder(target.getBackground()));
+			}
+		}
 	}
 	
 	private static Color[] preset = {new Color(167, 252, 250),

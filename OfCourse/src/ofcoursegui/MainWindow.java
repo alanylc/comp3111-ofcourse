@@ -221,7 +221,7 @@ public class MainWindow extends JFrame {
 		comp3111.setSessions(ss);*/
 		
 		
-		JButton btnNewButton_2 = new JButton("Enroll in COMP3111 ");
+		JButton btnNewButton_2 = new JButton("Enroll...");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				/*if(linkage.containsKey(tabpage.getSelectedComponent())) {
@@ -234,8 +234,8 @@ public class MainWindow extends JFrame {
 					}
 				}*/
 				boolean result =  own_table.addCourse("COMP2012 ", new String[] { "L1", "LA1A" } );
-				//DEBUG 
-				System.out.println(result);
+				boolean result2 =  own_table.addCourse("LANG2030H", new String[] { "T1" } );
+				//DEBUG System.out.println(result);
 				
 			}
 		});

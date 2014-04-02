@@ -26,6 +26,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	
 	{
 		gui.addcourseSelectListener(this);
+		gui.addpanelUnselectListener(this);
 	}
 	
 	public Timetable(int tid) {
@@ -89,8 +90,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		if (c == null) return false;
 		for (Course.Session s : c.getSessions()) {
 			for(String sessionid : sessions_id) {
-				//DEBUG System.out.println(s.toString());
-				System.out.println(sessionid + " " + s.toString());
+				//Debug System.out.println(sessionid + " " + s.toString());
 				if (s.toString().equals(sessionid)) {
 					//DEBUG System.out.println("equal");
 					sessions.add(s);
@@ -106,8 +106,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	public boolean addCourse(Course course, Course.Session[] sessions) {
 		// if the course has already been enrolled, fails
 		if (getEnrolled().containsKey(course)) {
-
-			System.out.println("0reached");
+			//Debug System.out.println("0reached");
 			return false;
 		}
 		// ensure all provided sessions belong to the course
@@ -371,24 +370,28 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	
 	private Course selectedCourse = null;
 	
+	public Course getSelectedCourse() {
+		return selectedCourse;
+	}
 	
 	@Override
 	public void courseSelected(String courseCode) {
+		//DEBUG: JOptionPane.showMessageDialog(null, courseCode);
 		for(Course c : this.enrolled.keySet()) {
 			if (c.getCode().toString().equals(courseCode)) {
 				if (selectedCourse != null) this.gui.unselectSlots(selectedCourse.getCode().toString());
 				selectedCourse = c;
-				//DEBUG: JOptionPane.showMessageDialog(null, courseCode);
+				//DEBUG:  JOptionPane.showMessageDialog(null, courseCode);
 				this.gui.selectSlots(courseCode);
 				return;
 			}
-			else throw new java.util.NoSuchElementException("Cannot find the course for selection.");
 		}
-		
+		throw new java.util.NoSuchElementException("Cannot find the course for selection: " + courseCode);
 	}
 
 	@Override
-	public void courseUnselected(String courseCode) {
+	public void courseUnselected() {
+		if (selectedCourse != null) this.gui.unselectSlots(selectedCourse.getCode().toString());
 		selectedCourse = null;
 	}
 
