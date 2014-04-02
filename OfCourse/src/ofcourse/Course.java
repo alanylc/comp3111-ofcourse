@@ -505,7 +505,7 @@ public class Course extends Ratable {
 		/**
 		 * Sets the session type of this session.
 		 * 
-		 * @param A <tt>SessionType</tt> enum. Lecture, Laboratory, Tutorial or Research
+		 * @param sType A <tt>SessionType</tt> enum. Lecture, Laboratory, Tutorial or Research
 		 */
 		public void setSType(SessionType sType) {
 			this.sType = sType;
@@ -523,7 +523,7 @@ public class Course extends Ratable {
 		/**
 		 * Sets the session number,e.g. for LA2, the session number is 2.
 		 * 
-		 * @param The session number of this session
+		 * @param sessionNumber The session number of this session
 		 */
 		public void setSNo(int sessionNumber) {
 			//TODO: check valid arguments
@@ -561,7 +561,7 @@ public class Course extends Ratable {
 		/**
 		 * Sets the schedule of this session.
 		 * 
-		 * @param An array of <tt>TimePeriod</tt>. Each of them represent a continuous period of a lesson of this session.
+		 * @param schedule An array of <tt>TimePeriod</tt>. Each of them represent a continuous period of a lesson of this session.
 		 */
 		public void setSchedule(Set<TimePeriod> schedule) {
 			this.schedule = new HashSet<TimePeriod>(schedule);//Must be a copy to prevent accidental modification
@@ -588,7 +588,7 @@ public class Course extends Ratable {
 		/**
 		 * Sets all instructors teaching the session.
 		 * 
-		 * @param An array of <tt>Instructor</tt> that are teaching the course.
+		 * @param instructors An array of <tt>Instructor</tt> that are teaching the course.
 		 */
 		public void setInstructors(Set<Instructor> instructors) {
 			this.instructors = new HashSet<Instructor>(instructors);//Must be a copy to prevent accidental modification
