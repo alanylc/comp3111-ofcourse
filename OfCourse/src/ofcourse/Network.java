@@ -19,7 +19,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-public class Network {
+public class Network {//chk courseParse.out() for implementation of 
 	private String username;
 	private String password; //store user password, always encrypted
 	private final String URL = "http://vtnetwork.synology.me/3111/";
@@ -32,6 +32,12 @@ public class Network {
 	}
 	public static Network getOurNetwork(){
 		return ourNetwork;
+	}
+	public static String getOurNetworkUserName(){
+		return ourNetwork.username;
+	}
+	public static String getOurNetworkPassword(){
+		return ourNetwork.password;
 	}
 	public static Network login(String username, String password){
 		ourNetwork.username=username;
@@ -291,10 +297,10 @@ public class Network {
 		// 200 not loggined but doing activities that need to login(friend get/set, myfav,etc)
 		// 404 Query return false: SQL server connection failed
 		// TODO Auto-generated method stub
-
+		initialize();
 		System.out.println("New Network");
 		Network x = getOurNetwork();
-		String ITSC = "testaaa";
+		String ITSC = "ctestcac";
 		System.out.println("Registering " + ITSC);
 		System.out.println(x.registerB(ITSC));// if 100 then ok (insertB is used
 												// since I don't want to send
@@ -319,7 +325,7 @@ public class Network {
 		System.out.println(x.firstNewPW(s, "666"));// if 100 then ok
 
 		System.out.println("Set new pwd "+ "pwd=666 to pwd=aaa");
-		System.out.println(x.newPW("666", "aaa"));// if 100 then ok
+		System.out.println(x.newPW("666", "ccc"));// if 100 then ok
 
 		
 		
@@ -349,7 +355,7 @@ public class Network {
 		System.out.println(x.comment(Course, Grade, Comment));// if 100 then ok
 
 
-		System.out.println("Get a comment");
+		System.out.println("Get comments of one course");
 		x.printArray(x.getCourse(Course));// get course comments(2d array)
 
 		Course = "COMP";
@@ -362,12 +368,12 @@ public class Network {
 												// avg rating
 
 		System.out.println("Send a friend request to B");
-		String friendB = "testaab";
+		String friendB = "ctestaab";
 		System.out.println(x.friendReq(friendB));// if 100 then ok
 
 
 		System.out.println("Login as B");
-		ITSC = "testaab";
+		ITSC = "ctestaab";
 		x = login(ITSC, "bbb");
 /*
 		System.out.println("Set friendB pwd for first time");
@@ -417,7 +423,7 @@ public class Network {
 		System.out.println(x.comment(Course, Grade, Comment));// if 100 then ok
 		
 		System.out.println("Send a friend request to B");
-		friendB = "testaab";
+		friendB = "ctestaab";
 		System.out.println(x.friendReq(friendB));// if 100 then ok
 
 		System.out.println("All the following does not need to login, should return appropriate value");
@@ -434,6 +440,12 @@ public class Network {
 												// avg rating
 
 
+	}
+	public static void initialize() {
+		// TODO Auto-generated method stub
+		String[][] empty = { { "", "" } };
+		Network x = getOurNetwork();
+		x.POST("initialize.php", empty);
 	}
 
 }
