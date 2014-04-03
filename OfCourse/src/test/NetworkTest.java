@@ -27,7 +27,7 @@ public class NetworkTest {
 
 	@Before
 	public void setUp() throws Exception {
-		Network.login("u", "p");
+		//Network.login("u", "p");
 		
 	}
 
@@ -57,7 +57,7 @@ public class NetworkTest {
 	}
 
 	@Test
-	public void testDataCut() {//case for 4*2 items
+	public void testDataCut() {//case for 4*2 items, note that third item MUST be hax
 		String test="ItemA1ItemA24974656d4133ItemA4ItemB1ItemB24974656d4233ItemB4";
 		Network a=Network.getOurNetwork();
 		String[][] result=a.dataCut(test, 4);
@@ -254,6 +254,16 @@ public class NetworkTest {
 	public void testGetCourse() {
 		Network a=Network.getOurNetwork();
 		Network.login(username[2], password[2]);
+		String Course="COMP3111";
+		String[][] expected={{"ctestcac","4","更ら戳"},{"ctestcaa","4","更ら戳"}};
+		String[][] actual=a.getCourse(Course);
+		String[][] actual2={{actual[0][0],actual[0][1],actual[0][2]},{actual[1][0],actual[1][1],actual[1][2]}};
+		assertArrayEquals(expected,actual2);
+	}
+	@Test
+	public void testGetCourse2() {//case for not logged in
+		Network a=Network.getOurNetwork();
+		Network.logout();
 		String Course="COMP3111";
 		String[][] expected={{"ctestcac","4","更ら戳"},{"ctestcaa","4","更ら戳"}};
 		String[][] actual=a.getCourse(Course);

@@ -281,9 +281,9 @@ public class Network {//chk courseParse.out() for implementation of
 		return newpw;
 	}
 	/**
-	 * test run:
+	 * Before every test run:
 	 * 1. Go to server and remove testaaa user 
-	 * 2. remove A and B's entry on friend.
+	 * 2. remove testaaa and ctestaab's entry on friend.
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -292,11 +292,12 @@ public class Network {//chk courseParse.out() for implementation of
 		// 002 wrong Name/pw
 		// 003 email not sent
 		// 004 duplicate entry when insert 
-		// 005 entry not exist when update
+		// 005 entry not exist when update (set friend with non existant friend request)
 		// 100 ok
 		// 200 not loggined but doing activities that need to login(friend get/set, myfav,etc)
-		// 404 Query return false: SQL server connection failed
+		// 404 Query return false: SQL server connection failed (not possible to replicate)
 		// TODO Auto-generated method stub
+		
 		initialize();
 		System.out.println("New Network");
 		Network x = getOurNetwork();
