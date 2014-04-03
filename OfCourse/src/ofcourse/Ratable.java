@@ -48,7 +48,7 @@ public abstract class Ratable {
 	public ArrayList<Comments> getComments() {
 		return comments;
 	}
-	public void parseComments() {
+	public void parseComments() {	//for course only
 		Network a=Network.getOurNetwork();
 		try{
 			String[][] commentsForCourse=a.getCourse(name.substring(0, 4)+name.substring(5, 9));

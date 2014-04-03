@@ -27,7 +27,6 @@ public class NetworkTest {
 
 	@Before
 	public void setUp() throws Exception {
-		//Network.login("u", "p");
 		
 	}
 
@@ -37,6 +36,7 @@ public class NetworkTest {
 
 	@Test
 	public void testGetOurNetwork() {
+		Network.login("u", "p");
 		Network.getOurNetwork();
 		assertEquals("u",Network.getOurNetworkUserName());
 		assertEquals("b3a54611f6b44141ce5c7884c352b2a7f7128cbc486fdf058d87144e0d8a2ce9",Network.getOurNetworkPassword());
@@ -336,10 +336,5 @@ public class NetworkTest {
 		String expected="200";
 		assertEquals(expected,a.setMyFav("favv"));
 	}
-	/*
-	@Test
-	public void testTestPassword() {
-		fail("Not yet implemented");
-	}
-*/
+
 }

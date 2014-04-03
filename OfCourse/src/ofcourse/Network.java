@@ -267,19 +267,13 @@ public class Network {//chk courseParse.out() for implementation of
 			}
 
 			returned = result.toString();
-		} catch (Exception e) {
-			return e.toString();
+		} catch (Exception e) {// If no Internet or other exception related to PHP POST, return 404 error
+			return "404";
 		}
 		return returned;
 	}
 
-	public String testPassword(String a) {
-		String[][] newpwA = { { "ppw", a }, { "npw", a } };
-		String newpw = this.POST("newpw.php", newpwA);
-		if (newpw.equals("100"))
-			ourNetwork.password = a;
-		return newpw;
-	}
+
 	/**
 	 * Before every test run:
 	 * 1. Go to server and remove testaaa user 
@@ -290,14 +284,14 @@ public class Network {//chk courseParse.out() for implementation of
 		// 000 char error
 		// 001 Name registered
 		// 002 wrong Name/pw
-		// 003 email not sent
-		// 004 duplicate entry when insert 
+		// 003 email not sent (unable to replicate)
+		// 004 duplicate entry when insert (friend request)
 		// 005 entry not exist when update (set friend with non existant friend request)
 		// 100 ok
 		// 200 not loggined but doing activities that need to login(friend get/set, myfav,etc)
-		// 404 Query return false: SQL server connection failed (not possible to replicate)
+		// 404 Query return false: SQL server connection failed or no Internet or Parse error due to corrupted package
 		// TODO Auto-generated method stub
-		
+		/*
 		initialize();
 		System.out.println("New Network");
 		Network x = getOurNetwork();
@@ -317,11 +311,11 @@ public class Network {//chk courseParse.out() for implementation of
 		
 		System.out.print("Recieved Pasword: ");
 		String s = new Scanner(System.in).nextLine();
-		/*
-		System.out.println("Test password");
-		System.out.println(x.testPassword(s));// if 100 then ok
 		
-*/
+		//System.out.println("Test password");
+		//System.out.println(x.testPassword(s));// if 100 then ok
+		
+
 		System.out.println("Set pwd first time " + "pwd=(original) to pwd=666" );
 		System.out.println(x.firstNewPW(s, "666"));// if 100 then ok
 
@@ -376,10 +370,10 @@ public class Network {//chk courseParse.out() for implementation of
 		System.out.println("Login as B");
 		ITSC = "ctestaab";
 		x = login(ITSC, "bbb");
-/*
-		System.out.println("Set friendB pwd for first time");
-		System.out.println(x.firstNewPW("bbb", "bbb"));// if 100 then ok
-*/
+
+		//System.out.println("Set friendB pwd for first time");
+		//System.out.println(x.firstNewPW("bbb", "bbb"));// if 100 then ok
+
 		System.out.println("Get B s friend request");
 		System.out.println(x.getReqFriendList());// reqfriend1!reqfriend2!....!
 
@@ -440,7 +434,7 @@ public class Network {//chk courseParse.out() for implementation of
 		x.printArray(x.getSummary(Course));// show one comp course with its
 												// avg rating
 
-
+*/
 	}
 	public static void initialize() {
 		// TODO Auto-generated method stub
