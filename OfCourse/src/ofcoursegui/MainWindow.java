@@ -233,8 +233,8 @@ public class MainWindow extends JFrame {
 						e.printStackTrace();
 					}
 				}*/
-				boolean result =  own_table.addCourse("COMP2012 ", new String[] { "L1", "LA1A" } );
-				boolean result2 =  own_table.addCourse("LANG2030H", new String[] { "T1" } );
+				boolean result =  (own_table.addCourse("COMP2012 ", new String[] { "L1", "LA1A" } ) == TimetableError.NoError);
+				boolean result2 =  (own_table.addCourse("LANG2030H", new String[] { "T1" } )  == TimetableError.NoError);
 				//DEBUG System.out.println(result);
 				
 			}
