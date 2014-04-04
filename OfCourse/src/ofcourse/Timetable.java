@@ -218,7 +218,10 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	 * Add course with <tt>course_id</tt> and specified sessions (<tt>sessions_id</tt>)
 	 * @param course_id Course ID of the course
 	 * @param sessions Array of String of session ID
-	 * @return 
+	 * @return <tt>TimetableError.NoError</tt> if add success,
+	 *  otherwise return the first matched of <tt>TimetableError</tt> in following order:
+	 *   <tt>CourseNotExists, InvalidSessions, CourseEnrolled, SessionTypeMissed, DuplicateSessionType, 
+	 *    SessionsNotMatched, SelfConflicts, TimeConflicts</tt>
 	 */
 	public TimetableError addCourse(String course_id, String[] sessions_id) {
 		ArrayList<Course.Session> sessions = new ArrayList<Course.Session>();
@@ -233,7 +236,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 				}
 			}
 		}
-		if (sessions == null || sessions.size() == 0) 
+		if (sessions == null || sessions.size() == 0 || sessions.size() != sessions_id.length) 
 			return TimetableError.InvalidSessions;
 
 		return addCourse(c, sessions.toArray(new Course.Session[sessions.size()]));
@@ -243,7 +246,10 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	 * Add <tt>Course</tt> with specified <tt>sessions</tt>
 	 * @param course
 	 * @param sessions
-	 * @return 
+	 * @return <tt>TimetableError.NoError</tt> if add success,
+	 *  otherwise return the first matched of <tt>TimetableError</tt> in following order:
+	 *   <tt>CourseEnrolled, InvalidSessions, SessionTypeMissed, DuplicateSessionType, 
+	 *    SessionsNotMatched, SelfConflicts, TimeConflicts</tt>
 	 */
 	public TimetableError addCourse(Course course, Course.Session[] sessions) {
 		// if the course has already been enrolled, fails
@@ -254,6 +260,9 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		ArrayList<Course.Session> trueSessions = new ArrayList<Course.Session>();
 		for (Course.Session s : sessions) {
 			if(course.getSessions().contains(s)) trueSessions.add(s);
+		}
+		if (trueSessions.size() != sessions.length) {
+			return TimetableError.InvalidSessions;
 		}
 				int flag = containsAllSessionTypes(course, trueSessions);
 		if (flag==1) { // check if all session types (lecture/lab/tutorial) are included
@@ -303,7 +312,8 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	/**
 	 * Drop <tt>course</tt> from the timetable, and trigger GUI repaint
 	 * @param course_id Course ID of course to be dropped
-	 * @return 
+	 * @return <tt>TimetableError.NoError</tt> if drop success, otherwise return first matched of
+	 *  <tt>TimetableError</tt> in the following order: <tt>CourseNotExists, CourseNotEnrolled</tt>
 	 */
 	public TimetableError dropCourse(String course_id) {
 		return dropCourse(Course.getCourseByName(course_id));
@@ -312,7 +322,8 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	/**
 	 * Drop <tt>course</tt> from the timetable, and trigger GUI repaint
 	 * @param course Course to be dropped
-	 * @return 
+	 * @return <tt>TimetableError.NoError</tt> if drop success, otherwise return first matched of
+	 *  <tt>TimetableError</tt> in the following order: <tt>CourseNotExists, CourseNotEnrolled</tt>
 	 */
 	public TimetableError dropCourse(Course course) {
 		if (course == null) 
@@ -333,7 +344,11 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	 * @param origin Original course
 	 * @param target Target course to replace original course
 	 * @param sessions Sessions of target course to be enrolled
-	 * @return TRUE if swap success, FALSE if swap fail
+	 * @return <tt>TimetableError.NoError</tt> if drop success, otherwise return first matched of
+	 *  <tt>TimetableError</tt> in the following order: origin - <tt>CourseEnrolled</tt>;  
+	 *  target - <tt>TimeConflicts, CourseNotExists, CourseNotEnrolled,
+	 *   CourseEnrolled, InvalidSessions, SessionTypeMissed, DuplicateSessionType, 
+	 *    SessionsNotMatched, SelfConflicts, TimeConflicts</tt>
 	 */
 	public TimetableError swapCourse(Course origin, Course target, Course.Session[] sessions) {
 		boolean conflict = false;
@@ -370,8 +385,11 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 			ArrayList<Course.Session> temp = getEnrolled().get(origin);
 			TimetableError er = dropCourse(origin);
 			if(er != TimetableError.NoError) return er;
-			if(addCourse(target, sessions) != TimetableError.NoError) {
-				addCourse(origin, temp.toArray(new Course.Session[temp.size()]));
+			er = addCourse(target, sessions);
+			if(er != TimetableError.NoError) { 
+				// if add course fails after dropping, re-add the dropped course
+				addCourse(origin, temp.toArray(new Course.Session[temp.size()])); // * what if this line fails
+				return er;
 			}
 		}
 
