@@ -236,7 +236,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 				}
 			}
 		}
-		if (sessions == null || sessions.size() == 0 || sessions.size() != sessions_id.length) 
+		if (sessions.size() == 0 || sessions.size() != sessions_id.length) 
 			return TimetableError.InvalidSessions;
 
 		return addCourse(c, sessions.toArray(new Course.Session[sessions.size()]));
@@ -481,13 +481,12 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 			bw.write(line + "\n");
 		}
 		catch (FileNotFoundException ex) {
-			//System.out.println(">> Error: File ("+ filename +") Not Found");
 			return false;
 		}
 		catch (IOException ex) {
-			//System.out.println(">> Error: File ("+ filename +") Writing Error");
 			return false;
 		}
+		
 		finally {
 			try {
 				if (bw!=null) bw.close();
@@ -519,11 +518,9 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 			importStatus = importString(strArr.get(0));
 		}
 		catch (FileNotFoundException ex) {
-			//System.out.println(">> Error: File ("+ filename +") Not Found");
 			return false;
 		}
 		catch (IOException ex) {
-			//System.out.println(">> Error: File ("+ filename +") Reading Error");
 			return false;
 		}
 		finally {

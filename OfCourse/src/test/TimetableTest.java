@@ -2,6 +2,12 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -123,6 +129,16 @@ public class TimetableTest {
 	public void testAddCourseStringStringArray05() { // invalid course id
 		assertEquals(TimetableError.CourseNotExists, table.addCourse("COMP1001K", new String[]{"L1", "LA1"}));
 	}
+	
+	@Test
+	public void testAddCourseStringStringArray06() { // true session = empty
+		assertEquals(TimetableError.InvalidSessions, table.addCourse("COMP1001 ", new String[]{"L11", "LA11"}));
+	}
+	
+	@Test
+	public void testAddCourseStringStringArray07() { // one session is invalid
+		assertEquals(TimetableError.InvalidSessions, table.addCourse("COMP1001 ", new String[]{"L11", "LA1"}));
+	}
 
 	@Test
 	public void testAddCourseCourseSessionArray01() { // check course added
@@ -166,6 +182,30 @@ public class TimetableTest {
 	public void testAddCourseCourseSessionArray07() { // time conflicts with enrolled
 		Course comp = Course.getCourseByName("COMP3721 ");
 		assertEquals(TimetableError.TimeConflicts, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("T1")}));
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray08() { // miss session type
+		Course comp = Course.getCourseByName("COMP3721 ");
+		assertEquals(TimetableError.SessionTypeMissed, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("T1")}));
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray09() { // self conflicts in sessions
+		Course comp = Course.getCourseByName("COMP1022Q");
+		assertEquals(TimetableError.SelfConflicts, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L3"), comp.getSessionByString("LA6")}));
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray10() { // matching required and success
+		Course comp = Course.getCourseByName("COMP2012 ");
+		assertEquals(TimetableError.NoError, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1A")}));
+	}
+	
+	@Test
+	public void testAddCourseCourseSessionArray11() { // matching required and fail
+		Course comp = Course.getCourseByName("COMP2012 ");
+		assertEquals(TimetableError.SessionsNotMatched, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L2"), comp.getSessionByString("LA1A")}));
 	}
 
 	@Test
@@ -298,7 +338,7 @@ public class TimetableTest {
 	}
 	
 	@Test
-	public void testImportTable01() {
+	public void testImportString01() {
 		Timetable table2 = new Timetable(9);
 		String exportLine = table.exportString();
 		boolean success = table2.importString(exportLine);
@@ -306,7 +346,7 @@ public class TimetableTest {
 	}
 	
 	@Test
-	public void testImportTable02() {
+	public void testImportString02() {
 		Timetable table2 = new Timetable(9);
 		assertTrue(table2.importString(table.exportString()));
 		String[] expected = new String[] {"5", "1851", "1860", "1855"};
@@ -332,7 +372,7 @@ public class TimetableTest {
 	}
 	
 	@Test
-	public void testImportTable03() {
+	public void testImportString03() {
 		table.addCourse("COMP1900 ", new String[]{"T1"});
 		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
 		Timetable table2 = new Timetable(9);
@@ -360,60 +400,92 @@ public class TimetableTest {
 	}
 	
 	@Test
-	public void testImportTable04() {
+	public void testImportString04() {
 		String importLine = "5;1823,;33,1860,1855,;1780,1784,;";  // 33 is invalid class number
 		assertFalse(table.importString(importLine));
 	}
 	
 	@Test
-	public void testImportTable05() {
+	public void testImportString05() {
 		String importLine = "5;1823,;1780,1860,1855,;1780,1784,;";  // 1780 does not belong to the same course 
 		assertFalse(table.importString(importLine));
 	}
 	
 	@Test
-	public void testImportTable06() {
+	public void testImportString06() {
 		String importLine = "5;1823,;178..0,1860,1855,;1780,1784,;";  // non-integer
 		assertFalse(table.importString(importLine));
 	}
 	
 	@Test
-	public void testImportTable07() {
+	public void testImportString07() {
 		String importLine = "5;1823,;1851,1860,1855,;1780,1784,;1823;";  // add duplicated course, to make addCourse fails
 		assertFalse(table.importString(importLine));
 	}
 	
-//	@Test
-//	public void testExportString01() {
-//		String expected = "COMP2611 ;L1,T1,LA1";
-//		assertEquals(expected, table.exportString());
-//	}
-//	
-//	@Test
-//	public void testExportString02() {
-//		table.addCourse("COMP1900 ", new String[]{"T1"});
-//		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
-//		String expected = "COMP1001 ;L1,LA1;COMP1900 ;T1;COMP2611 ;L1,T1,LA1";
-//		assertEquals(expected, table.exportString());
-//	}
-//
-//	@Test
-//	public void testImportFrom01() {
-//		Timetable table2 = new Timetable(9);
-//		table2.importFrom(table.exportString());
-//		String expected = "COMP2611 ;L1,T1,LA1";
-//		assertEquals(expected, table2.exportString());
-//	}
-//	
-//	@Test
-//	public void testImportFrom02() {
-//		Timetable table2 = new Timetable(9);
-//		table2.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
-//		table2.importFrom(table.exportString());
-//		String expected = "COMP1001 ;L1,LA1;COMP2611 ;L1,T1,LA1";
-//		assertEquals(expected, table2.exportString());
-//	}
+	@Test
+	public void testExportFile() {
+		String expected = table.exportString();
+		String actuals = null;
+		table.exportFile(filename);
+		ArrayList<String> strArr = new ArrayList<String>();
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(filename));
+			String line = br.readLine();
+			while (line != null) {
+				strArr.add(line.trim());
+				line = br.readLine();
+			}
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if (br!=null) br.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		actuals = strArr.get(0);
+		assertEquals(expected, actuals);
+	}
+	
+	@Test
+	public void testImportFile() {
+		String expected = null, actuals = null;
+		Timetable table2 = new Timetable(0);
+		ArrayList<String> strArr = new ArrayList<String>();
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(filename));
+			String line = br.readLine();
+			while (line != null) {
+				strArr.add(line.trim());
+				line = br.readLine();
+			}
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if (br!=null) br.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		table2.importString(strArr.get(0));
+		expected = table2.exportString();
+		table.importFile(filename);
+		actuals = table.exportString();
+		assertEquals(expected, actuals);
+	}
+	
+	
 	
 	private Timetable table;
+	private String filename = "testFile.txt"; // test file of import, export file
 
 }
