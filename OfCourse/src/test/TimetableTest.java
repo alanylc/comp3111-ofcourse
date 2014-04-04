@@ -8,6 +8,7 @@ import java.util.HashMap;
 import ofcourse.Course;
 import ofcourse.TimeSlot;
 import ofcourse.Timetable;
+import ofcourse.TimetableError;
 import ofcourse.courseParse;
 
 import org.junit.After;
@@ -110,17 +111,17 @@ public class TimetableTest {
 	
 	@Test
 	public void testAddCourseStringStringArray03() { // return true
-		assertTrue(table.addCourse("COMP1001 ", new String[]{"L1", "LA1"}));
+		assertEquals(TimetableError.NoError, table.addCourse("COMP1001 ", new String[]{"L1", "LA1"}));
 	}
 	
 	@Test
 	public void testAddCourseStringStringArray04() { // invalid session string
-		assertFalse(table.addCourse("COMP1001 ", new String[]{"K1", "LA1"}));
+		assertEquals(TimetableError.InvalidSessions, table.addCourse("COMP1001 ", new String[]{"L8", "LA9"}));
 	}
 	
 	@Test
 	public void testAddCourseStringStringArray05() { // invalid course id
-		assertFalse(table.addCourse("COMP1001K", new String[]{"L1", "LA1"}));
+		assertEquals(TimetableError.CourseNotExists, table.addCourse("COMP1001K", new String[]{"L1", "LA1"}));
 	}
 
 	@Test
@@ -140,31 +141,31 @@ public class TimetableTest {
 	@Test
 	public void testAddCourseCourseSessionArray03() { // return true
 		Course comp = Course.getCourseByName("COMP1001 ");
-		assertTrue(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
+		assertEquals(TimetableError.NoError, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
 	public void testAddCourseCourseSessionArray04() { // add course that enrolled
 		Course comp = Course.getCourseByName("COMP2611 ");
-		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("T2"), comp.getSessionByString("LA1")}));
+		assertEquals(TimetableError.CourseEnrolled, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("T2"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
 	public void testAddCourseCourseSessionArray05() { // not exist session, L8 will not be in trueSessions, thus failing the test that all session type included
 		Course comp = Course.getCourseByName("COMP1001 ");
-		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L8"), comp.getSessionByString("LA1")}));
+		assertEquals(TimetableError.InvalidSessions, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L8"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
-	public void testAddCourseCourseSessionArray06() { // time conflicts between sessions within a course, return false
+	public void testAddCourseCourseSessionArray06() { // duplicate session type
 		Course comp = Course.getCourseByName("COMP2900 ");
-		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("T1"), comp.getSessionByString("T2")}));
+		assertEquals(TimetableError.DuplicateSessionType, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("T1"), comp.getSessionByString("T2")}));
 	}
 	
 	@Test
 	public void testAddCourseCourseSessionArray07() { // time conflicts with enrolled
 		Course comp = Course.getCourseByName("COMP3721 ");
-		assertFalse(table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("T1")}));
+		assertEquals(TimetableError.TimeConflicts, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("T1")}));
 	}
 
 	@Test
@@ -181,12 +182,12 @@ public class TimetableTest {
 	
 	@Test
 	public void testDropCourseCourse02() { // null parameter due to non-exist course
-		assertFalse(table.dropCourse(Course.getCourseByName("COMP1000K")));
+		assertEquals(TimetableError.CourseNotExists, table.dropCourse(Course.getCourseByName("COMP1000K")));
 	}
 	
 	@Test
 	public void testDropCourseCourse03() { // course not enrolled
-		assertFalse(table.dropCourse(Course.getCourseByName("COMP1001 ")));
+		assertEquals(TimetableError.CourseNotEnrolled, table.dropCourse(Course.getCourseByName("COMP1001 ")));
 	}
 
 	@Test
@@ -213,14 +214,14 @@ public class TimetableTest {
 	@Test
 	public void testSwapCourse04() { // return true
 		Course comp = Course.getCourseByName("COMP1001 ");
-		assertTrue(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
+		assertEquals(TimetableError.NoError, table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
 	public void testSwapCourse05() { // add one more course which will conflict with course to swap, return false
 		table.addCourse("COMP3711 ", new String[]{"L1", "T1"});
 		Course comp = Course.getCourseByName("COMP1001 ");
-		assertFalse(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
+		assertEquals(TimetableError.TimeConflicts, table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
@@ -243,13 +244,13 @@ public class TimetableTest {
 	public void testSwapCourse08() { // swap with enrolled
 		Course comp = Course.getCourseByName("COMP1001 ");
 		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
-		assertFalse(table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
+		assertEquals(TimetableError.CourseEnrolled, table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
 	}
 	
 	@Test
 	public void testExportTable01() {
 		String[] expected = new String[] {"5", "1851", "1860", "1855"}; // TID, L1, T1, LA1
-		String exportLine = table.exportTable();
+		String exportLine = table.exportString();
 		String[] results = exportLine.split(Timetable.delim);
 		int count = 0; // check number of integers in the string
 		for (String s : results) {
@@ -275,7 +276,7 @@ public class TimetableTest {
 		table.addCourse("COMP1900 ", new String[]{"T1"});
 		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
 		String[] expected = new String[] {"5", "1851", "1860", "1855", "1823", "1780", "1784"};
-		String exportLine = table.exportTable();
+		String exportLine = table.exportString();
 		String[] results = exportLine.split(Timetable.delim);
 		int count = 0; // check number of integers in the string
 		for (String s : results) {
@@ -299,17 +300,17 @@ public class TimetableTest {
 	@Test
 	public void testImportTable01() {
 		Timetable table2 = new Timetable(9);
-		String exportLine = table.exportTable();
-		boolean success = table2.importTable(exportLine);
+		String exportLine = table.exportString();
+		boolean success = table2.importString(exportLine);
 		assertTrue(success);
 	}
 	
 	@Test
 	public void testImportTable02() {
 		Timetable table2 = new Timetable(9);
-		assertTrue(table2.importTable(table.exportTable()));
+		assertTrue(table2.importString(table.exportString()));
 		String[] expected = new String[] {"5", "1851", "1860", "1855"};
-		String exportLine = table2.exportTable();
+		String exportLine = table2.exportString();
 		String[] results = exportLine.split(Timetable.delim);
 		int count = 0; // check number of integers in the string
 		for (String s : results) {
@@ -335,9 +336,9 @@ public class TimetableTest {
 		table.addCourse("COMP1900 ", new String[]{"T1"});
 		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
 		Timetable table2 = new Timetable(9);
-		table2.importTable(table.exportTable());
+		table2.importString(table.exportString());
 		String[] expected = new String[] {"5", "1851", "1860", "1855", "1823", "1780", "1784"};
-		String exportLine = table2.exportTable();
+		String exportLine = table2.exportString();
 		String[] results = exportLine.split(Timetable.delim);
 		int count = 0; // check number of integers in the string
 		for (String s : results) {
@@ -361,25 +362,25 @@ public class TimetableTest {
 	@Test
 	public void testImportTable04() {
 		String importLine = "5;1823,;33,1860,1855,;1780,1784,;";  // 33 is invalid class number
-		assertFalse(table.importTable(importLine));
+		assertFalse(table.importString(importLine));
 	}
 	
 	@Test
 	public void testImportTable05() {
 		String importLine = "5;1823,;1780,1860,1855,;1780,1784,;";  // 1780 does not belong to the same course 
-		assertFalse(table.importTable(importLine));
+		assertFalse(table.importString(importLine));
 	}
 	
 	@Test
 	public void testImportTable06() {
 		String importLine = "5;1823,;178..0,1860,1855,;1780,1784,;";  // non-integer
-		assertFalse(table.importTable(importLine));
+		assertFalse(table.importString(importLine));
 	}
 	
 	@Test
 	public void testImportTable07() {
 		String importLine = "5;1823,;1851,1860,1855,;1780,1784,;1823;";  // add duplicated course, to make addCourse fails
-		assertFalse(table.importTable(importLine));
+		assertFalse(table.importString(importLine));
 	}
 	
 //	@Test
