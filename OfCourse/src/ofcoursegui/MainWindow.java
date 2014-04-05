@@ -221,8 +221,8 @@ public class MainWindow extends JFrame {
 		comp3111.setSessions(ss);*/
 		
 		
-		JButton btnNewButton_2 = new JButton("Enroll...");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton btnEnroll = new JButton("Enroll...");
+		btnEnroll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				/*if(linkage.containsKey(tabpage.getSelectedComponent())) {
 					TimeTableGUI test = linkage.get(tabpage.getSelectedComponent());
@@ -235,12 +235,13 @@ public class MainWindow extends JFrame {
 				}*/
 				boolean result =  (own_table.addCourse("COMP2012 ", new String[] { "L1", "LA1A" } ) == TimetableError.NoError);
 				boolean result2 =  (own_table.addCourse("LANG2030H", new String[] { "T1" } )  == TimetableError.NoError);
-				//DEBUG System.out.println(result);
+				//DEBUG System.out.println("result: " + result);
+				//DEBUG System.out.println("result: " + result2);
 				
 			}
 		});
-		btnNewButton_2.setBounds(777, 12, 98, 28);
-		contentPane.add(btnNewButton_2);
+		btnEnroll.setBounds(777, 12, 98, 28);
+		contentPane.add(btnEnroll);
 		
 		//JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		searchTabpage.setBounds(12, 52, 533, 603);
@@ -277,7 +278,7 @@ public class MainWindow extends JFrame {
 		
 		JList list = new JList();
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1000", "2000", "3000", "4000", "5000", "6000", "7000"};
+			int[] values = new int[] {1000, 2000, 3000, 4000, 5000, 6000, 7000};
 			public int getSize() {
 				return values.length;
 			}
@@ -346,6 +347,19 @@ public class MainWindow extends JFrame {
 		lblMmmmmmmm.setForeground(Color.RED);
 		lblMmmmmmmm.setBackground(Color.WHITE);
 		lblMmmmmmmm.setOpaque(true);
+		
+		JButton btnDrop = new JButton("Drop...");
+		btnDrop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Course selection = own_table.getSelectedCourse();
+				if (selection != null) {
+					own_table.courseUnselected();
+					own_table.dropCourse(selection);
+				}
+			}
+		});
+		btnDrop.setBounds(887, 12, 98, 28);
+		contentPane.add(btnDrop);
 		lblMmmmmmmm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {

@@ -30,6 +30,9 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	private int table_id = -1;
 	private HashMap<Course, ArrayList<Course.Session>> enrolled = new HashMap<Course, ArrayList<Course.Session>>();
 	private ofcoursegui.TimeTableGUI gui = new ofcoursegui.TimeTableGUI();
+	public static String delim = ";", innerDelim = ",";
+	private Course selectedCourse = null;
+	
 	
 	{
 		gui.addcourseSelectListener(this);
@@ -48,6 +51,13 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	public Timetable(int tid, JTabbedPane targetTabbedPage) {
 		table_id = tid;
 		targetTabbedPage.add(Integer.toString(tid), gui);
+	}
+	/**
+	 * Get the selected course in GUI.
+	 * @return The Course that has been selected.
+	 */
+	public Course getSelectedCourse() {
+		return selectedCourse;
 	}
 	
 	/**
@@ -538,14 +548,6 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		return importStatus;
 	}
 	
-	public static String delim = ";", innerDelim = ",";
-	
-	private Course selectedCourse = null;
-	
-	public Course getSelectedCourse() {
-		return selectedCourse;
-	}
-	
 	@Override
 	public void courseSelected(String courseCode) {
 		//DEBUG: JOptionPane.showMessageDialog(null, courseCode);
@@ -553,7 +555,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 			if (c.getCode().toString().equals(courseCode)) {
 				if (selectedCourse != null) this.gui.unselectSlots(selectedCourse.getCode().toString());
 				selectedCourse = c;
-				//DEBUG:  JOptionPane.showMessageDialog(null, courseCode);
+				//DEBUG: JOptionPane.showMessageDialog(null, courseCode);
 				this.gui.selectSlots(courseCode);
 				return;
 			}

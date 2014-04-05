@@ -8,6 +8,7 @@ import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
@@ -197,7 +198,9 @@ public class TimeTableGUI extends JPanel{
 		}
 		//add click listener to each filled slot
 		for(JLabel l : labels) {
+			
 			l.addMouseListener(labelMouseListener);
+			
 		}
 		//add filled slots to list
 		if (filledSlots_new.containsKey(key)) {
@@ -221,8 +224,13 @@ public class TimeTableGUI extends JPanel{
 				l.setText("");
 				l.setBackground(Color.WHITE);
 				l.setOpaque(true);
+				l.setBorder(new LineBorder(Color.GRAY));
 				//remove any click listener
-				l.removeMouseListener(labelMouseListener);
+				//Debug  JOptionPane.showMessageDialog(null, l.getText() == null ? "" : l.getText());
+				MouseListener[] allListeners = l.getMouseListeners();
+				for (MouseListener ml : allListeners) {
+					l.removeMouseListener(ml);
+				}
 			}
 		}
 		filledSlots_new.remove(key);
@@ -365,7 +373,7 @@ public class TimeTableGUI extends JPanel{
 			JLabel label = new JLabel(weekDays[i]);
 			//parentPanel.add(label, Integer.toString((2 + i)) + ", 1");
 			add(label, Integer.toString((2 + i)) + ", 1");
-			label.setBorder(new LineBorder(new Color(99, 130, 191)));
+			label.setBorder(new LineBorder(Color.GRAY));
 			label.setPreferredSize(getNewStandardCellDimensionInstance());
 			label.setMinimumSize(getNewStandardCellDimensionInstance());
 			label.setMaximumSize(getNewStandardCellDimensionInstance());
@@ -395,7 +403,7 @@ public class TimeTableGUI extends JPanel{
 			labelTime.setPreferredSize(getNewStandardCellDimensionInstance());
 			labelTime.setMinimumSize(getNewStandardCellDimensionInstance());
 			labelTime.setMaximumSize(getNewStandardCellDimensionInstance());
-			labelTime.setBorder(new LineBorder(new Color(99, 130, 191)));
+			labelTime.setBorder(new LineBorder(Color.GRAY));
 
 			//parentPanel.add(labelTime, "1, " + i);
 			add(labelTime, "1, " + i);
@@ -419,7 +427,7 @@ public class TimeTableGUI extends JPanel{
 						.setPreferredSize(getNewStandardCellDimensionInstance());
 				this.jlabelarray[c - 2][r - 2]
 						.setSize(getNewStandardCellDimensionInstance());
-				this.jlabelarray[c - 2][r - 2].setBorder(new LineBorder(new Color(239, 228, 176)));
+				this.jlabelarray[c - 2][r - 2].setBorder(new LineBorder(Color.GRAY));
 				this.jlabelarray[c - 2][r - 2].setHorizontalAlignment(SwingConstants.CENTER);
 
 				this.jlabelarray[c - 2][r - 2].setBackground(Color.WHITE);
