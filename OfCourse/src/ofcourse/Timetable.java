@@ -20,7 +20,11 @@ import javax.swing.JTabbedPane;
 import ofcourse.Course.Session;
 import ofcoursegui.TimeTableGUI;
 
-
+/**
+ * <tt>Timetable</tt> stores courses enrolled, and provides methods to add, drop, swap courses from the timetable.
+ * @author Alan
+ *
+ */
 public class Timetable implements ofcoursegui.CourseSelectListener {
 	
 	private int table_id = -1;
