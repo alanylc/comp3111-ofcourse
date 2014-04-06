@@ -1,0 +1,154 @@
+// 000 char error
+		// 001 Name registered
+		// 002 wrong Name/pw
+		// 003 email not sent (unable to replicate)
+		// 004 duplicate entry when insert (friend request)
+		// 005 entry not exist when update (set friend with non existant friend request)
+		// 100 ok
+		// 200 not loggined but doing activities that need to login(friend get/set, myfav,etc)
+		// 404 Query return false: SQL server connection failed or no Internet or Parse error due to corrupted package
+		// TODO Auto-generated method stub
+		/*
+		initialize();
+		System.out.println("New Network");
+		Network x = getOurNetwork();
+		String ITSC = "ctestcac";
+		System.out.println("Registering " + ITSC);
+		System.out.println(x.registerB(ITSC));// if 100 then ok (insertB is used
+												// since I don't want to send
+												// email)
+
+		
+		
+		
+		
+		
+		//ITSC = "xxx";
+		//System.out.println("Another New Network " + ITSC + "pwd=aaa");
+		
+		System.out.print("Recieved Pasword: ");
+		String s = new Scanner(System.in).nextLine();
+		
+		//System.out.println("Test password");
+		//System.out.println(x.testPassword(s));// if 100 then ok
+		
+
+		System.out.println("Set pwd first time " + "pwd=(original) to pwd=666" );
+		System.out.println(x.firstNewPW(s, "666"));// if 100 then ok
+
+		System.out.println("Set new pwd "+ "pwd=666 to pwd=aaa");
+		System.out.println(x.newPW("666", "ccc"));// if 100 then ok
+
+		
+		
+		System.out.println("Login with new pwd");
+		x = login(ITSC, "aaa");
+
+		System.out.println("Set A's favourite");
+		String MyFav = "COMP3111";// Still not decided how to do this
+		
+		
+		System.out.println(x.setMyFav(MyFav));// if 100 then ok
+
+		System.out.println("Get A's favourite");
+		System.out.println(x.getMyFav());// myfav
+
+		System.out.println("Get A's firends");
+		System.out.println(x.getFriendList());// friend1!friend2!....!
+
+		System.out.println("Get A's requests");
+		System.out.println(x.getReqFriendList());// reqfriend1!reqfriend2!....!
+
+		System.out.println("Post a comment");
+		String Course = "COMP3111";
+		String Grade = "4";
+		String Comment = "上載日期";
+
+		System.out.println(x.comment(Course, Grade, Comment));// if 100 then ok
+
+
+		System.out.println("Get comments of one course");
+		x.printArray(x.getCourse(Course));// get course comments(2d array)
+
+		Course = "COMP";
+		System.out.println("Get summary for all course in one department: " + Course);
+		x.printArray(x.getSummary(Course));// show all comp course with their
+												// avg rating
+		Course = "COMP3111";
+		System.out.println("Get avg rating in one course: " + Course);
+		x.printArray(x.getSummary(Course));// show all comp course with their
+												// avg rating
+
+		System.out.println("Send a friend request to B");
+		String friendB = "ctestaab";
+		System.out.println(x.friendReq(friendB));// if 100 then ok
+
+
+		System.out.println("Login as B");
+		ITSC = "ctestaab";
+		x = login(ITSC, "bbb");
+
+		//System.out.println("Set friendB pwd for first time");
+		//System.out.println(x.firstNewPW("bbb", "bbb"));// if 100 then ok
+
+		System.out.println("Get B s friend request");
+		System.out.println(x.getReqFriendList());// reqfriend1!reqfriend2!....!
+
+		System.out.println("Accept friend request");
+		friendB = "testaaa";
+		System.out.println(x.friendSet(friendB));// if 100 then ok
+
+
+		System.out.println("Get B's friend list");
+		System.out.println(x.getFriendList());// friend1!friend2!....!
+		
+		System.out.println("Login back as A");
+		ITSC = "testaaa";
+		x = login(ITSC, "aaa");
+		
+		System.out.println("Get A's friend list");
+		System.out.println(x.getFriendList());// friend1!friend2!....!
+		
+		System.out.println("Behavior when logged out: All the following should return 200");
+		logout();
+
+		System.out.println("Set nobody's favourite");
+		MyFav = "COMP3111";// Still not decided how to do this
+		
+		
+		System.out.println(x.setMyFav(MyFav));// if 100 then ok
+
+		System.out.println("Get nobody's favourite");
+		System.out.println(x.getMyFav());// myfav
+
+		System.out.println("Get nobody's firends");
+		System.out.println(x.getFriendList());// friend1!friend2!....!
+
+		System.out.println("Get nobody's requests");
+		System.out.println(x.getReqFriendList());// reqfriend1!reqfriend2!....!
+
+		System.out.println("Post nobody's comment");
+		Course = "COMP3111";
+		Grade = "4";
+		Comment = "上載日期";
+
+		System.out.println(x.comment(Course, Grade, Comment));// if 100 then ok
+		
+		System.out.println("Send a friend request to B");
+		friendB = "ctestaab";
+		System.out.println(x.friendReq(friendB));// if 100 then ok
+
+		System.out.println("All the following does not need to login, should return appropriate value");
+		System.out.println("Get a comment");
+		x.printArray(x.getCourse(Course));// get course comments(2d array)
+
+		Course = "COMP";
+		System.out.println("Get summary for all course in one department: " + Course);
+		x.printArray(x.getSummary(Course));// show all comp course with their
+												// avg ratings
+		Course = "COMP3111";
+		System.out.println("Get avg rating in one course: " + Course);
+		x.printArray(x.getSummary(Course));// show one comp course with its
+												// avg rating
+
+*/
