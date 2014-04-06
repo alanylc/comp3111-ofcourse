@@ -291,7 +291,6 @@ public class TimeTableGUI extends JPanel{
 			new Color(255, 204, 255),
 			new Color(253, 157, 191),
 			new Color(252, 255, 191)};
-	private static int presetUsed = 0;
 	
 	public static Color getRandomBgColor() {
 		Random r = new Random();

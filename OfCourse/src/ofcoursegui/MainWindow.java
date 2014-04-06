@@ -84,12 +84,32 @@ public class MainWindow extends JFrame {
 			
 		}
 	}
-	
-	
-	
-	
 
-	private static final long serialVersionUID = 527580194533541981L;
+	JButton btnEnroll = new JButton("Enroll...");
+	public class EnrollButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			boolean result =  (own_table.addCourse("COMP2012 ", new String[] { "L1", "LA1A" } ) == TimetableError.NoError);
+			boolean result2 =  (own_table.addCourse("LANG2030H", new String[] { "T1" } )  == TimetableError.NoError);
+			//DEBUG System.out.println("result: " + result);
+			//DEBUG System.out.println("result: " + result2);
+			
+		}
+		
+	}
+	
+	JButton btnDrop = new JButton("Drop...");
+	public class DropButtonListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			Course selection = own_table.getSelectedCourse();
+			if (selection != null) {
+				own_table.courseUnselected();
+				own_table.dropCourse(selection);
+			}
+		}
+	}
+	
+	
 	private JPanel contentPane;
 	public JTabbedPane timetableTabpage = new JTabbedPane(JTabbedPane.TOP);
 	public JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
@@ -133,13 +153,13 @@ public class MainWindow extends JFrame {
 					for(courseParse cp : result) {
 						cc.addAll(cp.getCourses());
 					}
-					ArrayList<String> criteria = new ArrayList<String>();
+					/*ArrayList<String> criteria = new ArrayList<String>();
 					criteria.add("HUMA");
 					criteria.add("ECON");
 					SearchCourse cs = new SearchSubject(new SearchAllCourse(cc), criteria);
 					for(Course c : cs) {
 						System.out.println(c.toString());
-					}
+					}*/
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -192,7 +212,7 @@ public class MainWindow extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				TimeTableGUI test = new TimeTableGUI();
 				//JPanel testp = test.initilizeGUIComponent();
-				timetableTabpage.addTab("Whole New World", null, test, null);
+				timetableTabpage.addTab("20140401", null, test, null);
 				linkage.put(test, test);
 			}
 		});
@@ -211,35 +231,8 @@ public class MainWindow extends JFrame {
 		btnNewButton_1.setBounds(667, 12, 98, 28);
 		contentPane.add(btnNewButton_1);
 
-		/*ofcourse.Course comp3111 = new ofcourse.Course("COMP", 3111, ' ', "Software Engineering", false);
-		ArrayList<ofcourse.Course.Session> ss = new ArrayList<ofcourse.Course.Session>();
-		ofcourse.Course.Session session = comp3111.new Session(ofcourse.SessionType.Lecture, 1, 1234);
-		Set<ofcourse.TimePeriod> tp = new HashSet<ofcourse.TimePeriod>();
-		tp.add(new ofcourse.TimePeriod(ofcourse.TimeSlot.getTimeSlotByID(206), ofcourse.TimeSlot.getTimeSlotByID(212)));
-		session.setSchedule(tp);
-		ss.add(session);
-		comp3111.setSessions(ss);*/
-		
-		
-		JButton btnEnroll = new JButton("Enroll...");
-		btnEnroll.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				/*if(linkage.containsKey(tabpage.getSelectedComponent())) {
-					TimeTableGUI test = linkage.get(tabpage.getSelectedComponent());
-					try {
-						test.fillSlots(212, 218, Color.ORANGE, new String[] {"COMP3111"}, "COMP3111");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}*/
-				boolean result =  (own_table.addCourse("COMP2012 ", new String[] { "L1", "LA1A" } ) == TimetableError.NoError);
-				boolean result2 =  (own_table.addCourse("LANG2030H", new String[] { "T1" } )  == TimetableError.NoError);
-				//DEBUG System.out.println("result: " + result);
-				//DEBUG System.out.println("result: " + result2);
-				
-			}
-		});
+		//Initialize Enroll button
+		btnEnroll.addActionListener(new EnrollButtonListener());
 		btnEnroll.setBounds(777, 12, 98, 28);
 		contentPane.add(btnEnroll);
 		
@@ -247,14 +240,14 @@ public class MainWindow extends JFrame {
 		searchTabpage.setBounds(12, 52, 533, 603);
 		contentPane.add(searchTabpage);
 		
-		JPanel panel_1 = new JPanel();
-		searchTabpage.addTab("New Search", null, panel_1, null);
-		panel_1.setLayout(null);
+		JPanel newSearchPanel = new JPanel();
+		searchTabpage.addTab("New Search", null, newSearchPanel, null);
+		newSearchPanel.setLayout(null);
 		
 		JPanel subjectPanel = new JPanel();
 		subjectPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Subject", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
 		subjectPanel.setBounds(12, 12, 504, 131);
-		panel_1.add(subjectPanel);
+		newSearchPanel.add(subjectPanel);
 		subjectPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -270,7 +263,7 @@ public class MainWindow extends JFrame {
 		JPanel levelPanel = new JPanel();
 		levelPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Level", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		levelPanel.setBounds(12, 155, 504, 131);
-		panel_1.add(levelPanel);
+		newSearchPanel.add(levelPanel);
 		levelPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -291,10 +284,10 @@ public class MainWindow extends JFrame {
 		JPanel otherPanel = new JPanel();
 		otherPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Others", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
 		otherPanel.setBounds(12, 298, 504, 131);
-		panel_1.add(otherPanel);
+		newSearchPanel.add(otherPanel);
 		
 		searchButton.setBounds(418, 533, 98, 28);
-		panel_1.add(searchButton);
+		newSearchPanel.add(searchButton);
 		
 		JPanel panel = new JPanel();
 		searchTabpage.addTab("New tab", null, panel, null);
@@ -334,7 +327,7 @@ public class MainWindow extends JFrame {
 		lblSearchCriteria.setBounds(12, 12, 94, 18);
 		panel.add(lblSearchCriteria);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("c1");
 		lblNewLabel.setBounds(22, 30, 494, 18);
 		panel.add(lblNewLabel);
 		
@@ -347,19 +340,6 @@ public class MainWindow extends JFrame {
 		lblMmmmmmmm.setForeground(Color.RED);
 		lblMmmmmmmm.setBackground(Color.WHITE);
 		lblMmmmmmmm.setOpaque(true);
-		
-		JButton btnDrop = new JButton("Drop...");
-		btnDrop.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Course selection = own_table.getSelectedCourse();
-				if (selection != null) {
-					own_table.courseUnselected();
-					own_table.dropCourse(selection);
-				}
-			}
-		});
-		btnDrop.setBounds(887, 12, 98, 28);
-		contentPane.add(btnDrop);
 		lblMmmmmmmm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -372,6 +352,11 @@ public class MainWindow extends JFrame {
 				}
 			}
 		});
+		
+		btnDrop.setBounds(887, 12, 98, 28);
+		contentPane.add(btnDrop);
+		btnDrop.addActionListener(new DropButtonListener());
+		
 		
 		
 		
