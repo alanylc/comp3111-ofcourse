@@ -130,6 +130,7 @@ public abstract class SearchCourse implements Collection<Course> {
 	}
 
 	@Override
+	@Deprecated 
 	public <T> T[] toArray(T[] a) {
 		throw new UnsupportedOperationException("Use toArray(Course[]) instead.");
 	}
@@ -144,6 +145,9 @@ public abstract class SearchCourse implements Collection<Course> {
 		}
 		return null;
 	}
+	
+	@Override
+	public abstract String toString();
 	
 	/**
 	 * This iterator implements peeking, by using NoSuchElementException.

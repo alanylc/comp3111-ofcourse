@@ -27,4 +27,15 @@ public class SearchSubject extends SearchCourse {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder result = new StringBuilder(prevPipe.toString());
+		result.append("Subject is");
+		for (String s : subjects) {
+			result.append(" " + s);
+		}
+		result.append(" ");
+		return result.toString();
+	}
+
 }

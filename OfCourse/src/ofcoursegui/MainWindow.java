@@ -63,7 +63,7 @@ import javax.swing.JTextField;
 
 public class MainWindow extends JFrame {
 	
-	public class SubjectListModel extends AbstractListModel {
+	/*public class SubjectListModel extends AbstractListModel {
 		private static final long serialVersionUID = 1922055068864190054L;
 		ArrayList<String> values = new ArrayList<String>();
 		public int getSize() {
@@ -75,7 +75,7 @@ public class MainWindow extends JFrame {
 		public void addElement(String subject) {
 			values.add(subject);
 		}
-	}
+	}*/
 	
 	public class SearchButtonListener implements ActionListener {
 		@Override
@@ -109,6 +109,7 @@ public class MainWindow extends JFrame {
 		}
 	}
 	
+	NewSearchGUI newSearchPanel = new NewSearchGUI();
 	
 	private JPanel contentPane;
 	public JTabbedPane timetableTabpage = new JTabbedPane(JTabbedPane.TOP);
@@ -117,14 +118,12 @@ public class MainWindow extends JFrame {
 	
 	public Timetable own_table;
 	
-	//JList: subjectJList, for showing the subjects
-	//ListModel: subjectList, the backing data for the JList
-	public final JList subjectJList = new JList();
+	/*public final JList subjectJList = new JList();
 	public final SubjectListModel subjectList = new SubjectListModel();
-	
+
 	//Button: Search
 	JButton searchButton = new JButton("Search");
-	
+	*/
 	public static java.util.HashMap<JPanel, TimeTableGUI> linkage = new java.util.HashMap<JPanel, TimeTableGUI>();
 	private JTable table;
 
@@ -146,7 +145,7 @@ public class MainWindow extends JFrame {
 					MainWindow frame = new MainWindow();
 					ArrayList<courseParse> result = courseParse.fullparse();
 					for(courseParse cp : result) {
-						((MainWindow.SubjectListModel)(frame.subjectJList.getModel())).addElement((cp.getSubject()));
+						((NewSearchGUI.SubjectListModel)((frame.newSearchPanel.subjectListModel))).addElement((cp.getSubject()));
 					}
 					frame.setVisible(true);
 					ArrayList<Course> cc = new ArrayList<Course>();
@@ -240,9 +239,9 @@ public class MainWindow extends JFrame {
 		searchTabpage.setBounds(12, 52, 533, 603);
 		contentPane.add(searchTabpage);
 		
-		JPanel newSearchPanel = new JPanel();
+		
 		searchTabpage.addTab("New Search", null, newSearchPanel, null);
-		newSearchPanel.setLayout(null);
+		/*newSearchPanel.setLayout(null);
 		
 		JPanel subjectPanel = new JPanel();
 		subjectPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Subject", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
@@ -279,7 +278,8 @@ public class MainWindow extends JFrame {
 				return values[index];
 			}
 		});
-		scrollPane.setViewportView(list);
+		SearchCodeIntervalGUI codeIntervalList = new SearchCodeIntervalGUI();
+		scrollPane.setViewportView(codeIntervalList);
 		
 		JPanel otherPanel = new JPanel();
 		otherPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Others", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
@@ -287,7 +287,7 @@ public class MainWindow extends JFrame {
 		newSearchPanel.add(otherPanel);
 		
 		searchButton.setBounds(418, 533, 98, 28);
-		newSearchPanel.add(searchButton);
+		newSearchPanel.add(searchButton);*/
 		
 		JPanel panel = new JPanel();
 		searchTabpage.addTab("New tab", null, panel, null);

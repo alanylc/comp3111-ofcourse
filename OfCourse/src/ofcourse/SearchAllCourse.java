@@ -13,4 +13,11 @@ public class SearchAllCourse extends SearchCourse {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "";
+	}
+	
+	
+
 }
