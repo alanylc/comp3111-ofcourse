@@ -6,7 +6,7 @@
               as the first entry and export the buildfile again. -->
 <project basedir="." default="build" name="OfCourse">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../"/>
+    <property name="ECLIPSE_HOME" value="../../../../eclipse-juno-java"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
@@ -19,11 +19,16 @@
         <pathelement location="lib/jsoup-1.7.3.jar"/>
         <pathelement location="lib/forms-1.3.0.jar"/>
         <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/commons-lang3-3.2.1.jar"/>
+        <pathelement location="lib/commons-logging-1.1.3.jar"/>
+        <pathelement location="lib/httpclient-4.3.3.jar"/>
+        <pathelement location="lib/httpcore-4.3.2.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
+                <exclude name="**/*.ucls"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -55,8 +60,13 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="courseParse (1)">
+    <target name="courseParse">
         <java classname="ofcourse.courseParse" failonerror="true" fork="yes">
+            <classpath refid="OfCourse.classpath"/>
+        </java>
+    </target>
+    <target name="MainWindow">
+        <java classname="ofcoursegui.MainWindow" failonerror="true" fork="yes">
             <classpath refid="OfCourse.classpath"/>
         </java>
     </target>
