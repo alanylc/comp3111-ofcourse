@@ -7,6 +7,7 @@
 <project basedir="." default="build" name="OfCourse">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../../../eclipse-juno-java"/>
+    <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
@@ -69,5 +70,37 @@
         <java classname="ofcoursegui.MainWindow" failonerror="true" fork="yes">
             <classpath refid="OfCourse.classpath"/>
         </java>
+    </target>
+    <target name="CodeTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.CodeTest" todir="${junit.output.dir}"/>
+            <classpath refid="OfCourse.classpath"/>
+        </junit>
+    </target>
+    <target name="CourseTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.CourseTest" todir="${junit.output.dir}"/>
+            <classpath refid="OfCourse.classpath"/>
+        </junit>
+    </target>
+    <target name="NetworkTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.NetworkTest" todir="${junit.output.dir}"/>
+            <classpath refid="OfCourse.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
     </target>
 </project>
