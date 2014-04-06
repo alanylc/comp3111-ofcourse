@@ -1,5 +1,6 @@
 package ofcoursegui;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.swing.AbstractListModel;
@@ -34,12 +35,10 @@ public class SearchCodeIntervalGUI extends JList implements SearchCriteriaCompon
 			return new SearchAllCourse(prevSearch);
 		}
 		else {
-			int[][] intervals = new int[selecteds.length][];
-			int c = 0;
+			ArrayList<int[]> intervals = new ArrayList<int[]>();
 			for (int i : selecteds) {
 				int[] interval = new int[] { (i + 1) * 1000, (i + 1) * 1000 + 999 };
-				intervals[c] = interval;
-				c++;
+				intervals.add(interval);
 			}
 			sci = new SearchCodeInterval(prevSearch, intervals);
 		}

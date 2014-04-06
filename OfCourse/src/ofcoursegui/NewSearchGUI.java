@@ -16,6 +16,12 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import ofcourse.Course;
+import ofcourse.SearchAllCourse;
+import ofcourse.SearchCodeInterval;
+import ofcourse.SearchCourse;
+import ofcourse.SearchSubject;
+
 public class NewSearchGUI extends JPanel {
 
 	private JPanel subjectPanel = new JPanel();
@@ -83,7 +89,27 @@ public class NewSearchGUI extends JPanel {
 		searchButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, levelList.getSearchCourse(null).toString());
+				//JOptionPane.showMessageDialog(null, levelList.getSearchCourse(null).toString());
+				
+
+				ArrayList<String> subjectCriteria = new ArrayList<String>();
+				for(Object sub : subjectJList.getSelectedValues()) {
+					subjectCriteria.add((String)sub);
+				}
+								
+				SearchCourse cs = levelList.getSearchCourse(new SearchSubject(new SearchAllCourse(MainWindow.allCourses), subjectCriteria));
+				
+				SearchResultGUI newResult = new SearchResultGUI();
+				for(Course c : cs) {
+					//System.out.println(c.toString());
+					newResult.addResult(c);
+				}
+				newResult.setCriteriaText(cs.toString());
+				//System.out.println(cs.size());
+				//System.out.println(cs.toString());
+				MainWindow.searchTabpage.addTab("Result1", null, newResult, null);
+				MainWindow.searchTabpage.setSelectedComponent(newResult);
+				
 			}
 		});
 	}

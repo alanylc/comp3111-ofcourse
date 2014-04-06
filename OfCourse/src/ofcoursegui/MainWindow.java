@@ -98,16 +98,19 @@ public class MainWindow extends JFrame {
 	
 	NewSearchGUI newSearchPanel = new NewSearchGUI();
 	
+	//public static ArrayList<SearchResultGUI> searchResultPanels = new ArrayList<SearchResultGUI>();
+	
 	private JPanel contentPane;
 	public JTabbedPane timetableTabpage = new JTabbedPane(JTabbedPane.TOP);
-	public JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
+	public static JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
 
 	
 	public Timetable own_table;
 	
+	public static ArrayList<Course> allCourses;
+	
 	
 	public static java.util.HashMap<JPanel, TimeTableGUI> linkage = new java.util.HashMap<JPanel, TimeTableGUI>();
-	private JTable table;
 
 	
 	public TimeTableGUI getSelectedTimeTableGUI() {
@@ -126,21 +129,23 @@ public class MainWindow extends JFrame {
 				try {
 					MainWindow frame = new MainWindow();
 					ArrayList<courseParse> result = courseParse.fullparse();
+					frame.setVisible(true);
+					
 					for(courseParse cp : result) {
 						((NewSearchGUI.SubjectListModel)((frame.newSearchPanel.subjectListModel))).addElement((cp.getSubject()));
 					}
-					frame.setVisible(true);
-					ArrayList<Course> cc = new ArrayList<Course>();
+					allCourses = new ArrayList<Course>();
 					for(courseParse cp : result) {
-						cc.addAll(cp.getCourses());
+						allCourses.addAll(cp.getCourses());
 					}
-					/*ArrayList<String> criteria = new ArrayList<String>();
+					ArrayList<String> criteria = new ArrayList<String>();
 					criteria.add("HUMA");
 					criteria.add("ECON");
-					SearchCourse cs = new SearchSubject(new SearchAllCourse(cc), criteria);
+					SearchCourse cs = new SearchSubject(new SearchAllCourse(allCourses), criteria);
 					for(Course c : cs) {
 						System.out.println(c.toString());
-					}*/
+					}
+					System.out.println(cs.toString());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -152,6 +157,7 @@ public class MainWindow extends JFrame {
 	 * Create the frame.
 	 */
 
+	@SuppressWarnings("serial")
 	public MainWindow() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -224,13 +230,26 @@ public class MainWindow extends JFrame {
 		
 		searchTabpage.addTab("New Search", null, newSearchPanel, null);
 		
+		/*JPanel resultPanel = new JPanel();
+		searchTabpage.addTab("New tab", null, resultPanel, null);
+		resultPanel.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		searchTabpage.addTab("New tab", null, panel, null);
+		JLabel lblSearchCriteria = new JLabel("Search Criteria:");
+		lblSearchCriteria.setBounds(12, 12, 94, 18);
+		resultPanel.add(lblSearchCriteria);
 		
-		table = new JTable();
-		table.setBounds(12, 96, 504, 160);
+		JLabel lblNewLabel = new JLabel("c1");
+		lblNewLabel.setBounds(22, 30, 494, 18);
+		resultPanel.add(lblNewLabel);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 96, 504, 226);
+		resultPanel.add(scrollPane);
+		
+		JTable table = new JTable();
+		scrollPane.setViewportView(table);
 		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},
@@ -255,17 +274,7 @@ public class MainWindow extends JFrame {
 				return columnTypes[columnIndex];
 			}
 		});
-		table.getColumnModel().getColumn(0).setResizable(false);
-		panel.setLayout(null);
-		panel.add(table);
-		
-		JLabel lblSearchCriteria = new JLabel("Search Criteria:");
-		lblSearchCriteria.setBounds(12, 12, 94, 18);
-		panel.add(lblSearchCriteria);
-		
-		JLabel lblNewLabel = new JLabel("c1");
-		lblNewLabel.setBounds(22, 30, 494, 18);
-		panel.add(lblNewLabel);
+		table.getColumnModel().getColumn(0).setResizable(false);*/
 		
 		JLabel lblMmmmmmmm = new JLabel("MMMMMMMM");
 		lblMmmmmmmm.setBounds(12, 12, 100, 18);
