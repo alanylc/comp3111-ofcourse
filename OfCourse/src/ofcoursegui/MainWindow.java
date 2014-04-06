@@ -63,19 +63,6 @@ import javax.swing.JTextField;
 
 public class MainWindow extends JFrame {
 	
-	/*public class SubjectListModel extends AbstractListModel {
-		private static final long serialVersionUID = 1922055068864190054L;
-		ArrayList<String> values = new ArrayList<String>();
-		public int getSize() {
-			return values.size();
-		}
-		public Object getElementAt(int index) {
-			return values.get(index);
-		}
-		public void addElement(String subject) {
-			values.add(subject);
-		}
-	}*/
 	
 	public class SearchButtonListener implements ActionListener {
 		@Override
@@ -118,12 +105,7 @@ public class MainWindow extends JFrame {
 	
 	public Timetable own_table;
 	
-	/*public final JList subjectJList = new JList();
-	public final SubjectListModel subjectList = new SubjectListModel();
-
-	//Button: Search
-	JButton searchButton = new JButton("Search");
-	*/
+	
 	public static java.util.HashMap<JPanel, TimeTableGUI> linkage = new java.util.HashMap<JPanel, TimeTableGUI>();
 	private JTable table;
 
@@ -241,53 +223,7 @@ public class MainWindow extends JFrame {
 		
 		
 		searchTabpage.addTab("New Search", null, newSearchPanel, null);
-		/*newSearchPanel.setLayout(null);
 		
-		JPanel subjectPanel = new JPanel();
-		subjectPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Subject", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
-		subjectPanel.setBounds(12, 12, 504, 131);
-		newSearchPanel.add(subjectPanel);
-		subjectPanel.setLayout(new GridLayout(1, 0, 0, 0));
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-		subjectPanel.add(scrollPane_1);
-		
-		subjectJList.setVisibleRowCount(4);
-		subjectJList.setLayoutOrientation(JList.VERTICAL_WRAP);
-		subjectJList.setModel(this.subjectList);
-		scrollPane_1.setViewportView(subjectJList);
-		
-		JPanel levelPanel = new JPanel();
-		levelPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Level", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		levelPanel.setBounds(12, 155, 504, 131);
-		newSearchPanel.add(levelPanel);
-		levelPanel.setLayout(new GridLayout(1, 0, 0, 0));
-		
-		JScrollPane scrollPane = new JScrollPane();
-		levelPanel.add(scrollPane);
-		
-		JList list = new JList();
-		list.setModel(new AbstractListModel() {
-			int[] values = new int[] {1000, 2000, 3000, 4000, 5000, 6000, 7000};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		SearchCodeIntervalGUI codeIntervalList = new SearchCodeIntervalGUI();
-		scrollPane.setViewportView(codeIntervalList);
-		
-		JPanel otherPanel = new JPanel();
-		otherPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Others", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
-		otherPanel.setBounds(12, 298, 504, 131);
-		newSearchPanel.add(otherPanel);
-		
-		searchButton.setBounds(418, 533, 98, 28);
-		newSearchPanel.add(searchButton);*/
 		
 		JPanel panel = new JPanel();
 		searchTabpage.addTab("New tab", null, panel, null);
