@@ -111,6 +111,7 @@ public class MainWindow extends JFrame {
 	
 	
 	public static java.util.HashMap<JPanel, TimeTableGUI> linkage = new java.util.HashMap<JPanel, TimeTableGUI>();
+	//private JTable table;
 
 	
 	public TimeTableGUI getSelectedTimeTableGUI() {
@@ -230,51 +231,36 @@ public class MainWindow extends JFrame {
 		
 		searchTabpage.addTab("New Search", null, newSearchPanel, null);
 		
-		/*JPanel resultPanel = new JPanel();
-		searchTabpage.addTab("New tab", null, resultPanel, null);
-		resultPanel.setLayout(null);
-		
-		JLabel lblSearchCriteria = new JLabel("Search Criteria:");
-		lblSearchCriteria.setBounds(12, 12, 94, 18);
-		resultPanel.add(lblSearchCriteria);
-		
-		JLabel lblNewLabel = new JLabel("c1");
-		lblNewLabel.setBounds(22, 30, 494, 18);
-		resultPanel.add(lblNewLabel);
+		//JPanel coursePanel = new JPanel();
+		/*searchTabpage.addTab("New tab", null, coursePanel, null);
+		coursePanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 96, 504, 226);
-		resultPanel.add(scrollPane);
+		scrollPane.setBounds(12, 62, 504, 226);
+		coursePanel.add(scrollPane);
 		
-		JTable table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		
+		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column"
+				"Session", "Time", "Room", "Instructor"
 			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, Object.class, Object.class, Object.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		table.getColumnModel().getColumn(0).setResizable(false);*/
+		));
+		scrollPane.setViewportView(table);
+		
+		JLabel courseCodeLabel = new JLabel("CourseCode");
+		courseCodeLabel.setBounds(12, 12, 504, 18);
+		coursePanel.add(courseCodeLabel);
+		
+		JLabel courseNameLabel = new JLabel("CoureName");
+		courseNameLabel.setBounds(12, 32, 504, 18);
+		coursePanel.add(courseNameLabel);*/
+		
+		
 		
 		JLabel lblMmmmmmmm = new JLabel("MMMMMMMM");
 		lblMmmmmmmm.setBounds(12, 12, 100, 18);

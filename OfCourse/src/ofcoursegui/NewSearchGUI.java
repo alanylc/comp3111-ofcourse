@@ -107,6 +107,8 @@ public class NewSearchGUI extends JPanel {
 				newResult.setCriteriaText(cs.toString());
 				//System.out.println(cs.size());
 				//System.out.println(cs.toString());
+				
+				//TODO: Remove dependency on MainWindow
 				MainWindow.searchTabpage.addTab("Result1", null, newResult, null);
 				MainWindow.searchTabpage.setSelectedComponent(newResult);
 				

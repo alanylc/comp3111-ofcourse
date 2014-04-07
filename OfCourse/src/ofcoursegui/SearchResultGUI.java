@@ -1,5 +1,9 @@
 package ofcoursegui;
 
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.JLabel;
@@ -14,9 +18,12 @@ import ofcourse.Course;
 
 @SuppressWarnings("serial")
 public class SearchResultGUI extends JPanel {
-	JTable resultTable = new JTable();
-	JLabel criteriaLabel = new JLabel("c1");
-	DefaultTableModel resultTableModel = new DefaultTableModel(
+	private HashMap<Integer, Course> linkage = new HashMap<Integer, Course>();
+	
+	private JLabel criteriaLabel = new JLabel("c1");
+	
+	private JTable resultTable = new JTable();
+	public final DefaultTableModel resultTableModel = new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
@@ -43,7 +50,7 @@ public class SearchResultGUI extends JPanel {
 		scrollPane.setBounds(12, 96, 504, 226);
 		add(scrollPane);
 		//resultTable.setBounds(12, 96, 504, 160);
-		resultTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		resultTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resultTable.setModel(resultTableModel);
 		
 		resultTable.getColumnModel().getColumn(0).setResizable(false);
@@ -57,10 +64,45 @@ public class SearchResultGUI extends JPanel {
 		
 		criteriaLabel.setBounds(22, 30, 494, 18);
 		add(criteriaLabel);
+		
+		resultTable.addMouseListener(new MouseListener() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				JTable table = (JTable) e.getSource();
+		        Point p = e.getPoint();
+		        int row = table.rowAtPoint(p);
+		        System.out.println(row);
+		        int[] selecteds = table.getSelectedRows();
+		        for (int i : selecteds) {
+		        	if (i == row) {
+		        		Course c = linkage.get(row);
+		        		CourseGUI cgui = new CourseGUI(c);
+		        		MainWindow.searchTabpage.addTab(c.getCode().toString(), cgui);
+		        	}
+		        }
+		    }
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
 	}
 	
 	public void addResult(Course c) {
 		resultTableModel.addRow(new String[] {c.toString(), c.getName(), Float.toString(c.getAvgRating())});
+		linkage.put(resultTableModel.getRowCount() - 1, c);
 	}
 	
 	public void setCriteriaText(String criteria) {
