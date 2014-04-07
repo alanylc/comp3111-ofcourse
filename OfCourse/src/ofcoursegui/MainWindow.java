@@ -105,7 +105,7 @@ public class MainWindow extends JFrame {
 	public static JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
 
 	
-	public Timetable own_table;
+	public static Timetable own_table;
 	
 	public static ArrayList<Course> allCourses;
 	
@@ -230,6 +230,7 @@ public class MainWindow extends JFrame {
 		
 		
 		searchTabpage.addTab("New Search", null, newSearchPanel, null);
+		searchTabpage.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		
 		//JPanel coursePanel = new JPanel();
 		/*searchTabpage.addTab("New tab", null, coursePanel, null);

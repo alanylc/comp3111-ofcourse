@@ -2,6 +2,8 @@ package ofcoursegui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,11 +16,13 @@ import javax.swing.table.DefaultTableModel;
 import ofcourse.Course;
 
 public class CourseGUI extends JPanel {
+	public final HashMap<Integer, Course.Session> linkage = new HashMap<Integer, Course.Session>();
+	public final Course course;
 	
 	JLabel courseCodeLabel = new JLabel("CourseCode");
 	JLabel courseNameLabel = new JLabel("CoureName");
 	JButton enrollButton = new JButton("Enroll");
-	JTable sessionTable = new JTable();
+	public final JTable sessionTable = new JTable();
 	@SuppressWarnings("serial")
 	DefaultTableModel sessionTableModel = new DefaultTableModel(
 			new Object[][] {
@@ -62,18 +66,30 @@ public class CourseGUI extends JPanel {
 		
 		enrollButton.setBounds(418, 533, 98, 28);
 		add(enrollButton);
-		enrollButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
+		enrollButton.addActionListener(new EnrollButtonListener());
+	}
+	
+	private class EnrollButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			int[] selecteds = CourseGUI.this.sessionTable.getSelectedRows();
+			ArrayList<Course.Session> ss = new ArrayList<Course.Session>();
+			for(int i : selecteds) {
+				for (Integer j : linkage.keySet()) {
+					if (i == j) {
+						ss.add(CourseGUI.this.linkage.get(i));
+					}
+				}
 			}
-			
-		});
+
+			MainWindow.own_table.addCourse(course, ss.toArray(new Course.Session[ss.size()]));
+		}
 	}
 	
 	public CourseGUI (Course c) {
 		if (c == null) throw new NullPointerException();
 		setCourse(c);
+		this.course = c;
 	}
 	
 	/*public void setCoureCodeText(String couseCode) {
@@ -87,6 +103,7 @@ public class CourseGUI extends JPanel {
 		courseNameLabel.setText(c.getName());
 		for (Course.Session s : c.getSessions()) {
 			sessionTableModel.addRow(new String[] {s.toString(), s.getSchedule().toString(), s.getRoom().toString(), s.getInstructors().toString()});
+			linkage.put(sessionTableModel.getRowCount() - 1, s);
 		}
 	}
 }

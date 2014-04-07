@@ -78,6 +78,7 @@ public class SearchResultGUI extends JPanel {
 		        		Course c = linkage.get(row);
 		        		CourseGUI cgui = new CourseGUI(c);
 		        		MainWindow.searchTabpage.addTab(c.getCode().toString(), cgui);
+		        		MainWindow.searchTabpage.setSelectedComponent(cgui);
 		        	}
 		        }
 		    }
