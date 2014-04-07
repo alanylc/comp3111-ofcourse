@@ -71,19 +71,6 @@ public class MainWindow extends JFrame {
 			
 		}
 	}
-
-	JButton btnEnroll = new JButton("Enroll...");
-	public class EnrollButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			boolean result =  (own_table.addCourse("COMP2012 ", new String[] { "L1", "LA1A" } ) == TimetableError.NoError);
-			boolean result2 =  (own_table.addCourse("LANG2030H", new String[] { "T1" } )  == TimetableError.NoError);
-			//DEBUG System.out.println("result: " + result);
-			//DEBUG System.out.println("result: " + result2);
-			
-		}
-		
-	}
 	
 	JButton btnDrop = new JButton("Drop...");
 	public class DropButtonListener implements ActionListener {
@@ -190,7 +177,7 @@ public class MainWindow extends JFrame {
 		own_table = new Timetable(20097657, timetableTabpage);
 		
 		//Buttons
-		JButton btnNewButton = new JButton("New One");
+		JButton btnNewButton = new JButton("See Friend");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -204,7 +191,7 @@ public class MainWindow extends JFrame {
 				linkage.put(test, test);
 			}
 		});
-		btnNewButton.setBounds(557, 12, 98, 28);
+		btnNewButton.setBounds(677, 12, 98, 28);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Delete Last");
@@ -216,13 +203,8 @@ public class MainWindow extends JFrame {
 				timetableTabpage.setSelectedIndex(0);
 			}
 		});
-		btnNewButton_1.setBounds(667, 12, 98, 28);
+		btnNewButton_1.setBounds(787, 12, 98, 28);
 		contentPane.add(btnNewButton_1);
-
-		//Initialize Enroll button
-		btnEnroll.addActionListener(new EnrollButtonListener());
-		btnEnroll.setBounds(777, 12, 98, 28);
-		contentPane.add(btnEnroll);
 		
 		//JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		searchTabpage.setBounds(12, 52, 533, 603);
@@ -232,61 +214,25 @@ public class MainWindow extends JFrame {
 		searchTabpage.addTab("New Search", null, newSearchPanel, null);
 		searchTabpage.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		
-		//JPanel coursePanel = new JPanel();
-		/*searchTabpage.addTab("New tab", null, coursePanel, null);
-		coursePanel.setLayout(null);
+		btnDrop.setBounds(897, 12, 98, 28);
+		contentPane.add(btnDrop);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 62, 504, 226);
-		coursePanel.add(scrollPane);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(557, 12, 116, 28);
+		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-			},
-			new String[] {
-				"Session", "Time", "Room", "Instructor"
+		JList list = new JList();
+		list.setModel(new AbstractListModel() {
+			String[] values = new String[] {"20140401"};
+			public int getSize() {
+				return values.length;
 			}
-		));
-		scrollPane.setViewportView(table);
-		
-		JLabel courseCodeLabel = new JLabel("CourseCode");
-		courseCodeLabel.setBounds(12, 12, 504, 18);
-		coursePanel.add(courseCodeLabel);
-		
-		JLabel courseNameLabel = new JLabel("CoureName");
-		courseNameLabel.setBounds(12, 32, 504, 18);
-		coursePanel.add(courseNameLabel);*/
-		
-		
-		
-		JLabel lblMmmmmmmm = new JLabel("MMMMMMMM");
-		lblMmmmmmmm.setBounds(12, 12, 100, 18);
-		contentPane.add(lblMmmmmmmm);
-		lblMmmmmmmm.setPreferredSize(new Dimension(100, 18));
-		lblMmmmmmmm.setMaximumSize(new Dimension(100, 18)); 
-		lblMmmmmmmm.setMinimumSize(new Dimension(100, 18));
-		lblMmmmmmmm.setForeground(Color.RED);
-		lblMmmmmmmm.setBackground(Color.WHITE);
-		lblMmmmmmmm.setOpaque(true);
-		lblMmmmmmmm.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				JLabel source = ((JLabel)arg0.getSource());
-				if (source.getForeground() == Color.ORANGE) {
-					source.setForeground(Color.RED);
-				}
-				else {
-					source.setForeground(Color.ORANGE);
-				}
+			public Object getElementAt(int index) {
+				return values[index];
 			}
 		});
-		
-		btnDrop.setBounds(887, 12, 98, 28);
-		contentPane.add(btnDrop);
+		scrollPane.setViewportView(list);
 		btnDrop.addActionListener(new DropButtonListener());
 		
 		
