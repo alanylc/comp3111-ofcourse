@@ -1,0 +1,108 @@
+<project name="StringParserWithTest" default="all" basedir=".">
+	<!-- Test related properties -->
+	<property name="src" value="src" />
+	<property name="test" value="test" />
+	<property name="lib" value="lib" />
+	<property name="classes" value="bin" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.6" />
+	<property name="source" value="1.6" />
+	<property name="junit.output.dir" value="junit" />
+
+	<!-- Target directory for instrumentation files -->
+	<property name="emma.instr.dir" value="coverage/instrumentation" />
+
+	<!-- Target directory for coverage files -->
+	<property name="emma.coverage.dir" value="coverage" />
+
+	<!-- Classpath for JUnit tests -->
+	<path id="test.classpath">
+		<pathelement path="${emma.instr.dir}" />
+		<pathelement location="${classes}" />
+		<fileset dir="${lib}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef resource="emma_ant.properties" classpathref="test.classpath" />
+
+	<!-- Cleans up compilation output -->
+	<target name="clean-compile-test">
+	    <delete dir="${classes}" />
+		<delete dir="${test.classes}" />
+		<delete dir="${junit.output.dir}" />
+		<delete dir="${emma.instr.dir}" />
+		<delete dir="${emma.coverage.dir}" />
+	</target>
+
+	<target name="init" depends="clean-compile-test">
+		<mkdir dir="${classes}" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="test">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Compiles java source code -->
+	<target name="compile-test" depends="init">
+		<mkdir dir="${junit.output.dir}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="${classes}"
+			 source="${source}" target="${target}" includeantruntime="No">
+			<src path="src" />
+			<src path="test" />
+			<classpath refid="test.classpath" />
+		</javac>
+	</target>
+
+	<!-- Analyzes the compiled code and adds instrumentation details for testing -->
+	<target name="emma-instrument" depends="compile-test">
+		<mkdir dir="${emma.instr.dir}" />
+		<mkdir dir="${emma.coverage.dir}" />
+		<emma enabled="true">
+			<instr instrpath="${classes}" destdir="${emma.instr.dir}"
+				metadatafile="${emma.coverage.dir}/coverage.emma" merge="true" />
+		</emma>
+	</target>
+
+	<!-- Runs the tests and generates coverage information -->
+	<target name="test-instrumented" depends="emma-instrument">
+		<mkdir dir="${junit.output.dir}" />
+		<junit fork="yes" printsummary="yes" haltonfailure="n">
+			<formatter type="xml" />
+			<test name="chan.eddie.stringparser.StringParserTest" todir="${junit.output.dir}" />
+			<classpath refid="test.classpath" />
+			<jvmarg value="-Demma.coverage.out.file=${emma.coverage.dir}/coverage.emma" />
+			<jvmarg value="-Demma.coverage.out.merge=true" />
+		</junit>
+	</target>
+
+	<!-- Create XML reports from the JUnit and coverage information -->
+	<target name="test-report" depends="test-instrumented">
+		<junitreport todir="${junit.output.dir}">
+			<fileset dir="${junit.output.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${junit.output.dir}" />
+		</junitreport>
+		<emma enabled="true">
+			<report sourcepath="${src}">
+				<fileset dir="${emma.coverage.dir}">
+					<include name="*.emma" />
+				</fileset>
+				<xml outfile="${emma.coverage.dir}/coverage.xml" />
+			</report>
+		</emma>
+	</target>
+
+	<!-- Default target -->
+	<target name="all" depends="test-report" />
+
+	<!-- Cleanup -->
+	<target name="clean" depends="clean-compile-test" />
+</project>  

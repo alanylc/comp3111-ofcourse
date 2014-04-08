@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="OfCourse">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../eclipse-juno-java"/>
+    <property name="junit.output.dir" value="junit"/>
+    
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    
+    <path id="OfCourse.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/jsoup-1.7.3.jar"/>
+        <pathelement location="lib/forms-1.3.0.jar"/>
+        <pathelement location="lib/commons-lang3-3.2.1.jar"/>
+        <pathelement location="lib/commons-logging-1.1.3.jar"/>
+        <pathelement location="lib/httpclient-4.3.3.jar"/>
+        <pathelement location="lib/httpcore-4.3.2.jar"/>
+        <pathelement location="lib/junit.jar"/>
+        <pathelement location="lib/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="OfCourse.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="CodeTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.CodeTest" todir="${junit.output.dir}"/>
+            <classpath refid="OfCourse.classpath"/>
+        </junit>
+    </target>
+    <target name="courseParse">
+        <java classname="ofcourse.courseParse" failonerror="true" fork="yes">
+            <classpath refid="OfCourse.classpath"/>
+        </java>
+    </target>
+    <target name="CourseTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.CourseTest" todir="${junit.output.dir}"/>
+            <classpath refid="OfCourse.classpath"/>
+        </junit>
+    </target>
+    <target name="MainWindow">
+        <java classname="ofcoursegui.MainWindow" failonerror="true" fork="yes">
+            <classpath refid="OfCourse.classpath"/>
+        </java>
+    </target>
+    <target name="NetworkTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.NetworkTest" todir="${junit.output.dir}"/>
+            <classpath refid="OfCourse.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
