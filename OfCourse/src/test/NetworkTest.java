@@ -220,7 +220,7 @@ public class NetworkTest {
 		Network.login(username[2], password[2]);
 		String Course = "COMP3111";
 		String Grade = "4";
-		String Comment = "更ら戳";
+		String Comment = "cccc";
 		String expected="100";
 		assertEquals(expected,a.comment(Course, Grade, Comment));
 	}
@@ -230,7 +230,7 @@ public class NetworkTest {
 		Network.logout();
 		String Course = "COMP3111";
 		String Grade = "4";
-		String Comment = "更ら戳";
+		String Comment = "cccc";
 		String expected="200";
 		assertEquals(expected,a.comment(Course, Grade, Comment));
 	}
@@ -255,7 +255,7 @@ public class NetworkTest {
 		Network a=Network.getOurNetwork();
 		Network.login(username[2], password[2]);
 		String Course="COMP3111";
-		String[][] expected={{"ctestcac","4","更ら戳"},{"ctestcaa","4","更ら戳"}};
+		String[][] expected={{"ctestcac","4","cccc"},{"ctestcaa","4","cccc"}};
 		String[][] actual=a.getCourse(Course);
 		String[][] actual2={{actual[0][0],actual[0][1],actual[0][2]},{actual[1][0],actual[1][1],actual[1][2]}};
 		assertArrayEquals(expected,actual2);
@@ -265,7 +265,7 @@ public class NetworkTest {
 		Network a=Network.getOurNetwork();
 		Network.logout();
 		String Course="COMP3111";
-		String[][] expected={{"ctestcac","4","更ら戳"},{"ctestcaa","4","更ら戳"}};
+		String[][] expected={{"ctestcac","4","cccc"},{"ctestcaa","4","cccc"}};
 		String[][] actual=a.getCourse(Course);
 		String[][] actual2={{actual[0][0],actual[0][1],actual[0][2]},{actual[1][0],actual[1][1],actual[1][2]}};
 		assertArrayEquals(expected,actual2);
