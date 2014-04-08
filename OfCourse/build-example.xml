@@ -42,11 +42,13 @@
 				<exclude name="**/*.java" />
 			</fileset>
 		</copy>
+		<!-- 
 		<copy includeemptydirs="false" todir="bin">
 			<fileset dir="test">
 				<exclude name="**/*.java" />
 			</fileset>
 		</copy>
+		-->
 	</target>
 
 	<!-- Compiles java source code -->
@@ -75,7 +77,7 @@
 		<mkdir dir="${junit.output.dir}" />
 		<junit fork="yes" printsummary="yes" haltonfailure="n">
 			<formatter type="xml" />
-			<test name="test.StringParserTest" todir="${junit.output.dir}" />
+			<test name="test.AllTests" todir="${junit.output.dir}" />
 			<classpath refid="test.classpath" />
 			<jvmarg value="-Demma.coverage.out.file=${emma.coverage.dir}/coverage.emma" />
 			<jvmarg value="-Demma.coverage.out.merge=true" />
