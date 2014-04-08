@@ -75,7 +75,7 @@
 		<mkdir dir="${junit.output.dir}" />
 		<junit fork="yes" printsummary="yes" haltonfailure="n">
 			<formatter type="xml" />
-			<test name="chan.eddie.stringparser.StringParserTest" todir="${junit.output.dir}" />
+			<test name="test.StringParserTest" todir="${junit.output.dir}" />
 			<classpath refid="test.classpath" />
 			<jvmarg value="-Demma.coverage.out.file=${emma.coverage.dir}/coverage.emma" />
 			<jvmarg value="-Demma.coverage.out.merge=true" />
