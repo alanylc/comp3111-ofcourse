@@ -105,7 +105,7 @@ public class courseParse {
 		
 
 		try {
-			boolean updateNeeded = false;
+			/*boolean updateNeeded = false;
 			if (!cache.exists()) updateNeeded = true;
 			
 			//Read whole file as a String
@@ -140,9 +140,9 @@ public class courseParse {
 					d1 = dateFormat.parse(historyContent.substring(start + subject.length(), end));
 					//in milliseconds 
 					long diff = dNow.getTime() - d1.getTime();
-					/*long diffMinutes = diff / (60 * 1000) % 60;
+					long diffMinutes = diff / (60 * 1000) % 60;
 					long diffHours = diff / (60 * 60 * 1000) % 24;
-					long diffDays = diff / (24 * 60 * 60 * 1000);*/
+					long diffDays = diff / (24 * 60 * 60 * 1000);
 					if (diff >= expireTime) {//5 min
 						updateNeeded = true;
 					}
@@ -174,8 +174,9 @@ public class courseParse {
 			else {//Read cache
 				System.out.println("Cache is used.");
 				doc = Jsoup.parse(cache, "UTF-8", URL);
-			}
-
+			}*/
+			//Get
+			doc = Jsoup.connect(URL + subject).get();
 			Elements cs = doc.select("#classes .course");
 			for (Element courseE : cs) {
 				//System.out.println(courseE.toString());
@@ -197,9 +198,9 @@ public class courseParse {
 		} catch (IOException e) {
 			System.out.println("Connection error");
 			e.printStackTrace();
-		} catch (ParseException e) {
+		} /*catch (ParseException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		return cp;
 	}
@@ -224,7 +225,7 @@ public class courseParse {
 				SubjectList.add(courseE.text());					//It first find a list of majors from /COMP,
 			}
 			for (String subject : SubjectList) {
-				
+				if(!(subject.equals("COMP") || subject.equals("HUMA") || subject.equals("MATH"))) continue;
 				courseParse cp=parse(subject);						// then it parse major by major, each put in a seperate obj.
 				cpA.add(cp);
 			}
