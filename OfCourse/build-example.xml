@@ -57,7 +57,7 @@
 		<javac debug="true" debuglevel="${debuglevel}" destdir="${classes}"
 			 source="${source}" target="${target}" includeantruntime="No">
 			<src path="src" />
-			<src path="test" />
+			<!-- <src path="test" />-->
 			<classpath refid="test.classpath" />
 		</javac>
 	</target>
