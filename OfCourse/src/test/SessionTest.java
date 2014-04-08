@@ -2,8 +2,13 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.Set;
+
+
 import ofcourse.Course;
+import ofcourse.Instructor;
 import ofcourse.SessionType;
+import ofcourse.TimePeriod;
 import ofcourse.Course.Session;
 import ofcourse.courseParse;
 
@@ -175,32 +180,47 @@ public class SessionTest {
 
 	@Test
 	public void testGetSchedule() {
-		fail("Not yet implemented");
+		s=c.getSessions().get(0);
+		Set<TimePeriod> schedule = s.getSchedule();
+		int expected=630;//415+215
+		int actual=0;
+		for(TimePeriod tp:schedule)actual+=tp.getStartSlot().getID();
+		assertEquals(expected, actual);
 	}
-
+/*
 	@Test
 	public void testSetSchedule() {
-		fail("Not yet implemented");
-	}
 
+	}
+*/
 	@Test
 	public void testGetRoom() {
-		fail("Not yet implemented");
+		s=c.getSessions().get(0);
+		String expected="Lecture Theater F (134)";
+		String actual="";
+		for(String ss:s.getRoom())actual+=ss;
+		assertEquals(expected, actual);
 	}
 
 	@Test
 	public void testGetInstructors() {
-		fail("Not yet implemented");
+		s=c.getSessions().get(0);
+		String expected="CHAN, Gary Shueng Han";
+		String actual="";
+		for(Instructor i:s.getInstructors())actual+=i.getName();
+		assertEquals(expected, actual);
 	}
-
+/*
 	@Test
 	public void testSetInstructors() {
 		fail("Not yet implemented");
 	}
-
+*/
 	@Test
 	public void testToString() {
-		fail("Not yet implemented");
+		s=c.getSessions().get(0);
+		String expected="L1";
+		assertEquals(expected, s.toString());
 	}
 
 }
