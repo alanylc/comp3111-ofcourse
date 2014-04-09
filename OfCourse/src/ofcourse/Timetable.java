@@ -278,7 +278,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		if (trueSessions.size() != sessions.length) {
 			return TimetableError.InvalidSessions;
 		}
-				int flag = containsAllSessionTypes(course, trueSessions);
+		int flag = containsAllSessionTypes(course, trueSessions);
 		if (flag==1) { // check if all session types (lecture/lab/tutorial) are included
 			return TimetableError.SessionTypeMissed;
 		}
