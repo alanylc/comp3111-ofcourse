@@ -599,7 +599,11 @@ public class Course extends Ratable {
 		public String toString() {
 			//TODO: session type is invalid case
 			String type = getSType() == SessionType.Laboratory ? "LA" : getSType().toString().substring(0, 1).toUpperCase();
-			return type + getSNo() + (getSet()==' '? "" : getSet());
+			String set = "";
+			if (getSet()!=' '){
+				set = Character.toString(getSet());
+			}
+			return type + getSNo() + set;
 		}
 
 	}
