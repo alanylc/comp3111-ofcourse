@@ -199,13 +199,13 @@ public class TimetableTest {
 	@Test
 	public void testAddCourseCourseSessionArray10() { // matching required and success
 		Course comp = Course.getCourseByName("COMP2012 ");
-		assertEquals(TimetableError.NoError, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1A")}));
+		assertEquals(TimetableError.NoError, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1B")}));
 	}
 	
 	@Test
 	public void testAddCourseCourseSessionArray11() { // matching required and fail
 		Course comp = Course.getCourseByName("COMP2012 ");
-		assertEquals(TimetableError.SessionsNotMatched, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L2"), comp.getSessionByString("LA1A")}));
+		assertEquals(TimetableError.SessionsNotMatched, table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA2A")}));
 	}
 
 	@Test
