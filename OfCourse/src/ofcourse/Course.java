@@ -18,7 +18,7 @@ import org.jsoup.select.Elements;
  * 
  * @author Bob
  */ 
-public class Course extends Ratable {
+public class Course extends Ratable { 
 	//TODO: check valid data at all times
 	private Code code;
 	private boolean matchSession = false;
