@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 
@@ -24,6 +25,7 @@ public class SessionTest {
 	private Course c;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		Course.AllCourses = new ArrayList<Course>();
 		courseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
 
 	}
