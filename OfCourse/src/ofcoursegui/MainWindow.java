@@ -116,14 +116,14 @@ public class MainWindow extends JFrame {
 			public void run() {
 				try {
 					MainWindow frame = new MainWindow();
-					ArrayList<courseParse> result = courseParse.fullparse();
+					ArrayList<CourseParse> result = CourseParse.fullparse();
 					frame.setVisible(true);
 					
-					for(courseParse cp : result) {
+					for(CourseParse cp : result) {
 						((NewSearchGUI.SubjectListModel)((frame.newSearchPanel.subjectListModel))).addElement((cp.getSubject()));
 					}
 					allCourses = new ArrayList<Course>();
-					for(courseParse cp : result) {
+					for(CourseParse cp : result) {
 						allCourses.addAll(cp.getCourses());
 					}
 					ArrayList<String> criteria = new ArrayList<String>();

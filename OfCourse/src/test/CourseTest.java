@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import ofcourse.Course;
 import ofcourse.Course.Session;
-import ofcourse.courseParse;
+import ofcourse.CourseParse;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,7 +25,7 @@ public class CourseTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		Course.AllCourses = new ArrayList<Course>();
-		courseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
+		CourseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
 	}
 
 	@AfterClass

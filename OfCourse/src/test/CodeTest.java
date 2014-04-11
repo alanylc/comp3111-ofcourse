@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import ofcourse.Course;
 import ofcourse.Course.Code;
-import ofcourse.courseParse;
+import ofcourse.CourseParse;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,7 +17,7 @@ public class CodeTest {
 	private Code c;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		courseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
+		CourseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
 	}
 
 	@AfterClass

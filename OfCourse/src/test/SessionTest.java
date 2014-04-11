@@ -11,7 +11,7 @@ import ofcourse.Instructor;
 import ofcourse.SessionType;
 import ofcourse.TimePeriod;
 import ofcourse.Course.Session;
-import ofcourse.courseParse;
+import ofcourse.CourseParse;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -26,7 +26,7 @@ public class SessionTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		Course.AllCourses = new ArrayList<Course>();
-		courseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
+		CourseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
 
 	}
 

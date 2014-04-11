@@ -7,7 +7,7 @@ import java.util.Set;
 import ofcourse.Course;
 import ofcourse.TimePeriod;
 import ofcourse.WeekDay;
-import ofcourse.courseParse;
+import ofcourse.CourseParse;
 import ofcourse.Course.Session;
 
 import org.junit.After;
@@ -21,7 +21,7 @@ public class TimeSlotTest {
 	private Course c;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		courseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
+		CourseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
 
 	}
 

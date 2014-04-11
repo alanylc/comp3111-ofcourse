@@ -31,15 +31,15 @@ import org.jsoup.select.Elements;
  * @author Kelvin Kong
  *
  */
-public class courseParse {
+public class CourseParse {
 	private String subject;
 	private ArrayList<Course> courses = new ArrayList<Course>();
 	public final static String URL = "https://w5.ab.ust.hk/wcq/cgi-bin/1330/subject/";
-	public final static long expireTime = 30000000; //TTL for the local cache of quota page 
+	public final static long expireTime = 15 * 60 * 1000; //TTL for the local cache of quota page , 15 min
 	//14 summer would change to /1340/, fall would change to /1410/, 
 	//need to figure out some ways to change semester
 
-	public courseParse() {
+	public CourseParse() {
 
 	}
 	
@@ -86,8 +86,8 @@ public class courseParse {
 	 * @param subject The subject code of courses that need to be parsed
 	 * @return A <tt>courseParse</tt> that contains all the courses of the specified subject code
 	 */
-	public static courseParse parse(String subject) {
-		courseParse cp = new courseParse();
+	public static CourseParse parse(String subject) {
+		CourseParse cp = new CourseParse();
 		Document doc = null;
 		cp.subject = subject;
 		//////
@@ -105,7 +105,7 @@ public class courseParse {
 		
 
 		try {
-			/*boolean updateNeeded = false;
+			boolean updateNeeded = false;
 			if (!cache.exists()) updateNeeded = true;
 			
 			//Read whole file as a String
@@ -140,10 +140,10 @@ public class courseParse {
 					d1 = dateFormat.parse(historyContent.substring(start + subject.length(), end));
 					//in milliseconds 
 					long diff = dNow.getTime() - d1.getTime();
-					long diffMinutes = diff / (60 * 1000) % 60;
+					/*long diffMinutes = diff / (60 * 1000) % 60;
 					long diffHours = diff / (60 * 60 * 1000) % 24;
-					long diffDays = diff / (24 * 60 * 60 * 1000);
-					if (diff >= expireTime) {//5 min
+					long diffDays = diff / (24 * 60 * 60 * 1000);*/
+					if (diff >= expireTime) {
 						updateNeeded = true;
 					}
 				}
@@ -174,7 +174,7 @@ public class courseParse {
 			else {//Read cache
 				System.out.println("Cache is used.");
 				doc = Jsoup.parse(cache, "UTF-8", URL);
-			}*/
+			}
 			//Get
 			doc = Jsoup.connect(URL + subject).get();
 			Elements cs = doc.select("#classes .course");
@@ -198,9 +198,9 @@ public class courseParse {
 		} catch (IOException e) {
 			System.out.println("Connection error");
 			e.printStackTrace();
-		} /*catch (ParseException e) {
+		} catch (ParseException e) {
 			e.printStackTrace();
-		}*/
+		}
 		
 		return cp;
 	}
@@ -210,8 +210,8 @@ public class courseParse {
 	 * @return An ArrayList<> of courseParse objects, each represents a list of courses with the same subject.
 	 * @throws IOException 
 	 */
-	public static ArrayList<courseParse> fullparse() {
-		ArrayList<courseParse> cpA = new ArrayList<courseParse>();
+	public static ArrayList<CourseParse> fullparse() {
+		ArrayList<CourseParse> cpA = new ArrayList<CourseParse>();
 		Document doc;
 		String Subject = "COMP";
 		ArrayList<String> SubjectList = new ArrayList<String>();
@@ -226,7 +226,7 @@ public class courseParse {
 			}
 			for (String subject : SubjectList) {
 				if(!(subject.equals("COMP") || subject.equals("HUMA") || subject.equals("MATH"))) continue;
-				courseParse cp=parse(subject);						// then it parse major by major, each put in a seperate obj.
+				CourseParse cp=parse(subject);						// then it parse major by major, each put in a seperate obj.
 				cpA.add(cp);
 			}
 
@@ -239,9 +239,9 @@ public class courseParse {
 		return cpA;
 	}
 	
-	public static courseParse searchP(ArrayList<courseParse> cpA, String Major) {
+	public static CourseParse searchP(ArrayList<CourseParse> cpA, String Major) {
 
-		for (courseParse cp : cpA) {
+		for (CourseParse cp : cpA) {
 			if (cp.subject.equals(Major)) {				//Search for major and return the obj contains the courses of that major.
 				return cp;
 			}
@@ -250,10 +250,10 @@ public class courseParse {
 
 	}
 
-	public static Course search(ArrayList<courseParse> cpA, String Course) {
+	public static Course search(ArrayList<CourseParse> cpA, String Course) {
 		Course target = null;
 
-		for (courseParse cp : cpA) {
+		for (CourseParse cp : cpA) {
 			if (cp.subject.equals(Course.substring(0, 4))) {				//For example, if you search for COMP2012, it will find the List of COMP courses, then call findByCourse
 				target = cp.findByCode(Course);
 				return target;
@@ -264,7 +264,7 @@ public class courseParse {
 	}
 
 	public static void main(String[] args) {
-		ArrayList<courseParse> cpA = new ArrayList<courseParse>();
+		ArrayList<CourseParse> cpA = new ArrayList<CourseParse>();
 		cpA = fullparse();											//This line parse everything into the arraylist of Majors
 		Course target = null;
 		while (true) {												//Endless loop of searching and showing course
@@ -287,7 +287,7 @@ public class courseParse {
 					continue;
 				}
 				else{
-					courseParse result = searchP(cpA,text);
+					CourseParse result = searchP(cpA,text);
 					if (result == null) {
 						System.out.println("Not Found");
 						continue;
@@ -306,7 +306,7 @@ public class courseParse {
 		}
 
 	}
-	private static void out(courseParse cp){
+	private static void out(CourseParse cp){
 		for(Course c:cp.courses)System.out.println(c.getName()+"\t"+c.getMaxWaitList()+"\t");//+c.rating
 		//Name	MaxWaitList	rating(TODO), anything else? (interestingly, ALL courses are waitlist 0)
 		//possible to sum all quota from lectures?
