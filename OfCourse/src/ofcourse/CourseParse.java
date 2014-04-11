@@ -175,8 +175,8 @@ public class CourseParse {
 				System.out.println("Cache is used.");
 				doc = Jsoup.parse(cache, "UTF-8", URL);
 			}
-			//Get
-			doc = Jsoup.connect(URL + subject).get();
+			/*//Get
+			doc = Jsoup.connect(URL + subject).get();*/
 			Elements cs = doc.select("#classes .course");
 			for (Element courseE : cs) {
 				//System.out.println(courseE.toString());
