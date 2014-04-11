@@ -97,13 +97,13 @@ public class MainWindow extends JFrame {
 	public static ArrayList<Course> allCourses;
 	
 	
-	public static java.util.HashMap<JPanel, TimeTableGUI> linkage = new java.util.HashMap<JPanel, TimeTableGUI>();
+	//public static java.util.HashMap<JPanel, TimeTableGUI> linkage = new java.util.HashMap<JPanel, TimeTableGUI>();
 	//private JTable table;
 
 	
 	public TimeTableGUI getSelectedTimeTableGUI() {
-		if(timetableTabpage.getSelectedComponent() != null && linkage.get(timetableTabpage.getSelectedComponent()) != null) {
-			return linkage.get(timetableTabpage.getSelectedComponent());
+		if(timetableTabpage.getSelectedComponent() != null) {
+			return (TimeTableGUI)(timetableTabpage.getSelectedComponent());
 		}
 		return null;
 	}
@@ -188,7 +188,6 @@ public class MainWindow extends JFrame {
 				TimeTableGUI test = new TimeTableGUI();
 				//JPanel testp = test.initilizeGUIComponent();
 				timetableTabpage.addTab("20140401", null, test, null);
-				linkage.put(test, test);
 			}
 		});
 		btnNewButton.setBounds(677, 12, 98, 28);

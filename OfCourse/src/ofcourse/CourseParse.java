@@ -225,7 +225,7 @@ public class CourseParse {
 				SubjectList.add(courseE.text());					//It first find a list of majors from /COMP,
 			}
 			for (String subject : SubjectList) {
-				if(!(subject.equals("COMP") || subject.equals("HUMA") || subject.equals("MATH"))) continue;
+				//if(!(subject.equals("COMP") || subject.equals("HUMA") || subject.equals("MATH"))) continue;
 				CourseParse cp=parse(subject);						// then it parse major by major, each put in a seperate obj.
 				cpA.add(cp);
 			}
