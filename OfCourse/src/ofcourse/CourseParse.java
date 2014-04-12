@@ -38,6 +38,8 @@ public class CourseParse {
 	public final static long expireTime = 15 * 60 * 1000; //TTL for the local cache of quota page , 15 min
 	//14 summer would change to /1340/, fall would change to /1410/, 
 	//need to figure out some ways to change semester
+	
+	//
 
 	public CourseParse() {
 
@@ -140,9 +142,9 @@ public class CourseParse {
 					d1 = dateFormat.parse(historyContent.substring(start + subject.length(), end));
 					//in milliseconds 
 					long diff = dNow.getTime() - d1.getTime();
-					/*long diffMinutes = diff / (60 * 1000) % 60;
+					long diffMinutes = diff / (60 * 1000) % 60;
 					long diffHours = diff / (60 * 60 * 1000) % 24;
-					long diffDays = diff / (24 * 60 * 60 * 1000);*/
+					long diffDays = diff / (24 * 60 * 60 * 1000);
 					if (diff >= expireTime) {
 						updateNeeded = true;
 					}
@@ -175,8 +177,7 @@ public class CourseParse {
 				System.out.println("Cache is used.");
 				doc = Jsoup.parse(cache, "UTF-8", URL);
 			}
-			/*//Get
-			doc = Jsoup.connect(URL + subject).get();*/
+			//doc = cacheManager.getDocument(subject);
 			Elements cs = doc.select("#classes .course");
 			for (Element courseE : cs) {
 				//System.out.println(courseE.toString());
@@ -195,13 +196,14 @@ public class CourseParse {
 				//if found an invalid course(comp6666), do nothing
 			}
 			
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			System.out.println("Connection error");
 			e.printStackTrace();
-		} catch (ParseException e) {
+		} 
+		catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
 		return cp;
 	}
 
