@@ -138,7 +138,7 @@ public class MainWindow extends JFrame {
 				try {
 					MainWindow frame = new MainWindow();
 					
-					ArrayList<CourseParse> result = CourseParse.fullparse();
+					ArrayList<CourseParse> result = CourseParseThreaded.fullparse();
 					
 //					ArrayList<CourseParse> result = new ArrayList<CourseParse>(); result.add(CourseParse.parse("COMP")); result.add(CourseParse.parse("ELEC"));
 
