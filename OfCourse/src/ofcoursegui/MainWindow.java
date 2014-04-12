@@ -349,7 +349,7 @@ public class MainWindow extends JFrame {
 	
 			    // Get the appropriate input map using the JComponent constants.
 			    // This one works well when the component is a container. 
-			    InputMap inputMap = c.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+			    InputMap inputMap = c.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW); 
 	
 			    // Add the key binding for the keystroke to the action name
 			    inputMap.put(controlW, "closeTab");

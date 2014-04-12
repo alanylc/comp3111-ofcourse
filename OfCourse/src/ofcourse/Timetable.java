@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
+
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -50,7 +52,13 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	 */
 	public Timetable(int tid, JTabbedPane targetTabbedPage) {
 		table_id = tid;
-		targetTabbedPage.add(Integer.toString(tid), gui);
+		targetTabbedPage.add(gui);
+		int pos = targetTabbedPage.indexOfComponent(gui);
+		String title = Integer.toString(tid);
+		javax.swing.JLabel label = new javax.swing.JLabel(title);
+		label.setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
+		targetTabbedPage.setTabComponentAt(pos, label);
+		targetTabbedPage.setTitleAt(pos, title);
 	}
 	/**
 	 * Get the selected course in GUI.
