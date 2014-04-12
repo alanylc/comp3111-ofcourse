@@ -140,8 +140,7 @@ public class MainWindow extends JFrame {
 					
 					ArrayList<CourseParse> result = CourseParse.fullparse();
 					
-//					ArrayList<CourseParse> result = new ArrayList<CourseParse>();
-//					result.add(CourseParse.parse("COMP")); result.add(CourseParse.parse("ELEC"));
+//					ArrayList<CourseParse> result = new ArrayList<CourseParse>(); result.add(CourseParse.parse("COMP")); result.add(CourseParse.parse("ELEC"));
 
 					frame.setVisible(true);
 					

@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -14,6 +15,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import ofcourse.Course;
+import ofcourse.TimetableError;
 
 public class CourseGUI extends JPanel {
 	public final HashMap<Integer, Course.Session> linkage = new HashMap<Integer, Course.Session>();
@@ -82,7 +84,73 @@ public class CourseGUI extends JPanel {
 				}
 			}
 
-			MainWindow.own_table.addCourse(course, ss.toArray(new Course.Session[ss.size()]));
+			TimetableError err_code = MainWindow.own_table.addCourse(course, ss.toArray(new Course.Session[ss.size()]));
+			switch (err_code) {
+				case NoError:
+					// do nothing if enrollment is successful
+					break;
+				case CourseEnrolled:
+					JOptionPane.showMessageDialog(MainWindow.searchTabpage,
+						    "The course has already been enrolled.",
+						    "Enroll Fails",
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case CourseNotEnrolled:
+					// this error should not be returned by addCourse()
+					System.out.println("[CourseNotEnrolled] Unexpected error code returned by addCourse()");
+					break;
+				case CourseNotExists:
+					// this message should never be prompted as the result list should only show existing course 
+					JOptionPane.showMessageDialog(MainWindow.searchTabpage,
+						    "The course does not exists.",
+						    "Enroll Fails",
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case DuplicateSessionType:
+					JOptionPane.showMessageDialog(MainWindow.searchTabpage,
+						    "Choose only one per session type.",
+						    "Enroll Fails",
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case InvalidSessions:
+					// this message should never be prompted as the result list should only show valid sessions
+					JOptionPane.showMessageDialog(MainWindow.searchTabpage,
+						    "Selected sessions are invalid.",
+						    "Enroll Fails",
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case SelfConflicts:
+					JOptionPane.showMessageDialog(MainWindow.searchTabpage,
+						    "Between sessions chosen, there are time conflicts.",
+						    "Enroll Fails",
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case SessionTypeMissed:
+					JOptionPane.showMessageDialog(MainWindow.searchTabpage,
+						    "Must choose one per session type.",
+						    "Enroll Fails",
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case SessionsNotMatched:
+					JOptionPane.showMessageDialog(MainWindow.searchTabpage,
+						    "Matching between Lecture/Tutorial/Lab is required.",
+						    "Enroll Fails",
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case TimeConflicts:
+					JOptionPane.showMessageDialog(MainWindow.searchTabpage,
+						    "Course with sessions selected has time conflicts with course already enrolled.",
+						    "Enroll Fails",
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case OtherErrors:
+					// this error should not be returned by addCourse()
+					System.out.println("[OtherErrors] Unexpected error code returned by addCourse()");
+					break;
+				default:
+					System.out.println("Error code missed");
+					break;
+			}
 		}
 	}
 	
