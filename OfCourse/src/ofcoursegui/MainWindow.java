@@ -309,7 +309,7 @@ public class MainWindow extends JFrame {
 					addClosableTab(timetableTabpage, newTable, "Mine VS "+activeTitle, null);
 				}
 				else {
-					JOptionPane.showMessageDialog(contentPane, "Can only find common free time with friends' time tables, but not with the result.");
+					JOptionPane.showMessageDialog(contentPane, "Can only find common free time with time tables of friends.");
 				}
 			}
 		});
