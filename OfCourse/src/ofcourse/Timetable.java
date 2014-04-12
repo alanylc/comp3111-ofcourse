@@ -476,7 +476,14 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		}
 		if (!consistent || !addSuccess) {
 			this.setTableId(old_tid);
-			this.setEnrolled(old_enrolled);
+			this.setEnrolled(new HashMap<Course, ArrayList<Course.Session>>());
+			Iterator<java.util.Map.Entry<Course, ArrayList<Session>>> it = old_enrolled.entrySet().iterator();
+			while (it.hasNext()) {
+				java.util.Map.Entry<Course, ArrayList<Session>> entry = it.next();
+				Session[] entry_sessions = new Session[entry.getValue().size()];
+				entry.getValue().toArray(entry_sessions);
+				this.addCourse(entry.getKey(), entry_sessions);
+			}
 			return false;
 		}
 		return true;
