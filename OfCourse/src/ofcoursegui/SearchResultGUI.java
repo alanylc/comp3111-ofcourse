@@ -1,5 +1,6 @@
 package ofcoursegui;
 
+import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -76,9 +77,27 @@ public class SearchResultGUI extends JPanel {
 		        for (int i : selecteds) {
 		        	if (i == row) {
 		        		Course c = linkage.get(row);
-		        		CourseGUI cgui = new CourseGUI(c);
-		        		MainWindow.searchTabpage.addTab(c.getCode().toString(), cgui);
+		        		CourseGUI cgui = null;
+		        		int tab_pos = MainWindow.searchTabpage.indexOfTab(c.getCode().toString());
+		        		if (tab_pos==-1) { // the tab of the course does not exist yet
+		        			//System.out.println(c.getCode().toString() + "   " +tab_pos);
+		        			cgui = new CourseGUI(c);
+			        		MainWindow.addClosableTab(MainWindow.searchTabpage, cgui, c.getCode().toString(), null);
+		        		}
+		        		else { // the tab of the course already exist
+		        			cgui = (CourseGUI) MainWindow.searchTabpage.getComponentAt(tab_pos);
+		        		}
 		        		MainWindow.searchTabpage.setSelectedComponent(cgui);
+		        		
+		        		//code for debugging
+		        		/*for (int tab_i = 0; tab_i<MainWindow.searchTabpage.getTabCount(); tab_i++) {
+		        			Component compo = MainWindow.searchTabpage.getComponentAt(tab_i);
+		        			if (compo instanceof CourseGUI) {
+		        				String code = ((CourseGUI) compo).course.getCode().toString();
+			        			System.out.println("== "+code+" ==");
+			        			System.out.println("== "+MainWindow.searchTabpage.getTitleAt(tab_i)+" ==");
+		        			}
+		        		}*/
 		        	}
 		        }
 		    }

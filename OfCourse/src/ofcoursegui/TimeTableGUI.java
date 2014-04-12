@@ -215,6 +215,41 @@ public class TimeTableGUI extends JPanel{
 		}
 	}
 	
+// all slots in the array slots[] will be filled by the specified color
+// this method is to ease the implementation of function that shows common free time
+public void fillSlots(int[] slots, Color color, String key) throws Exception {
+		int maxTime = rows - 1;
+		int maxDay = cols - 1;
+		//find all target slots
+		//invalid slots are null
+		ArrayList<JLabel> labels = new ArrayList<JLabel>();
+		for (int i : slots) {
+			if (i < 0 || i > maxDay * 100 + maxTime) 
+				throw new Exception("Slot number must be between." + 100 + " and " + (maxDay * 100 + maxTime));
+			JLabel label = getSlot(i);
+			if (label == null) throw new Exception("Invalid slot number.");
+			labels.add(label);
+		}
+		if (labels.size() <= 0) return;
+		//fill color
+		for (JLabel l : labels) {
+			l.setBorder(new LineBorder(color));
+			l.setBackground(color);
+			l.setOpaque(true);
+		}
+		//add filled slots to list
+		if (filledSlots_new.containsKey(key)) {
+			ArrayList<ArrayList<JLabel>> old = filledSlots_new.get(key);
+			old.add(labels);
+			filledSlots_new.put(key, old);
+		}
+		else {
+			ArrayList<ArrayList<JLabel>> newlist = new ArrayList<ArrayList<JLabel>>();
+			newlist.add(labels);
+			filledSlots_new.put(key, newlist);
+		}
+	}
+	
 	//Whether the slots are occupied are not managed in this class. Only the visual is changed.
 	public void unfillSlots(String key) {
 		ArrayList<ArrayList<JLabel>> labels = filledSlots_new.get(key);

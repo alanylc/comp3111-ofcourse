@@ -1,17 +1,27 @@
 package ofcoursegui;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.AbstractAction;
 import javax.swing.AbstractListModel;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.KeyStroke;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -24,6 +34,7 @@ import ofcourse.SearchSubject;
 
 public class NewSearchGUI extends JPanel {
 
+	private static int searchCount = 0;
 	private JPanel subjectPanel = new JPanel();
 	private JPanel levelPanel = new JPanel();
 	JPanel otherPanel = new JPanel();
@@ -108,13 +119,15 @@ public class NewSearchGUI extends JPanel {
 				//System.out.println(cs.size());
 				//System.out.println(cs.toString());
 				
-				//TODO: Remove dependency on MainWindow
-				MainWindow.searchTabpage.addTab("Result1", null, newResult, null);
-				MainWindow.searchTabpage.setSelectedComponent(newResult);
 				
+				
+				//TODO: Remove dependency on MainWindow
+				searchCount++;
+				//MainWindow.searchTabpage.addTab("Result"+searchCount, null, newResult, null);
+				MainWindow.addClosableTab(MainWindow.searchTabpage, newResult, "Result"+searchCount, null);
+				MainWindow.searchTabpage.setSelectedComponent(newResult);
 			}
 		});
 	}
-	
 	
 }
