@@ -127,7 +127,7 @@ public class MainWindow extends JFrame {
 			return (TimeTableGUI)(timetableTabpage.getSelectedComponent());
 		}
 		return null;
-	}
+	} 
 	
 	/**
 	 * Launch the application.
