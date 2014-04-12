@@ -29,6 +29,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.border.TitledBorder;
 
+import ofcourse.Course;
+import ofcourse.TimePeriod;
+
 public class TimeTableGUI extends JPanel{
 	private static int rows = 28;
 	private static int cols = 6;
@@ -58,8 +61,7 @@ public class TimeTableGUI extends JPanel{
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
+			// TODO Auto-generated method stub			
 		}
 
 		@Override
@@ -146,15 +148,31 @@ public class TimeTableGUI extends JPanel{
 	
 	public JLabel getSlot(int slotNumber) {
 		//detect invalid number
-		if (slotNumber < 0) return null;
+		if (slotNumber < 100 || slotNumber >= cols*100+rows) return null;
 		return getSlot(slotNumber / 100, slotNumber % 100); 
 	}
 	
 	public JLabel getSlot(int weekDay, int timeID) {
 		//detect invalid number
-		if (weekDay < 0 || timeID < 0 || weekDay >= cols || timeID >= rows) return null;
+		if (weekDay-1 < 0 || timeID < 0 || weekDay-1 >= cols || timeID >= rows) return null;
 		//array index is zero-based, but weekDay counts from 1 to 7
 		return getSlots()[weekDay - 1][timeID]; 
+	}
+	
+	public int[] getFilledSlots() {
+		ArrayList<Integer> slots = new ArrayList<Integer>();
+		for (int i=0; i<cols; i++) {
+			for (int j=0; j<rows; j++) {
+				if (jlabelarray[i][j].getBackground() != Color.WHITE) {
+					slots.add((i+1)*100+j);
+				}
+			}
+		}
+		int[] result = new int[slots.size()];
+		for (int i=0; i<slots.size(); i++) {
+			result[i] = slots.get(i);
+		}
+		return result;
 	}
 	
 	//Whether the slots are occupied are not managed in this class. Only the visual is changed.
@@ -168,12 +186,12 @@ public class TimeTableGUI extends JPanel{
 	public void fillSlots(int startSlot, int endSlot, Color color, String[] text, String key) throws Exception {
 		
 		int maxTime = rows - 1;
-		int maxDay = cols - 1;
+		int maxDay = cols;
 		//find all target slots
 		//invalid slots are null
 		ArrayList<JLabel> labels = new ArrayList<JLabel>();
 		for (int i = startSlot; i <= endSlot; i++) {
-			if (i < 0 || i > maxDay * 100 + maxTime) 
+			if (i < 100 || i > maxDay * 100 + maxTime) 
 				throw new Exception("Slot number must be between." + 100 + " and " + (maxDay * 100 + maxTime));
 			JLabel label = getSlot(i);
 			if (label == null) throw new Exception("Invalid slot number.");
@@ -215,16 +233,16 @@ public class TimeTableGUI extends JPanel{
 		}
 	}
 	
-// all slots in the array slots[] will be filled by the specified color
-// this method is to ease the implementation of function that shows common free time
-public void fillSlots(int[] slots, Color color, String key) throws Exception {
+	// all slots in the array slots[] will be filled by the specified color
+	// this method is to ease the implementation of function that shows common free time
+	public void fillSlots(int[] slots, Color color, String key) throws Exception {
 		int maxTime = rows - 1;
-		int maxDay = cols - 1;
+		int maxDay = cols;
 		//find all target slots
 		//invalid slots are null
 		ArrayList<JLabel> labels = new ArrayList<JLabel>();
 		for (int i : slots) {
-			if (i < 0 || i > maxDay * 100 + maxTime) 
+			if (i < 100 || i > maxDay * 100 + maxTime) 
 				throw new Exception("Slot number must be between." + 100 + " and " + (maxDay * 100 + maxTime));
 			JLabel label = getSlot(i);
 			if (label == null) throw new Exception("Invalid slot number.");
@@ -247,6 +265,49 @@ public void fillSlots(int[] slots, Color color, String key) throws Exception {
 			ArrayList<ArrayList<JLabel>> newlist = new ArrayList<ArrayList<JLabel>>();
 			newlist.add(labels);
 			filledSlots_new.put(key, newlist);
+		}
+	}
+	
+	
+	// fill slots by the given enrolled course list
+	public void fillSlots(HashMap<Course, ArrayList<Course.Session>> enrolled) {
+		ArrayList<Course.Session> sessions_enrolled = new ArrayList<Course.Session>();
+		java.util.Collection<ArrayList<Course.Session>> collection = enrolled.values();
+		for (ArrayList<Course.Session> arr : collection) {
+			sessions_enrolled.addAll(arr);
+		}
+		Color c = TimeTableGUI.getRandomBgColor();
+		for (Course.Session s : sessions_enrolled) {
+			for (TimePeriod tp : s.getSchedule()) {
+				try {
+					Course course = Course.getCourseByClassNum(s.getClassNo());
+					fillSlots(
+							tp.getStartSlot().getID(), 
+							tp.getEndSlot().getID(), 
+							c, 
+							new String[] { course.toString(), s.toString() }, 
+							course.toString());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	
+	// fill all slots of time table
+	public void fillAllSlots(Color color) throws Exception {
+		int maxTime = rows-1;
+		int maxDay = cols;
+		for (int i=1; i<=maxDay; i++) {
+			for (int j=0; j<=maxTime; j++) {
+				JLabel label = getSlot(i*100+j);
+				if (label == null) throw new Exception("Invalid slot number.");
+				// fill color
+				label.setBorder(new LineBorder(color));
+				label.setBackground(color);
+				label.setOpaque(true);
+			}
 		}
 	}
 	

@@ -40,6 +40,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.SpringLayout;
 import javax.swing.JTextPane;
@@ -260,6 +261,58 @@ public class MainWindow extends JFrame {
 		});
 		scrollPane.setViewportView(list);
 		btnDrop.addActionListener(new DropButtonListener());
+		
+		JButton btnFindFreeTime = new JButton("Find Common Free Time");
+		btnFindFreeTime.setBounds(1007, 12, 180, 28);
+		contentPane.add(btnFindFreeTime);
+		btnFindFreeTime.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// a new tab
+				TimeTableGUI newTable = new TimeTableGUI();
+				
+				// get slots that active time table that are filled
+				TimeTableGUI activeTable = getSelectedTimeTableGUI();
+				int[] filledSlots = activeTable.getFilledSlots();
+				ArrayList<Course.Session> sessions_enrolled = new ArrayList<Course.Session>();
+				
+				// get sessions that are enrolled in own_table
+				java.util.Collection<ArrayList<Course.Session>> collection = own_table.getEnrolled().values();
+				for (ArrayList<Course.Session> arr : collection) {
+					sessions_enrolled.addAll(arr);
+				}
+				
+				
+				try {
+					// fill the whole new table with green color, to represent free time
+					newTable.fillAllSlots(Color.GREEN);
+					// fill the slots enrolled in active time table
+					newTable.fillSlots(filledSlots, Color.LIGHT_GRAY, "CommonFreeTime");
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				// fill the sessions enrolled in own_table
+				for (Course.Session s : sessions_enrolled) {
+					for (TimePeriod tp : s.getSchedule()) {
+						try {
+							newTable.fillSlots(tp.getStartSlot().getID(), tp.getEndSlot().getID(),
+									Color.LIGHT_GRAY, new String[]{}, "CommonFreeTime");
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+				// get title of active time table
+				int pos = timetableTabpage.indexOfComponent(activeTable);
+				String activeTitle = timetableTabpage.getTitleAt(pos);
+				if (activeTitle.indexOf("Mine VS ") == -1  &&  !activeTable.equals(own_table.getGUI())) {
+					addClosableTab(timetableTabpage, newTable, "Mine VS "+activeTitle, null);
+				}
+				else {
+					JOptionPane.showMessageDialog(contentPane, "Can only find common free time with friends' time tables, but not with the result.");
+				}
+			}
+		});
 	}
 	
 	
