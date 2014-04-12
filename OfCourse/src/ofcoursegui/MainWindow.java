@@ -137,6 +137,7 @@ public class MainWindow extends JFrame {
 			public void run() {
 				try {
 					MainWindow frame = new MainWindow();
+					
 					ArrayList<CourseParse> result = CourseParse.fullparse();
 					
 //					ArrayList<CourseParse> result = new ArrayList<CourseParse>();
@@ -212,7 +213,8 @@ public class MainWindow extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				TimeTableGUI test = new TimeTableGUI();
 				//JPanel testp = test.initilizeGUIComponent();
-				timetableTabpage.addTab("20140401", null, test, null);
+				//timetableTabpage.addTab("20140401", null, test, null);
+				addClosableTab(timetableTabpage, test, "20140401", null);
 			}
 		});
 		btnNewButton.setBounds(677, 12, 98, 28);
@@ -335,24 +337,26 @@ public class MainWindow extends JFrame {
 		    //-------------------------------------------------------------
 		    // Bonus: Adding a <Ctrl-W> keystroke binding to close the tab
 		    //-------------------------------------------------------------
-		    AbstractAction closeTabAction = new AbstractAction() {
-		      @Override
-		      public void actionPerformed(ActionEvent e) {
-		        tabbedPane.remove(c);
-		      }
-		    };
-
-		    // Create a keystroke
-		    KeyStroke controlW = KeyStroke.getKeyStroke("control W");
-
-		    // Get the appropriate input map using the JComponent constants.
-		    // This one works well when the component is a container. 
-		    InputMap inputMap = c.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-
-		    // Add the key binding for the keystroke to the action name
-		    inputMap.put(controlW, "closeTab");
-
-		    // Now add a single binding for the action name to the anonymous action
-		    c.getActionMap().put("closeTab", closeTabAction);
+		    if (!(c instanceof TimeTableGUI)){  // only add this to searchTabpage but not timetableTabpage
+		    	AbstractAction closeTabAction = new AbstractAction() {
+			      @Override
+			      public void actionPerformed(ActionEvent e) {
+			        tabbedPane.remove(c);
+			      }
+			    };
+	
+			    // Create a keystroke
+			    KeyStroke controlW = KeyStroke.getKeyStroke("control W");
+	
+			    // Get the appropriate input map using the JComponent constants.
+			    // This one works well when the component is a container. 
+			    InputMap inputMap = c.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+	
+			    // Add the key binding for the keystroke to the action name
+			    inputMap.put(controlW, "closeTab");
+	
+			    // Now add a single binding for the action name to the anonymous action
+		    	c.getActionMap().put("closeTab", closeTabAction);
+		    }
 		  }
 }
