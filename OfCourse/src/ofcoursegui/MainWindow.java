@@ -32,6 +32,7 @@ import javax.swing.JTabbedPane;
 import java.awt.Checkbox;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
@@ -109,7 +110,7 @@ public class MainWindow extends JFrame {
 	
 	//public static ArrayList<SearchResultGUI> searchResultPanels = new ArrayList<SearchResultGUI>();
 	
-	private JPanel contentPane;
+	private static JPanel contentPane;
 	public JTabbedPane timetableTabpage = new JTabbedPane(JTabbedPane.TOP);
 	public static JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
 
@@ -262,8 +263,48 @@ public class MainWindow extends JFrame {
 		scrollPane.setViewportView(list);
 		btnDrop.addActionListener(new DropButtonListener());
 		
-		JButton btnFindFreeTime = new JButton("Find Common Free Time");
-		btnFindFreeTime.setBounds(1007, 12, 180, 28);
+		JButton btnSwap = new JButton("Swap...");
+		btnSwap.setBounds(1007, 12, 98, 28);
+		contentPane.add(btnSwap);
+		btnSwap.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Course origin = own_table.getSelectedCourse();
+				if (origin==null) {
+					JOptionPane.showMessageDialog(contentPane,
+						    "Must select a course in own time table for swapping.",
+						    "Swap Fails",
+						    JOptionPane.WARNING_MESSAGE);
+				}
+				else {
+					Component c = searchTabpage.getSelectedComponent();
+					if (!(c instanceof CourseGUI)) {
+						JOptionPane.showMessageDialog(contentPane,
+							    "A course details page must be the active tab.",
+							    "Swap Fails",
+							    JOptionPane.WARNING_MESSAGE);
+					}
+					else {
+						CourseGUI cgui = (CourseGUI) c;
+						Course.Session[] sessions = cgui.getSelectedSessions();
+						if (sessions.length==0) {
+							JOptionPane.showMessageDialog(contentPane,
+								    "No sessions of target course selected.",
+								    "Swap Fails",
+								    JOptionPane.WARNING_MESSAGE);
+						}
+						else {
+							Course target = Course.getCourseByClassNum(sessions[0].getClassNo());
+							TimetableError err = own_table.swapCourse(origin, target, sessions);
+							showError(err, "Swap Fails");
+						}
+					}
+				}
+			}
+		});
+		
+		JButton btnFindFreeTime = new JButton("Common Free Time");
+		btnFindFreeTime.setBounds(1117, 12, 150, 28);
 		contentPane.add(btnFindFreeTime);
 		btnFindFreeTime.addActionListener(new ActionListener() {
 			@Override
@@ -410,5 +451,76 @@ public class MainWindow extends JFrame {
 			    // Now add a single binding for the action name to the anonymous action
 		    	c.getActionMap().put("closeTab", closeTabAction);
 		    }
+		  }
+		  
+		  // show a error prompt
+		  public static void showError(TimetableError err, String title) {
+			  Component component = contentPane;
+			  switch (err) {
+				case NoError:
+					// do nothing if enrollment is successful
+					break;
+				case CourseEnrolled:
+					JOptionPane.showMessageDialog(component,
+						    "The course has already been enrolled.",
+						    title,
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case CourseNotEnrolled:
+					// this error should not be returned by addCourse()
+					System.out.println("[CourseNotEnrolled] Unexpected error code returned by addCourse()");
+					break;
+				case CourseNotExists:
+					// this message should never be prompted as the result list should only show existing course 
+					JOptionPane.showMessageDialog(component,
+						    "The course does not exists.",
+						    title,
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case DuplicateSessionType:
+					JOptionPane.showMessageDialog(component,
+						    "Choose only one per session type.",
+						    title,
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case InvalidSessions:
+					// this message should never be prompted as the result list should only show valid sessions
+					JOptionPane.showMessageDialog(component,
+						    "Selected sessions are invalid.",
+						    title,
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case SelfConflicts:
+					JOptionPane.showMessageDialog(component,
+						    "Between sessions chosen, there are time conflicts.",
+						    title,
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case SessionTypeMissed:
+					JOptionPane.showMessageDialog(component,
+						    "Must choose one per session type.",
+						    title,
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case SessionsNotMatched:
+					JOptionPane.showMessageDialog(component,
+						    "Matching between Lecture/Tutorial/Lab is required.",
+						    title,
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case TimeConflicts:
+					JOptionPane.showMessageDialog(component,
+						    "Course with sessions selected has time conflicts with course already enrolled.",
+						    title,
+						    JOptionPane.WARNING_MESSAGE);
+					break;
+				case OtherErrors:
+					// this error should not be returned by addCourse()
+					System.out.println("[OtherErrors] Unexpected error code returned by addCourse()");
+					break;
+				default:
+					System.out.println("Error code missed");
+					break;
+			}
 		  }
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -376,8 +377,21 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		boolean conflict = false;
 		
 		// if target course has already been enrolled, fails
-		if (courseEnrolled(target)) {
+		if (courseEnrolled(target) && origin!=target) {
 			return TimetableError.CourseEnrolled;
+		}
+		// if the target is the same as the origin, check if the sessions are different
+		if (origin.equals(target)) {
+			ArrayList<Course.Session> old_sessions = this.enrolled.get(origin);
+			ArrayList<Course.Session> new_sessions = new ArrayList<Course.Session>();
+			for (Course.Session s : sessions) {
+				new_sessions.add(s);
+			}
+			// if the old_sessions is a subset of or equal to new_sessions, return CourseEnrolled
+			// otherwise, continue the operation, and other errors might been returned
+			if (old_sessions.containsAll(new_sessions)) {
+				return TimetableError.CourseEnrolled;
+			}
 		}
 		//List all time slots to if the original course is dropped
 		ArrayList<TimeSlot> remainingSlots = new ArrayList<TimeSlot>();
