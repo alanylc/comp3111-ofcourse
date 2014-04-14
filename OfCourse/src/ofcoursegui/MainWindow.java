@@ -195,6 +195,7 @@ public class MainWindow extends JFrame {
 		        int returnVal = fc.showOpenDialog(contentPane);
 		        if (returnVal == JFileChooser.APPROVE_OPTION) {
 		            File file = fc.getSelectedFile();
+		            // own_table.tid will not change (only import timetable but not TID)
 		            int tid = own_table.getTableId();
 		            boolean success = own_table.importFile(file.getAbsolutePath());
 		            own_table.setTableId(tid);
