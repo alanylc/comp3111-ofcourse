@@ -41,6 +41,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.SpringLayout;
@@ -77,6 +78,7 @@ import java.util.Set;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.io.File;
 
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
@@ -186,9 +188,57 @@ public class MainWindow extends JFrame {
 		
 		JMenuItem mntmImportTimeTable = new JMenuItem("Import Time Table...");
 		mnFile.add(mntmImportTimeTable);
+		mntmImportTimeTable.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+			final JFileChooser fc = new JFileChooser();
+		        int returnVal = fc.showOpenDialog(contentPane);
+		        if (returnVal == JFileChooser.APPROVE_OPTION) {
+		            File file = fc.getSelectedFile();
+		            int tid = own_table.getTableId();
+		            boolean success = own_table.importFile(file.getAbsolutePath());
+		            own_table.setTableId(tid);
+		            if (success) {
+		            	JOptionPane.showMessageDialog(contentPane,
+							    "Successfully import time table from file: "+file.getName(),
+							    "Import Success",
+							    JOptionPane.INFORMATION_MESSAGE);
+		            }
+		            else {
+		            	JOptionPane.showMessageDialog(contentPane,
+							    "Fail to import time table from file: "+file.getName(),
+							    "Import Fails",
+							    JOptionPane.WARNING_MESSAGE);
+		            }
+		        }
+		   }
+		});
 		
 		JMenuItem mntmExportTimeTable = new JMenuItem("Export Time Table...");
 		mnFile.add(mntmExportTimeTable);
+		mntmExportTimeTable.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+			final JFileChooser fc = new JFileChooser();
+		        int returnVal = fc.showSaveDialog(contentPane);
+		        if (returnVal == JFileChooser.APPROVE_OPTION) {
+		            File file = fc.getSelectedFile();
+		            boolean success = own_table.exportFile(file.getAbsolutePath());
+		            if (success) {
+		            	JOptionPane.showMessageDialog(contentPane,
+							    "Successfully export time table to file: "+file.getName(),
+							    "Export Success",
+							    JOptionPane.INFORMATION_MESSAGE);
+		            }
+		            else {
+		            	JOptionPane.showMessageDialog(contentPane,
+							    "Fail to export time table to file: "+file.getName(),
+							    "Export Fails",
+							    JOptionPane.WARNING_MESSAGE);
+		            }
+		        }
+		   }
+		});
 		
 		JSeparator separator = new JSeparator();
 		mnFile.add(separator);

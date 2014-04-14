@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.swing.BorderFactory;
@@ -523,9 +524,13 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		boolean addSuccess = true; // check whether all courses are added successfully
 		// back up old data
 		int old_tid = this.getTableId();
-		HashMap<Course, ArrayList<Course.Session>> old_enrolled = this.getEnrolled();
+		HashMap<Course, ArrayList<Course.Session>> old_enrolled = (HashMap<Course, ArrayList<Session>>) getEnrolled().clone();
+		// drop all courses in old_enrolled, so that the gui will be updated
+		for (Course aCourse : old_enrolled.keySet()) {
+			this.dropCourse(aCourse);
+		}
 		this.setTableId(Integer.parseInt(tuples[0]));
-		this.setEnrolled(new HashMap<Course, ArrayList<Course.Session>>()); // empty the timetable
+		this.setEnrolled(new HashMap<Course, ArrayList<Course.Session>>()); // set the enrolled to empty
 		for (int i=1; i<tuples.length && consistent && addSuccess; i++) {
 			String[] classnums = tuples[i].trim().split(innerDelim);
 			Course acourse = Course.getCourseByClassNum(Integer.parseInt(classnums[0]));
@@ -545,9 +550,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		if (!consistent || !addSuccess) {
 			this.setTableId(old_tid);
 			this.setEnrolled(new HashMap<Course, ArrayList<Course.Session>>());
-			Iterator<java.util.Map.Entry<Course, ArrayList<Session>>> it = old_enrolled.entrySet().iterator();
-			while (it.hasNext()) {
-				java.util.Map.Entry<Course, ArrayList<Session>> entry = it.next();
+			for (Entry<Course, ArrayList<Session>> entry : old_enrolled.entrySet()) {
 				Session[] entry_sessions = new Session[entry.getValue().size()];
 				entry.getValue().toArray(entry_sessions);
 				this.addCourse(entry.getKey(), entry_sessions);
