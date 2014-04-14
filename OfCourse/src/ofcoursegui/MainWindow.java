@@ -272,17 +272,21 @@ public class MainWindow extends JFrame {
 		btnNewButton.setBounds(677, 12, 98, 28);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Delete Last");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
+		JButton btnDeleteLastTab = new JButton("Delete Last");
+		btnDeleteLastTab.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (timetableTabpage.getTabCount() > 1)
+				int indexSelected = timetableTabpage.getSelectedIndex();
+				if (timetableTabpage.getTabCount() > 1) {
+					if (timetableTabpage.getTabCount()-1 == indexSelected) 
+						timetableTabpage.setSelectedIndex(indexSelected-1);
 					timetableTabpage.remove(timetableTabpage.getTabCount() - 1);
-				timetableTabpage.setSelectedIndex(0);
+				}
+				
 			}
 		});
-		btnNewButton_1.setBounds(787, 12, 98, 28);
-		contentPane.add(btnNewButton_1);
+		btnDeleteLastTab.setBounds(787, 12, 98, 28);
+		contentPane.add(btnDeleteLastTab);
 		
 		//JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		searchTabpage.setBounds(12, 52, 533, 603);
