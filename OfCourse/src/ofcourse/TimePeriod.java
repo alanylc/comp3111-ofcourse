@@ -9,7 +9,7 @@ public class TimePeriod {
 	private TimeSlot startSlot;
 	private TimeSlot endSlot;
 	//therefore must be continuous
-	
+	/*
 	public TimePeriod(TimeSlot startSlot, TimeSlot endSlot) throws IllegalArgumentException {
 		//check to only allow time slot in same day
 		if (startSlot.getDayID() != endSlot.getDayID()) 
@@ -20,6 +20,7 @@ public class TimePeriod {
 		this.startSlot = startSlot;
 		this.endSlot = endSlot;
 	}
+	*/
 	public TimePeriod(String sub, String time){				//construct from "We", "03:30PM - 06:20PM" to obj
 		String StartTime=time.substring(1,time.indexOf(" - "));
 		String EndTime=time.substring(time.indexOf(" - ")+3);

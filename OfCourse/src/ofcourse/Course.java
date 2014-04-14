@@ -65,22 +65,25 @@ public class Course extends Ratable {
 	 * @param modifier
 	 * @param name
 	 */
+	/*
 	public Course(String dept, int number, char modifier, String name, boolean matchSession) {
 		super(name);
 		code = new Code(dept, number, modifier);//TODO: check valid arguments
 		setMatchSession(matchSession);
 	}
-	
+	*/
 	/**
 	 * Construct a new course with the provided information. 
 	 * @param code
 	 * @param name
 	 */
+	/*
 	public Course(Code code, String name, boolean matchSession) {
 		super(name);
 		this.code = (Code) code.clone();//Must be a copy to prevent unexpected modification
 		setMatchSession(matchSession);
 	}
+	*/
 	/**
 	 * Construct a new course with the html element parsed from html parser.
 	 * @param e 
@@ -220,10 +223,11 @@ public class Course extends Ratable {
 	 * for example, LA2 or T3, a session type and a session number.
 	 * @param sessions An array of sessions
 	 */
+	/*
 	public void setSessions(ArrayList<Session> sessions) {
 		this.sessions = sessions;
 	}
-
+*/
 	/**
 	 * Sets whether the course require match session numbers of different sessions.
 	 * @param matchSession <tt>True</tt> means matching is required, otherwise <tt>false</tt>
