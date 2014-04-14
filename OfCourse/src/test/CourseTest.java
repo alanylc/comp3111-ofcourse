@@ -235,7 +235,11 @@ public class CourseTest {
 
 	@Test
 	public void testGetSessionByString() {
-		fail("Not yet implemented");
+		c=Course.getCourseByName("COMP3111 ");
+		Session s=c.getSessionByString("L1");
+		System.out.println(s.getClassNo());
+		int expected=1897;
+		assertEquals(expected,s.getClassNo());
 	}
 
 	@Test

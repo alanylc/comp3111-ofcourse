@@ -189,12 +189,7 @@ public class SessionTest {
 		for(TimePeriod tp:schedule)actual+=tp.getStartSlot().getID();
 		assertEquals(expected, actual);
 	}
-/*
-	@Test
-	public void testSetSchedule() {
 
-	}
-*/
 	@Test
 	public void testGetRoom() {
 		s=c.getSessions().get(0);
@@ -212,12 +207,7 @@ public class SessionTest {
 		for(Instructor i:s.getInstructors())actual+=i.getName();
 		assertEquals(expected, actual);
 	}
-/*
-	@Test
-	public void testSetInstructors() {
-		fail("Not yet implemented");
-	}
-*/
+
 	@Test
 	public void testToString() {
 		s=c.getSessions().get(0);

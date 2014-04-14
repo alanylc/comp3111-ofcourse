@@ -554,20 +554,22 @@ public class Course extends Ratable {
 		 * 
 		 * @return An array of <tt>TimePeriod</tt>. Each of them represent a continuous period of a lesson of this session.
 		 */
+		
 		public Set<TimePeriod> getSchedule() {
 			return schedule;
 		}
 
-
+/*
 		/**
 		 * Sets the schedule of this session.
 		 * 
 		 * @param schedule An array of <tt>TimePeriod</tt>. Each of them represent a continuous period of a lesson of this session.
 		 */
+/*
 		public void setSchedule(Set<TimePeriod> schedule) {
 			this.schedule = new HashSet<TimePeriod>(schedule);//Must be a copy to prevent accidental modification
 		}
-		
+*/
 		/**
 		 * Gets the room of this session.
 		 * 
@@ -585,16 +587,17 @@ public class Course extends Ratable {
 		public Set<Instructor> getInstructors() {
 			return instructors;
 		}
-
+/*
 		/**
 		 * Sets all instructors teaching the session.
 		 * 
 		 * @param instructors An array of <tt>Instructor</tt> that are teaching the course.
 		 */
+/*
 		public void setInstructors(Set<Instructor> instructors) {
 			this.instructors = new HashSet<Instructor>(instructors);//Must be a copy to prevent accidental modification
 		}
-		
+*/		
 		@Override
 		public String toString() {
 			//TODO: session type is invalid case

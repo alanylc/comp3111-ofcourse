@@ -336,5 +336,44 @@ public class NetworkTest {
 		String expected="200";
 		assertEquals(expected,a.setMyFav("favv"));
 	}
-
+	@Test
+	public void testGetTimeTable() {//case when not logged in
+		Network a=Network.getOurNetwork();
+		Network.logout();
+		String expected="200";
+		assertEquals(expected,a.getTimeTable());
+	}
+	@Test
+	public void testGetTimeTable2() {//case when logged in
+		Network a=Network.getOurNetwork();
+		Network.login(username[1], password[1]);
+		String expected="100";
+		assertEquals(expected,a.setTimeTable("1111!1112!1113!"));//or any other string
+		expected="1111!1112!1113!";
+		assertEquals(expected,a.getTimeTable());
+		a.setTimeTable("");
+	}
+	@Test
+	public void testGetTimeTable3() {//case for wrong username/password
+		Network a=Network.getOurNetwork();
+		Network.login(username[0], password[1]);
+		String expected="002";
+		assertEquals(expected,a.getTimeTable());
+	}	@Test
+	public void testSetTimeTable() {//case when set successfully
+		Network a=Network.getOurNetwork();
+		Network.login(username[1], password[1]);
+		String expected="100";
+		assertEquals(expected,a.setTimeTable("1111!1112!1113!"));
+		expected="1111!1112!1113!";
+		assertEquals(expected,a.getTimeTable());
+		a.setTimeTable("");
+	}
+	@Test
+	public void testSetTimeTable2() {//case when not logged in
+		Network a=Network.getOurNetwork();
+		Network.logout();
+		String expected="200";
+		assertEquals(expected,a.setMyFav("x"));
+	}
 }

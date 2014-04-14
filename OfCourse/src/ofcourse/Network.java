@@ -127,7 +127,16 @@ public class Network {//chk courseParse.out() for implementation of
 		if (ourNetwork.username.equals(""))return "200";
 		return this.POST("getreqfriend.php", empty);
 	}
-
+	public String getTimeTable() { // Get ppl who have sent friend request to you, output as reqfriend1!reqfriend2!...!
+		String[][] empty = { { "", "" } };
+		if (ourNetwork.username.equals(""))return "200";
+		return this.POST("getTimeTable.php", empty);
+	}
+	public String setTimeTable(String TimeTable) { // Change your MyFav and upload (NOT WORKING)
+		if (ourNetwork.username.equals(""))return "200";
+		String[][] setTimeTableA = { { "TimeTable", TimeTable } };
+		return this.POST("setTimeTable.php", setTimeTableA);
+	}
 	public String firstNewPW(String ppw, String npw) { // Change Password FOR FIRST TIME, output 100 if ok
 		if (ourNetwork.username.equals(""))return "200";
 		npw = encryptPW(npw);
