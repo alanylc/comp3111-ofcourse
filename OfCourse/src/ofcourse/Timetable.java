@@ -454,8 +454,8 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		if (er_s!=TimetableError.NoError && er_s!=TimetableError.TimeConflicts) {
 			return er_s;
 		}
+		// else, the target course should be okay to be added if conflict = false 
 		
-		boolean needRecovery = false;
 		TimetableError er = TimetableError.OtherErrors; // this should be replaced by the following code, and should never be returned
 		// conflict even after dropping
 		if (conflict) {
@@ -468,17 +468,9 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 			if(er != TimetableError.NoError) { // just in case it returns error (should not happen)
 				return er;
 			}
-			er = validateEnrollment(target, sessions, trueSessions);
-			if (er==TimetableError.NoError) { // if sessions pass the validation, the course should be added successfully
-				er = addCourse(target, sessions);
-				if (er!=TimetableError.NoError) { // just in case it returns error (should not happen)
-					needRecovery = true;
-				}
-			}
-			else { // sessions does not pass the validation, recovery is needed 
-				needRecovery = true;
-			}
-			if (needRecovery)  { // add back the dropped origin course
+			er = addCourse(target, sessions);
+			if (er!=TimetableError.NoError) { // just in case it returns error (should not happen)
+				// add the dropped origin course back
 				addCourse(origin, temp.toArray(new Course.Session[temp.size()]));
 			}
 		}
