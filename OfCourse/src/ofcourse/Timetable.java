@@ -436,13 +436,25 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 				}
 			}
 		}
+
 		//List all time slots to be used by this course registration
-		ArrayList<TimeSlot> timeSlots = sessionsToSlots(sessions);
+		ArrayList<Course.Session> trueSessions = getTrueSessions(target, sessions);
+		Course.Session[] trueSessions_arr = new Course.Session[trueSessions.size()];
+		trueSessions.toArray(trueSessions_arr);
+		ArrayList<TimeSlot> timeSlots = sessionsToSlots(trueSessions_arr);
 		
 		for (TimeSlot ts : timeSlots) {
 			if (remainingSlots.contains(ts)) 
 				conflict = true;
 		}
+		
+		// check if sessions inputed are correct
+		// since the origin course is not dropped yet, there may be time conflicts 
+		TimetableError er_s = validateEnrollment(target, sessions, trueSessions);
+		if (er_s!=TimetableError.NoError && er_s!=TimetableError.TimeConflicts) {
+			return er_s;
+		}
+		
 		boolean needRecovery = false;
 		TimetableError er = TimetableError.OtherErrors; // this should be replaced by the following code, and should never be returned
 		// conflict even after dropping
@@ -456,7 +468,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 			if(er != TimetableError.NoError) { // just in case it returns error (should not happen)
 				return er;
 			}
-			er = validateEnrollment(target, sessions, getTrueSessions(target, sessions));
+			er = validateEnrollment(target, sessions, trueSessions);
 			if (er==TimetableError.NoError) { // if sessions pass the validation, the course should be added successfully
 				er = addCourse(target, sessions);
 				if (er!=TimetableError.NoError) { // just in case it returns error (should not happen)
