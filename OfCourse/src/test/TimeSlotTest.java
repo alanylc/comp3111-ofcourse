@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Set;
 
 import ofcourse.Course;
@@ -79,16 +81,22 @@ public class TimeSlotTest {
 	@Test
 	public void testGetDay() {
 		Set<TimePeriod> schedule = s.getSchedule();
-		WeekDay expected=WeekDay.Tue;
-		WeekDay actual=WeekDay.Mon;
-		for(TimePeriod tp:schedule)
+		WeekDay expected[] = new WeekDay[] {WeekDay.Tue, WeekDay.Thu};
+		ArrayList<WeekDay> actual_arr = new ArrayList<WeekDay>();
+		for(TimePeriod tp:schedule) {
 			try {
-				actual=tp.getStartSlot().getDay();
+				actual_arr.add(tp.getStartSlot().getDay());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		assertEquals(expected, actual);
+		}
+		WeekDay actual[] = new WeekDay[actual_arr.size()];
+		actual_arr.toArray(actual);
+		Arrays.sort(expected);
+		Arrays.sort(actual);
+		
+		assertArrayEquals(expected, actual);
 	}
 
 	@Test
