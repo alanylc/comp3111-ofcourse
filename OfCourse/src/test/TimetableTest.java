@@ -282,10 +282,51 @@ public class TimetableTest {
 	}
 	
 	@Test
-	public void testSwapCourse08() { // swap with enrolled
+	public void testSwapCourse08() { // swap with enrolled, different course
 		Course comp = Course.getCourseByName("COMP1001 ");
 		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
 		assertEquals(TimetableError.CourseEnrolled, table.swapCourse(Course.getCourseByName("COMP2611 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
+	}
+	
+	@Test
+	public void testSwapCourse09() { // swap with enrolled and different sessions
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
+		assertEquals(TimetableError.NoError, table.swapCourse(Course.getCourseByName("COMP1001 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA2")}));
+	}
+	
+	@Test
+	public void testSwapCourse10() { // swap with enrolled and same sessions
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
+		assertEquals(TimetableError.CourseEnrolled, table.swapCourse(Course.getCourseByName("COMP1001 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
+	}
+	
+	@Test
+	public void testSwapCourse11() { // origin course is not enrolled
+		Course comp = Course.getCourseByName("COMP1001 ");
+		assertEquals(TimetableError.CourseNotEnrolled, table.swapCourse(Course.getCourseByName("COMP1001 "), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
+	}
+	
+	@Test
+	public void testSwapCourse12() { // origin course does not exist
+		Course comp = Course.getCourseByName("COMP1001 ");
+		assertEquals(TimetableError.CourseNotExists, table.swapCourse(Course.getCourseByName("COMP1001K"), comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
+	}
+	
+	@Test
+	public void testSwapCourse13() { // target course does not exist
+		Course comp = Course.getCourseByName("COMP1001 ");
+		// set target to be null to represent non-exist course, sessions are not true but just to fulfill requirement of function parameter
+		assertEquals(TimetableError.CourseNotExists, table.swapCourse(Course.getCourseByName("COMP1001 "), null, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")}));
+	}
+	
+	@Test
+	public void testSwapCourse14() { // target course miss a session type
+		Course comp = Course.getCourseByName("COMP1001 ");
+		table.addCourse(comp, new Course.Session[]{comp.getSessionByString("L1"), comp.getSessionByString("LA1")});
+		// set target to be null to represent non-exist course, sessions are not true but just to fulfill requirement of function parameter
+		assertEquals(TimetableError.SessionTypeMissed, table.swapCourse(Course.getCourseByName("COMP1001 "), comp, new Course.Session[]{comp.getSessionByString("L1")}));
 	}
 	
 	@Test
