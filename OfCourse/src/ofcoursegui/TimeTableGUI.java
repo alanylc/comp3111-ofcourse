@@ -335,6 +335,7 @@ public class TimeTableGUI extends JPanel{
 	//Whether the slots are selected are not managed in this class. Only the visual is changed.
 	public void selectSlots(String key) {
 		ArrayList<ArrayList<JLabel>> labels = filledSlots_new.get(key);
+		if (labels == null) return;
 		for(ArrayList<JLabel> lession : labels) {
 			for(int i = 0; i < lession.size(); i++) {
 				//Other than those needed, remaining should be background color to "hide" itself
@@ -363,6 +364,7 @@ public class TimeTableGUI extends JPanel{
 	//Whether the slots are selected are not managed in this class. Only the visual is changed.
 	public void unselectSlots(String key) {
 		ArrayList<ArrayList<JLabel>> labels = filledSlots_new.get(key);
+		if (labels == null) return;
 		for(ArrayList<JLabel> lession : labels) {
 			for(int i = 0; i < lession.size(); i++) {
 				//All border should be background color to "hide" itself
