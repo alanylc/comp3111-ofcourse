@@ -203,12 +203,12 @@ public class CourseTest {
 		c=Course.getCourseByName("COMP3111 ");
 		assertEquals(expected, c.getMaxWaitList());
 	}
-
+/*
 	@Test
 	public void testSetSessions() {
 		fail("Not yet implemented");
 	}
-
+*/
 	@Test
 	public void testSetMatchSession() {//test for true->false
 		boolean expected=false;

@@ -264,7 +264,7 @@ public class CourseParse {
 		return null;
 
 	}
-
+/*
 	public static void main(String[] args) {
 		ArrayList<CourseParse> cpA = new ArrayList<CourseParse>();
 		cpA = fullparse();											//This line parse everything into the arraylist of Majors
@@ -352,7 +352,7 @@ public class CourseParse {
 		}
 		//comments and ratings here
 	}
-}
+*/}
 
 
 /*
