@@ -173,10 +173,20 @@ public class Network {//chk courseParse.out() for implementation of
 		return this.POST("select.php", empty);
 	}
 	/**
-	 * Get the user's friend list from server, output as output as friend1!friend2!...!
+	 * Get the user's friend list from server, output as 2Darray
 	 * @return Reply from server.
 	 */
-	public String getFriendList() { // Get my friend list, output as friend1!friend2!...!
+	public String[][] getFriendListAndTimeTable() { // Get my friend list and timetable
+		String[][] empty = { { "", "" } };
+		if (ourNetwork.username.equals(""))return new String[][]{{"200"}};
+		String line = this.POST("getfriendandtimetable.php", empty);
+		return dataCut(line, 2);
+	}
+	/**
+	 * Get the list of people who have sent friend request to you from server, output as reqfriend1!reqfriend2!...!
+	 * @return Reply from server.
+	 */
+	public String getFriendList() { // Get ppl who have sent friend request to you, output as reqfriend1!reqfriend2!...!
 		String[][] empty = { { "", "" } };
 		if (ourNetwork.username.equals(""))return "200";
 		return this.POST("getfriend.php", empty);
