@@ -1,90 +1,51 @@
 package ofcoursegui;
 
-import ofcourse.*;
-
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JToolBar;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
-
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.JSeparator;
-
-import java.awt.Button;
-
-import javax.swing.JButton;
-import javax.swing.BoxLayout;
-import javax.swing.JInternalFrame;
-
-import java.awt.Panel;
-
-import javax.swing.JTabbedPane;
-
-import java.awt.Checkbox;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.Font;
+import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
+import javax.swing.AbstractListModel;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.InputMap;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
-import javax.swing.SpringLayout;
-import javax.swing.JTextPane;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.UIManager;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.JList;
-import javax.swing.AbstractListModel;
-
-import java.awt.GridLayout;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.Sizes;
-import com.jgoodies.forms.factories.FormFactory;
-
-import java.awt.Dimension;
-
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.TitledBorder;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.io.File;
-
-import javax.swing.JCheckBox;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.KeyStroke;
+import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import ofcourse.Course;
+import ofcourse.CourseParse;
+import ofcourse.CourseParseThreaded;
+import ofcourse.Network;
+import ofcourse.SearchAllCourse;
+import ofcourse.SearchCourse;
+import ofcourse.SearchSubject;
+import ofcourse.TimePeriod;
+import ofcourse.Timetable;
+import ofcourse.TimetableError;
 
 public class MainWindow extends JFrame {
 	
@@ -100,10 +61,17 @@ public class MainWindow extends JFrame {
 	JButton btnDrop = new JButton("Drop...");
 	public class DropButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			if (timetableTabpage.getSelectedComponent() != own_table.getGUI()) {
+				JOptionPane.showMessageDialog(contentPane, "Own timetable tab must be the active tab for the operation.");
+				return;
+			}
 			Course selection = own_table.getSelectedCourse();
 			if (selection != null) {
 				own_table.courseUnselected();
 				own_table.dropCourse(selection);
+			}
+			else { // selection == null
+				JOptionPane.showMessageDialog(contentPane, "Select a course in own timetable first.");
 			}
 		}
 	}
@@ -112,8 +80,8 @@ public class MainWindow extends JFrame {
 	
 	//public static ArrayList<SearchResultGUI> searchResultPanels = new ArrayList<SearchResultGUI>();
 	
-	private static JPanel contentPane;
-	public JTabbedPane timetableTabpage = new JTabbedPane(JTabbedPane.TOP);
+	public static JPanel contentPane;
+	public static JTabbedPane timetableTabpage = new JTabbedPane(JTabbedPane.TOP);
 	public static JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
 
 	
@@ -186,8 +154,42 @@ public class MainWindow extends JFrame {
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
+		JMenu mnAccount = new JMenu("Account");
+		menuBar.add(mnAccount);
+		
+		JMenu mnFriend = new JMenu("Friend");
+		menuBar.add(mnFriend);
+		
+		JMenuItem mntmUploadMine = new JMenuItem("Upload Mine");
+		mnFile.add(mntmUploadMine);
+		
+		JMenuItem mntmDownloadMine = new JMenuItem("Download Mine");
+		mnFile.add(mntmDownloadMine);
+		
+		JSeparator sep = new JSeparator();
+		sep.setForeground(Color.LIGHT_GRAY);
+		mnFile.add(sep);
+		
 		JMenuItem mntmImportTimeTable = new JMenuItem("Import Time Table...");
 		mnFile.add(mntmImportTimeTable);
+		
+		JMenuItem mntmExportTimeTable = new JMenuItem("Export Time Table...");
+		mnFile.add(mntmExportTimeTable);
+		
+		JMenuItem mntmLogin = new JMenuItem("Login");
+		mnAccount.add(mntmLogin);
+		
+		JMenuItem mntmLogout = new JMenuItem("Logout");
+		mnAccount.add(mntmLogout);
+
+		JMenuItem mntmAddNewFd = new JMenuItem("Add New Friend");
+		mnFriend.add(mntmAddNewFd);
+		
+		JMenuItem mntmUpdateFdTimetable = new JMenuItem("Update Friends' Timetables");
+		mnFriend.add(mntmUpdateFdTimetable);
+		
+		
+		
 		mntmImportTimeTable.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -215,8 +217,6 @@ public class MainWindow extends JFrame {
 		   }
 		});
 		
-		JMenuItem mntmExportTimeTable = new JMenuItem("Export Time Table...");
-		mnFile.add(mntmExportTimeTable);
 		mntmExportTimeTable.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -241,8 +241,6 @@ public class MainWindow extends JFrame {
 		   }
 		});
 		
-		JSeparator separator = new JSeparator();
-		mnFile.add(separator);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -254,23 +252,53 @@ public class MainWindow extends JFrame {
 		
 		own_table = new Timetable(20097657, timetableTabpage);
 		
-		//Buttons
-		JButton btnNewButton = new JButton("See Friend");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+
+		JScrollPane friend_scrollPane = new JScrollPane();
+		friend_scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		friend_scrollPane.setBounds(557, 12, 116, 28);
+		contentPane.add(friend_scrollPane);
+		
+		final JList friend_list = new JList();
+		friend_list.setModel(new AbstractListModel() {
+			Network network = Network.login("ctestcaa", "aaa");
+			String[] values = network.getFriendList().split("!");
+			//String[] values = new String[] {"20140401"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
 			}
 		});
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		friend_list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		friend_scrollPane.setViewportView(friend_list);
+		
+		//Buttons
+		JButton btnSeeFriend = new JButton("See Friend");
+		btnSeeFriend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				TimeTableGUI test = new TimeTableGUI();
 				//JPanel testp = test.initilizeGUIComponent();
 				//timetableTabpage.addTab("20140401", null, test, null);
-				addClosableTab(timetableTabpage, test, "20140401", null);
+				Object obj = friend_list.getSelectedValue();
+				if (obj!=null) { // if there is an item selected 
+					String friend_name =  obj.toString();
+					int index = timetableTabpage.indexOfTab(friend_name);
+					if (index==-1) { // not exist
+						addClosableTab(timetableTabpage, test, friend_name, null);
+					}
+					else { // existing tab, switch to it
+						timetableTabpage.setSelectedIndex(index);
+					}
+				}
+				else {
+					JOptionPane.showMessageDialog(contentPane, "Please select a friend first.",
+							"See Friend's Timetable", JOptionPane.INFORMATION_MESSAGE);;
+				}
 			}
 		});
-		btnNewButton.setBounds(677, 12, 98, 28);
-		contentPane.add(btnNewButton);
+		btnSeeFriend.setBounds(677, 12, 98, 28);
+		contentPane.add(btnSeeFriend);
 		
 		JButton btnDeleteLastTab = new JButton("Delete Last");
 		btnDeleteLastTab.addMouseListener(new MouseAdapter() {
@@ -299,23 +327,6 @@ public class MainWindow extends JFrame {
 		
 		btnDrop.setBounds(897, 12, 98, 28);
 		contentPane.add(btnDrop);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(557, 12, 116, 28);
-		contentPane.add(scrollPane);
-		
-		JList list = new JList();
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"20140401"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		scrollPane.setViewportView(list);
 		btnDrop.addActionListener(new DropButtonListener());
 		
 		JButton btnSwap = new JButton("Swap...");
@@ -324,6 +335,10 @@ public class MainWindow extends JFrame {
 		btnSwap.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				if (timetableTabpage.getSelectedComponent() != own_table.getGUI()) {
+					JOptionPane.showMessageDialog(contentPane, "Own timetable tab must be the active tab for the operation.");
+					return;
+				}
 				Course origin = own_table.getSelectedCourse();
 				if (origin==null) {
 					JOptionPane.showMessageDialog(contentPane,
@@ -405,7 +420,8 @@ public class MainWindow extends JFrame {
 					addClosableTab(timetableTabpage, newTable, "Mine VS "+activeTitle, null);
 				}
 				else {
-					JOptionPane.showMessageDialog(contentPane, "Can only find common free time with time tables of friends.");
+					JOptionPane.showMessageDialog(contentPane, "Can only find common free time with time tables of friends.",
+							"Find Common Free Time", JOptionPane.INFORMATION_MESSAGE);;
 				}
 			}
 		});

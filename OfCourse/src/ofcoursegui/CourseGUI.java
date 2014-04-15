@@ -74,6 +74,10 @@ public class CourseGUI extends JPanel {
 	private class EnrollButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if (MainWindow.timetableTabpage.getSelectedComponent() != MainWindow.own_table.getGUI()) {
+				JOptionPane.showMessageDialog(MainWindow.contentPane, "Own timetable tab must be the active tab for the operation.");
+				return;
+			}
 			int[] selecteds = CourseGUI.this.sessionTable.getSelectedRows();
 			ArrayList<Course.Session> ss = new ArrayList<Course.Session>();
 			for(int i : selecteds) {
