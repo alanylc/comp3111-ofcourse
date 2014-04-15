@@ -166,6 +166,34 @@ public class NetworkTest {
 		String expected="";
 		assertEquals(expected,a.getFriendList());
 	}
+	@Test
+	public void testGetFriendListAndTimeTable() {//case for successful return as personA
+		Network a=Network.getOurNetwork();
+		Network.login(username[0], password[0]);
+		String[][] expected={{"ctestcab",""}};
+		assertArrayEquals(expected,a.getFriendListAndTimeTable());
+	}
+	@Test
+	public void testGetFriendListAndTimeTable2() {//case for successful return as personB
+		Network a=Network.getOurNetwork();
+		Network.login(username[1], password[1]);
+		String[][] expected={{"ctestcaa","Mine!1782,1786,!"}};
+		assertArrayEquals(expected,a.getFriendListAndTimeTable());
+	}
+	@Test
+	public void testGetFriendListAndTimeTable3() {//case for successful return as empty
+		Network a=Network.getOurNetwork();
+		Network.login(username[2], password[2]);
+		String[][] expected={};
+		assertArrayEquals(expected,a.getFriendListAndTimeTable());
+	}
+	@Test
+	public void testGetFriendListAndTimeTable4() {//case for logged out
+		Network a=Network.getOurNetwork();
+		Network.logout();
+		String expected="200";
+		assertEquals(expected,a.getFriendListAndTimeTable()[0][0]);
+	}
 	@Test//caa sent a friend to cac before this test
 	public void testGetReqFriendList() {
 		Network a=Network.getOurNetwork();
