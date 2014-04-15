@@ -114,8 +114,6 @@ public class TimeSlotTest {
 			try {
 				actual_arr.add(tp.getStartSlot().getDay());
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 		WeekDay actual[] = new WeekDay[actual_arr.size()];
@@ -132,8 +130,6 @@ public class TimeSlotTest {
 		try {
 			assertEquals(expected,t.getDay());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 	@Test
@@ -143,8 +139,6 @@ public class TimeSlotTest {
 		try {
 			assertEquals(expected,t.getDay());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 	@Test
@@ -154,8 +148,6 @@ public class TimeSlotTest {
 		try {
 			assertEquals(expected,t.getDay());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 	@Test
@@ -165,8 +157,6 @@ public class TimeSlotTest {
 		try {
 			assertEquals(expected,t.getDay());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 	@Test
@@ -176,8 +166,6 @@ public class TimeSlotTest {
 		try {
 			assertEquals(expected,t.getDay());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 	@Test
@@ -187,9 +175,26 @@ public class TimeSlotTest {
 		try {
 			assertEquals(expected,t.getDay());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+	}
+	@Test
+	public void testGetDay8() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("Su","22:30");
+		WeekDay expected=WeekDay.Sun;
+		try {
+			assertEquals(expected,t.getDay());
+		} catch (Exception e) {
+		}
+	}
+	@Test(expected=Exception.class)
+	public void testGetDay9() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("AA","22:30");
+
+			try {
+				WeekDay w=t.getDay();
+			} catch (Exception e) {
+			}
+
 	}
 	@Test
 	public void testGetTimeID() {
