@@ -443,25 +443,25 @@ public class TimetableTest {
 	
 	@Test
 	public void testImportString04() {
-		String importLine = "5;1823,;33,1860,1855,;1780,1784,;";  // 33 is invalid class number
+		String importLine = "5!1823,!33,1860,1855,!1780,1784,!";  // 33 is invalid class number
 		assertFalse(table.importString(importLine));
 	}
 	
 	@Test
 	public void testImportString05() {
-		String importLine = "5;1823,;1780,1860,1855,;1780,1784,;";  // 1780 does not belong to the same course 
+		String importLine = "5!1823,!1780,1860,1855,!1780,1784,!";  // 1780 does not belong to the same course 
 		assertFalse(table.importString(importLine));
 	}
 	
 	@Test
 	public void testImportString06() {
-		String importLine = "5;1823,;178..0,1860,1855,;1780,1784,;";  // non-integer
+		String importLine = "5!1823,!178..0,1860,1855,!1780,1784,!";  // non-integer
 		assertFalse(table.importString(importLine));
 	}
 	
 	@Test
 	public void testImportString07() {
-		String importLine = "5;1823,;1851,1860,1855,;1780,1784,;1823;";  // add duplicated course, to make addCourse fails
+		String importLine = "5!1823,!1851,1860,1855,!1780,1784,!1823!";  // add duplicated course, to make addCourse fails
 		assertFalse(table.importString(importLine));
 	}
 	
