@@ -65,11 +65,13 @@ public class TimeSlot {
 		if (id % 100 > max) throw new java.lang.IllegalArgumentException("Hour is too large");
 		ID = id;
 	}
-	
+/*
 	private TimeSlot(WeekDay day, int hour, boolean min) { //time must be between 0900 and 1900
 		//TODO: missing implementation
 		//ID=day.getID()+(hour-9)*2+Math.ceil(min/30);
 	}
+	*/
+	/*
 	private TimeSlot(String wd,String time) { //wd is weekday
 		SimpleDateFormat ft = new SimpleDateFormat ("hh:mm"); //it cannot parse hh:mma :(
 		String map [] []=				//cannot use switch since 1.7 blahblahblah
@@ -97,7 +99,7 @@ public class TimeSlot {
 		}
      
 	}
-	
+	*/
 	public TimeSlot nextSlot() {
 		int temp = ID + 1;
 		if(temp % 100 > max) {

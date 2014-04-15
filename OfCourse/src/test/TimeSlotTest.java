@@ -57,11 +57,33 @@ public class TimeSlotTest {
 		int expected=316;
 		assertEquals(expected,t.ID);
 	}
+	@Test
+	public void testGetTimeSlotByStrings2() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("We","09:00");
+		int expected=300;
+		assertEquals(expected,t.ID);
+	}
+	@Test
+	public void testGetTimeSlotByStrings3() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("We","3:30");
+		assertEquals(null,t);
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetTimeSlotByStrings4() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("We","23:30");
+	}
+
 
 	@Test
 	public void testNextSlot() {
 		TimeSlot t=TimeSlot.getTimeSlotByStrings("We","17:00");
 		int expected=317;
+		assertEquals(expected,t.nextSlot().ID);
+	}
+	@Test
+	public void testNextSlot2() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("We","22:30");
+		int expected=400;
 		assertEquals(expected,t.nextSlot().ID);
 	}
 
@@ -103,7 +125,72 @@ public class TimeSlotTest {
 		
 		assertArrayEquals(expected, actual);
 	}
-
+	@Test
+	public void testGetDay2() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("Mo","22:30");
+		WeekDay expected=WeekDay.Mon;
+		try {
+			assertEquals(expected,t.getDay());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testGetDay3() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("Tu","22:30");
+		WeekDay expected=WeekDay.Tue;
+		try {
+			assertEquals(expected,t.getDay());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testGetDay4() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("We","22:30");
+		WeekDay expected=WeekDay.Wed;
+		try {
+			assertEquals(expected,t.getDay());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testGetDay5() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("Th","22:30");
+		WeekDay expected=WeekDay.Thu;
+		try {
+			assertEquals(expected,t.getDay());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testGetDay6() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("Fr","22:30");
+		WeekDay expected=WeekDay.Fri;
+		try {
+			assertEquals(expected,t.getDay());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testGetDay7() {
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("Sa","22:30");
+		WeekDay expected=WeekDay.Sat;
+		try {
+			assertEquals(expected,t.getDay());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	@Test
 	public void testGetTimeID() {
 		Set<TimePeriod> schedule = s.getSchedule();
