@@ -159,7 +159,7 @@ public class TimeTableGUI extends JPanel{
 		return getSlots()[weekDay - 1][timeID]; 
 	}
 	
-	public int[] getFilledSlots() {
+	/*public int[] getFilledSlots() {
 		ArrayList<Integer> slots = new ArrayList<Integer>();
 		for (int i=0; i<cols; i++) {
 			for (int j=0; j<rows; j++) {
@@ -173,7 +173,7 @@ public class TimeTableGUI extends JPanel{
 			result[i] = slots.get(i);
 		}
 		return result;
-	}
+	}*/
 	
 	//Whether the slots are occupied are not managed in this class. Only the visual is changed.
 	//Only start slot and end slot are specified, so the slots filled are continuous.

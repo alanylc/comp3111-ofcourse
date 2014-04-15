@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.AbstractListModel;
@@ -47,8 +48,37 @@ import ofcourse.TimePeriod;
 import ofcourse.Timetable;
 import ofcourse.TimetableError;
 
+@SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 	
+	public static HashMap<String, Timetable> friends = new HashMap<String, Timetable>();
+	public static String username=null, password=null;
+	public static Network network = Network.login("ctestcaa", "aaa");
+	
+	public static JLabel loginAs;
+	
+	public static boolean haveLogined() {
+		String str = network.getFriendList();
+		return (!str.equals("002") && !str.equals("200"));
+	}
+	
+	public void updateFriendsTimetable(boolean prompt) {
+		// if have not logged in, prompt and do nothing
+		if (!haveLogined()) {
+			if (prompt) JOptionPane.showMessageDialog(contentPane, "You have not logged in yet.");
+			return;
+		}
+		String returned = network.getFriendList();
+		String fdList[] = returned.split("!");
+		for (String fd : fdList) {
+			Timetable table = new Timetable(fd);
+			// TODO: change the method to real one that get FD's one
+			//table.importString(network.getTimeTable()); 
+			table.addCourse("COMP2900 ", new String[]{"T5"});
+			friends.put(fd, table);
+		}
+		if (prompt) JOptionPane.showMessageDialog(contentPane, "Timetables of friends updated successfully.");
+	}
 	
 	public class SearchButtonListener implements ActionListener {
 		@Override
@@ -131,12 +161,17 @@ public class MainWindow extends JFrame {
 						System.out.println(c.toString());
 					}
 					System.out.println(cs.toString());
+					
+					frame.updateFriendsTimetable(false);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
+	
+	public static JFrame loginFrame=null;
 
 	/**
 	 * Create the frame.
@@ -144,6 +179,7 @@ public class MainWindow extends JFrame {
 
 	@SuppressWarnings("serial")
 	public MainWindow() {
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
@@ -160,10 +196,10 @@ public class MainWindow extends JFrame {
 		JMenu mnFriend = new JMenu("Friend");
 		menuBar.add(mnFriend);
 		
-		JMenuItem mntmUploadMine = new JMenuItem("Upload Mine");
+		JMenuItem mntmUploadMine = new JMenuItem("Upload My Time Table");
 		mnFile.add(mntmUploadMine);
 		
-		JMenuItem mntmDownloadMine = new JMenuItem("Download Mine");
+		JMenuItem mntmDownloadMine = new JMenuItem("Download My Time Table");
 		mnFile.add(mntmDownloadMine);
 		
 		JSeparator sep = new JSeparator();
@@ -176,6 +212,9 @@ public class MainWindow extends JFrame {
 		JMenuItem mntmExportTimeTable = new JMenuItem("Export Time Table...");
 		mnFile.add(mntmExportTimeTable);
 		
+		JMenuItem mntmRegister = new JMenuItem("Register");
+		mnAccount.add(mntmRegister);
+		
 		JMenuItem mntmLogin = new JMenuItem("Login");
 		mnAccount.add(mntmLogin);
 		
@@ -185,8 +224,12 @@ public class MainWindow extends JFrame {
 		JMenuItem mntmAddNewFd = new JMenuItem("Add New Friend");
 		mnFriend.add(mntmAddNewFd);
 		
-		JMenuItem mntmUpdateFdTimetable = new JMenuItem("Update Friends' Timetables");
+		JMenuItem mntmChkRequest = new JMenuItem("Check Friend Requests");
+		mnFriend.add(mntmChkRequest);
+		
+		JMenuItem mntmUpdateFdTimetable = new JMenuItem("Update Friends' Time Tables");
 		mnFriend.add(mntmUpdateFdTimetable);
+		
 		
 		
 		
@@ -198,7 +241,7 @@ public class MainWindow extends JFrame {
 		        if (returnVal == JFileChooser.APPROVE_OPTION) {
 		            File file = fc.getSelectedFile();
 		            // own_table.tid will not change (only import timetable but not TID)
-		            int tid = own_table.getTableId();
+		            String tid = own_table.getTableId();
 		            boolean success = own_table.importFile(file.getAbsolutePath());
 		            own_table.setTableId(tid);
 		            if (success) {
@@ -241,6 +284,86 @@ public class MainWindow extends JFrame {
 		   }
 		});
 		
+		mntmUploadMine.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (!haveLogined()) {
+					JOptionPane.showMessageDialog(contentPane,
+						    "Only available after logged in.",
+						    "Error",
+						    JOptionPane.WARNING_MESSAGE);
+				}
+				else {
+					String exportStr = own_table.exportString();
+					String returnVal = network.setTimeTable(exportStr);
+					if (returnVal.equals("100")) {
+						JOptionPane.showMessageDialog(contentPane, "Upload successfully.");
+					}
+					else {
+						JOptionPane.showMessageDialog(contentPane, "Upload fails.");
+					}
+				}
+			}
+		});
+		
+		mntmDownloadMine.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (!haveLogined()) {
+					JOptionPane.showMessageDialog(contentPane,
+						    "Only available after logged in.",
+						    "Error",
+						    JOptionPane.WARNING_MESSAGE);
+				}
+				else {
+					String instr = network.getTimeTable();
+					if (own_table.importString(instr)) {
+						JOptionPane.showMessageDialog(contentPane, "Download successfully.");
+					}
+					else {
+						JOptionPane.showMessageDialog(contentPane, "Download fails.");
+					}
+				}
+			}
+		});
+		
+		
+		mntmLogin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (haveLogined()) {
+					JOptionPane.showMessageDialog(contentPane, "You have already logged in.");
+				}
+				else {
+					loginFrame = new LoginGUI(contentPane);
+					
+				}
+			}
+		});
+		
+		
+		mntmLogout.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (haveLogined()) {
+					Network.logout();
+					MainWindow.loginAs.setText("Currently Login As: <Anonymous>");
+					JOptionPane.showMessageDialog(contentPane, "You have logged out successfully.");
+				}
+				else {
+					JOptionPane.showMessageDialog(contentPane, "You have not logged in yet.");
+				}
+			}
+		});
+		
+		
+		mntmUpdateFdTimetable.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				updateFriendsTimetable(true);
+			}
+		});
+		
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -250,7 +373,7 @@ public class MainWindow extends JFrame {
 		timetableTabpage.setBounds(557, 52, 705, 603);
 		contentPane.add(timetableTabpage);
 		
-		own_table = new Timetable(20097657, timetableTabpage);
+		own_table = new Timetable(Network.getOurNetworkUserName(), timetableTabpage);
 		
 
 		JScrollPane friend_scrollPane = new JScrollPane();
@@ -277,15 +400,13 @@ public class MainWindow extends JFrame {
 		JButton btnSeeFriend = new JButton("See Friend");
 		btnSeeFriend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TimeTableGUI test = new TimeTableGUI();
-				//JPanel testp = test.initilizeGUIComponent();
-				//timetableTabpage.addTab("20140401", null, test, null);
 				Object obj = friend_list.getSelectedValue();
 				if (obj!=null) { // if there is an item selected 
 					String friend_name =  obj.toString();
+					TimeTableGUI friendTable = friends.get(friend_name).getGUI();
 					int index = timetableTabpage.indexOfTab(friend_name);
 					if (index==-1) { // not exist
-						addClosableTab(timetableTabpage, test, friend_name, null);
+						addClosableTab(timetableTabpage, friendTable, friend_name, null);
 					}
 					else { // existing tab, switch to it
 						timetableTabpage.setSelectedIndex(index);
@@ -316,13 +437,32 @@ public class MainWindow extends JFrame {
 		btnDeleteLastTab.setBounds(787, 12, 98, 28);
 		contentPane.add(btnDeleteLastTab);
 		
+		
+		String theUser = Network.getOurNetworkUserName();
+		if (!haveLogined()) {
+			 theUser = "<Anonymous>";
+		}
+		loginAs = new JLabel("Currently Login As: "+theUser);
+		loginAs.setForeground(Color.BLUE);
+		loginAs.setBounds(12, 12, 500, 28);
+		contentPane.add(loginAs);
+		
+		
+		
 		//JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		searchTabpage.setBounds(12, 52, 533, 603);
 		contentPane.add(searchTabpage);
 		
 		
-		searchTabpage.addTab("New Search", null, newSearchPanel, null);
-		searchTabpage.setMnemonicAt(searchTabpage.getTabCount()-1, KeyEvent.VK_S);
+		searchTabpage.add(newSearchPanel);
+		int pos = searchTabpage.indexOfComponent(newSearchPanel);
+		String title = "New Search";
+		JLabel label = new JLabel(title);
+		label.setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
+		searchTabpage.setTabComponentAt(pos, label);
+		searchTabpage.setTitleAt(pos, title);
+		searchTabpage.setMnemonicAt(pos, KeyEvent.VK_S);
+		
 		searchTabpage.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		
 		btnDrop.setBounds(897, 12, 98, 28);
@@ -379,30 +519,47 @@ public class MainWindow extends JFrame {
 		btnFindFreeTime.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
 				// a new tab
 				TimeTableGUI newTable = new TimeTableGUI();
 				
 				// get slots that active time table that are filled
 				TimeTableGUI activeTable = getSelectedTimeTableGUI();
-				int[] filledSlots = activeTable.getFilledSlots();
+				String friend_name = timetableTabpage.getTitleAt(timetableTabpage.getSelectedIndex());
 				ArrayList<Course.Session> sessions_enrolled = new ArrayList<Course.Session>();
+				Timetable friend_table = friends.get(friend_name);
+				
+				// get title of active time table
+				int pos = timetableTabpage.indexOfComponent(activeTable);
+				String activeTitle = timetableTabpage.getTitleAt(pos);
+				if (activeTitle.indexOf("Mine VS ") != -1  ||  activeTable.equals(own_table.getGUI())) {
+					JOptionPane.showMessageDialog(contentPane, "Can only find common free time with time tables of friends.",
+							"Find Common Free Time", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
 				
 				// get sessions that are enrolled in own_table
-				java.util.Collection<ArrayList<Course.Session>> collection = own_table.getEnrolled().values();
-				for (ArrayList<Course.Session> arr : collection) {
+				for (ArrayList<Course.Session> arr : own_table.getEnrolled().values()) {
 					sessions_enrolled.addAll(arr);
+				}
+				
+				// get sessions that are enrolled in friend_table but not in own_table
+				for (ArrayList<Course.Session> arr : friend_table.getEnrolled().values()) {
+					for (Course.Session s : arr) {
+						if (!sessions_enrolled.contains(s)) {
+							sessions_enrolled.add(s);
+						}
+					}
 				}
 				
 				
 				try {
 					// fill the whole new table with green color, to represent free time
 					newTable.fillAllSlots(Color.GREEN);
-					// fill the slots enrolled in active time table
-					newTable.fillSlots(filledSlots, Color.LIGHT_GRAY, "CommonFreeTime");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				// fill the sessions enrolled in own_table
+				// fill the sessions enrolled in own_table and friend_table
 				for (Course.Session s : sessions_enrolled) {
 					for (TimePeriod tp : s.getSchedule()) {
 						try {
@@ -413,16 +570,12 @@ public class MainWindow extends JFrame {
 						}
 					}
 				}
-				// get title of active time table
-				int pos = timetableTabpage.indexOfComponent(activeTable);
-				String activeTitle = timetableTabpage.getTitleAt(pos);
-				if (activeTitle.indexOf("Mine VS ") == -1  &&  !activeTable.equals(own_table.getGUI())) {
-					addClosableTab(timetableTabpage, newTable, "Mine VS "+activeTitle, null);
+				String newTitle = "Mine VS "+activeTitle;
+				int theIndex = timetableTabpage.indexOfTab(newTitle);
+				if (theIndex!=-1) {
+					timetableTabpage.remove(theIndex);
 				}
-				else {
-					JOptionPane.showMessageDialog(contentPane, "Can only find common free time with time tables of friends.",
-							"Find Common Free Time", JOptionPane.INFORMATION_MESSAGE);;
-				}
+				addClosableTab(timetableTabpage, newTable, newTitle, null);
 			}
 		});
 	}

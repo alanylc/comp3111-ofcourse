@@ -38,23 +38,23 @@ public class TimetableTest {
 
 	@Before
 	public void setUp() throws Exception {
-		table = new Timetable(5); // TID = 5
+		table = new Timetable("5"); // TID = "5"
 		table.addCourse("COMP2611 ", new String[]{"L1", "T1", "LA1"}); // the table now has olny 1 course
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
 	@Test
 	public void testGetTableId() {
-		assertEquals(5, table.getTableId());
+		assertEquals("5", table.getTableId());
 	}
 
 	@Test
 	public void testSetTableId() {
-		table.setTableId(2);
-		assertEquals(2, table.getTableId());
+		table.setTableId("2");
+		assertEquals("2", table.getTableId());
 	}
 
 	@Test
@@ -381,7 +381,7 @@ public class TimetableTest {
 	
 	@Test
 	public void testImportString01() {
-		Timetable table2 = new Timetable(9);
+		Timetable table2 = new Timetable("9");
 		String exportLine = table.exportString();
 		boolean success = table2.importString(exportLine);
 		assertTrue(success);
@@ -389,7 +389,7 @@ public class TimetableTest {
 	
 	@Test
 	public void testImportString02() {
-		Timetable table2 = new Timetable(9);
+		Timetable table2 = new Timetable("9");
 		assertTrue(table2.importString(table.exportString()));
 		String[] expected = new String[] {"5", "1851", "1860", "1855"};
 		String exportLine = table2.exportString();
@@ -417,7 +417,7 @@ public class TimetableTest {
 	public void testImportString03() {
 		table.addCourse("COMP1900 ", new String[]{"T1"});
 		table.addCourse("COMP1001 ", new String[]{"L1", "LA1"});
-		Timetable table2 = new Timetable(9);
+		Timetable table2 = new Timetable("9");
 		table2.importString(table.exportString());
 		String[] expected = new String[] {"5", "1851", "1860", "1855", "1823", "1780", "1784"};
 		String exportLine = table2.exportString();
@@ -497,7 +497,7 @@ public class TimetableTest {
 	@Test
 	public void testImportFile() {
 		String expected = null, actuals = null;
-		Timetable table2 = new Timetable(0);
+		Timetable table2 = new Timetable("0");
 		ArrayList<String> strArr = new ArrayList<String>();
 		BufferedReader br = null;
 		try {
