@@ -18,7 +18,20 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-
+/**
+ * Handling all communication between client and server containing username, password, comments, timetables, etc
+ * List of error codes:
+ * 100: OK: When a request is done successfully.
+ * 000: Character error: Name contains invalid characters
+ * 001: Username exists: The username that user inputs has been registered.
+ * 002: Username/Password incorrect: The username/password that user inputs are incorrect.
+ * 003: Email not sent: The email containing the password cannot be sent due to server side error.
+ * 004: Duplicate entry when insert: Sending a friend request repeatedly.
+ * 005: Entry not exist when update: No known method can produce this error code.
+ * 404: Network error: Then there is no network or server is down.
+ * @author hin
+ *
+ */
 public class Network {//chk courseParse.out() for implementation of 
 	private String username;
 	private String password; //store user password, always encrypted
@@ -30,25 +43,51 @@ public class Network {//chk courseParse.out() for implementation of
 		username = "";
 		password = "";
 	}
+	/**
+	 * 
+	 * @return	The username/password set that the network class currently using
+	 */
 	public static Network getOurNetwork(){
 		return ourNetwork;
 	}
+	/**
+	 * 
+	 * @return	The username that the network class currently using
+	 */
 	public static String getOurNetworkUserName(){
 		return ourNetwork.username;
 	}
+	/**
+	 * 
+	 * @return	The password that the network class currently using
+	 */
 	public static String getOurNetworkPassword(){
 		return ourNetwork.password;
 	}
+	/**
+	 * 
+	 * @param username ITSC name of user
+	 * @param password Password of user
+	 * @return Network object containing the username and password that the user inputs. Note that there is no authentication in this method, use getTimetable instead. 
+	 */
 	public static Network login(String username, String password){
 		ourNetwork.username=username;
 		ourNetwork.password=encryptPW(password);
 		return ourNetwork;
 	}
+	/**
+	 * Sets the username and password to null.
+	 */
 	public static void logout(){
 		ourNetwork.username="";
 		ourNetwork.password="";
 	}
-
+	/**
+	 * 
+	 * @param line String which uses ASCII HEX 11-14 (DC1-DC4) to separate array elements.
+	 * @param b Number of elements in one array
+	 * @return 2D array parsed from line.
+	 */
 	public String[][] dataCut(String line, int b) { // use ASCII HEX 11-14 (DC1-DC4), don't tell me anyone is typing them.
 		int a = StringUtils.countMatches(line, ""); // change string with DC1-DC4 as separator to 2D array
 		String[][] data = new String[a][b]; // line is input string and b is number of parameters in one row(1-4)
@@ -77,7 +116,10 @@ public class Network {//chk courseParse.out() for implementation of
 		}
 		return data;
 	}
-
+	/**
+	 * Print 2D array (unused)
+	 * @param matrix 2Darray.
+	 */
 	public void printArray(String matrix[][]) { // Print 2d array
 		for (int row = 0; row < matrix.length; row++) {
 			for (int column = 0; column < matrix[row].length; column++) {
@@ -86,7 +128,11 @@ public class Network {//chk courseParse.out() for implementation of
 			System.out.println();
 		}
 	}
-
+	/**
+	 * Changes from UTF-8 hex string to string
+	 * @param hex A hex string which contains 0-9,A-F only
+	 * @return String parsed from hex.
+	 */
 	public String fromHexString(String hex) { // UTF-8 hex string to string
 		ByteBuffer buff = ByteBuffer.allocate(hex.length() / 2);
 		for (int i = 0; i < hex.length(); i += 2) {
@@ -97,46 +143,78 @@ public class Network {//chk courseParse.out() for implementation of
 		CharBuffer cb = cs.decode(buff); // BBB
 		return cb.toString();
 	}
-
+	/**
+	 * Register account on database, and will send an email to user's ITSC account.
+	 * @param username ITSC account name the user inputs.
+	 * @return Reply from server.
+	 */
 	public String register(String username) { // input name for register. Will send an email. Output 100 if ok.
 		String[][] empty = { { "", "" } };
 		ourNetwork.username = username;
 		return this.POST("insert.php", empty);
 	}
-
+	/**
+	 * Register account on database, but will NOT send an email to user's ITSC account. (debug only, you have to manually go to server to look for password)
+	 * @param username ITSC account name the user inputs.
+	 * @return Reply from server.
+	 */
 	public String registerB(String username) { // Same as above, but no email sent(debug only)
 		String[][] empty = { { "", "" } };
 		ourNetwork.username = username;
 		return this.POST("insertB.php", empty);
 	}
-
+	/**
+	 * Get the user's favourite courses from server
+	 * @return Reply from server.
+	 */
 	public String getMyFav() { // My Favorites as output
 		String[][] empty = { { "", "" } };
 		if (ourNetwork.username.equals(""))return "200";
 		return this.POST("select.php", empty);
 	}
-
+	/**
+	 * Get the user's friend list from server, output as output as friend1!friend2!...!
+	 * @return Reply from server.
+	 */
 	public String getFriendList() { // Get my friend list, output as friend1!friend2!...!
 		String[][] empty = { { "", "" } };
 		if (ourNetwork.username.equals(""))return "200";
 		return this.POST("getfriend.php", empty);
 	}
-
+	/**
+	 * Get the list of people who have sent friend request to you from server, output as reqfriend1!reqfriend2!...!
+	 * @return Reply from server.
+	 */
 	public String getReqFriendList() { // Get ppl who have sent friend request to you, output as reqfriend1!reqfriend2!...!
 		String[][] empty = { { "", "" } };
 		if (ourNetwork.username.equals(""))return "200";
 		return this.POST("getreqfriend.php", empty);
 	}
-	public String getTimeTable() { // Get ppl who have sent friend request to you, output as reqfriend1!reqfriend2!...!
+	/**
+	 * Get the user's time table string
+	 * @return Reply from server.
+	 */
+	public String getTimeTable() { 
 		String[][] empty = { { "", "" } };
 		if (ourNetwork.username.equals(""))return "200";
 		return this.POST("getTimeTable.php", empty);
 	}
+	/**
+	 * Upload your timetable to server.
+	 * @param TimeTable TimeTable String
+	 * @return Reply from server.
+	 */
 	public String setTimeTable(String TimeTable) { // Change your MyFav and upload (NOT WORKING)
 		if (ourNetwork.username.equals(""))return "200";
 		String[][] setTimeTableA = { { "TimeTable", TimeTable } };
 		return this.POST("setTimeTable.php", setTimeTableA);
 	}
+	/**
+	 * Change your password FOR FIRST TIME
+	 * @param ppw Original password
+	 * @param npw New password
+	 * @return Reply from server, 100 if ok.
+	 */
 	public String firstNewPW(String ppw, String npw) { // Change Password FOR FIRST TIME, output 100 if ok
 		if (ourNetwork.username.equals(""))return "200";
 		npw = encryptPW(npw);
@@ -146,7 +224,12 @@ public class Network {//chk courseParse.out() for implementation of
 			ourNetwork.password = npw;
 		return newpw;
 	}
-
+	/**
+	 * Change your password if not at your first time.
+	 * @param opw Original password
+	 * @param npw New password
+	 * @return Reply from server, 100 if ok.
+	 */
 	public String newPW(String opw, String npw) { // Change Password, output 100 if ok
 		if (ourNetwork.username.equals(""))return "200";
 		opw = encryptPW(opw);
@@ -157,14 +240,23 @@ public class Network {//chk courseParse.out() for implementation of
 			ourNetwork.password = npw;
 		return newpw;
 	}
-	
+	/**
+	 * Check if the password has not been changed from the one sent via email.
+	 * @return True is password has NOT changed, false otherwise.
+	 */
 	public Boolean chkFirstPW() {
 		String[][] empty = { { "", "" } };
 		if (this.POST("chkfpw.php", empty).equals("Y"))
 			return true;// true means password has NOT changed (it is the first pw)
 		return false;
 	}
-
+	/**
+	 * User gives a comment on a course, which is sent to server.
+	 * @param Course	String of the course that the user comments.
+	 * @param Grade		rating that the user gives (String.valueOf(int i), "" if none)
+	 * @param Comment	Comment that the user gives, "" if none.
+	 * @return Reply from server, 100 if ok.
+	 */
 	public String comment(String Course, String Grade, String Comment) {// Leave a comment, output 100 if ok
 		if (ourNetwork.username.equals(""))return "200";
 		byte[] bb = Comment.getBytes();
@@ -178,32 +270,52 @@ public class Network {//chk courseParse.out() for implementation of
 				{ "Comment", convertToHex(bb) } };
 		return this.POST("comment.php", commentA);
 	}
-
+	/**
+	 * Input course (COMP), get Courses and their avg ratings
+	 * @param Course "COMP" or other subjects
+	 * @return	2D array containing the courses and their avg ratings
+	 */
 	public String[][] getSummary(String Course) { // Input course (COMP), get Courses and their avg ratings
 		String[][] getsummaryA = { { "Course", Course } };
 		String line = this.POST("getsummary.php", getsummaryA);
 		return dataCut(line, 2);
 	}
-
+	/**
+	 * Get comments for that course, output as 2D string array
+	 * @param Course
+	 * @return 2D string array containing the comments, refer to ratable.parseComments()
+	 */
 	public String[][] getCourse(String Course) { // Get comments for that course, output as 2D string array
 		String[][] getcourseA = { { "Course", Course } };
 		String line = this.POST("getcourse.php", getcourseA);
 		return dataCut(line, 4);
 	}
-
+	/**
+	 * Sends a friend request to another user.
+	 * @param friendB another friend's ITSC name
+	 * @return	Reply from server, 100 if ok.
+	 */
 	public String friendReq(String friendB) { // Send a friend request
 		if (ourNetwork.username.equals(""))return "200";
 		String[][] reqfriendA = { { "Nameb", friendB } };
 		return this.POST("reqfriend.php", reqfriendA);
 	}
-
+	/**
+	 * Confirms a friend request.
+	 * @param friendB another friend's ITSC name.
+	 * @return Reply from server, 100 if ok.
+	 */
 	public String friendSet(String friendB) { // Confirm a friend request
 		if (ourNetwork.username.equals(""))return "200";
 		String[][] setfriendA = { { "Nameb", friendB } };
 		return this.POST("setfriend.php", setfriendA);
 	}
-
-	public String setMyFav(String MyFav) { // Change your MyFav and upload (NOT WORKING)
+	/**
+	 * Change your MyFav and upload to server
+	 * @param MyFav String containing my favourite courses.
+	 * @return Reply from server, 100 if ok.
+	 */
+	public String setMyFav(String MyFav) { // Change your MyFav and upload
 		if (ourNetwork.username.equals(""))return "200";
 		String[][] setfavA = { { "Myfav", MyFav } };
 		return this.POST("setfav.php", setfavA);
