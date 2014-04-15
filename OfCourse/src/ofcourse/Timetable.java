@@ -31,19 +31,17 @@ import ofcoursegui.TimeTableGUI;
  */
 public class Timetable implements ofcoursegui.CourseSelectListener {
 	
-	private int table_id = -1;
+	private String table_id = "";
 	private HashMap<Course, ArrayList<Course.Session>> enrolled = new HashMap<Course, ArrayList<Course.Session>>();
 	private ofcoursegui.TimeTableGUI gui = new ofcoursegui.TimeTableGUI();
-	public static String delim = ";", innerDelim = ",";
+	public static String delim = "!", innerDelim = ",";
 	private Course selectedCourse = null;
 	
-	
-	{
-		gui.addcourseSelectListener(this);
-		gui.addpanelUnselectListener(this);
-	}
-	
-	public Timetable(int tid) {
+	/**
+	 * Constructor for friends' timetables, no CourseSelectListener
+	 * @param tid
+	 */
+	public Timetable(String tid) {
 		table_id = tid;
 	}
 	
@@ -52,11 +50,13 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	 * @param tid
 	 * @param targetTabbedPage
 	 */
-	public Timetable(int tid, JTabbedPane targetTabbedPage) {
+	public Timetable(String tid, JTabbedPane targetTabbedPage) {
+		gui.addcourseSelectListener(this);
+		gui.addpanelUnselectListener(this);
 		table_id = tid;
 		targetTabbedPage.add(gui);
 		int pos = targetTabbedPage.indexOfComponent(gui);
-		String title = Integer.toString(tid);
+		String title = "Mine";
 		javax.swing.JLabel label = new javax.swing.JLabel(title);
 		label.setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
 		targetTabbedPage.setTabComponentAt(pos, label);
@@ -74,7 +74,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	 * Getter of table ID
 	 * @return <tt>this.table_id</tt>
 	 */
-	public int getTableId() {
+	public String getTableId() {
 		return table_id;
 	}
 	
@@ -82,8 +82,8 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	 * Setter of table ID
 	 * @param id New table ID (integer)
 	 */
-	public void setTableId(int id) {
-		table_id = id;
+	public void setTableId(String id) {
+		this.table_id = id;
 	}
 	
 	public ofcoursegui.TimeTableGUI getGUI() {
@@ -505,7 +505,6 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	public boolean importString(String instr) {
 		String[] tuples = instr.trim().split(delim);
 		try {
-			Integer.parseInt(tuples[0]);
 			for (int i=1; i<tuples.length; i++) {
 				String[] ss = tuples[i].split(innerDelim);
 				for (String s : ss) { // s is class number of a single session
@@ -523,13 +522,13 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		boolean consistent = true; // used in checking whether a list of class numbers belong to the same course
 		boolean addSuccess = true; // check whether all courses are added successfully
 		// back up old data
-		int old_tid = this.getTableId();
+		String old_tid = this.getTableId();
 		HashMap<Course, ArrayList<Course.Session>> old_enrolled = (HashMap<Course, ArrayList<Session>>) getEnrolled().clone();
 		// drop all courses in old_enrolled, so that the gui will be updated
 		for (Course aCourse : old_enrolled.keySet()) {
 			this.dropCourse(aCourse);
 		}
-		this.setTableId(Integer.parseInt(tuples[0]));
+		this.setTableId(tuples[0]);
 		this.setEnrolled(new HashMap<Course, ArrayList<Course.Session>>()); // set the enrolled to empty
 		for (int i=1; i<tuples.length && consistent && addSuccess; i++) {
 			String[] classnums = tuples[i].trim().split(innerDelim);
