@@ -8,6 +8,7 @@ import java.util.Set;
 
 import ofcourse.Course;
 import ofcourse.TimePeriod;
+import ofcourse.TimeSlot;
 import ofcourse.WeekDay;
 import ofcourse.CourseParse;
 import ofcourse.Course.Session;
@@ -52,12 +53,16 @@ public class TimeSlotTest {
 
 	@Test
 	public void testGetTimeSlotByStrings() {
-		fail("Not yet implemented");
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("We","17:00");
+		int expected=316;
+		assertEquals(expected,t.ID);
 	}
 
 	@Test
 	public void testNextSlot() {
-		fail("Not yet implemented");
+		TimeSlot t=TimeSlot.getTimeSlotByStrings("We","17:00");
+		int expected=317;
+		assertEquals(expected,t.nextSlot().ID);
 	}
 
 	@Test
