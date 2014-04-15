@@ -433,12 +433,12 @@ public class Course extends Ratable {
 		 * @param sessionNumber		e.g LA2, 2 is the session number of this lab session
 		 * @param classNo			class number that uniquely identifies the session (4 digit integer)
 		 */
-		public Session(SessionType sessionType, int sessionNumber, int classNo) {
+/*		public Session(SessionType sessionType, int sessionNumber, int classNo) {
 			setSType(sessionType);
 			setSNo(sessionNumber);
 			setClassNo(classNo);
 		}
-		
+		*/
 		
 		/**
 		 * Gets the "Set" of the session.
