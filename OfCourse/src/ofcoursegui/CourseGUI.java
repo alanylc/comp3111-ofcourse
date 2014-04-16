@@ -1,5 +1,6 @@
 package ofcoursegui;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import ofcourse.Course;
+import ofcourse.TimePeriod;
 import ofcourse.TimetableError;
 
 public class CourseGUI extends JPanel {
@@ -64,10 +66,7 @@ public class CourseGUI extends JPanel {
 		sessionTable.getColumnModel().getColumn(0).setPreferredWidth(55);
 		sessionTable.getColumnModel().getColumn(0).setResizable(false);
 		
-		sessionTable.getColumnModel().getColumn(2).setMaxWidth(170);
-		sessionTable.getColumnModel().getColumn(2).setMinWidth(170);
 		sessionTable.getColumnModel().getColumn(2).setPreferredWidth(170);
-		sessionTable.getColumnModel().getColumn(2).setResizable(false);
 		
 		scrollPane.setViewportView(sessionTable);
 		
@@ -121,8 +120,21 @@ public class CourseGUI extends JPanel {
 		courseNameLabel.setText(c.getName());
 		for (Course.Session s : c.getSessions()) {
 			//String rooms[] = s.getRoom();
+			int numOfDistinctTime = 0;
+			ArrayList<ArrayList<Integer>> arr =  new ArrayList<ArrayList<Integer>>();
+			for (TimePeriod tp : s.getSchedule()) {
+				int[] start_end = tp.getStartEndID();
+				ArrayList<Integer> tmp = new ArrayList<Integer>();
+				tmp.add(start_end[0]%100);
+				tmp.add(start_end[1]%100);
+				if (!arr.contains(tmp)){
+					numOfDistinctTime++;
+				}
+				arr.add(tmp);
+			}
 			sessionTableModel.addRow(new String[] {s.toString(), s.getSchedule().toString(), s.getRoom().toString(), s.getInstructors().toString()});
-			linkage.put(sessionTableModel.getRowCount() - 1, s);
+			sessionTable.setRowHeight(sessionTableModel.getRowCount()-1, MainWindow.RowHeight*numOfDistinctTime);
+			linkage.put(sessionTableModel.getRowCount()-1, s);
 		}
 	}
 	
