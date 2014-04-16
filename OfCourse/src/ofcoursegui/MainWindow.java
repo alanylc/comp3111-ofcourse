@@ -1,18 +1,23 @@
 package ofcoursegui;
 
+import java.awt.Adjustable;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.AbstractAction;
@@ -88,6 +93,7 @@ public class MainWindow extends JFrame {
 	public static final int RowHeight = 20;
 	
 	public static JLabel updateFdNeeded = new JLabel();
+	public static JLabel updateFavNeeded = new JLabel();
 
 	public static boolean haveLogined() {
 		String str = network.getFriendList();
@@ -103,7 +109,9 @@ public class MainWindow extends JFrame {
 		}
 		String values[] = network.getFriendList().split("!");
 		fdListModel.removeAll();
-		fdListModel.addAll(values);
+		for (String value : values) {
+			if (!value.isEmpty())  fdListModel.add(value);
+		}
 		String[][] fdListandTable = network.getFriendListAndTimeTable();
 		for (String[] oneRecord : fdListandTable) {
 			String fdname = oneRecord[0];
@@ -115,6 +123,16 @@ public class MainWindow extends JFrame {
 			friends.put(fdname, table);
 		}
 		if (prompt) JOptionPane.showMessageDialog(contentPane, "Timetables of friends updated successfully.");
+	}
+	
+	public void updateMyFavTab(boolean prompt) {
+		// if have not logged in, prompt and clear my fav tab
+		if (!haveLogined()) {
+			myFavPanel.clearFav();
+			if (prompt) showNotLoginError();
+			return;
+		}
+		myFavPanel.updateFav();
 	}
 	
 	JButton btnDrop = new JButton("Drop...");
@@ -142,6 +160,7 @@ public class MainWindow extends JFrame {
 	public static JPanel contentPane;
 	public static JTabbedPane timetableTabpage = new JTabbedPane(JTabbedPane.TOP);
 	public static JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
+	public static MyFavPanel myFavPanel = new MyFavPanel(contentPane);
 
 	
 	public static Timetable own_table;
@@ -193,6 +212,7 @@ public class MainWindow extends JFrame {
 					System.out.println(cs.toString());
 					
 					frame.updateFriendsTimetable(false);
+					frame.updateMyFavTab(false);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -219,14 +239,24 @@ public class MainWindow extends JFrame {
 		setBounds(100, 100, 1280, 720);
 		
 		// this label will not be added to the pane, just for action listening
-		updateFdNeeded.addPropertyChangeListener( new PropertyChangeListener(){
-			   @Override
-			   public void propertyChange(PropertyChangeEvent event){
-			     if (event.getPropertyName().equals("text")){
-			        updateFriendsTimetable(false);
-			     }
-			   }
-			});
+		updateFdNeeded.addPropertyChangeListener(new PropertyChangeListener(){
+		   @Override
+		   public void propertyChange(PropertyChangeEvent event){
+		     if (event.getPropertyName().equals("text")){
+		        updateFriendsTimetable(false);
+		     }
+		   }
+		});
+		
+		// this label will not be added to the pane, just for action listening
+		updateFavNeeded.addPropertyChangeListener(new PropertyChangeListener(){
+		   @Override
+		   public void propertyChange(PropertyChangeEvent event){
+		     if (event.getPropertyName().equals("text")){
+		        updateMyFavTab(false);
+		     }
+		   }
+		});
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -433,6 +463,7 @@ public class MainWindow extends JFrame {
 				String fdname = (String) JOptionPane.showInputDialog(contentPane,
 							"Please input your friend's username: ", "Add New Friend",
 							JOptionPane.PLAIN_MESSAGE, null, null, "");
+				if (fdname==null) return; // user cancels input
 				if (fdname.equals(Network.getOurNetworkUserName())) {
 					JOptionPane.showMessageDialog(contentPane, "You cannot add yourself as friend.");
 					return;
@@ -476,15 +507,32 @@ public class MainWindow extends JFrame {
 		own_table = new Timetable(Network.getOurNetworkUserName(), timetableTabpage);
 		
 
-		JScrollPane friend_scrollPane = new JScrollPane();
-		friend_scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		friend_scrollPane.setBounds(557, 12, 116, 28);
-		contentPane.add(friend_scrollPane);
-		
 		final JList friend_list = new JList();
 		friend_list.setModel(fdListModel);
 		friend_list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		
+		JScrollPane friend_scrollPane = new JScrollPane();
+		friend_scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		friend_scrollPane.setBounds(557, 16, 116, 23);
+		friend_scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+			public void adjustmentValueChanged(AdjustmentEvent evt) {
+			    Adjustable source = evt.getAdjustable();
+			    if (evt.getValueIsAdjusting()) {
+			      return;
+			    }
+			    if (evt.getAdjustmentType() == AdjustmentEvent.TRACK) {
+			    	if (source.getVisibleAmount()!=0 && friend_list.getComponentCount()!=0) {
+			    		int index = evt.getValue() / source.getVisibleAmount();
+			    		friend_list.setSelectedIndex(index);
+			    	}
+			    }
+			  }
+		});
 		friend_scrollPane.setViewportView(friend_list);
+		contentPane.add(friend_scrollPane);
+		
+		
 		
 		//Buttons
 		JButton btnSeeFriend = new JButton("See Friend");
@@ -495,7 +543,7 @@ public class MainWindow extends JFrame {
 					return;
 				}
 				Object obj = friend_list.getSelectedValue();
-				if (obj!=null) { // if there is an item selected 
+				if (obj!=null && !obj.toString().isEmpty()) { // if there is an item selected 
 					String friend_name =  obj.toString();
 					TimeTableGUI friendTable = friends.get(friend_name).getGUI();
 					int index = timetableTabpage.indexOfTab(friend_name);
@@ -540,11 +588,13 @@ public class MainWindow extends JFrame {
 		loginAs.setForeground(Color.BLUE);
 		loginAs.setBounds(12, 12, 500, 28);
 		// TODO: add update of own_table and friend_table after login/logout
-		loginAs.addPropertyChangeListener( new PropertyChangeListener(){
+		loginAs.addPropertyChangeListener(new PropertyChangeListener(){
 		   @Override
 		   public void propertyChange(PropertyChangeEvent event){
 		     if (event.getPropertyName().equals("text")){
-		        updateFriendsTimetable(false);
+		    	 // trigger the specify events
+		    	 updateFdNeeded.setText(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
+		    	 updateFavNeeded.setText(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
 		     }
 		   }
 		});
@@ -557,8 +607,6 @@ public class MainWindow extends JFrame {
 		contentPane.add(searchTabpage);
 		
 		
-		// TODO: implement MyFavPanel
-		JPanel myFavPanel = new MyFavPanel();
 		searchTabpage.add(myFavPanel);
 		int pos_fav = searchTabpage.indexOfComponent(myFavPanel);
 		String title_fav = "My Favourite";
@@ -799,7 +847,7 @@ public class MainWindow extends JFrame {
 		    }
 		  }
 		  
-		  private static void showNotLoginError() {
+		  public static void showNotLoginError() {
 			  JOptionPane.showMessageDialog(contentPane,
 					    "Only available after logged in.",
 					    "Error",
