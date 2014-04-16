@@ -2,7 +2,6 @@ package ofcoursegui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,7 +42,9 @@ public class MyFavPanel extends JPanel {
 			}
 		}
 		public void remove(String code) {
+			int index0 = this.values.indexOf(code);
 			values.remove(code);
+			this.fireContentsChanged(this, index0, index0);
 		}
 		public void removeAll() {
 			values.clear();
@@ -52,6 +53,17 @@ public class MyFavPanel extends JPanel {
 		public void sort() {
 			Collections.sort(values);
 			this.fireContentsChanged(this, 0, this.getSize());
+		}
+		public String getFavStr() {
+			String fav="";
+			String course_code="";
+			String[] tmp_code=null;
+			for (String s : values) {
+				tmp_code = s.substring(0, s.indexOf(" - ")).split(" ");
+				course_code = tmp_code[0] + tmp_code[1];
+				fav = fav + course_code + "!";
+			}
+			return fav;
 		}
 	}
 	
@@ -67,7 +79,6 @@ public class MyFavPanel extends JPanel {
 		JPanel pane = new JPanel();
 		pane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		pane.setLayout(new GridLayout(1, 0, 0, 0));
-		favList.setPreferredSize(new Dimension(0, 50));
 		favList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane favPane = new JScrollPane(favList);
 		pane.add(favPane);
@@ -93,6 +104,13 @@ public class MyFavPanel extends JPanel {
 	}
 	
 	public void addFav(String course_code) {
+		course_code = course_code.trim();
+		if (course_code.length()==8) { // No Set for the course (e.g. COMP2012 has no set, COMP2012H has set)
+			course_code = course_code + " ";
+		}
+		else if (course_code.length()!=9) { // if has set, length==9, if length!=9, error -> do nothing
+			return;
+		}
 		this.favModel.add(Course.getCourseByName(course_code).getName());
 	}
 	
@@ -121,8 +139,13 @@ public class MyFavPanel extends JPanel {
 				JOptionPane.showMessageDialog(MainWindow.contentPane, "No Course Selected.");
 				return;
 			}
-			String[] course_code = selected.toString().substring(0, selected.toString().indexOf(" - ")).trim().split(" ");
-			Course c = Course.getCourseByName(course_code[0]+course_code[1]+" ");
+			String objStr = selected.toString();
+			String[] tmp_code = objStr.substring(0, objStr.indexOf(" - ")).trim().split(" ");
+			String course_code = tmp_code[0]+tmp_code[1];
+			if (course_code.length()==8) {
+				course_code = course_code + " ";
+			}
+			Course c = Course.getCourseByName(course_code);
 			CourseGUI cgui = null;
     		int tab_pos = MainWindow.searchTabpage.indexOfTab(c.getCode().toString());
     		if (tab_pos==-1) { // the tab of the course does not exist yet
@@ -145,6 +168,8 @@ public class MyFavPanel extends JPanel {
 				return;
 			}
 			favModel.remove(selected.toString());
+			System.out.println(">> "+favModel.getFavStr());
+			Network.getOurNetwork().setMyFav(favModel.getFavStr());
 		}
 	}
 
