@@ -69,6 +69,17 @@ public class TimePeriod {
 		return i;
 	}
 	
+	@Override
+	public String toString() {
+		try {
+			return startSlot.getDay().toString() + startSlot.getStartTime() + "-" + endSlot.getEndTime();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	//Problem on Same Time Period solved
 	@Override
 	public int hashCode() {
