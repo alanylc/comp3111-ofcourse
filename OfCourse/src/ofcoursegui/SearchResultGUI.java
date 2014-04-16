@@ -48,7 +48,7 @@ public class SearchResultGUI extends JPanel {
 		searchTabpage.addTab("New tab", null, resultPanel, null);*/
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 96, 504, 226);
+		scrollPane.setBounds(12, 60, 504, 226);
 		add(scrollPane);
 		//resultTable.setBounds(12, 96, 504, 160);
 		resultTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,6 +58,31 @@ public class MainWindow extends JFrame {
 	//public static Network network = Network.login("ctestcaa", "aaa");
 	public static Network network = Network.getOurNetwork();
 	
+	class MyListModel extends AbstractListModel {
+		ArrayList<String> values = new ArrayList<String>();
+		public int getSize() {
+			return values.size();
+		}
+		public Object getElementAt(int index) {
+			return values.get(index);
+		}
+		public void add(String _value) {
+			int old_size = getSize();
+			values.add(_value);
+			this.fireContentsChanged(this, old_size, old_size);
+		}
+		public void addAll(String[] _values) {
+			for (String v : _values) {
+				add(v);
+			}
+		}
+		public void removeAll() {
+			values.clear();
+		}
+	}
+	
+	MyListModel fdListModel = new MyListModel();
+	
 	public static JLabel loginAs;
 	public static final int RowHeight = 20;
 
@@ -65,19 +92,22 @@ public class MainWindow extends JFrame {
 	}
 	
 	public void updateFriendsTimetable(boolean prompt) {
-		// if have not logged in, prompt and do nothing
+		// if have not logged in, prompt and clear friend list
 		if (!haveLogined()) {
+			fdListModel.removeAll();
 			if (prompt) JOptionPane.showMessageDialog(contentPane, "You have not logged in yet.");
 			return;
 		}
-		String returned = network.getFriendList();
-		String fdList[] = returned.split("!");
-		for (String fd : fdList) {
-			Timetable table = new Timetable(fd);
-			// TODO: change the method to real one that get FD's one
-			//table.importString(network.getTimeTable()); 
-			table.addCourse("COMP2900 ", new String[]{"T5"});
-			friends.put(fd, table);
+		String values[] = network.getFriendList().split("!");
+		fdListModel.removeAll();
+		fdListModel.addAll(values);
+		String[][] fdListandTable = network.getFriendListAndTimeTable();
+		for (String[] oneRecord : fdListandTable) {
+			String fdname = oneRecord[0];
+			Timetable table = new Timetable(fdname); 
+			table.importString(oneRecord[1]); 
+			//table.addCourse("COMP2900 ", new String[]{"T5"});
+			friends.put(fdname, table);
 		}
 		if (prompt) JOptionPane.showMessageDialog(contentPane, "Timetables of friends updated successfully.");
 	}
@@ -171,6 +201,12 @@ public class MainWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	private class GraySep extends JSeparator {
+		public GraySep() {
+			setForeground(Color.GRAY);;
+		}
+	}
 
 	@SuppressWarnings("serial")
 	public MainWindow() {
@@ -197,9 +233,7 @@ public class MainWindow extends JFrame {
 		JMenuItem mntmDownloadMine = new JMenuItem("Download My Time Table");
 		mnFile.add(mntmDownloadMine);
 		
-		JSeparator sep = new JSeparator();
-		sep.setForeground(Color.LIGHT_GRAY);
-		mnFile.add(sep);
+		mnFile.add(new GraySep());
 		
 		JMenuItem mntmImportTimeTable = new JMenuItem("Import Time Table...");
 		mnFile.add(mntmImportTimeTable);
@@ -209,6 +243,11 @@ public class MainWindow extends JFrame {
 		
 		JMenuItem mntmRegister = new JMenuItem("Register");
 		mnAccount.add(mntmRegister);
+		
+		JMenuItem mntmChangePw = new JMenuItem("Change Password");
+		mnAccount.add(mntmChangePw);
+		
+		mnAccount.add(new GraySep());
 		
 		JMenuItem mntmLogin = new JMenuItem("Login");
 		mnAccount.add(mntmLogin);
@@ -331,7 +370,6 @@ public class MainWindow extends JFrame {
 				}
 				else {
 					loginFrame = new LoginGUI(contentPane);
-					
 				}
 			}
 		});
@@ -377,16 +415,7 @@ public class MainWindow extends JFrame {
 		contentPane.add(friend_scrollPane);
 		
 		final JList friend_list = new JList();
-		friend_list.setModel(new AbstractListModel() {
-			//Network network = Network.login("ctestcaa", "aaa");
-			String values[] = (MainWindow.haveLogined() ? network.getFriendList().split("!") : new String[]{});
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		friend_list.setModel(fdListModel);
 		friend_list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		friend_scrollPane.setViewportView(friend_list);
 		
@@ -444,6 +473,14 @@ public class MainWindow extends JFrame {
 		loginAs = new JLabel("Currently Login As: "+theUser);
 		loginAs.setForeground(Color.BLUE);
 		loginAs.setBounds(12, 12, 500, 28);
+		loginAs.addPropertyChangeListener( new PropertyChangeListener(){
+		   @Override
+		   public void propertyChange(PropertyChangeEvent event){
+		     if (event.getPropertyName().equals("text")){
+		        updateFriendsTimetable(false);
+		     }
+		   }
+		});
 		contentPane.add(loginAs);
 		
 		
