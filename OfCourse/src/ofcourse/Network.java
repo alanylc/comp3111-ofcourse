@@ -210,6 +210,15 @@ public class Network {//chk courseParse.out() for implementation of
 		return this.POST("getTimeTable.php", empty);
 	}
 	/**
+	 * Get the user's password (for debug only, if the account is newly created, the received string is plaintext, if the password has been modified by 'firstNewPW()', it would be hashed)
+	 * @return Reply from server.
+	 */
+	public String getPW() { 
+		String[][] empty = { { "", "" } };
+		if (ourNetwork.username.equals(""))return "200";
+		return this.POST("getPW.php", empty);
+	}
+	/**
 	 * Upload your timetable to server.
 	 * @param TimeTable TimeTable String
 	 * @return Reply from server.
