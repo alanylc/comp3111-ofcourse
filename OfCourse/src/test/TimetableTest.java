@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import ofcourse.Course;
+import ofcourse.CourseParseThreaded;
 import ofcourse.TimeSlot;
 import ofcourse.Timetable;
 import ofcourse.TimetableError;
@@ -27,9 +28,10 @@ public class TimetableTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		// this test will not change contents of course
 		Course.AllCourses = new ArrayList<Course>();
-		CourseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
-
+		CourseParseThreaded.parse("COMP"); 
+		// the static variable Course.AllCourses should now have the COMP course list
 	}
 
 	@AfterClass

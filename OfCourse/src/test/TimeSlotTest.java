@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 import ofcourse.Course;
+import ofcourse.CourseParseThreaded;
 import ofcourse.TimePeriod;
 import ofcourse.TimeSlot;
 import ofcourse.WeekDay;
@@ -24,8 +25,10 @@ public class TimeSlotTest {
 	private Course c;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		CourseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
-
+		// this test will not change contents of course
+		Course.AllCourses = new ArrayList<Course>();
+		CourseParseThreaded.parse("COMP"); 
+		// the static variable Course.AllCourses should now have the COMP course list
 	}
 
 	@AfterClass

@@ -4,6 +4,7 @@ package ofcourse;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.jsoup.nodes.Element;
@@ -327,7 +328,7 @@ public class Course extends Ratable {
 		private int sNo = 1;		//L1
 		private char Set=' ';		//The 'A' in T2A
 		
-		private Set<TimePeriod> schedule = new HashSet<TimePeriod>();//in Wk HH:MMAM - HH:MMPM
+		private Set<TimePeriod> schedule = new LinkedHashSet<TimePeriod>();//in Wk HH:MMAM - HH:MMPM
 		private int classNo;//usually 4-digit number for course enrollment
 		private Set<Instructor> instructors= new HashSet<Instructor>();//This hashset does not prevent duplicate but others can, investigation pending.
  
@@ -337,7 +338,7 @@ public class Course extends Ratable {
 		private int availableQuota;
 		private int wait;
 		//TODO: every room has a ID; use ID? No, some rooms has no ID.
-		private Set<String> room=new HashSet<String>(); 
+		private Set<String> room=new LinkedHashSet<String>(); 
 		private String remarks="";
 		/**
 		 * 

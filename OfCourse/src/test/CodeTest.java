@@ -2,7 +2,10 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import ofcourse.Course;
+import ofcourse.CourseParseThreaded;
 import ofcourse.Course.Code;
 import ofcourse.CourseParse;
 
@@ -17,7 +20,10 @@ public class CodeTest {
 	private Code c;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		CourseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
+		// this test will not change contents of course
+		Course.AllCourses = new ArrayList<Course>();
+		CourseParseThreaded.parse("COMP"); 
+		// the static variable Course.AllCourses should now have the COMP course list
 	}
 
 	@AfterClass

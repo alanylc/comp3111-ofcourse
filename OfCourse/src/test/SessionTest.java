@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.Set;
 
 
+
 import ofcourse.Course;
+import ofcourse.CourseParseThreaded;
 import ofcourse.Instructor;
 import ofcourse.SessionType;
 import ofcourse.TimePeriod;
@@ -25,9 +27,6 @@ public class SessionTest {
 	private Course c;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Course.AllCourses = new ArrayList<Course>();
-		CourseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
-
 	}
 
 	@AfterClass
@@ -36,6 +35,10 @@ public class SessionTest {
 
 	@Before
 	public void setUp() throws Exception {
+		// this test will change content of course, so need to re-initialize course list every test
+		Course.AllCourses = new ArrayList<Course>();
+		CourseParseThreaded.parse("COMP"); 
+		// the static variable Course.AllCourses should now have the COMP course list
 		c=Course.getCourseByName("COMP2012 ");
 	}
 

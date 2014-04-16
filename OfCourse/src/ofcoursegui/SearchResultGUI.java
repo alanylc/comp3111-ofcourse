@@ -54,7 +54,15 @@ public class SearchResultGUI extends JPanel {
 		resultTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resultTable.setModel(resultTableModel);
 		
+		resultTable.getColumnModel().getColumn(0).setMaxWidth(90);
+		resultTable.getColumnModel().getColumn(0).setMinWidth(90);
+		resultTable.getColumnModel().getColumn(0).setPreferredWidth(90);
+		resultTable.getColumnModel().getColumn(2).setMaxWidth(55);
+		resultTable.getColumnModel().getColumn(2).setMinWidth(55);
+		resultTable.getColumnModel().getColumn(2).setPreferredWidth(55);
 		resultTable.getColumnModel().getColumn(0).setResizable(false);
+		resultTable.getColumnModel().getColumn(1).setResizable(false);
+		resultTable.getColumnModel().getColumn(2).setResizable(false);
 		setLayout(null);
 		//add(resultTable);
 		scrollPane.setViewportView(resultTable);
@@ -121,7 +129,8 @@ public class SearchResultGUI extends JPanel {
 	}
 	
 	public void addResult(Course c) {
-		resultTableModel.addRow(new String[] {c.toString(), c.getName(), Float.toString(c.getAvgRating())});
+		String course_name = c.getName().substring(c.getName().indexOf(" - ")+3);
+		resultTableModel.addRow(new String[] {c.toString(), course_name, Float.toString(c.getAvgRating())});
 		linkage.put(resultTableModel.getRowCount() - 1, c);
 	}
 	
