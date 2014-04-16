@@ -120,7 +120,7 @@ public class NetworkTest {
 	public void testGetMyFav() {//case for successful return
 		Network a=Network.getOurNetwork();
 		Network.login(username[0], password[0]);
-		String expected="Fav";
+		String expected="FavCOMP2012 !COMP2012 !COMP2012 !COMP1029V!COMP2012 !COMP2012 !";
 		assertEquals(expected,a.getMyFav());
 	}
 	@Test
@@ -149,37 +149,38 @@ public class NetworkTest {
 	public void testGetFriendList() {//case for successful return as personA
 		Network a=Network.getOurNetwork();
 		Network.login(username[0], password[0]);
-		String expected="ctestcab!";
+		String expected="ctestcab!ctestcac!";
 		assertEquals(expected,a.getFriendList());
 	}
 	@Test
 	public void testGetFriendList2() {//case for successful return as personB
 		Network a=Network.getOurNetwork();
 		Network.login(username[1], password[1]);
-		String expected="ctestcaa!";
+		String expected="ctestcaa!ctestcac!";
 		assertEquals(expected,a.getFriendList());
 	}
 	@Test
 	public void testGetFriendList3() {//case for successful return as empty
 		Network a=Network.getOurNetwork();
 		Network.login(username[2], password[2]);
-		String expected="";
+		String expected="ctestcaa!ctestcab!";
 		assertEquals(expected,a.getFriendList());
 	}
 	@Test
 	public void testGetFriendListAndTimeTable() {//case for successful return as personA
 		Network a=Network.getOurNetwork();
 		Network.login(username[0], password[0]);
-		String[][] expected={{"ctestcab",""}};
+		String[][] expected={{"ctestcab",""},{"ctestcac","!1003,1004,!"}};
 		assertArrayEquals(expected,a.getFriendListAndTimeTable());
 	}
 	@Test
 	public void testGetFriendListAndTimeTable2() {//case for successful return as personB
 		Network a=Network.getOurNetwork();
 		Network.login(username[1], password[1]);
-		String[][] expected={{"ctestcaa","Mine!1782,1786,!"}};
+		String[][] expected={{"ctestcaa","Mine!1782,1786,!1831,1839,!"},{"ctestcac","!1003,1004,!"}};
 		assertArrayEquals(expected,a.getFriendListAndTimeTable());
 	}
+	/*
 	@Test
 	public void testGetFriendListAndTimeTable3() {//case for successful return as empty
 		Network a=Network.getOurNetwork();
@@ -187,6 +188,7 @@ public class NetworkTest {
 		String[][] expected={};
 		assertArrayEquals(expected,a.getFriendListAndTimeTable());
 	}
+	*/
 	@Test
 	public void testGetFriendListAndTimeTable4() {//case for logged out
 		Network a=Network.getOurNetwork();
@@ -198,14 +200,14 @@ public class NetworkTest {
 	public void testGetReqFriendList() {
 		Network a=Network.getOurNetwork();
 		Network.login(username[0], password[0]);
-		String expected="testcad!ctestcac!";//TODO this should not show cac
+		String expected="testcad!ctestcaa!ctestcaa!ctestcad!";//TODO this should not show cac
 		assertEquals(expected,a.getReqFriendList());
 	}
 	@Test
 	public void testGetReqFriendList2() {
 		Network a=Network.getOurNetwork();
 		Network.login(username[2], password[2]);
-		String expected="ctestcaa!";
+		String expected="";
 		assertEquals(expected,a.getReqFriendList());
 	}
 /*Not able to test
@@ -215,12 +217,22 @@ public class NetworkTest {
 	}
 */
 	@Test
+	public void testgetPW() {
+		Network a=Network.getOurNetwork();
+		String expected="100";
+		assertEquals(expected,a.registerB("testxxx"));
+		String pw=a.getPW();
+		Network.login("testxxx", pw);
+		assertEquals("100",a.firstNewPW(pw,"xxx"));
+		assertEquals("",a.getMyFav());
+	}
+	@Test
 	public void testNewPW() {//case when work perfectly
 		Network a=Network.getOurNetwork();
 		Network.login(username[2], password[2]);
 		String expected="100";
 		assertEquals(expected,a.newPW(password[2], "ddd"));
-		expected="ctestcaa!";
+		expected="";
 		assertEquals(expected,a.getReqFriendList());//chk if immediately usable
 		Network.login(username[2], "ddd");
 		assertEquals(expected,a.getReqFriendList());//chk if usable after login
