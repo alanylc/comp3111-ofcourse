@@ -196,7 +196,6 @@ public class MainWindow extends JFrame {
 		});
 	}
 	
-	public static JFrame loginFrame=null;
 
 	/**
 	 * Create the frame.
@@ -208,7 +207,6 @@ public class MainWindow extends JFrame {
 		}
 	}
 
-	@SuppressWarnings("serial")
 	public MainWindow() {
 		
 		setResizable(false);
@@ -362,6 +360,20 @@ public class MainWindow extends JFrame {
 		});
 		
 		
+		
+		mntmRegister.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (haveLogined()) {
+					JOptionPane.showMessageDialog(contentPane, "You have to logout first.");
+				}
+				else {
+					new RegisterGUI(contentPane);
+				}
+			}
+		});
+		
+		
 		mntmLogin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -369,7 +381,7 @@ public class MainWindow extends JFrame {
 					JOptionPane.showMessageDialog(contentPane, "You have already logged in.");
 				}
 				else {
-					loginFrame = new LoginGUI(contentPane);
+					new LoginGUI(contentPane);
 				}
 			}
 		});

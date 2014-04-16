@@ -70,18 +70,18 @@ public class NewSearchGUI extends JPanel {
 		add(subjectPanel);
 		
 		JScrollPane scrollPaneSubject = new JScrollPane();
-		scrollPaneSubject.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPaneSubject.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+		scrollPaneSubject.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPaneSubject.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		subjectPanel.add(scrollPaneSubject);
 		
-		subjectJList.setVisibleRowCount(4);
-		subjectJList.setLayoutOrientation(JList.VERTICAL_WRAP);
+		subjectJList.setVisibleRowCount(5);
+		subjectJList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		subjectJList.setModel(this.subjectListModel);
 		scrollPaneSubject.setViewportView(subjectJList);
 		
 
 		levelPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Level", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		levelPanel.setBounds(12, 155, 504, 131);
+		levelPanel.setBounds(12, 155, 504, 169);
 		levelPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		add(levelPanel);
 		
@@ -91,7 +91,7 @@ public class NewSearchGUI extends JPanel {
 		scrollPaneLevel.setViewportView(levelList);
 		
 		otherPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Others", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
-		otherPanel.setBounds(12, 298, 504, 131);
+		otherPanel.setBounds(12, 336, 504, 131);
 		add(otherPanel);
 		
 		searchButton.setBounds(418, 533, 98, 28);

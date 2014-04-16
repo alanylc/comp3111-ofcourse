@@ -1,9 +1,12 @@
 package ofcoursegui;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,6 +29,8 @@ public class LoginGUI extends JFrame {
 		this.setTitle("Login");
 		JLabel msg1 = new JLabel("Username: ");
 		JLabel msg2 = new JLabel("Password: ");
+		msg1.setPreferredSize(new Dimension(80, 30));
+		msg2.setPreferredSize(new Dimension(80, 30));
 		JButton btnLogin = new JButton("Login");
 		final JTextField usernameTextField = new JTextField(10);
 		final JPasswordField passwordField = new JPasswordField(10);
@@ -51,7 +56,7 @@ public class LoginGUI extends JFrame {
 		});
 		
 		JPanel contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(15, 10, 10, 10));
+		contentPane.setBorder(new EmptyBorder(8, 10, 10, 10));
 		this.setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 1));
 		JPanel p1 = new JPanel();
@@ -65,6 +70,7 @@ public class LoginGUI extends JFrame {
 		JPanel p3 = new JPanel();
 		p3.add(btnLogin);
 		contentPane.add(p3);
+		contentPane.getRootPane().setDefaultButton(btnLogin);
 		contentPane.setVisible(true);
 		this.setVisible(true);
 	}
