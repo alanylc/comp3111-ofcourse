@@ -65,6 +65,7 @@ public class SearchResultGUI extends JPanel {
 		resultTable.getColumnModel().getColumn(2).setResizable(false);
 		setLayout(null);
 		//add(resultTable);
+		resultTable.setRowHeight(MainWindow.RowHeight);
 		scrollPane.setViewportView(resultTable);
 		
 		JLabel lblSearchCriteria = new JLabel("Search Criteria:");

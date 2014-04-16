@@ -107,6 +107,11 @@ public class NewSearchGUI extends JPanel {
 				for(Object sub : subjectJList.getSelectedValues()) {
 					subjectCriteria.add((String)sub);
 				}
+				
+				if (subjectCriteria.size()==0) {
+					JOptionPane.showMessageDialog(MainWindow.contentPane, "You have to choose at least one subject first.");
+					return;
+				}
 								
 				SearchCourse cs = levelList.getSearchCourse(new SearchSubject(new SearchAllCourse(MainWindow.allCourses), subjectCriteria));
 				

@@ -53,10 +53,12 @@ public class MainWindow extends JFrame {
 	
 	public static HashMap<String, Timetable> friends = new HashMap<String, Timetable>();
 	public static String username=null, password=null;
-	public static Network network = Network.login("ctestcaa", "aaa");
+	//public static Network network = Network.login("ctestcaa", "aaa");
+	public static Network network = Network.getOurNetwork();
 	
 	public static JLabel loginAs;
-	
+	public static final int RowHeight = 20;
+
 	public static boolean haveLogined() {
 		String str = network.getFriendList();
 		return (!str.equals("002") && !str.equals("200"));
@@ -78,14 +80,6 @@ public class MainWindow extends JFrame {
 			friends.put(fd, table);
 		}
 		if (prompt) JOptionPane.showMessageDialog(contentPane, "Timetables of friends updated successfully.");
-	}
-	
-	public class SearchButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
 	}
 	
 	JButton btnDrop = new JButton("Drop...");
@@ -384,9 +378,8 @@ public class MainWindow extends JFrame {
 		
 		final JList friend_list = new JList();
 		friend_list.setModel(new AbstractListModel() {
-			Network network = Network.login("ctestcaa", "aaa");
-			String[] values = network.getFriendList().split("!");
-			//String[] values = new String[] {"20140401"};
+			//Network network = Network.login("ctestcaa", "aaa");
+			String values[] = (MainWindow.haveLogined() ? network.getFriendList().split("!") : new String[]{"<None>"});
 			public int getSize() {
 				return values.length;
 			}
