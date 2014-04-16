@@ -6,6 +6,11 @@ import java.util.Date;
 import javax.swing.JLabel;
 
 public class TimeSlot {
+	@Override
+	public String toString() {
+		return getStartTime();
+	}
+
 	public int ID;
 	
 	private static final int min = 0;
@@ -144,8 +149,8 @@ public class TimeSlot {
 	private int getIntTime() {
 		int a = dayStart; 
 		//check for 60 mins, which is 1 hour
-		a -= 30;
-		for (int i = 0; i < this.getTimeID(); i ++) {
+		//a -= 30;
+		for (int i = 0; i <= this.getTimeID(); i ++) {
 			a += 30;
 			if (a - a / 100 * 100 == 60)
 				a = a - 60 + 100;
@@ -162,7 +167,7 @@ public class TimeSlot {
 		int b = getIntTime() + 30;
 		if (b - b / 100 * 100 == 60)
 			b = b - 60 + 100;
-		b += 30;
+		//b += 30;
 		java.text.DecimalFormat df = new java.text.DecimalFormat("0000");
 		return df.format(b);
 	}

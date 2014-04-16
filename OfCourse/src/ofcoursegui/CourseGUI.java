@@ -1,19 +1,25 @@
 package ofcoursegui;
 
 import java.awt.Component;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,6 +36,17 @@ public class CourseGUI extends JPanel {
 	JLabel courseNameLabel = new JLabel("CoureName");
 	JButton enrollButton = new JButton("Enroll");
 	JButton btnAddFav = new JButton("Add to My Favourite");
+	JLabel ratingLabel=new JLabel("Rating:");
+	JLabel commentLabel=new JLabel("Comment:");
+	JRadioButton B1 = new JRadioButton("1");
+	JRadioButton B2 = new JRadioButton("2");
+	JRadioButton B3 = new JRadioButton("3");
+	JRadioButton B4 = new JRadioButton("4");
+	JRadioButton B5 = new JRadioButton("5");
+	ButtonGroup ratingGroup = new ButtonGroup();
+	JTextArea commentArea= new JTextArea();
+	JButton submitCommentButton = new JButton("Submit Comment");
+	
 	public final JTable sessionTable = new JTable();
 	@SuppressWarnings("serial")
 	DefaultTableModel sessionTableModel = new DefaultTableModel(
@@ -87,6 +104,31 @@ public class CourseGUI extends JPanel {
 		btnAddFav.setBounds(250, 533, 150, 28);
 		add(btnAddFav);
 		btnAddFav.addActionListener(new AddFavListener());
+		
+		
+		ratingGroup.add(B1);
+		ratingGroup.add(B2);
+		ratingGroup.add(B3);
+		ratingGroup.add(B4);
+		ratingGroup.add(B5);
+		JPanel ratingPanel = new JPanel();
+		ratingPanel.setLayout(new GridLayout(1, 5));
+		ratingPanel.add(B1);
+		ratingPanel.add(B2);
+		ratingPanel.add(B3);
+		ratingPanel.add(B4);
+		ratingPanel.add(B5);
+		ratingPanel.setBounds(97, 311, 200, 20);
+		add(ratingPanel);
+		commentArea.setBounds(97, 341, 260, 60);
+		add(commentArea);
+		ratingLabel.setBounds(35, 311, 40, 20);
+		add(ratingLabel);
+		commentLabel.setBounds(35, 341, 80, 20);
+		add(commentLabel);
+		submitCommentButton.setBounds(370, 341, 120, 30);
+		add(submitCommentButton);
+		submitCommentButton.addActionListener(new SubmitCommentButtonListener());
 	}
 	
 	private class EnrollButtonListener implements ActionListener {
@@ -110,7 +152,47 @@ public class CourseGUI extends JPanel {
 			MainWindow.showError(err_code, "Enroll Fails");
 		}
 	}
-	
+	private class SubmitCommentButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String rating=getSelectedButtonString(ratingGroup);
+			String comment=commentArea.getText();
+			Network a=Network.getOurNetwork();
+			String reply=a.comment(courseCodeLabel.getText().substring(0, 8), rating, comment);
+			switch(Integer.parseInt(reply)){
+			case 100:
+				JOptionPane.showMessageDialog(getComponent(0),"Comment submitted successfully!","Success!",JOptionPane.INFORMATION_MESSAGE);
+				break;
+			case 002:
+				JOptionPane.showMessageDialog(getComponent(0),"Wrong username or password detected!","Failure!",JOptionPane.WARNING_MESSAGE);
+				break;
+			case 404:
+				JOptionPane.showMessageDialog(getComponent(0),"Network error! Comment is not submitted!","Failure!",JOptionPane.WARNING_MESSAGE);
+				break;
+			case 200:
+				JOptionPane.showMessageDialog(getComponent(0),"You have to login to submit comments!","Failure!",JOptionPane.WARNING_MESSAGE);
+				break;
+			default:
+				JOptionPane.showMessageDialog(getComponent(0),"Error occured, comment is not submitted.","Failure!",JOptionPane.WARNING_MESSAGE);
+				break;
+				
+				
+			}
+			//TimetableError err_code = MainWindow.own_table.addCourse(course, ss.toArray(new Course.Session[ss.size()]));
+			//MainWindow.showError("Enroll Fails");
+		}
+		public String getSelectedButtonString(ButtonGroup buttonGroup) {
+	        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+	            AbstractButton button = buttons.nextElement();
+
+	            if (button.isSelected()) {
+	                return button.getText();
+	            }
+	        }
+
+	        return "";
+	    }
+	}
 	private class AddFavListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
