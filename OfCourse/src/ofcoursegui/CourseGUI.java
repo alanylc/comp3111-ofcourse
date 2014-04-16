@@ -3,7 +3,9 @@ package ofcoursegui;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.JButton;
@@ -16,6 +18,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import ofcourse.Course;
+import ofcourse.Network;
 import ofcourse.TimePeriod;
 import ofcourse.TimetableError;
 
@@ -26,6 +29,7 @@ public class CourseGUI extends JPanel {
 	JLabel courseCodeLabel = new JLabel("CourseCode");
 	JLabel courseNameLabel = new JLabel("CoureName");
 	JButton enrollButton = new JButton("Enroll");
+	JButton btnAddFav = new JButton("Add to My Favourite");
 	public final JTable sessionTable = new JTable();
 	@SuppressWarnings("serial")
 	DefaultTableModel sessionTableModel = new DefaultTableModel(
@@ -79,6 +83,10 @@ public class CourseGUI extends JPanel {
 		enrollButton.setBounds(418, 533, 98, 28);
 		add(enrollButton);
 		enrollButton.addActionListener(new EnrollButtonListener());
+		
+		btnAddFav.setBounds(250, 533, 150, 28);
+		add(btnAddFav);
+		btnAddFav.addActionListener(new AddFavListener());
 	}
 	
 	private class EnrollButtonListener implements ActionListener {
@@ -100,6 +108,38 @@ public class CourseGUI extends JPanel {
 
 			TimetableError err_code = MainWindow.own_table.addCourse(course, ss.toArray(new Course.Session[ss.size()]));
 			MainWindow.showError(err_code, "Enroll Fails");
+		}
+	}
+	
+	private class AddFavListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (!MainWindow.haveLogined()) {
+				MainWindow.showNotLoginError();
+				return;
+			}
+			String newFav = CourseGUI.this.course.getCode().toString();
+			Network network = Network.getOurNetwork();
+			String myfav = network.getMyFav();
+			String[] favCs = myfav.split("!");
+			for (String str : favCs) {
+				if (str.equals(newFav)) {
+					JOptionPane.showMessageDialog(MainWindow.contentPane, "Course already in My Favourite.",
+							"Add to My Favourite", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+			}
+			myfav = myfav + newFav + "!";
+			String returnCode = network.setMyFav(myfav);
+			if (!returnCode.equals("100")) {
+				JOptionPane.showMessageDialog(MainWindow.contentPane, "Operation Fails!",
+						"Add to My Favourite", JOptionPane.WARNING_MESSAGE);
+			}
+			else {
+				MainWindow.updateFavNeeded.setText(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
+				JOptionPane.showMessageDialog(MainWindow.contentPane, "Course successfully added to My Favourite.",
+						"Add to My Favourite", JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
 	}
 	
