@@ -58,6 +58,17 @@ public class CourseGUI extends JPanel {
 		sessionTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		sessionTable.setColumnSelectionAllowed(false);
 		sessionTable.setRowSelectionAllowed(true);
+		
+		sessionTable.getColumnModel().getColumn(0).setMaxWidth(55);
+		sessionTable.getColumnModel().getColumn(0).setMinWidth(55);
+		sessionTable.getColumnModel().getColumn(0).setPreferredWidth(55);
+		sessionTable.getColumnModel().getColumn(0).setResizable(false);
+		
+		sessionTable.getColumnModel().getColumn(2).setMaxWidth(170);
+		sessionTable.getColumnModel().getColumn(2).setMinWidth(170);
+		sessionTable.getColumnModel().getColumn(2).setPreferredWidth(170);
+		sessionTable.getColumnModel().getColumn(2).setResizable(false);
+		
 		scrollPane.setViewportView(sessionTable);
 		
 		courseCodeLabel.setBounds(12, 12, 504, 18);
@@ -109,6 +120,7 @@ public class CourseGUI extends JPanel {
 		courseCodeLabel.setText(c.getCode().toString());
 		courseNameLabel.setText(c.getName());
 		for (Course.Session s : c.getSessions()) {
+			//String rooms[] = s.getRoom();
 			sessionTableModel.addRow(new String[] {s.toString(), s.getSchedule().toString(), s.getRoom().toString(), s.getInstructors().toString()});
 			linkage.put(sessionTableModel.getRowCount() - 1, s);
 		}

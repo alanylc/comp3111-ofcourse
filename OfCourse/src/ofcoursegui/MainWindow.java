@@ -139,6 +139,7 @@ public class MainWindow extends JFrame {
 			public void run() {
 				try {
 					MainWindow frame = new MainWindow();
+					frame.setTitle("OfCourse");
 					
 					ArrayList<CourseParse> result = CourseParseThreaded.fullparse();
 					
@@ -571,10 +572,10 @@ public class MainWindow extends JFrame {
 					}
 				}
 				String newTitle = "Mine VS "+activeTitle;
-				int theIndex = timetableTabpage.indexOfTab(newTitle);
+				/*int theIndex = timetableTabpage.indexOfTab(newTitle);
 				if (theIndex!=-1) {
 					timetableTabpage.remove(theIndex);
-				}
+				}*/
 				addClosableTab(timetableTabpage, newTable, newTitle, null);
 			}
 		});

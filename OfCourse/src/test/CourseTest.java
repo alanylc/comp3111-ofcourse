@@ -5,9 +5,11 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 
+
 import ofcourse.Course;
 import ofcourse.Course.Session;
 import ofcourse.CourseParse;
+import ofcourse.CourseParseThreaded;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,8 +26,6 @@ public class CourseTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Course.AllCourses = new ArrayList<Course>();
-		CourseParse.parse("COMP"); // the static variable Course.AllCourses should now have the COMP course list
 	}
 
 	@AfterClass
@@ -34,6 +34,10 @@ public class CourseTest {
 
 	@Before
 	public void setUp() throws Exception {
+		// this test will change content of course, so need to re-initialize course list every test
+		Course.AllCourses = new ArrayList<Course>();
+		CourseParseThreaded.parse("COMP"); 
+		// the static variable Course.AllCourses should now have the COMP course list
 	}
 
 	@After
