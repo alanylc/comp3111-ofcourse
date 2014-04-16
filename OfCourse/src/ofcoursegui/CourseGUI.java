@@ -119,7 +119,6 @@ public class CourseGUI extends JPanel {
 		courseCodeLabel.setText(c.getCode().toString());
 		courseNameLabel.setText(c.getName());
 		for (Course.Session s : c.getSessions()) {
-			//String rooms[] = s.getRoom();
 			int numOfDistinctTime = 0;
 			ArrayList<ArrayList<Integer>> arr =  new ArrayList<ArrayList<Integer>>();
 			for (TimePeriod tp : s.getSchedule()) {
@@ -132,6 +131,7 @@ public class CourseGUI extends JPanel {
 				}
 				arr.add(tmp);
 			}
+			if (numOfDistinctTime==0) numOfDistinctTime=1; // Time = TBA
 			sessionTableModel.addRow(new String[] {s.toString(), s.getSchedule().toString(), s.getRoom().toString(), s.getInstructors().toString()});
 			sessionTable.setRowHeight(sessionTableModel.getRowCount()-1, MainWindow.RowHeight*numOfDistinctTime);
 			linkage.put(sessionTableModel.getRowCount()-1, s);

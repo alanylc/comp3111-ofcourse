@@ -453,15 +453,6 @@ public class MainWindow extends JFrame {
 		contentPane.add(searchTabpage);
 		
 		
-		searchTabpage.add(newSearchPanel);
-		int pos = searchTabpage.indexOfComponent(newSearchPanel);
-		String title = "New Search";
-		JLabel label = new JLabel(title);
-		label.setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
-		searchTabpage.setTabComponentAt(pos, label);
-		searchTabpage.setTitleAt(pos, title);
-		searchTabpage.setMnemonicAt(pos, KeyEvent.VK_S);
-		
 		// TODO: implement MyFavPanel
 		JPanel myFavPanel = new MyFavPanel();
 		searchTabpage.add(myFavPanel);
@@ -472,6 +463,18 @@ public class MainWindow extends JFrame {
 		searchTabpage.setTabComponentAt(pos_fav, label_fav);
 		searchTabpage.setTitleAt(pos_fav, title_fav);
 		searchTabpage.setMnemonicAt(pos_fav, KeyEvent.VK_F);
+		
+		searchTabpage.add(newSearchPanel);
+		int pos = searchTabpage.indexOfComponent(newSearchPanel);
+		String title = "New Search";
+		JLabel label = new JLabel(title);
+		label.setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
+		searchTabpage.setTabComponentAt(pos, label);
+		searchTabpage.setTitleAt(pos, title);
+		searchTabpage.setMnemonicAt(pos, KeyEvent.VK_S);
+		searchTabpage.setSelectedComponent(newSearchPanel);
+		
+		
 		
 		searchTabpage.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		
@@ -529,6 +532,12 @@ public class MainWindow extends JFrame {
 		btnFindFreeTime.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if (!haveLogined()) {
+					JOptionPane.showMessageDialog(contentPane, "You have to login first to use this function.",
+							"Find Common Free Time", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
 				
 				// a new tab
 				TimeTableGUI newTable = new TimeTableGUI();
