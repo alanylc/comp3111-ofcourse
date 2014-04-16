@@ -48,6 +48,7 @@ public class LoginGUI extends JFrame {
 				else { // login successfully
 					dispose();
 					MainWindow.loginAs.setText("Currently Login As: "+username);
+					MainWindow.own_table.importString(network.getTimeTable());
 					JOptionPane.showMessageDialog(parent, "Login Successfully.",
 							"Congratulations!", JOptionPane.INFORMATION_MESSAGE);
 				}

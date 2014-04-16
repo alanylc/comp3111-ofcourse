@@ -78,6 +78,7 @@ public class MainWindow extends JFrame {
 		}
 		public void removeAll() {
 			values.clear();
+			this.fireContentsChanged(this, 0, 0);
 		}
 	}
 	
@@ -85,6 +86,8 @@ public class MainWindow extends JFrame {
 	
 	public static JLabel loginAs;
 	public static final int RowHeight = 20;
+	
+	public static JLabel updateFdNeeded = new JLabel();
 
 	public static boolean haveLogined() {
 		String str = network.getFriendList();
@@ -95,7 +98,7 @@ public class MainWindow extends JFrame {
 		// if have not logged in, prompt and clear friend list
 		if (!haveLogined()) {
 			fdListModel.removeAll();
-			if (prompt) JOptionPane.showMessageDialog(contentPane, "You have not logged in yet.");
+			if (prompt) showNotLoginError();
 			return;
 		}
 		String values[] = network.getFriendList().split("!");
@@ -104,9 +107,11 @@ public class MainWindow extends JFrame {
 		String[][] fdListandTable = network.getFriendListAndTimeTable();
 		for (String[] oneRecord : fdListandTable) {
 			String fdname = oneRecord[0];
-			Timetable table = new Timetable(fdname); 
+			Timetable table = friends.get(fdname);
+			if (table==null) {
+				table = new Timetable(fdname);
+			}
 			table.importString(oneRecord[1]); 
-			//table.addCourse("COMP2900 ", new String[]{"T5"});
 			friends.put(fdname, table);
 		}
 		if (prompt) JOptionPane.showMessageDialog(contentPane, "Timetables of friends updated successfully.");
@@ -212,6 +217,16 @@ public class MainWindow extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
+		
+		// this label will not be added to the pane, just for action listening
+		updateFdNeeded.addPropertyChangeListener( new PropertyChangeListener(){
+			   @Override
+			   public void propertyChange(PropertyChangeEvent event){
+			     if (event.getPropertyName().equals("text")){
+			        updateFriendsTimetable(false);
+			     }
+			   }
+			});
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -320,10 +335,7 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (!haveLogined()) {
-					JOptionPane.showMessageDialog(contentPane,
-						    "Only available after logged in.",
-						    "Error",
-						    JOptionPane.WARNING_MESSAGE);
+					showNotLoginError();
 				}
 				else {
 					String exportStr = own_table.exportString();
@@ -342,10 +354,7 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (!haveLogined()) {
-					JOptionPane.showMessageDialog(contentPane,
-						    "Only available after logged in.",
-						    "Error",
-						    JOptionPane.WARNING_MESSAGE);
+					showNotLoginError();
 				}
 				else {
 					String instr = network.getTimeTable();
@@ -392,6 +401,11 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (haveLogined()) {
 					Network.logout();
+					// close all friends tab, and clear own_table
+					while (timetableTabpage.getTabCount()==2) {
+						timetableTabpage.remove(1);
+					}
+					own_table.importString("Mine!");
 					MainWindow.loginAs.setText("Currently Login As: <Anonymous>");
 					JOptionPane.showMessageDialog(contentPane, "You have logged out successfully.");
 				}
@@ -406,6 +420,47 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				updateFriendsTimetable(true);
+			}
+		});
+		
+		mntmAddNewFd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (!haveLogined()) {
+					showNotLoginError();
+					return;
+				}
+				String fdname = (String) JOptionPane.showInputDialog(contentPane,
+							"Please input your friend's username: ", "Add New Friend",
+							JOptionPane.PLAIN_MESSAGE, null, null, "");
+				if (fdname.equals(Network.getOurNetworkUserName())) {
+					JOptionPane.showMessageDialog(contentPane, "You cannot add yourself as friend.");
+					return;
+				}
+				String returnCode = network.friendReq(fdname);
+				if (returnCode.equals("100")) {
+					JOptionPane.showMessageDialog(contentPane, "Friend Request Sent Successfully.");
+				}
+				else if (returnCode.equals("004")) {
+					JOptionPane.showMessageDialog(contentPane, "Friend Request Previously Sent.");
+				}
+				else {
+					JOptionPane.showMessageDialog(contentPane,
+						    "Fail to sent the friend request.",
+						    "Error",
+						    JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+		
+		mntmChkRequest.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (!haveLogined()) {
+					showNotLoginError();
+					return;
+				}
+				new FriendRequestGUI(contentPane);
 			}
 		});
 		
@@ -436,8 +491,7 @@ public class MainWindow extends JFrame {
 		btnSeeFriend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!haveLogined()) {
-					JOptionPane.showMessageDialog(contentPane, "You have to login first to use this function.",
-							"See Friend's Timetable", JOptionPane.INFORMATION_MESSAGE);
+					showNotLoginError();
 					return;
 				}
 				Object obj = friend_list.getSelectedValue();
@@ -485,6 +539,7 @@ public class MainWindow extends JFrame {
 		loginAs = new JLabel("Currently Login As: "+theUser);
 		loginAs.setForeground(Color.BLUE);
 		loginAs.setBounds(12, 12, 500, 28);
+		// TODO: add update of own_table and friend_table after login/logout
 		loginAs.addPropertyChangeListener( new PropertyChangeListener(){
 		   @Override
 		   public void propertyChange(PropertyChangeEvent event){
@@ -583,8 +638,7 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if (!haveLogined()) {
-					JOptionPane.showMessageDialog(contentPane, "You have to login first to use this function.",
-							"Find Common Free Time", JOptionPane.INFORMATION_MESSAGE);
+					showNotLoginError();
 					return;
 				}
 				
@@ -743,6 +797,13 @@ public class MainWindow extends JFrame {
 			    // Now add a single binding for the action name to the anonymous action
 		    	c.getActionMap().put("closeTab", closeTabAction);
 		    }
+		  }
+		  
+		  private static void showNotLoginError() {
+			  JOptionPane.showMessageDialog(contentPane,
+					    "Only available after logged in.",
+					    "Error",
+					    JOptionPane.WARNING_MESSAGE);
 		  }
 		  
 		  // show a error prompt
