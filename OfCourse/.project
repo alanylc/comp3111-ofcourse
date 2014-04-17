@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1397289742664</id>
+			<id>1397740030385</id>
 			<name></name>
 			<type>6</type>
 			<matcher>
@@ -25,7 +25,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1397289742674</id>
+			<id>1397740030390</id>
 			<name></name>
 			<type>6</type>
 			<matcher>
@@ -34,21 +34,12 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1397289742674</id>
+			<id>1397740030393</id>
 			<name></name>
 			<type>6</type>
 			<matcher>
 				<id>org.eclipse.ui.ide.multiFilter</id>
 				<arguments>1.0-name-matches-false-false-????</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1397289742684</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-CACHEHISTORY.txt</arguments>
 			</matcher>
 		</filter>
 	</filteredResources>
