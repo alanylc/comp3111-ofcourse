@@ -72,7 +72,11 @@ public class TimePeriod {
 	@Override
 	public String toString() {
 		try {
-			return startSlot.getDay().toString() + startSlot.getStartTime() + "-" + endSlot.getEndTime();
+			String start = startSlot.getStartTime().substring(0, 2) + ":"
+					+ startSlot.getStartTime().substring(2, 4);
+			String end = endSlot.getEndTime().substring(0, 2) + ":"
+					+ endSlot.getEndTime().substring(2, 4);
+			return startSlot.getDay().toString() + " " + start + "-" + end;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
