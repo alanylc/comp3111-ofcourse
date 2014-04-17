@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import java.util.Date;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -26,10 +28,10 @@ import javax.swing.border.TitledBorder;
 
 import ofcourse.Network;
 
-public class FriendRequestGUI extends JFrame {
+public class FriendRequestGUI extends JDialog {
 
-	public FriendRequestGUI(final Component parent) {
-		
+	public FriendRequestGUI(final Frame parent) {
+		super(parent, true);
 		final Network network = Network.getOurNetwork();
 		
 		this.setSize(300, 260);
@@ -117,6 +119,7 @@ public class FriendRequestGUI extends JFrame {
 		outerPane.add(acceptPane, BorderLayout.SOUTH);
 		
 		this.setContentPane(outerPane);
+		MainWindow.addEscapeListener(this);
 		this.setVisible(true);
 	}
 	
