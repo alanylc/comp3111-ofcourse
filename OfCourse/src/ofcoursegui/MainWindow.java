@@ -39,6 +39,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -412,6 +413,25 @@ public class MainWindow extends JFrame {
 				}
 				else {
 					new RegisterGUI(MainWindow.this);
+				}
+			}
+		});
+		
+		
+		mntmChangePw.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (!haveLogined()) {
+					showNotLoginError();
+				}
+				else {
+//					JPasswordField pf = new JPasswordField();
+//					int okCxl = JOptionPane.showConfirmDialog(null, pf, "Enter Current Password",
+//							JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+//					if (okCxl == JOptionPane.OK_OPTION) {
+//						String pw = new String(pf.getPassword());
+						new ChangePwGUI(MainWindow.this);
+//					}
 				}
 			}
 		});

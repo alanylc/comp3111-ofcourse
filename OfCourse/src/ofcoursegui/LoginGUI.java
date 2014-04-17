@@ -23,8 +23,11 @@ import ofcourse.Network;
 
 public class LoginGUI extends JDialog {
 	
+	private Frame parent = null;
+	
 	public LoginGUI(final Frame parent) {
 		super(parent, true);
+		this.parent = parent;
 		this.setSize(300, 160);
 		this.setLocation(parent.getX()+parent.getWidth()/2, parent.getY()+parent.getHeight()/2);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -44,6 +47,11 @@ public class LoginGUI extends JDialog {
 				String username = usernameTextField.getText();
 				String password = new String(passwordField.getPassword());
 				Network network = Network.login(username, password);
+				if (network.chkFirstPW()) { // first login, using first PW
+					LoginGUI.this.setVisible(false);
+					new ChangePwGUI((Frame) LoginGUI.this.parent, password, true);
+					LoginGUI.this.setVisible(true);
+				}
 				if (!MainWindow.haveLogined()){ // login fails
 					JOptionPane.showMessageDialog(parent, "Incorrect Username or Wrong Password!",
 							"Login Fails", JOptionPane.WARNING_MESSAGE);
