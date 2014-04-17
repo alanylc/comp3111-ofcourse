@@ -22,7 +22,7 @@ public class TimePeriod {
 	}
 	*/
 	public TimePeriod(String sub, String time){				//construct from "We", "03:30PM - 06:20PM" to obj
-		String StartTime=time.substring(1,time.indexOf(" - "));
+		String StartTime=time.substring(0,time.indexOf(" - "));
 		String EndTime=time.substring(time.indexOf(" - ")+3);
 		//TimeSlot sTS=new TimeSlot(sub,StartTime);
 		TimeSlot sTS = TimeSlot.getTimeSlotByStrings(sub, StartTime);

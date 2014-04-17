@@ -350,7 +350,7 @@ public class Course extends Ratable {
 				String time=datetime.substring(datetime.indexOf(" "));
 				String[] wdA=wd.split("(?<=\\G..)");//split every two chars for weekday part 
 				for(String sub:wdA){
-					TimePeriod t=new TimePeriod(sub,time);
+					TimePeriod t=new TimePeriod(sub,time.trim());
 					schedule.add(t);
 				}
 			}
