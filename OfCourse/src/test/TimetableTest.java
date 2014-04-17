@@ -11,12 +11,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.JTabbedPane;
+
 import ofcourse.Course;
 import ofcourse.CourseParseThreaded;
 import ofcourse.TimeSlot;
 import ofcourse.Timetable;
 import ofcourse.TimetableError;
 import ofcourse.CourseParse;
+import ofcoursegui.TimeTableGUI;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -528,6 +531,54 @@ public class TimetableTest {
 	}
 	
 	
+	@Test
+	public void testGetGUI() {
+		assertEquals(TimeTableGUI.class, table.getGUI().getClass());
+	}
+	
+	@Test
+	public void testGetSelectedCourse() {
+		assertEquals(null, table.getSelectedCourse());
+	}
+	
+	@Test
+	public void testTimetableStringJTabbedPane() {
+		JTabbedPane p = new JTabbedPane();
+		Timetable gt = new Timetable("tb", p);
+		assertEquals(p, gt.getGUI().getParent());
+	}
+	
+	@Test
+	public void testCourseSelected01() {
+		table.courseSelected("COMP2611 ");
+		assertEquals(Course.getCourseByName("COMP2611 "), table.getSelectedCourse());
+	}
+	
+	@Test(expected=java.util.NoSuchElementException.class)
+	public void testCourseSelected02() {
+		table.courseSelected("COMP2617 ");
+	}
+
+	@Test
+	public void testCourseSelected03() {
+		table.courseSelected("COMP2611 ");
+		table.addCourse("COMP2900 ", new String[]{"T1"});
+		table.courseSelected("COMP2900 ");
+		assertEquals(Course.getCourseByName("COMP2900 "), table.getSelectedCourse());
+	}
+	
+	@Test
+	public void testCourseUnSelected01() {
+		table.courseUnselected();
+		assertEquals(null, table.getSelectedCourse());
+	}
+	
+	@Test
+	public void testCourseUnSelected02() {
+		table.courseSelected("COMP2611 ");
+		table.courseUnselected();
+		assertEquals(null, table.getSelectedCourse());
+	}
 	
 	private Timetable table;
 	private String filename = "testFile.txt"; // test file of import, export file
