@@ -155,25 +155,26 @@ public class CourseGUI extends JPanel {
 	private class SubmitCommentButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			Component parentComp = MainWindow.contentPane;
 			String rating=getSelectedButtonString(ratingGroup);
 			String comment=commentArea.getText();
 			Network a=Network.getOurNetwork();
 			String reply=a.comment(courseCodeLabel.getText().substring(0, 8), rating, comment);
 			switch(Integer.parseInt(reply)){
 			case 100:
-				JOptionPane.showMessageDialog(getComponent(0),"Comment submitted successfully!","Success!",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(parentComp,"Comment submitted successfully!","Success!",JOptionPane.INFORMATION_MESSAGE);
 				break;
 			case 002:
-				JOptionPane.showMessageDialog(getComponent(0),"Wrong username or password detected!","Failure!",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(parentComp,"Wrong username or password detected!","Failure!",JOptionPane.WARNING_MESSAGE);
 				break;
 			case 404:
-				JOptionPane.showMessageDialog(getComponent(0),"Network error! Comment is not submitted!","Failure!",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(parentComp,"Network error! Comment is not submitted!","Failure!",JOptionPane.WARNING_MESSAGE);
 				break;
 			case 200:
-				JOptionPane.showMessageDialog(getComponent(0),"You have to login to submit comments!","Failure!",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(parentComp,"You have to login to submit comments!","Failure!",JOptionPane.WARNING_MESSAGE);
 				break;
 			default:
-				JOptionPane.showMessageDialog(getComponent(0),"Error occured, comment is not submitted.","Failure!",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(parentComp,"Error occured, comment is not submitted.","Failure!",JOptionPane.WARNING_MESSAGE);
 				break;
 				
 				
