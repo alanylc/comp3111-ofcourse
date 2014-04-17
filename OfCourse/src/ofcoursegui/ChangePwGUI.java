@@ -76,6 +76,10 @@ public class ChangePwGUI extends JDialog {
 						JOptionPane.showMessageDialog(parent, "Password Changed Successfully.",
 							"Congratulations!", JOptionPane.INFORMATION_MESSAGE);
 					}
+					else if (returnCode.equals("002")) { // incorrect username / password
+						JOptionPane.showMessageDialog(parent, "Wrong Old Password!.",
+								"Change Password", JOptionPane.WARNING_MESSAGE);
+					}
 					else {
 						JOptionPane.showMessageDialog(parent, "Operation fails.",
 								"Change Password", JOptionPane.INFORMATION_MESSAGE);
@@ -93,7 +97,7 @@ public class ChangePwGUI extends JDialog {
 			rows = 3;
 		}
 		contentPane.setLayout(new GridLayout(rows, 1));
-		if (firstChange) {
+		if (!firstChange) {
 			JPanel p0 = new JPanel();
 			p0.add(msg0);
 			p0.add(opwField);
