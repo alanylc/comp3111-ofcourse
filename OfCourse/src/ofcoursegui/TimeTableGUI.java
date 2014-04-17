@@ -1,36 +1,32 @@
 package ofcoursegui;
 
 
-import java.util.HashMap;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.Sizes;
-import com.jgoodies.forms.factories.FormFactory;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import javax.swing.JScrollPane;
-import javax.swing.JList;
-import javax.swing.border.TitledBorder;
-
 import ofcourse.Course;
 import ofcourse.TimePeriod;
+
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.Sizes;
 
 public class TimeTableGUI extends JPanel{
 	private static int rows = 28;
@@ -400,6 +396,7 @@ public class TimeTableGUI extends JPanel{
 	}
 
 	public TimeTableGUI initilizeGUIComponent() {
+		
 		ColumnSpec[] cs = new ColumnSpec[cols + 1];
 		for (int i = 0; i < cols + 1; i ++) {
 			cs[i] = new ColumnSpec(Sizes.pixel(100));
@@ -533,5 +530,9 @@ public class TimeTableGUI extends JPanel{
 		}
 
 		return this;
+	}
+
+	public void updateTBA(String course_code, String session_name) {
+		// TODO: find a place to show TBA course, and how to select the course
 	}
 }

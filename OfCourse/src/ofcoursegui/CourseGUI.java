@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
@@ -24,9 +28,11 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import ofcourse.Course;
+import ofcourse.Instructor;
 import ofcourse.Network;
 import ofcourse.TimePeriod;
 import ofcourse.TimetableError;
+import ofcourse.WeekDay;
 
 public class CourseGUI extends JPanel {
 	public final HashMap<Integer, Course.Session> linkage = new HashMap<Integer, Course.Session>();
@@ -87,7 +93,16 @@ public class CourseGUI extends JPanel {
 		sessionTable.getColumnModel().getColumn(0).setPreferredWidth(55);
 		sessionTable.getColumnModel().getColumn(0).setResizable(false);
 		
-		sessionTable.getColumnModel().getColumn(2).setPreferredWidth(170);
+		sessionTable.getColumnModel().getColumn(1).setMinWidth(65);
+		sessionTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+		
+		sessionTable.getColumnModel().getColumn(2).setMinWidth(65);
+		sessionTable.getColumnModel().getColumn(2).setPreferredWidth(150);
+		
+		sessionTable.getColumnModel().getColumn(3).setMinWidth(65);
+		sessionTable.getColumnModel().getColumn(3).setPreferredWidth(150);
+		
+		sessionTable.setDefaultRenderer(String.class, new MultiLineTableCellRenderer());
 		
 		scrollPane.setViewportView(sessionTable);
 		
@@ -242,21 +257,52 @@ public class CourseGUI extends JPanel {
 		courseCodeLabel.setText(c.getCode().toString());
 		courseNameLabel.setText(c.getName());
 		for (Course.Session s : c.getSessions()) {
-			int numOfDistinctTime = 0;
-			ArrayList<ArrayList<Integer>> arr =  new ArrayList<ArrayList<Integer>>();
+			TreeMap<String, String> arr =  new TreeMap<String, String>();
 			for (TimePeriod tp : s.getSchedule()) {
-				int[] start_end = tp.getStartEndID();
-				ArrayList<Integer> tmp = new ArrayList<Integer>();
-				tmp.add(start_end[0]%100);
-				tmp.add(start_end[1]%100);
-				if (!arr.contains(tmp)){
-					numOfDistinctTime++;
+				String timeStr = null;
+				try {
+					String tmp = tp.toString();
+					String tmp_day = tp.getStartSlot().getDay().toString();
+					timeStr = tmp.substring(tmp.indexOf(tmp_day)+tmp_day.length()+1); // one space
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-				arr.add(tmp);
+				String data = null;
+				try {
+					data = arr.get(timeStr)==null ? "" : arr.get(timeStr);
+					data = data + tp.getStartSlot().getDay().toString();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				arr.put(timeStr, data);
 			}
-			if (numOfDistinctTime==0) numOfDistinctTime=1; // Time = TBA
-			sessionTableModel.addRow(new String[] {s.toString(), s.getSchedule().toString(), s.getRoom().toString(), s.getInstructors().toString()});
-			sessionTable.setRowHeight(sessionTableModel.getRowCount()-1, MainWindow.RowHeight*numOfDistinctTime);
+			String schStr = "";
+			Iterator<Entry<String, String>> it = arr.entrySet().iterator();
+			while (it.hasNext()) {
+				Entry<String, String> entry = it.next();
+				schStr += entry.getValue() + " " + entry.getKey();
+				if (it.hasNext()) schStr += "\n";
+			}
+			if (arr.entrySet().size()==0) {
+				schStr = "TBA";
+			}
+			String roomStr = "";
+			Iterator<String> it_r = s.getRoom().iterator();
+			while (it_r.hasNext()) {
+				roomStr +=it_r.next();
+				if (it_r.hasNext()) roomStr += "\n";
+			}
+			if (roomStr.isEmpty()) roomStr = "TBA";
+			String instructorStr = "";
+			Iterator<Instructor> it_i = s.getInstructors().iterator();
+			while (it_i.hasNext()) {
+				instructorStr += it_i.next().toString();
+				if (it_i.hasNext()) instructorStr += "\n";
+			}
+			if (instructorStr.isEmpty()) instructorStr = "TBA";
+			sessionTableModel.addRow(new String[] {s.toString(), schStr, roomStr, instructorStr});
 			linkage.put(sessionTableModel.getRowCount()-1, s);
 		}
 	}
