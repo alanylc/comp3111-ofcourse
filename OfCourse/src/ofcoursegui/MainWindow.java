@@ -201,7 +201,7 @@ public class MainWindow extends JFrame {
 					frame.setVisible(true);
 					
 					for(CourseParse cp : result) {
-						((NewSearchGUI.SubjectListModel)((frame.newSearchPanel.subjectListModel))).addElement((cp.getSubject()));
+						((SearchSubjectGUI.SubjectListModel)((frame.newSearchPanel.subjectJList.subjectListModel))).addElement((cp.getSubject()));
 					}
 					allCourses = new ArrayList<Course>();
 					for(CourseParse cp : result) {

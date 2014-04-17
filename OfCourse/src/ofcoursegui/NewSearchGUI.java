@@ -35,35 +35,18 @@ import ofcourse.SearchSubject;
 public class NewSearchGUI extends JPanel {
 
 	private static int searchCount = 0;
-	private JPanel subjectPanel = new JPanel();
-	private JPanel levelPanel = new JPanel();
 	JPanel otherPanel = new JPanel();
-	//JList: subjectJList, for showing the subjects
-	//ListModel: subjectList, the backing data for the JList
-	private final JList subjectJList = new JList();
-	public final AbstractListModel subjectListModel = new SubjectListModel();
-	public final static class SubjectListModel extends AbstractListModel {
-		private static final long serialVersionUID = 1922055068864190054L;
-		ArrayList<String> values = new ArrayList<String>();
-		public int getSize() {
-			return values.size();
-		}
-		public Object getElementAt(int index) {
-			return values.get(index);
-		}
-		public void addElement(String subject) {
-			values.add(subject);
-		}
-	};
-
+	
 	//Button: Search
 	private final JButton searchButton = new JButton("Search");
 	
-	private final SearchCodeIntervalGUI levelList = new SearchCodeIntervalGUI();
+	public final SearchCodeIntervalGUI levelList = new SearchCodeIntervalGUI();
+	public final SearchSubjectGUI subjectJList = new SearchSubjectGUI();
 	
 	{
 		setLayout(null);
 		
+		JPanel subjectPanel = new JPanel();
 		subjectPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Subject", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
 		subjectPanel.setBounds(12, 12, 504, 131);
 		subjectPanel.setLayout(new GridLayout(1, 0, 0, 0));
@@ -74,12 +57,9 @@ public class NewSearchGUI extends JPanel {
 		scrollPaneSubject.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		subjectPanel.add(scrollPaneSubject);
 		
-		subjectJList.setVisibleRowCount(5);
-		subjectJList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		subjectJList.setModel(this.subjectListModel);
 		scrollPaneSubject.setViewportView(subjectJList);
 		
-
+		JPanel levelPanel = new JPanel();
 		levelPanel.setBorder(new TitledBorder(new LineBorder(new Color(153, 180, 209), 1, true), "Level", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		levelPanel.setBounds(12, 155, 504, 169);
 		levelPanel.setLayout(new GridLayout(1, 0, 0, 0));
@@ -113,7 +93,7 @@ public class NewSearchGUI extends JPanel {
 					return;
 				}
 								
-				SearchCourse cs = levelList.getSearchCourse(new SearchSubject(new SearchAllCourse(MainWindow.allCourses), subjectCriteria));
+				SearchCourse cs = levelList.getSearchCourse(subjectJList.getSearchCourse(new SearchAllCourse(MainWindow.allCourses)));
 				
 				SearchResultGUI newResult = new SearchResultGUI();
 				for(Course c : cs) {
@@ -121,8 +101,6 @@ public class NewSearchGUI extends JPanel {
 					newResult.addResult(c);
 				}
 				newResult.setCriteriaText(cs.toString());
-				//System.out.println(cs.size());
-				//System.out.println(cs.toString());
 				
 				
 				

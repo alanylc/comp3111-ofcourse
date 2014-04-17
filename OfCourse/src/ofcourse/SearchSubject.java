@@ -19,6 +19,7 @@ public class SearchSubject extends SearchCourse {
 
 	@Override
 	public boolean checkCriteria(Course course) {
+		if (subjects == null) return true;
 		for(String s : subjects){
 			if(course.getCode().getDept().equals(s)) {
 				return true;
@@ -32,6 +33,7 @@ public class SearchSubject extends SearchCourse {
 		StringBuilder result;
 		if (prevPipe != null) result = new StringBuilder(prevPipe.toString());
 		else result = new StringBuilder("");
+		if(subjects == null || subjects.size() == 0) return result.toString();
 		result.append("Subject is");
 		for (String s : subjects) {
 			result.append(" " + s);
