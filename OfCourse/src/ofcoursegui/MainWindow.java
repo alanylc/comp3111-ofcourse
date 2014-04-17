@@ -241,7 +241,9 @@ public class MainWindow extends JFrame {
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1280, 720);
+		//setBounds(100, 100, 1280, 720);
+		setSize(1280, 720);
+		setLocationRelativeTo(null);
 		
 		// this label will not be added to the pane, just for action listening
 		updateFdNeeded.addPropertyChangeListener(new PropertyChangeListener(){

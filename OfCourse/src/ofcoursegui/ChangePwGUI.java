@@ -36,7 +36,7 @@ public class ChangePwGUI extends JDialog {
 		else {
 			this.setSize(300, 200);
 		}
-		this.setLocation(parent.getX()+parent.getWidth()/2, parent.getY()+parent.getHeight()/2);
+		this.setLocationRelativeTo(parent);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setTitle("Change Password");
