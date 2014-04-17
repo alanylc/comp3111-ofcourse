@@ -532,7 +532,7 @@ public class TimeTableGUI extends JPanel{
 		return this;
 	}
 
-	public void updateTBA(String course_code, String session_name) {
+//	public void updateTBA(String course_code, String session_name) {
 		// TODO: find a place to show TBA course, and how to select the course
-	}
+//	}
 }

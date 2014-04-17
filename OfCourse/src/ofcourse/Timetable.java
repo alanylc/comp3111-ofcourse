@@ -336,21 +336,20 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		// GUI call
 		Color c = TimeTableGUI.getRandomBgColor();
 		for (Course.Session s : trueSessions) {
-			if (s.getSchedule().isEmpty()) { // Time = TBA
-				gui.updateTBA(course.toString(), s.toString());
-			}
-			else {
-				for (TimePeriod tp : s.getSchedule()) {
-					try {
-						gui.fillSlots(
-								tp.getStartSlot().getID(), 
-								tp.getEndSlot().getID(), 
-								c, 
-								new String[] { course.toString(), s.toString() }, 
-								course.toString());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+			//TODO: Time = TBA
+//			if (s.getSchedule().isEmpty()) {
+//				gui.updateTBA(course.toString(), s.toString());
+//			}
+			for (TimePeriod tp : s.getSchedule()) {
+				try {
+					gui.fillSlots(
+							tp.getStartSlot().getID(), 
+							tp.getEndSlot().getID(), 
+							c, 
+							new String[] { course.toString(), s.toString() }, 
+							course.toString());
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		}
@@ -575,21 +574,10 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 			bw = new BufferedWriter(new FileWriter(filename));
 			String line = exportString();
 			bw.write(line + "\n");
-		}
-		catch (FileNotFoundException ex) {
-			return false;
+			bw.close();
 		}
 		catch (IOException ex) {
 			return false;
-		}
-		
-		finally {
-			try {
-				if (bw!=null) bw.close();
-			} catch (IOException e) {
-				System.out.println("Fatal error: fail to close file (" + filename + ")");
-				return false;
-			}
 		}
 		return true;
 	}
@@ -612,20 +600,10 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 				line = br.readLine();
 			}
 			importStatus = importString(strArr.get(0));
-		}
-		catch (FileNotFoundException ex) {
-			return false;
+			br.close();
 		}
 		catch (IOException ex) {
 			return false;
-		}
-		finally {
-			try {
-				if (br!=null) br.close();
-			} catch (IOException e) {
-				System.out.println("Fatal error: fail to close file (" + filename + ")");
-				return false;
-			}
 		}
 		return importStatus;
 	}
