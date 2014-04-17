@@ -19,7 +19,7 @@ public class RegisterGUI extends JDialog {
 	public RegisterGUI(final Frame parent) {
 		super(parent, true);
 		this.setSize(300, 130);
-		this.setLocation(parent.getX()+parent.getWidth()/2, parent.getY()+parent.getHeight()/2);
+		this.setLocationRelativeTo(parent);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setTitle("Register");

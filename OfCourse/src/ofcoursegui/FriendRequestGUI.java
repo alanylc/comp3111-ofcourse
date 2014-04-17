@@ -35,7 +35,7 @@ public class FriendRequestGUI extends JDialog {
 		final Network network = Network.getOurNetwork();
 		
 		this.setSize(300, 260);
-		this.setLocation(parent.getX()+parent.getWidth()/2, parent.getY()+parent.getHeight()/2);
+		this.setLocationRelativeTo(parent);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setTitle("Friend Requests");

@@ -29,7 +29,7 @@ public class LoginGUI extends JDialog {
 		super(parent, true);
 		this.parent = parent;
 		this.setSize(300, 160);
-		this.setLocation(parent.getX()+parent.getWidth()/2, parent.getY()+parent.getHeight()/2);
+		this.setLocationRelativeTo(parent);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setTitle("Login");
@@ -50,18 +50,29 @@ public class LoginGUI extends JDialog {
 				if (network.chkFirstPW()) { // first login, using first PW
 					LoginGUI.this.setVisible(false);
 					new ChangePwGUI((Frame) LoginGUI.this.parent, password, true);
-					LoginGUI.this.setVisible(true);
-				}
-				if (!MainWindow.haveLogined()){ // login fails
-					JOptionPane.showMessageDialog(parent, "Incorrect Username or Wrong Password!",
-							"Login Fails", JOptionPane.WARNING_MESSAGE);
-				}
-				else { // login successfully
 					dispose();
-					MainWindow.loginAs.setText("Currently Login As: "+username);
-					MainWindow.own_table.importString(network.getTimeTable());
-					JOptionPane.showMessageDialog(parent, "Login Successfully.",
-							"Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+					if (!MainWindow.haveLogined()){ // user cancels input
+						JOptionPane.showMessageDialog(parent, "Login only available after set up a new password.");
+					}
+					else {
+						MainWindow.loginAs.setText("Currently Login As: "+username);
+						MainWindow.own_table.importString(network.getTimeTable());
+						JOptionPane.showMessageDialog(parent, "Login Successfully.",
+								"Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+					}
+				}
+				else { // not first login
+					if (!MainWindow.haveLogined()){ // login fails
+						JOptionPane.showMessageDialog(parent, "Incorrect Username or Wrong Password!",
+								"Login Fails", JOptionPane.WARNING_MESSAGE);
+					}
+					else { // login successfully
+						dispose();
+						MainWindow.loginAs.setText("Currently Login As: "+username);
+						MainWindow.own_table.importString(network.getTimeTable());
+						JOptionPane.showMessageDialog(parent, "Login Successfully.",
+								"Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+					}
 				}
 			}
 			
