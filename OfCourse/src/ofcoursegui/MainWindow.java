@@ -501,6 +501,10 @@ public class MainWindow extends JFrame {
 				else if (returnCode.equals("004")) {
 					JOptionPane.showMessageDialog(contentPane, "Friend Request Previously Sent.");
 				}
+				else if (returnCode.equals("404")) {
+					JOptionPane.showMessageDialog(contentPane, "Network Unvailable / Server Down.",
+							"Change Password", JOptionPane.WARNING_MESSAGE);
+				}
 				else {
 					JOptionPane.showMessageDialog(contentPane,
 						    "Fail to sent the friend request.",
