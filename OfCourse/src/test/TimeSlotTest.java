@@ -212,7 +212,7 @@ public class TimeSlotTest {
 	@Test
 	public void testGetStartTime() {
 		Set<TimePeriod> schedule = s.getSchedule();
-		String expected="15301530";
+		String expected="16301630";
 		String actual="";
 		for(TimePeriod tp:schedule)actual+=tp.getStartSlot().getStartTime();
 		assertEquals(expected, actual);
@@ -221,7 +221,7 @@ public class TimeSlotTest {
 	@Test
 	public void testGetEndTime() {
 		Set<TimePeriod> schedule = s.getSchedule();
-		String expected="16301630";
+		String expected="17001700";
 		String actual="";
 		for(TimePeriod tp:schedule)actual+=tp.getStartSlot().getEndTime();
 		assertEquals(expected, actual);
