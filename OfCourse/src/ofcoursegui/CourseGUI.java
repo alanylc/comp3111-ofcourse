@@ -229,14 +229,19 @@ public class CourseGUI extends JPanel {
 			}
 			myfav = myfav + newFav + "!";
 			String returnCode = network.setMyFav(myfav);
-			if (!returnCode.equals("100")) {
-				JOptionPane.showMessageDialog(MainWindow.contentPane, "Operation Fails!",
-						"Add to My Favourite", JOptionPane.WARNING_MESSAGE);
-			}
-			else {
+			
+			if (returnCode.equals("100")) {
 				MainWindow.updateFavNeeded.setText(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
 				JOptionPane.showMessageDialog(MainWindow.contentPane, "Course successfully added to My Favourite.",
 						"Add to My Favourite", JOptionPane.INFORMATION_MESSAGE);
+			}
+			else if (returnCode.equals("404")) {
+				JOptionPane.showMessageDialog(MainWindow.contentPane, "Network Unavailable / Server Down.",
+						"Change Password", JOptionPane.WARNING_MESSAGE);
+			}
+			else {
+				JOptionPane.showMessageDialog(MainWindow.contentPane, "Operation Fails!",
+						"Add to My Favourite", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}

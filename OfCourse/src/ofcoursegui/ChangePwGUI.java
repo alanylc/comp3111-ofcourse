@@ -80,6 +80,10 @@ public class ChangePwGUI extends JDialog {
 						JOptionPane.showMessageDialog(parent, "Wrong Old Password!.",
 								"Change Password", JOptionPane.WARNING_MESSAGE);
 					}
+					else if (returnCode.equals("404")) { 
+						JOptionPane.showMessageDialog(parent, "Network Unavailable / Server Down.",
+								"Change Password", JOptionPane.WARNING_MESSAGE);
+					}
 					else {
 						JOptionPane.showMessageDialog(parent, "Operation fails.",
 								"Change Password", JOptionPane.INFORMATION_MESSAGE);
