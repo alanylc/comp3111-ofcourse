@@ -32,7 +32,7 @@ public class SearchCodeIntervalGUI extends JList implements SearchCriteriaCompon
 		int[] selecteds = this.getSelectedIndices();
 		// If none are selected, it means to include all
 		if(selecteds.length == 0) {
-			return new SearchAllCourse(prevSearch);
+			return new SearchCodeInterval(prevSearch, null);
 		}
 		else {
 			ArrayList<int[]> intervals = new ArrayList<int[]>();

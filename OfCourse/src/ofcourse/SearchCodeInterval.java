@@ -5,8 +5,10 @@ import java.util.Collection;
 
 import javax.swing.JOptionPane;
 
+import ofcoursegui.MainWindow;
+
 public class SearchCodeInterval extends SearchCourse {
-	private ArrayList<int[]> intervals = null;
+	private ArrayList<int[]> intervals = new ArrayList<int[]>();
 	public SearchCodeInterval(Collection<Course> prevPipe) {
 		super(prevPipe);
 	}
@@ -18,6 +20,7 @@ public class SearchCodeInterval extends SearchCourse {
 	
 	@Override
 	public boolean checkCriteria(Course course) {
+		if (intervals == null) return true;
 		for(int[] interval : intervals) {
 			int num = course.getCode().getNumber();
 			if (num >= interval[0] && num <= interval[1]) 
@@ -33,6 +36,9 @@ public class SearchCodeInterval extends SearchCourse {
 		StringBuilder result;
 		if (prevPipe != null) result = new StringBuilder(prevPipe.toString());
 		else result = new StringBuilder("");
+		if(intervals == null || intervals.size() == 0) { 
+			return result.toString();
+		}
 		result.append("Code is");
 		ArrayList<int[]> intervs = new ArrayList<int[]>();
 		for (int i = 0; i < intervals.size(); i++) {
