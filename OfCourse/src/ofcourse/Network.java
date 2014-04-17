@@ -223,10 +223,19 @@ public class Network {//chk courseParse.out() for implementation of
 	 * @param TimeTable TimeTable String
 	 * @return Reply from server.
 	 */
-	public String setTimeTable(String TimeTable) { // Change your MyFav and upload (NOT WORKING)
+	public String setTimeTable(String TimeTable) {
 		if (ourNetwork.username.equals(""))return "200";
 		String[][] setTimeTableA = { { "TimeTable", TimeTable } };
 		return this.POST("setTimeTable.php", setTimeTableA);
+	}
+	/**
+	 * Remove an account (debug only)
+	 * @param ITSC ITSC account that have to be removed.
+	 * @return Reply from server.
+	 */
+	public String removeAccount(String ITSC) { 
+		String[][] removeAccountA = { { "ITSC", ITSC } };
+		return this.POST("delAC.php", removeAccountA);
 	}
 	/**
 	 * Change your password FOR FIRST TIME

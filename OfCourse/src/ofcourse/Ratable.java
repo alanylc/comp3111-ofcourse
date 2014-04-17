@@ -6,7 +6,7 @@ public abstract class Ratable {
 	private String name;
 	private float avgRating = 0;//get avg rating during initialization
 	private ArrayList<Comments> comments=new ArrayList<Comments>();//get comments only when you access the course(currently via out() on courseParse)
-	class Comments{
+	public class Comments{
 		private String commenterName;
 		private float rating;
 		private String comments="";
@@ -20,8 +20,8 @@ public abstract class Ratable {
 		public String getCommentorName() {
 			return commenterName;
 		}
-		public float getRating() {
-			return rating;
+		public String getRating() {
+			return String.valueOf(rating);
 		}
 		public String getComments() {
 			return comments;
@@ -50,16 +50,20 @@ public abstract class Ratable {
 	}
 	public void parseComments() {	//for course only
 		Network a=Network.getOurNetwork();
+		this.comments=new ArrayList<Comments>();
 		try{
-			String[][] commentsForCourse=a.getCourse(name.substring(0, 4)+name.substring(5, 9));
+			String[][] commentsForCourse=a.getCourse(name.substring(0, 4)+name.substring(5, 10));
 			for(String[] cm:commentsForCourse){
 				try{
 					Comments c=new Comments(cm[0],Float.parseFloat(cm[1]),cm[2],cm[3]);
+					avgRating+=Float.parseFloat(cm[1]);
 					this.comments.add(c);
 				}catch(Exception e){
 					//do nothing
 				}
 			}
+			avgRating/=commentsForCourse.length;
+			System.out.println(avgRating+"/"+commentsForCourse.length);
 		}catch(Exception e){
 			//do nothing
 		}
