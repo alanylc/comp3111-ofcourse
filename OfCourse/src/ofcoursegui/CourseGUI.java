@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import javax.swing.AbstractButton;
+import javax.swing.AbstractCellEditor;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -25,11 +26,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableModel;
 
 import ofcourse.Course;
 import ofcourse.Instructor;
 import ofcourse.Network;
+import ofcourse.Ratable.Comments;
 import ofcourse.TimePeriod;
 import ofcourse.TimetableError;
 import ofcourse.WeekDay;
@@ -42,17 +48,11 @@ public class CourseGUI extends JPanel {
 	JLabel courseNameLabel = new JLabel("CoureName");
 	JButton enrollButton = new JButton("Enroll");
 	JButton btnAddFav = new JButton("Add to My Favourite");
-	JLabel ratingLabel=new JLabel("Rating:");
-	JLabel commentLabel=new JLabel("Comment:");
-	JRadioButton B1 = new JRadioButton("1");
-	JRadioButton B2 = new JRadioButton("2");
-	JRadioButton B3 = new JRadioButton("3");
-	JRadioButton B4 = new JRadioButton("4");
-	JRadioButton B5 = new JRadioButton("5");
-	ButtonGroup ratingGroup = new ButtonGroup();
-	JTextArea commentArea= new JTextArea();
-	JButton submitCommentButton = new JButton("Submit Comment");
-	
+	JButton commentButton = new JButton("Comment");
+	JTable commentTable=new JTable();
+
+	JLabel avgRating = new JLabel("Average rating:");
+	JLabel avgRatingN = new JLabel("5");
 	public final JTable sessionTable = new JTable();
 	@SuppressWarnings("serial")
 	DefaultTableModel sessionTableModel = new DefaultTableModel(
@@ -73,14 +73,27 @@ public class CourseGUI extends JPanel {
 				return false;
 			}
 	};
-	
+	 @SuppressWarnings("serial")
+	TableModel model = new AbstractTableModel() {
+	      public Object getValueAt(int rowIndex, int columnIndex) {
+	        return course.getComments().get(rowIndex);
+	      }
+	      public int getColumnCount() {
+	        return 1;
+	      }
+	      public int getRowCount() {
+	        return course.getComments().size();
+	      }
+	      public Class getColumnClass(int columnIndex) { return CommentGUI.class; }
+	      public String getColumnName(int columnIndex) { return "Comments for this course:"; }
+	    };
 	{
 		//JPanel coursePanel = new JPanel();
 		//MainWindow.searchTabpage.addTab("New tab", null, this, null);
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 62, 504, 226);
+		scrollPane.setBounds(12, 62, 504, 199);
 		add(scrollPane);
 		
 		sessionTable.setModel(sessionTableModel);
@@ -112,6 +125,13 @@ public class CourseGUI extends JPanel {
 		courseNameLabel.setBounds(12, 32, 504, 18);
 		add(courseNameLabel);
 		
+		avgRating.setBounds(22, 271, 100, 18);
+		add(avgRating);
+		
+		avgRatingN.setBounds(112, 271, 36, 18);
+		
+		add(avgRatingN);
+		
 		enrollButton.setBounds(418, 533, 98, 28);
 		add(enrollButton);
 		enrollButton.addActionListener(new EnrollButtonListener());
@@ -120,32 +140,62 @@ public class CourseGUI extends JPanel {
 		add(btnAddFav);
 		btnAddFav.addActionListener(new AddFavListener());
 		
+		commentButton.setBounds(130, 533, 98, 28);
+		add(commentButton);
+		commentButton.addActionListener(new CommentButtonListener());
+
+		commentTable.setModel(model);
+		commentTable.getColumnModel().getColumn(0).setCellRenderer(new CommentRenderer());
+		commentTable.getColumnModel().getColumn(0).setCellEditor(new CommentEditor());
+		commentTable.getColumnModel().getColumn(0).setResizable(false);
+		commentTable.setRowHeight(115);
 		
-		ratingGroup.add(B1);
-		ratingGroup.add(B2);
-		ratingGroup.add(B3);
-		ratingGroup.add(B4);
-		ratingGroup.add(B5);
-		JPanel ratingPanel = new JPanel();
-		ratingPanel.setLayout(new GridLayout(1, 5));
-		ratingPanel.add(B1);
-		ratingPanel.add(B2);
-		ratingPanel.add(B3);
-		ratingPanel.add(B4);
-		ratingPanel.add(B5);
-		ratingPanel.setBounds(97, 311, 200, 20);
-		add(ratingPanel);
-		commentArea.setBounds(97, 341, 260, 60);
-		add(commentArea);
-		ratingLabel.setBounds(35, 311, 40, 20);
-		add(ratingLabel);
-		commentLabel.setBounds(35, 341, 80, 20);
-		add(commentLabel);
-		submitCommentButton.setBounds(370, 341, 120, 30);
-		add(submitCommentButton);
-		submitCommentButton.addActionListener(new SubmitCommentButtonListener());
+	    JScrollPane pane = new JScrollPane(commentTable);
+	    pane.setBounds(12, 307, 504, 199);
+	    add(pane);
 	}
-	
+	@SuppressWarnings("serial")
+	public class CommentEditor extends AbstractCellEditor implements TableCellEditor{
+		public Component getTableCellEditorComponent(JTable table, Object value,
+			      boolean isSelected, int row, int column) {
+			Comments cm=(Comments)value;
+		    CommentGUI comment=new CommentGUI(cm.getCommentorName(),cm.getRating(),cm.getComments(),cm.getDate());
+		    return comment;
+			  }
+
+		@Override
+		public Object getCellEditorValue() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+	}
+	@SuppressWarnings("serial")
+	public class CommentRenderer extends DefaultTableCellRenderer {
+
+		  /*
+		   * @see TableCellRenderer#getTableCellRendererComponent(JTable, Object, boolean, boolean, int, int)
+		   */
+		  public Component getTableCellRendererComponent(JTable table, Object value,
+		                                                 boolean isSelected, boolean hasFocus, 
+		                                                 int row, int column) {
+			Comments cm=(Comments)value;
+		    CommentGUI comment=new CommentGUI(cm.getCommentorName(),cm.getRating(),cm.getComments(),cm.getDate());
+		    return comment;
+		  }
+		}
+	private class CommentButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (!MainWindow.haveLogined()) {
+				MainWindow.showNotLoginError();
+				return;
+			}
+			AddCommentGUI addComment=new AddCommentGUI(course.getCode().toString());
+			addComment.setVisible(true);
+			
+		}
+	}
 	private class EnrollButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -167,48 +217,7 @@ public class CourseGUI extends JPanel {
 			MainWindow.showError(err_code, "Enroll Fails");
 		}
 	}
-	private class SubmitCommentButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Component parentComp = MainWindow.contentPane;
-			String rating=getSelectedButtonString(ratingGroup);
-			String comment=commentArea.getText();
-			Network a=Network.getOurNetwork();
-			String reply=a.comment(courseCodeLabel.getText().substring(0, 8), rating, comment);
-			switch(Integer.parseInt(reply)){
-			case 100:
-				JOptionPane.showMessageDialog(parentComp,"Comment submitted successfully!","Success!",JOptionPane.INFORMATION_MESSAGE);
-				break;
-			case 002:
-				JOptionPane.showMessageDialog(parentComp,"Wrong username or password detected!","Failure!",JOptionPane.WARNING_MESSAGE);
-				break;
-			case 404:
-				JOptionPane.showMessageDialog(parentComp,"Network error! Comment is not submitted!","Failure!",JOptionPane.WARNING_MESSAGE);
-				break;
-			case 200:
-				JOptionPane.showMessageDialog(parentComp,"You have to login to submit comments!","Failure!",JOptionPane.WARNING_MESSAGE);
-				break;
-			default:
-				JOptionPane.showMessageDialog(parentComp,"Error occured, comment is not submitted.","Failure!",JOptionPane.WARNING_MESSAGE);
-				break;
-				
-				
-			}
-			//TimetableError err_code = MainWindow.own_table.addCourse(course, ss.toArray(new Course.Session[ss.size()]));
-			//MainWindow.showError("Enroll Fails");
-		}
-		public String getSelectedButtonString(ButtonGroup buttonGroup) {
-	        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
-	            AbstractButton button = buttons.nextElement();
 
-	            if (button.isSelected()) {
-	                return button.getText();
-	            }
-	        }
-
-	        return "";
-	    }
-	}
 	private class AddFavListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -249,6 +258,9 @@ public class CourseGUI extends JPanel {
 	public CourseGUI (Course c) {
 		if (c == null) throw new NullPointerException();
 		setCourse(c);
+		c.parseComments();
+		System.out.println(String.valueOf(c.getAvgRating()));
+		avgRatingN.setText(String.valueOf(c.getAvgRating()));
 		this.course = c;
 	}
 	
