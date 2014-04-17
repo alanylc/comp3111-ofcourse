@@ -1,23 +1,23 @@
 package ofcoursegui;
 
-import java.awt.Component;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import ofcourse.Network;
 
-public class RegisterGUI extends JFrame {
-	public RegisterGUI(final Component parent) {
+public class RegisterGUI extends JDialog {
+	public RegisterGUI(final Frame parent) {
+		super(parent, true);
 		this.setSize(300, 130);
 		this.setLocation(parent.getX()+parent.getWidth()/2, parent.getY()+parent.getHeight()/2);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -76,6 +76,7 @@ public class RegisterGUI extends JFrame {
 		contentPane.add(p2);
 		contentPane.getRootPane().setDefaultButton(btnRegister);
 		contentPane.setVisible(true);
+		MainWindow.addEscapeListener(this);
 		this.setVisible(true);
 	}
 }

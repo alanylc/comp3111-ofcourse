@@ -12,6 +12,7 @@ import java.awt.event.AdjustmentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
@@ -22,11 +23,13 @@ import java.util.HashMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.AbstractListModel;
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,6 +39,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
@@ -407,7 +411,7 @@ public class MainWindow extends JFrame {
 					JOptionPane.showMessageDialog(contentPane, "You have to logout first.");
 				}
 				else {
-					new RegisterGUI(contentPane);
+					new RegisterGUI(MainWindow.this);
 				}
 			}
 		});
@@ -420,7 +424,7 @@ public class MainWindow extends JFrame {
 					JOptionPane.showMessageDialog(contentPane, "You have already logged in.");
 				}
 				else {
-					new LoginGUI(contentPane);
+					new LoginGUI(MainWindow.this);
 				}
 			}
 		});
@@ -491,7 +495,7 @@ public class MainWindow extends JFrame {
 					showNotLoginError();
 					return;
 				}
-				new FriendRequestGUI(contentPane);
+				new FriendRequestGUI(MainWindow.this);
 			}
 		});
 		
@@ -845,6 +849,19 @@ public class MainWindow extends JFrame {
 			    // Now add a single binding for the action name to the anonymous action
 		    	c.getActionMap().put("closeTab", closeTabAction);
 		    }
+		  }
+		  
+		  public static void addEscapeListener(final JDialog dialog) {
+			  final KeyStroke escapeStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0); 
+			  final String dispatchWindowClosingActionMapKey = "com.spodding.tackline.dispatch:WINDOW_CLOSING";  
+			  Action dispatchClosing = new AbstractAction() { 
+				  public void actionPerformed(ActionEvent event) { 
+					  dialog.dispatchEvent(new WindowEvent(dialog, WindowEvent.WINDOW_CLOSING)); 
+				  } 
+			  }; 
+			  JRootPane root = dialog.getRootPane(); 
+			  root.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escapeStroke, dispatchWindowClosingActionMapKey); 
+			  root.getActionMap().put( dispatchWindowClosingActionMapKey, dispatchClosing); 
 		  }
 		  
 		  public static void showNotLoginError() {
