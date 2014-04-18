@@ -109,11 +109,7 @@ public class AddCommentGUI extends JDialog {
 			switch(Integer.parseInt(reply)){
 			case 100:
 				dispose();
-				Course.getCourseByName(courseName).setAvgRating(Float.valueOf(rating));
 				// as the add comment GUI is tied to MainWindow, the selected component must be CourseGUI 
-//				int sindex = MainWindow.searchTabpage.getSelectedIndex();
-//				CourseGUI comp = (CourseGUI) MainWindow.searchTabpage.getSelectedComponent();
-//				MainWindow.searchTabpage.setComponentAt(sindex, comp.cloneGUI());
 				CourseGUI c = (CourseGUI) MainWindow.searchTabpage.getSelectedComponent();
 				c.updateGUI();
 				JOptionPane.showMessageDialog(parentComp,"Comment submitted successfully!","Success!",JOptionPane.INFORMATION_MESSAGE);
