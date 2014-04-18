@@ -1,6 +1,10 @@
 package ofcourse;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.Map.Entry;
 import java.lang.IllegalArgumentException;
 import java.math.BigDecimal;
 
@@ -114,6 +118,41 @@ public class TimePeriod {
 		} else if (!startSlot.equals(other.startSlot))
 			return false;
 		return true;
+	}
+
+	public static String getDistinctStr(Set<TimePeriod> schedule) {
+		TreeMap<String, String> arr =  new TreeMap<String, String>();
+		for (TimePeriod tp : schedule) {
+			String timeStr = null;
+			try {
+				String tmp = tp.toString();
+				String tmp_day = tp.getStartSlot().getDay().toString();
+				timeStr = tmp.substring(tmp.indexOf(tmp_day)+tmp_day.length()+1); // one space
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			String data = null;
+			try {
+				data = arr.get(timeStr)==null ? "" : arr.get(timeStr);
+				data = data + tp.getStartSlot().getDay().toString();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			arr.put(timeStr, data);
+		}
+		String schStr = "";
+		Iterator<Entry<String, String>> it = arr.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, String> entry = it.next();
+			schStr += entry.getValue() + " " + entry.getKey();
+			if (it.hasNext()) schStr += "\n";
+		}
+		if (arr.entrySet().size()==0) {
+			schStr = "TBA";
+		}
+		return schStr;
 	}
 	
 	/*DOES NOT WORK

@@ -37,6 +37,9 @@ public class Course extends Ratable {
 	public static ArrayList<Course> AllCourses = new ArrayList<Course>();
 	
 	public static Course getCourseByName(String name) {
+		if (name.length()==8) {
+			name += " ";
+		}
 		for(Course c : AllCourses) {
 			if (name.equals(c.toString())) {
 				return c;

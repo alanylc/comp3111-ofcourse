@@ -721,14 +721,16 @@ public class MainWindow extends JFrame {
 					return;
 				}
 				
-				// a new tab
-				TimeTableGUI newTable = new TimeTableGUI();
+				
 				
 				// get slots that active time table that are filled
 				TimeTableGUI activeTable = getSelectedTimeTableGUI();
 				String friend_name = timetableTabpage.getTitleAt(timetableTabpage.getSelectedIndex());
 				ArrayList<Course.Session> sessions_enrolled = new ArrayList<Course.Session>();
 				Timetable friend_table = friends.get(friend_name);
+				
+				// a new timetable gui
+				TimeTableGUI newTable = new Timetable(own_table.getTableId()+" vs "+friend_name).getGUI();
 				
 				// get title of active time table
 				int pos = timetableTabpage.indexOfComponent(activeTable);

@@ -33,7 +33,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	
 	private String table_id = "";
 	private HashMap<Course, ArrayList<Course.Session>> enrolled = new HashMap<Course, ArrayList<Course.Session>>();
-	private ofcoursegui.TimeTableGUI gui = new ofcoursegui.TimeTableGUI();
+	private ofcoursegui.TimeTableGUI gui = new ofcoursegui.TimeTableGUI(Timetable.this);
 	public static String delim = "!", innerDelim = ",";
 	private Course selectedCourse = null;
 	
@@ -43,6 +43,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	 */
 	public Timetable(String tid) {
 		table_id = tid;
+		gui.guititle = tid;
 	}
 	
 	/**
@@ -53,14 +54,14 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 	public Timetable(String tid, JTabbedPane targetTabbedPage) {
 		gui.addcourseSelectListener(this);
 		gui.addpanelUnselectListener(this);
+		gui.guititle = "Mine";
 		table_id = tid;
 		targetTabbedPage.add(gui);
 		int pos = targetTabbedPage.indexOfComponent(gui);
-		String title = "Mine";
-		javax.swing.JLabel label = new javax.swing.JLabel(title);
+		javax.swing.JLabel label = new javax.swing.JLabel(gui.guititle);
 		label.setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
 		targetTabbedPage.setTabComponentAt(pos, label);
-		targetTabbedPage.setTitleAt(pos, title);
+		targetTabbedPage.setTitleAt(pos, gui.guititle);
 	}
 	/**
 	 * Get the selected course in GUI.
