@@ -278,16 +278,16 @@ public class NetworkTest {
 	public void testGetSummary() {//case for logged in
 		Network a=Network.getOurNetwork();
 		Network.login(username[2], password[2]);
-		String Course="COMP3111";
-		String[][] expected={{"COMP3111","3.7500"}};
+		String Course="COMP3111 ";
+		String[][] expected={{"COMP3111 ","3.7500"}};
 		assertArrayEquals(expected,a.getSummary(Course));
 	}
 	@Test
 	public void testGetSummary2() {//case for not logged in
 		Network a=Network.getOurNetwork();
 		Network.logout();
-		String Course="COMP3111";
-		String[][] expected={{"COMP3111","3.7500"}};
+		String Course="COMP3111 ";
+		String[][] expected={{"COMP3111 ","3.7500"}};
 		assertArrayEquals(expected,a.getSummary(Course));
 	}
 	@Test
