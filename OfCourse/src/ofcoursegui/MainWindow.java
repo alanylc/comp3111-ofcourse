@@ -63,6 +63,7 @@ import ofcourse.TimetableError;
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 	
+	public static String TITLE = "OfCourse";
 	public static HashMap<String, Timetable> friends = new HashMap<String, Timetable>();
 	public static String username=null, password=null;
 	//public static Network network = Network.login("ctestcaa", "aaa");
@@ -192,7 +193,7 @@ public class MainWindow extends JFrame {
 			public void run() {
 				try {
 					MainWindow frame = new MainWindow();
-					frame.setTitle("OfCourse");
+					frame.setTitle(TITLE);
 					
 					ArrayList<CourseParse> result = CourseParseThreaded.fullparse();
 					

@@ -1,30 +1,26 @@
 package ofcoursegui;
 
 import java.awt.Component;
-import java.awt.GridLayout;
+import java.awt.Container;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.TreeMap;
 
-import javax.swing.AbstractButton;
 import javax.swing.AbstractCellEditor;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -38,7 +34,6 @@ import ofcourse.Network;
 import ofcourse.Ratable.Comments;
 import ofcourse.TimePeriod;
 import ofcourse.TimetableError;
-import ofcourse.WeekDay;
 
 public class CourseGUI extends JPanel {
 	public final HashMap<Integer, Course.Session> linkage = new HashMap<Integer, Course.Session>();
@@ -49,7 +44,7 @@ public class CourseGUI extends JPanel {
 	JButton enrollButton = new JButton("Enroll");
 	JButton btnAddFav = new JButton("Add to My Favourite");
 	JButton commentButton = new JButton("Comment");
-	JTable commentTable=new JTable();
+	public final JTable commentTable=new JTable();
 
 	JLabel avgRating = new JLabel("Average rating:");
 	JLabel avgRatingN = new JLabel("5");
@@ -73,16 +68,34 @@ public class CourseGUI extends JPanel {
 				return false;
 			}
 	};
-	 @SuppressWarnings("serial")
-	TableModel model = new AbstractTableModel() {
+	@SuppressWarnings("serial")
+	CommentTableModel model = new CommentTableModel();
+	private class CommentTableModel extends AbstractTableModel {
+		 ArrayList<Comments> objs = new ArrayList<Comments>();
 	      public Object getValueAt(int rowIndex, int columnIndex) {
-	        return course.getComments().get(rowIndex);
+	        return objs.get(rowIndex);
+	      }
+	      public void addRow(Comments obj) {
+	    	  objs.add(obj);
+	    	  int new_size = objs.size();
+	    	  this.fireTableRowsInserted(new_size-1, new_size-1);
+	      }
+	      public void addAll(ArrayList<Comments> objs) {
+	    	  for (Comments c : objs) {
+	    		  this.addRow(c);
+	    	  }
+	      }
+	      public void removeAllRows() {
+	    	  int last_row = objs.size()-1;
+	    	  if (last_row < 0) last_row = 0;
+	    	  objs.clear();
+	    	  this.fireTableRowsDeleted(0, last_row);
 	      }
 	      public int getColumnCount() {
 	        return 1;
 	      }
 	      public int getRowCount() {
-	        return course.getComments().size();
+	        return objs.size();
 	      }
 	      public Class getColumnClass(int columnIndex) { return CommentGUI.class; }
 	      public String getColumnName(int columnIndex) { return "Comments for this course:"; }
@@ -191,9 +204,15 @@ public class CourseGUI extends JPanel {
 				MainWindow.showNotLoginError();
 				return;
 			}
-			AddCommentGUI addComment=new AddCommentGUI(course.getCode().toString());
-			addComment.setVisible(true);
-			
+			Frame[] frames = MainWindow.getFrames();
+			Frame mainFrame = null;
+			for (Frame f : frames) {
+				if (f.getTitle().equals(MainWindow.TITLE)) {
+					mainFrame = f;
+					break;
+				}
+			}
+			new AddCommentGUI(mainFrame, course.getCode().toString());
 		}
 	}
 	private class EnrollButtonListener implements ActionListener {
@@ -258,10 +277,21 @@ public class CourseGUI extends JPanel {
 	public CourseGUI (Course c) {
 		if (c == null) throw new NullPointerException();
 		setCourse(c);
+		setCommentRating(c);
+		this.course = c;
+	}
+	
+	public void setCommentRating(Course c) {
 		c.parseComments();
+		model.removeAllRows();
+		model.addAll(c.getComments());
 		System.out.println(String.valueOf(c.getAvgRating()));
 		avgRatingN.setText(String.valueOf(c.getAvgRating()));
-		this.course = c;
+	}
+	
+	public void updateGUI() {
+		setCourse(this.course);
+		setCommentRating(this.course);
 	}
 	
 	/*public void setCoureCodeText(String couseCode) {
