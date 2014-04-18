@@ -53,17 +53,23 @@ public abstract class Ratable {
 		this.comments=new ArrayList<Comments>();
 		try{
 			String[][] commentsForCourse=a.getCourse(name.substring(0, 4)+name.substring(5, 10));
+			avgRating=0;
+			try{
+				avgRating=Float.parseFloat(a.getSummary(name.substring(0, 4)+name.substring(5, 10))[0][1]);
+			}catch(Exception e){
+				//do nothing
+			}
 			for(String[] cm:commentsForCourse){
 				try{
 					Comments c=new Comments(cm[0],Float.parseFloat(cm[1]),cm[2],cm[3]);
-					avgRating+=Float.parseFloat(cm[1]);
+					//avgRating+=Float.parseFloat(cm[1]);
 					this.comments.add(c);
 				}catch(Exception e){
 					//do nothing
 				}
 			}
-			avgRating/=commentsForCourse.length;
-			System.out.println(avgRating+"/"+commentsForCourse.length);
+			//avgRating/=commentsForCourse.length;
+			//System.out.println(avgRating+"/"+commentsForCourse.length);
 		}catch(Exception e){
 			//do nothing
 		}

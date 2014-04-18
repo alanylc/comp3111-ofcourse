@@ -40,11 +40,12 @@ public class CourseParseThreaded extends CourseParse{
 		Network a = Network.getOurNetwork();
 		String[][] RatingSummary=a.getSummary(subject); //{{COMP0001,3.000},{COMP0002,4.233},...}
 		a.printArray(RatingSummary);
+		for(int i = 0; i < RatingSummary.length; i++)
 		try{
-			for(int i = 0; i < RatingSummary.length; i++)
-				cp.findByCode(RatingSummary[i][0] + " ").setAvgRating(Float.parseFloat(RatingSummary[i][1]));
+				cp.findByCode(RatingSummary[i][0]).setAvgRating(Float.parseFloat(RatingSummary[i][1]));
 		} catch (NullPointerException e){
 			//if found an invalid course(comp6666), do nothing
+			System.out.println("cannot found course");
 		}
 		return cp;
 	}

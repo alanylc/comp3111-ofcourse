@@ -131,7 +131,11 @@ public class SearchResultGUI extends JPanel {
 	
 	public void addResult(Course c) {
 		String course_name = c.getName().substring(c.getName().indexOf(" - ")+3);
-		c.parseComments(); // update rating
+		System.out.println(c.getAvgRating());
+		//c.parseComments(); // update rating
+		//I am commenting this line because I finally managed to get the avg rating to successfully parsed from courseParse, and since getting avg rating from a number of courses is laggy
+		//So that comments and average rating will be updated only when you view a course
+		//KK
 		resultTableModel.addRow(new String[] {c.toString(), course_name, Float.toString(c.getAvgRating())});
 		linkage.put(resultTableModel.getRowCount() - 1, c);
 	}
