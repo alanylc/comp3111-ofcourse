@@ -1,8 +1,11 @@
 package ofcoursegui;
 
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -11,25 +14,27 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import ofcourse.Course;
 import ofcourse.TimePeriod;
+import ofcourse.Timetable;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.Sizes;
-import com.jgoodies.forms.layout.CellConstraints;
 
 public class TimeTableGUI extends JPanel{
+	public String guititle = "";
+	private Timetable table = null;
 	private static int rows = 28;
 	private static int cols = 6;
 	
@@ -118,11 +123,19 @@ public class TimeTableGUI extends JPanel{
 		
 	};
 	
+	private class ListViewBtnListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new ListTimeTableGUI(TimeTableGUI.this.table);
+		}
+	}
+	
 	//private JPanel parentPanel = new JPanel();
 
 	public static String[] weekDays = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 
-	public TimeTableGUI() {
+	public TimeTableGUI(Timetable table) {
+		this.table = table;
 		initilizeGUIComponent();
 		this.addMouseListener(panelMouseListener);
 	}
@@ -402,8 +415,8 @@ public class TimeTableGUI extends JPanel{
 		for (int i = 0; i < cols + 1; i ++) {
 			cs[i] = new ColumnSpec(Sizes.pixel(100));
 		}
-		RowSpec[] rs = new RowSpec[rows + 1];
-		for(int i = 0; i < rows + 1; i++) {
+		RowSpec[] rs = new RowSpec[rows + 2];
+		for(int i = 0; i < rows + 2; i++) {
 			rs[i] = FormFactory.DEFAULT_ROWSPEC;
 		}
 		
@@ -456,6 +469,16 @@ public class TimeTableGUI extends JPanel{
 		fl_panel.setHonorsVisibility(false);
 		//parentPanel.setLayout(fl_panel);
 		setLayout(fl_panel);
+		
+		
+		JButton listView = new JButton("List View");
+		listView.addActionListener(new ListViewBtnListener());
+		JPanel lpane = new JPanel(new BorderLayout());
+		lpane.add(listView, BorderLayout.EAST);
+		lpane.setBorder(new EmptyBorder(10, 4, 3, 4));
+		add(lpane, "7, 30");
+		
+		
 
 		//Top-left cell, which is a placeholder
 		JLabel lblTL = new JLabel("");
