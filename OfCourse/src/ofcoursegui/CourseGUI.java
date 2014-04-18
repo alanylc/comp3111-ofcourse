@@ -282,6 +282,7 @@ public class CourseGUI extends JPanel {
 	}
 	
 	private void setCommentRating(Course c) {
+		System.out.println(String.valueOf(c.getAvgRating()));
 		c.parseComments();
 		model.removeAllRows();
 		model.addAll(c.getComments());
