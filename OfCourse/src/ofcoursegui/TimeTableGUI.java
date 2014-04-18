@@ -27,6 +27,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.Sizes;
+import com.jgoodies.forms.layout.CellConstraints;
 
 public class TimeTableGUI extends JPanel{
 	private static int rows = 28;
@@ -408,14 +409,14 @@ public class TimeTableGUI extends JPanel{
 		
 		FormLayout fl_panel  = new FormLayout(cs, rs);
 
-		/*FormLayout fl_panel_new  = new FormLayout(new ColumnSpec[] {
+		/*FormLayout fl_panel  = new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("100px"),
 				ColumnSpec.decode("100px"),
 				ColumnSpec.decode("100px"),
 				ColumnSpec.decode("100px"),
 				ColumnSpec.decode("100px"),
 				ColumnSpec.decode("100px"),
-				ColumnSpec.decode("100px"),},
+				ColumnSpec.decode("100px")},
 			new RowSpec[] {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
@@ -445,7 +446,13 @@ public class TimeTableGUI extends JPanel{
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,});*/
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC});*/
 		fl_panel.setHonorsVisibility(false);
 		//parentPanel.setLayout(fl_panel);
 		setLayout(fl_panel);
