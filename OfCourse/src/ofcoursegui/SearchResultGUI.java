@@ -131,6 +131,7 @@ public class SearchResultGUI extends JPanel {
 	
 	public void addResult(Course c) {
 		String course_name = c.getName().substring(c.getName().indexOf(" - ")+3);
+		c.parseComments(); // update rating
 		resultTableModel.addRow(new String[] {c.toString(), course_name, Float.toString(c.getAvgRating())});
 		linkage.put(resultTableModel.getRowCount() - 1, c);
 	}
