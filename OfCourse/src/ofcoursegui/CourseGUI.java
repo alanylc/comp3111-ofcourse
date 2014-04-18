@@ -281,7 +281,7 @@ public class CourseGUI extends JPanel {
 		this.course = c;
 	}
 	
-	public void setCommentRating(Course c) {
+	private void setCommentRating(Course c) {
 		c.parseComments();
 		model.removeAllRows();
 		model.addAll(c.getComments());
@@ -304,37 +304,7 @@ public class CourseGUI extends JPanel {
 		courseCodeLabel.setText(c.getCode().toString());
 		courseNameLabel.setText(c.getName());
 		for (Course.Session s : c.getSessions()) {
-			TreeMap<String, String> arr =  new TreeMap<String, String>();
-			for (TimePeriod tp : s.getSchedule()) {
-				String timeStr = null;
-				try {
-					String tmp = tp.toString();
-					String tmp_day = tp.getStartSlot().getDay().toString();
-					timeStr = tmp.substring(tmp.indexOf(tmp_day)+tmp_day.length()+1); // one space
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				String data = null;
-				try {
-					data = arr.get(timeStr)==null ? "" : arr.get(timeStr);
-					data = data + tp.getStartSlot().getDay().toString();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				arr.put(timeStr, data);
-			}
-			String schStr = "";
-			Iterator<Entry<String, String>> it = arr.entrySet().iterator();
-			while (it.hasNext()) {
-				Entry<String, String> entry = it.next();
-				schStr += entry.getValue() + " " + entry.getKey();
-				if (it.hasNext()) schStr += "\n";
-			}
-			if (arr.entrySet().size()==0) {
-				schStr = "TBA";
-			}
+			String schStr = TimePeriod.getDistinctStr(s.getSchedule());
 			String roomStr = "";
 			Iterator<String> it_r = s.getRoom().iterator();
 			while (it_r.hasNext()) {
