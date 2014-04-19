@@ -337,10 +337,6 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		// GUI call
 		Color c = TimeTableGUI.getRandomBgColor();
 		for (Course.Session s : trueSessions) {
-			//TODO: Time = TBA
-//			if (s.getSchedule().isEmpty()) {
-//				gui.updateTBA(course.toString(), s.toString());
-//			}
 			for (TimePeriod tp : s.getSchedule()) {
 				try {
 					gui.fillSlots(
@@ -354,6 +350,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 				}
 			}
 		}
+		gui.updateListViewTimeTable();
 		
 		return TimetableError.NoError;
 	}
@@ -385,6 +382,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		}
 		//GUI call
 		gui.unfillSlots(course.toString());
+		gui.updateListViewTimeTable();
 		return TimetableError.NoError;
 	}
 	

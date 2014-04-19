@@ -34,6 +34,8 @@ import com.jgoodies.forms.layout.Sizes;
 
 public class TimeTableGUI extends JPanel{
 	public String guititle = "";
+	
+	private ListTimeTableGUI listViewTimeTable = null;
 	private Timetable table = null;
 	private static int rows = 28;
 	private static int cols = 6;
@@ -126,7 +128,18 @@ public class TimeTableGUI extends JPanel{
 	private class ListViewBtnListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new ListTimeTableGUI(TimeTableGUI.this.table);
+			if (listViewTimeTable==null) {
+				listViewTimeTable = new ListTimeTableGUI(TimeTableGUI.this.table);
+			}
+			else {
+				listViewTimeTable.setVisible(true);
+			}
+		}
+	}
+	
+	public void updateListViewTimeTable() {
+		if (listViewTimeTable!=null) {
+			listViewTimeTable.refresh();
 		}
 	}
 	

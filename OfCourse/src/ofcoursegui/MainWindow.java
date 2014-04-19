@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
@@ -39,7 +40,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -463,6 +463,12 @@ public class MainWindow extends JFrame {
 						timetableTabpage.remove(1);
 					}
 					own_table.importString("Mine!");
+					// close all list view time table
+					for (Frame f : MainWindow.getFrames()) {
+						if (f.getClass().equals(ListTimeTableGUI.class)) {
+							f.dispose();
+						}
+					}
 					MainWindow.loginAs.setText("Currently Login As: <Anonymous>");
 					JOptionPane.showMessageDialog(contentPane, "You have logged out successfully.");
 				}
