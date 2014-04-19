@@ -207,7 +207,7 @@ public class CourseGUI extends JPanel {
 			Frame[] frames = MainWindow.getFrames();
 			Frame mainFrame = null;
 			for (Frame f : frames) {
-				if (f.getTitle().equals(MainWindow.TITLE)) {
+				if (f.getTitle().equals(MainWindow.TITLE) && f.getClass().equals(MainWindow.class)) {
 					mainFrame = f;
 					break;
 				}
