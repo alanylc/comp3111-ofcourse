@@ -41,6 +41,9 @@ public class LoginGUI extends JDialog {
 		final JTextField usernameTextField = new JTextField(10);
 		final JPasswordField passwordField = new JPasswordField(10);
 		
+		usernameTextField.setName("username");
+		passwordField.setName("password");
+		
 		btnLogin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
