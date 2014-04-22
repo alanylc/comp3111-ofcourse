@@ -174,6 +174,7 @@ public class CourseGUI extends JPanel {
 			Comments cm=(Comments)value;
 		    CommentGUI comment=new CommentGUI(cm.getCommentorName(),cm.getRating(),cm.getComments(),cm.getDate());
 		    return comment;
+			//return cm;
 			  }
 
 		@Override
