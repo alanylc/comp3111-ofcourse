@@ -34,8 +34,17 @@ public class Course extends Ratable {
 	private String PreviousCode;			//Useless(?) info from course page
 	private String CoList;
 
+	/**
+	 * List of all courses that has already been initiated.
+	 */
 	public static ArrayList<Course> AllCourses = new ArrayList<Course>();
 	
+	/**
+	 * Gets the course with the specified course code, e.g. COMP3111H, MATH2011. 
+	 * If there is no match, null is returned.
+	 * @param name The course code of the target course.
+	 * @return The course with the specified code, or null if none.
+	 */
 	public static Course getCourseByName(String name) {
 		if (name.length()==8) {
 			name += " ";
@@ -48,6 +57,12 @@ public class Course extends Ratable {
 		return null;
 	}
 	
+	/**
+	 * Gets the course that contains session with the specified class number, 
+	 * i.e. the unique 4-digit number representing a particular session. 
+	 * @param classno The 4-digit number representing the target session
+	 * @return The course that contains the session with specified class number, or null if none.
+	 */
 	public static Course getCourseByClassNum(int classno) {
 		Session s = null;
 		for (Course c : AllCourses) {
@@ -248,6 +263,11 @@ public class Course extends Ratable {
 		this.description = description;
 	}
 
+	/**
+	 * Gets the session with the specified code, e.g. L1, LAB2, etc.
+	 * @param session The specified code
+	 * @return The session with the specified code, or null if none.
+	 */
 	public Session getSessionByString(String session) {
 		for(Session s : getSessions()) {
 			if (session.equals(s.toString())) {
@@ -286,23 +306,43 @@ public class Course extends Ratable {
 			this.modifier = modifier;	//' ' when empty
 		}
 		
+		/**
+		 * Gets the department or subject the code is representing.
+		 * @return 4-character representation of the department or subject of the code
+		 */
 		public String getDept(){
 			return dept.toUpperCase();
 		}
 		
+		/**
+		 * Gets the 4-digit code of this code
+		 * @return The 4-digit code 
+		 */
 		public int getNumber() {
 			return number;
 		}
 		
+		/**
+		 * Gets the modifier of this code, e.g. H for honor.
+		 * @return A single character of the modifier of this code. A space is returned if the code contains no modifier.
+		 */
 		public char getMod() {
 			return Character.toUpperCase(modifier);
 		}
 
+		/**
+		 * Gets the whole string of this code.
+		 * @return The string representation of the code.
+		 */
 		@Override
 		public String toString() {
 			return getDept().toUpperCase() + Integer.toString(getNumber()) + getMod();
 		}
 	
+		/**
+		 * Clone this code.
+		 * @return Exact copy of the code.
+		 */
 		public Object clone() {
 			return new Code(dept, number, modifier);
 		}
