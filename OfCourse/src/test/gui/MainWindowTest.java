@@ -1,5 +1,6 @@
 package test.gui;
 
+import static org.junit.Assert.*;
 import ofcoursegui.MainWindow;
 
 import org.junit.After;
@@ -15,15 +16,15 @@ import org.uispec4j.interception.MainClassAdapter;
 import org.uispec4j.interception.WindowHandler;
 import org.uispec4j.interception.WindowInterceptor;
 
-public class MainWindowTest extends UISpecTestCase {
+public class MainWindowTest {
 
 	static {
 		UISpec4J.init();
 	}
 	  
 	@BeforeClass
-	protected void setUpBeforeClass() throws Exception {
-		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
+	public static void setUpBeforeClass() throws Exception {
+		//setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 	}
   
 	@AfterClass
@@ -36,6 +37,14 @@ public class MainWindowTest extends UISpecTestCase {
 		
 	@After
 	public void tearDown() throws Exception {
+	}
+	
+	@Test
+	public void mainTest(){
+		MainWindow m=new MainWindow();
+		MainWindow.main(null);
+		int i=1;
+		assertEquals(i,1);
 	}
 
 	/*@Test
