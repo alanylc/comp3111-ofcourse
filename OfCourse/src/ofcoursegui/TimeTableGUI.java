@@ -37,10 +37,10 @@ public class TimeTableGUI extends JPanel{
 	
 	private ListTimeTableGUI listViewTimeTable = null;
 	private Timetable table = null;
-	private static int rows = 28;
-	private static int cols = 6;
+	public static final int ROWS = 28;
+	public static final int COLS = 6;
 	
-	private JLabel[][] jlabelarray = new JLabel[cols][rows];
+	private JLabel[][] jlabelarray = new JLabel[COLS][ROWS];
 	//private HashMap<String, ArrayList<JLabel>> filledSlots_old = new HashMap<String, ArrayList<JLabel>>();
 	private HashMap<String, ArrayList<ArrayList<JLabel>>> filledSlots_new = new HashMap<String, ArrayList<ArrayList<JLabel>>>();
 	
@@ -171,13 +171,13 @@ public class TimeTableGUI extends JPanel{
 	
 	public JLabel getSlot(int slotNumber) {
 		//detect invalid number
-		if (slotNumber < 100 || slotNumber >= cols*100+rows) return null;
+		if (slotNumber < 100 || slotNumber >= COLS*100+ROWS) return null;
 		return getSlot(slotNumber / 100, slotNumber % 100); 
 	}
 	
 	public JLabel getSlot(int weekDay, int timeID) {
 		//detect invalid number
-		if (weekDay-1 < 0 || timeID < 0 || weekDay-1 >= cols || timeID >= rows) return null;
+		if (weekDay-1 < 0 || timeID < 0 || weekDay-1 >= COLS || timeID >= ROWS) return null;
 		//array index is zero-based, but weekDay counts from 1 to 7
 		return getSlots()[weekDay - 1][timeID]; 
 	}
@@ -208,8 +208,8 @@ public class TimeTableGUI extends JPanel{
 	//If the provided key already exists, those slots are untouched, and the provided ones are filled and added to same key.
 	public void fillSlots(int startSlot, int endSlot, Color color, String[] text, String key) throws Exception {
 		
-		int maxTime = rows - 1;
-		int maxDay = cols;
+		int maxTime = ROWS - 1;
+		int maxDay = COLS;
 		//find all target slots
 		//invalid slots are null
 		ArrayList<JLabel> labels = new ArrayList<JLabel>();
@@ -259,8 +259,8 @@ public class TimeTableGUI extends JPanel{
 	// all slots in the array slots[] will be filled by the specified color
 	// this method is to ease the implementation of function that shows common free time
 	public void fillSlots(int[] slots, Color color, String key) throws Exception {
-		int maxTime = rows - 1;
-		int maxDay = cols;
+		int maxTime = ROWS - 1;
+		int maxDay = COLS;
 		//find all target slots
 		//invalid slots are null
 		ArrayList<JLabel> labels = new ArrayList<JLabel>();
@@ -320,8 +320,8 @@ public class TimeTableGUI extends JPanel{
 	
 	// fill all slots of time table
 	public void fillAllSlots(Color color) throws Exception {
-		int maxTime = rows-1;
-		int maxDay = cols;
+		int maxTime = ROWS-1;
+		int maxDay = COLS;
 		for (int i=1; i<=maxDay; i++) {
 			for (int j=0; j<=maxTime; j++) {
 				JLabel label = getSlot(i*100+j);
@@ -424,12 +424,12 @@ public class TimeTableGUI extends JPanel{
 
 	public TimeTableGUI initilizeGUIComponent() {
 		
-		ColumnSpec[] cs = new ColumnSpec[cols + 1];
-		for (int i = 0; i < cols + 1; i ++) {
+		ColumnSpec[] cs = new ColumnSpec[COLS + 1];
+		for (int i = 0; i < COLS + 1; i ++) {
 			cs[i] = new ColumnSpec(Sizes.pixel(100));
 		}
-		RowSpec[] rs = new RowSpec[rows + 2];
-		for(int i = 0; i < rows + 2; i++) {
+		RowSpec[] rs = new RowSpec[ROWS + 2];
+		for(int i = 0; i < ROWS + 2; i++) {
 			rs[i] = FormFactory.DEFAULT_ROWSPEC;
 		}
 		
@@ -524,7 +524,7 @@ public class TimeTableGUI extends JPanel{
 		int a = 830; // the first time slot will then be 0900-0930,
 		int b = 900; // 30 min will be added before showing each time
 		//FormLayout counts from 1
-		for (int i = 2; i <= TimeTableGUI.rows + 1; i++) {
+		for (int i = 2; i <= TimeTableGUI.ROWS + 1; i++) {
 			JLabel labelTime = new JLabel("");
 			//check for 60 mins, which is 1 hour
 			a += 30;
@@ -548,8 +548,8 @@ public class TimeTableGUI extends JPanel{
 		}
 
 		// Add each cell as a JLabel
-		for (int r = 2; r <= TimeTableGUI.rows + 1; r++) {
-			for (int c = 2; c <= TimeTableGUI.cols + 1; c++) {
+		for (int r = 2; r <= TimeTableGUI.ROWS + 1; r++) {
+			for (int c = 2; c <= TimeTableGUI.COLS + 1; c++) {
 				this.jlabelarray[c - 2][r - 2] = new JLabel(
 						Integer.toString((c - 1) * 100 + (r - 2)));
 				this.jlabelarray[c - 2][r - 2].setText("");

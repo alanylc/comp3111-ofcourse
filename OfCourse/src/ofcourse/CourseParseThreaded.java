@@ -98,6 +98,7 @@ public class CourseParseThreaded extends CourseParse{
 			for (Future f : futures) {
 				f.get();
 			}
+			es.shutdown();
 			
 
 		} catch (IOException e) {

@@ -14,14 +14,17 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.AbstractListModel;
 import javax.swing.Action;
@@ -168,6 +171,7 @@ public class MainWindow extends JFrame {
 	public static JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
 	public static MyFavPanel myFavPanel = new MyFavPanel(contentPane);
 
+	private static JFileChooser fc = new JFileChooser();;
 	
 	public static Timetable own_table;
 	
@@ -292,6 +296,9 @@ public class MainWindow extends JFrame {
 		JMenuItem mntmExportTimeTable = new JMenuItem("Export Time Table...");
 		mnFile.add(mntmExportTimeTable);
 		
+		JMenuItem mntmExportTimeTableImage = new JMenuItem("Export Time Table as image...");
+		mnFile.add(mntmExportTimeTableImage);
+		
 		JMenuItem mntmRegister = new JMenuItem("Register");
 		mnAccount.add(mntmRegister);
 		
@@ -367,6 +374,33 @@ public class MainWindow extends JFrame {
 		            }
 		        }
 		   }
+		});
+		
+		mntmExportTimeTableImage.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e){
+				TimeTableGUI c = own_table.getGUI();
+				// Create a renderable image with the same width and height as the component
+				BufferedImage image = new BufferedImage(c.getWidth(), (TimeTableGUI.ROWS + 1) * 18, BufferedImage.TYPE_INT_ARGB);
+				// Render the component and all its sub components
+				c.paintAll(image.getGraphics());
+				// Render the component and ignoring its sub components
+				c.paint(image.getGraphics());
+				// Save the image out to file
+				try {
+					int returnVal = fc.showSaveDialog(MainWindow.this);
+		            if (returnVal == JFileChooser.APPROVE_OPTION) {
+		                File file = fc.getSelectedFile();
+		                String filename = file.getAbsolutePath();
+		                if (filename.length() <= 0) filename += "timetable";
+		                if (!filename.endsWith(".png")) filename += ".png";
+						boolean result = ImageIO.write(image, "png", new File(filename));
+						JOptionPane.showMessageDialog(MainWindow.this, "Image is saved as " + filename);
+		            } 
+				} catch (IOException e1) {
+					JOptionPane.showMessageDialog(MainWindow.this, "Image file cannot be written!");
+				}
+			} 
 		});
 		
 		mntmUploadMine.addActionListener(new ActionListener() {
