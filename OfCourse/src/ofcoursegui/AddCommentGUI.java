@@ -1,39 +1,30 @@
 package ofcoursegui;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
-import ofcourse.Course;
 import ofcourse.Network;
 
 @SuppressWarnings("serial")
 public class AddCommentGUI extends JDialog {
 	String courseName="";
-	private Frame parent = null;
 	JLabel ratingLabel=new JLabel("Rating:");
 	JLabel commentLabel=new JLabel("Comment:");
 	JRadioButton B1 = new JRadioButton("1");
@@ -46,7 +37,6 @@ public class AddCommentGUI extends JDialog {
 	JButton submitCommentButton = new JButton("Submit");
 	public AddCommentGUI(final Frame parent, final String string) {
 		super(parent, true);
-		this.parent = parent;
 		this.setSize(470, 235);
 		this.setLocationRelativeTo(MainWindow.contentPane);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
