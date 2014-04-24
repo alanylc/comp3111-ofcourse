@@ -35,7 +35,7 @@ public class CourseCache {
 	private final ReentrantReadWriteLock historyFileLock = new ReentrantReadWriteLock();
 	private final Hashtable<String, ReentrantReadWriteLock> cacheLocks = new Hashtable<String, ReentrantReadWriteLock>();
 	
-	private long expireTime = 0 * 60 * 1000;
+	private long expireTime = 10 * 60 * 1000;
 	
 	/**
 	 * Sets the time interval a cached quota page is considered expired. 
