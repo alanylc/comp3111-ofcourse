@@ -14,6 +14,14 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/**
+ * This class extends the functionality of CourseParse by using multiple threads when fullparse() is called 
+ * and using CourseCache as the cache manager, deciding when an update is needed.
+ * The threads are managed locally by a thread pool that reuses a fixed number of threads. The number 
+ * can be set manually, but it is recommended to be below 30 for normal use and below 20 for slow computers.
+ * @author Bob Lee
+ *
+ */
 public class CourseParseThreaded extends CourseParse{
 	public final static CourseCache cacheManager = new CourseCache();
 	/**
@@ -24,6 +32,11 @@ public class CourseParseThreaded extends CourseParse{
 	 */
 	public static int nThreads = 12;
 	
+	/**
+	 * Same as parse() method in CourseParse, except that CourseCache is used as the cache manager.
+	 * @param subject The subject code of courses that need to be parsed. 
+	 * @return A <tt>courseParse</tt> that contains all the courses of the specified subject code.
+	 */
 	public static CourseParse parse(String subject) {
 		CourseParse cp = new CourseParse();
 		Document doc = cacheManager.getDocument(subject);
@@ -45,11 +58,16 @@ public class CourseParseThreaded extends CourseParse{
 				cp.findByCode(RatingSummary[i][0]).setAvgRating(Float.parseFloat(RatingSummary[i][1]));
 		} catch (NullPointerException e){
 			//if found an invalid course(comp6666), do nothing
-			System.out.println("cannot found course");
+			System.out.println("I cannot found course " + RatingSummary[i][0]);
 		}
 		return cp;
 	}
 	
+	/**
+	 * Parse all courses of all subjects in quota page automatically, using multiple threads.
+	 * @return An ArrayList<> of courseParse objects, each represents a list of courses with the same subject.
+	 * @throws IOException 
+	 */
 	public static ArrayList<CourseParse> fullparse() {
 		final List<CourseParse> cpA = Collections.synchronizedList(new ArrayList<CourseParse>());
 		Document doc;

@@ -18,6 +18,14 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/**
+ * This class represents the cache for all courses quota pages, indexed by the 4-character subject code. 
+ * It manages the expire time and update procedures of the cache. 
+ * If a cache is expired, it will be updated automatically when retrieved. 
+ * Else, the cached version will be returned.
+ * @author Bob Lee
+ *
+ */
 public class CourseCache {
 	private Hashtable<String, Long> lastUpdateTime = new Hashtable<String, Long>();
 	public static final String mainURL = "https://w5.ab.ust.hk/wcq/cgi-bin/1330/subject/";
@@ -27,33 +35,40 @@ public class CourseCache {
 	private final ReentrantReadWriteLock historyFileLock = new ReentrantReadWriteLock();
 	private final Hashtable<String, ReentrantReadWriteLock> cacheLocks = new Hashtable<String, ReentrantReadWriteLock>();
 	
-	private long expireTime = 10 * 60 * 1000;
+	private long expireTime = 0 * 60 * 1000;
 	
+	/**
+	 * Sets the time interval a cached quota page is considered expired. 
+	 * Expired cache is not updated immediately; they will be updated when they are retrieved.
+	 * @param milliS The expire time interval in millisecond.
+	 */
 	public void setExpireTime(long milliS) {
 		if (milliS > 0)expireTime = milliS;
 	}
 	
+	/**
+	 * Gets the time interval a cached quota page is considered expired.
+	 * Expired cache is not updated immediately; they will be updated when they are retrieved.
+	 * @return The expire time interval in millisecond.
+	 */
 	public long getExpireTime() {
 		return expireTime;
 	}
 	
+	/**
+	 * Create a cache for courses. 
+	 */
 	public CourseCache() {
 		String historyFileContent = "";
 		try {
-			historyFileLock.readLock().lock();
-			boolean exist = historyFile.exists();
-			historyFileLock.readLock().unlock();
-			if (exist) {
+			//This statement runs atomically.
+			boolean newCreated = historyFile.createNewFile();
+			if (!newCreated) {
 				historyFileLock.readLock().lock();
 				java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(historyFile));
 				historyFileContent = br.readLine();
 				br.close();
 				historyFileLock.readLock().unlock();
-			}
-			else {
-				historyFileLock.writeLock().lock();
-				historyFile.createNewFile();
-				historyFileLock.writeLock().unlock();
 			}
 		
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -83,6 +98,13 @@ public class CourseCache {
 		}
 	}
 	
+	/**
+	 * Gets the course quota page of a subject. This method is thread-safe, i.e. can be run on multiple threads.
+	 * Writing on the actual cache, if needed, is done on separate thread. When this method returns, the I/O operation 
+	 * may not be finished. 
+	 * @param subject The 4-character long subject or department name.
+	 * @return The HTML document of the course quota page of the specified subject.
+	 */
 	//Fast delivered, acquire reader lock on cache if cache is used, connect and return quota page if need update
 	//THIS METHID SHOULD BE THREAD-SAFE.
 	public Document getDocument(String subject) {
@@ -128,7 +150,7 @@ public class CourseCache {
 		try {
 			doc = readCache(subject);
 		} catch (IOException e){
-			System.out.println(subject + ": Cached cannort be read or opened. Update is needed.");
+			System.out.println(subject + ": Cached cannot be read or opened. Update is needed.");
 			try {
 				doc = Jsoup.connect(mainURL + subject).get();
 			} catch (IOException e1) {
@@ -217,9 +239,11 @@ public class CourseCache {
 		@Override
 		public void run() {
 			String fileContent = "";
+			historyLock.readLock().lock();
 			for(Entry<String, Long> e : lastUpdateTime.entrySet()) {
 				fileContent += e.getKey() + "!" + e.getValue() + "";
 			}
+			historyLock.readLock().unlock();
 			historyFileLock.writeLock().lock();
 			PrintWriter pw;
 			try {
