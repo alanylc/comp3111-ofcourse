@@ -203,7 +203,7 @@ public class NetworkTest {
 	public void testGetReqFriendList() {
 		Network a=Network.getOurNetwork();
 		Network.login(username[0], password[0]);
-		String expected="testcad!ctestcaa!ctestcaa!ctestcad!";//TODO this should not show cac
+		String expected="testcad!ctestcaa!";//TODO this should not show cac
 		assertEquals(expected,a.getReqFriendList());
 	}
 	@Test
