@@ -1,6 +1,5 @@
 package test.gui;
 
-import static org.junit.Assert.*;
 import ofcoursegui.MainWindow;
 
 import org.junit.After;
@@ -16,15 +15,15 @@ import org.uispec4j.interception.MainClassAdapter;
 import org.uispec4j.interception.WindowHandler;
 import org.uispec4j.interception.WindowInterceptor;
 
-public class MainWindowTest {
+public class MainWindowTest extends UISpecTestCase {
 
 	static {
 		UISpec4J.init();
 	}
 	  
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		//setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
+	public void setUpBeforeClass() throws Exception {
+		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 	}
   
 	@AfterClass
@@ -47,7 +46,7 @@ public class MainWindowTest {
 		assertEquals(i,1);
 	}
 
-	/*@Test
+	@Test
 	public void testLogin() {
 		Window win = getMainWindow();
 	
@@ -66,5 +65,5 @@ public class MainWindowTest {
 		assertTrue(dialog.titleEquals("Login"));
 		dialog.getInputTextBox("username").setText("ctestdab");
 		dialog.getPasswordField("password").setPassword("ctestdab");
-	}*/
+	}
 }
