@@ -1,5 +1,6 @@
 package test.gui;
 
+import ofcoursegui.LoginGUI;
 import ofcoursegui.MainWindow;
 
 import org.junit.After;
@@ -36,18 +37,11 @@ public class MainWindowTest extends UISpecTestCase {
 	@After
 	public void tearDown() throws Exception {
 	}
-	
-	@Test
-	public void mainTest(){
-		MainWindow m=new MainWindow();
-		MainWindow.main(null);
-		int i=1;
-		assertEquals(i,1);
-	}
 
 	@Test
-	public void testLogin() {
+	public void testClickLogin() {
 		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
+		
 		Window win = getMainWindow();
 	
 		// click Login
@@ -66,4 +60,5 @@ public class MainWindowTest extends UISpecTestCase {
 		dialog.getInputTextBox("username").setText("ctestdab");
 		dialog.getPasswordField("password").setPassword("ctestdab");
 	}
+	
 }
