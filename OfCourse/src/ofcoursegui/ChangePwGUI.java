@@ -50,13 +50,15 @@ public class ChangePwGUI extends JDialog {
 		final JPasswordField opwField = new JPasswordField(10);
 		final JPasswordField npwField = new JPasswordField(10);
 		final JPasswordField cpwField = new JPasswordField(10);
+		opwField.setName("opw");
+		npwField.setName("npw");
+		cpwField.setName("cpw");
 		
 		btnSubmit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String npw = new String(npwField.getPassword());
 				String cpw = new String(cpwField.getPassword());
-				String username = Network.getOurNetworkUserName();
 				Network network = Network.getOurNetwork();
 				if (!npw.equals(cpw)){ // PW and confirm PW not match
 					JOptionPane.showMessageDialog(parent, "New Password and Confirm New Password Mismatch!",
