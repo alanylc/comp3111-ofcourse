@@ -166,7 +166,7 @@ public class MainWindow extends JFrame {
 	
 	//public static ArrayList<SearchResultGUI> searchResultPanels = new ArrayList<SearchResultGUI>();
 	
-	public static JPanel contentPane;
+	public static JPanel contentPane = new JPanel();
 	public static JTabbedPane timetableTabpage = new JTabbedPane(JTabbedPane.TOP);
 	public static JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
 	public static MyFavPanel myFavPanel = new MyFavPanel(contentPane);
@@ -178,7 +178,10 @@ public class MainWindow extends JFrame {
 	public static ArrayList<Course> allCourses;
 	
 	{
+		contentPane.setName("contentPane");
 		timetableTabpage.setName("timetableTabpage");
+		searchTabpage.setName("searchTabpage");
+		myFavPanel.setName("myFavPanel");
 	}
 	
 	
@@ -570,8 +573,6 @@ public class MainWindow extends JFrame {
 			}
 		});
 		
-		
-		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -660,6 +661,7 @@ public class MainWindow extends JFrame {
 			 theUser = "<Anonymous>";
 		}
 		loginAs = new JLabel("Currently Login As: "+theUser);
+		loginAs.setName("loginAs");
 		loginAs.setForeground(Color.BLUE);
 		loginAs.setBounds(12, 12, 500, 28);
 		// TODO: add update of own_table and friend_table after login/logout

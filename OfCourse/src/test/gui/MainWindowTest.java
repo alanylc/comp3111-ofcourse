@@ -1,6 +1,6 @@
 package test.gui;
 
-import javax.swing.JTabbedPane;
+import javax.swing.JLabel;
 
 import ofcourse.Network;
 import ofcoursegui.MainWindow;
@@ -12,7 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.uispec4j.Trigger;
 import org.uispec4j.UISpec4J;
-import org.uispec4j.UISpecAdapter;
 import org.uispec4j.UISpecTestCase;
 import org.uispec4j.Window;
 import org.uispec4j.interception.MainClassAdapter;
@@ -20,10 +19,10 @@ import org.uispec4j.interception.WindowHandler;
 import org.uispec4j.interception.WindowInterceptor;
 
 public class MainWindowTest extends UISpecTestCase {
-	
-	private Window win = null;
 
-	static {
+	private Window win = null;
+	
+	{
 		UISpec4J.init();
 	}
 	  
@@ -37,17 +36,23 @@ public class MainWindowTest extends UISpecTestCase {
 		
 	@Before
 	public void setUp() throws Exception {
-		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
-		win = getMainWindow();
+		this.setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
+		win = this.getMainWindow();
+		logout();
 	}
 		
 	@After
 	public void tearDown() throws Exception {
+		logout();
+	}
+	
+	private void logout() {
+		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Logout").triggerClick());
 	}
 
 	@Test
 	public void testClickLogin01() {
-		Network.logout();
+		assertFalse(MainWindow.haveLogined());
 		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
 			.process(new WindowHandler("LoginGUI") {
 					public Trigger process(Window dialog) {
@@ -63,7 +68,6 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickLogin02() {
-		Network.logout();
 		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
 			.process(new WindowHandler("LoginGUI") {
 					public Trigger process(Window dialog) {
@@ -79,7 +83,6 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickLogin03() {
-		Network.logout();
 		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
 			.process(new WindowHandler("LoginGUI") {
 					public Trigger process(Window dialog) {
@@ -95,7 +98,6 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickLogin04() {
-		Network.logout();
 		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
 			.process(new WindowHandler("LoginGUI") {
 					public Trigger process(Window dialog) {
@@ -111,7 +113,6 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickRegister01() {
-		Network.logout();
 		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Register").triggerClick())
 			.process(new WindowHandler("RegisterGUI") {
 					public Trigger process(Window dialog) {
@@ -126,7 +127,6 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickRegister02() {
-		Network.logout();
 		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Register").triggerClick())
 			.process(new WindowHandler("RegisterGUI") {
 					public Trigger process(Window dialog) {
@@ -142,6 +142,7 @@ public class MainWindowTest extends UISpecTestCase {
 	@Test
 	public void testClickChangePassword01() {
 		Network.login("ctestdae", "eee");
+		assertTrue(MainWindow.haveLogined());
 		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick())
 		.process(new WindowHandler() {
 				public Trigger process(Window dialog) {
@@ -153,14 +154,18 @@ public class MainWindowTest extends UISpecTestCase {
 				}
 		})
 		.run();
+		assertTrue(MainWindow.haveLogined());
 		Network.login("ctestdae", "eee1");
 		assertTrue(MainWindow.haveLogined());
 		Network.getOurNetwork().newPW("eee1", "eee");
+		Network.login("ctestdae", "eee");
+		assertTrue(MainWindow.haveLogined());
 	}
 	
 	@Test
 	public void testClickChangePassword02() {
 		Network.login("ctestdae", "eee");
+		assertTrue(MainWindow.haveLogined());
 		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick())
 		.process(new WindowHandler() {
 				public Trigger process(Window dialog) {
@@ -179,11 +184,12 @@ public class MainWindowTest extends UISpecTestCase {
 	@Test
 	public void testClickChangePassword03() {
 		Network.login("ctestdae", "eee");
+		assertTrue(MainWindow.haveLogined());
 		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick())
 		.process(new WindowHandler() {
 				public Trigger process(Window dialog) {
 					assertTrue(dialog.titleEquals("Change Password"));
-					dialog.getPasswordField("opw").setPassword("eeexx");
+					dialog.getPasswordField("opw").setPassword("eeexxy");
 					dialog.getPasswordField("npw").setPassword("eee3");
 					dialog.getPasswordField("cpw").setPassword("eee3");
 					return dialog.getButton("Submit").triggerClick();
@@ -193,45 +199,33 @@ public class MainWindowTest extends UISpecTestCase {
 		Network.login("ctestdae", "eee");
 		assertTrue(MainWindow.haveLogined());
 	}
-	
+	// the following codes are wrong
+	/*
 	@Test
-	public void testClickSeeFriend01() {
-		Network.login("ctestdab", "bbb");
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getButton("See Friend").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						assertTrue(win.findSwingComponent(JTabbedPane.class, "timtableTabpage").getTabCount()==2);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
+	public void testClickSeeFriend() {
+		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
+		.process(new WindowHandler("LoginGUI") {
+				public Trigger process(Window dialog) {
+					assertTrue(dialog.titleEquals("Login"));
+					dialog.getInputTextBox("username").setText("ctestdab");
+					dialog.getPasswordField("password").setPassword("bbb");
+					return dialog.getButton("Login").triggerClick();
+				}
+		})
+		.run();
+		win.getPanel("contentPane").getButton("See Friend").click();
+		System.out.println(">>>>>>>> "+win.getTabGroup("timetableTabpage").getAwtComponent().getTabCount());
+		assertEquals(2, win.getTabGroup("timetableTabpage").getAwtComponent().getTabCount());
+		
+		logout();
+		assertEquals(1, win.getTabGroup("timetableTabpage").getAwtComponent().getTabCount());
+		win.getButton("See Friend").click();
+		assertEquals(1, win.getTabGroup("timetableTabpage").getAwtComponent().getTabCount());
 	}
-	
-	@Test
-	public void testClickSeeFriend02() {
-		Network.logout();
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getButton("See Friend").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						assertTrue(win.findSwingComponent(JTabbedPane.class, "timtableTabpage").getTabCount()==1);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
+	/*
 	@Test
 	public void testClickAddFriend01() {
+		final Window win = getMainWindow();
 		Network.login("ctestdae", "eee");
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -250,6 +244,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickAddFriend02() {
+		final Window win = getMainWindow();
 		Network.logout();
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -267,6 +262,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickCheckFriendRequest() {
+		final Window win = getMainWindow();
 		Network.login("ctestdab", "ctestdab");
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -284,6 +280,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickUpdateFriendsTimeTable() {
+		final Window win = getMainWindow();
 		Network.login("ctestdab", "ctestdab");
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -301,6 +298,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickUploadMyTimeTable01() {
+		final Window win = getMainWindow();
 		Network.login("ctestdab", "ctestdab");
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -318,6 +316,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickUploadMyTimeTable02() {
+		final Window win = getMainWindow();
 		Network.logout();
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -335,6 +334,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickDownloadMyTimeTable01() {
+		final Window win = getMainWindow();
 		Network.login("ctestdab", "ctestdab");
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -352,6 +352,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickDownloadMyTimeTable02() {
+		final Window win = getMainWindow();
 		Network.logout();
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -369,6 +370,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickImportTimeTable() {
+		final Window win = getMainWindow();
 		Network.logout();
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -386,6 +388,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickExportTimeTable() {
+		final Window win = getMainWindow();
 		Network.logout();
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -403,6 +406,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickExportTimeTableAsImage() {
+		final Window win = getMainWindow();
 		Network.logout();
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -420,6 +424,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickDeleteLast01() {
+		final Window win = getMainWindow();
 		Network.login("ctestdab", "bbb");
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -440,6 +445,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickDeleteLast02() {
+		final Window win = getMainWindow();
 		Network.logout();
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -460,6 +466,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickCommonFreeTime01() {
+		final Window win = getMainWindow();
 		Network.login("ctestdab", "bbb");
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -477,6 +484,7 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	@Test
 	public void testClickCommonFreeTime02() {
+		final Window win = getMainWindow();
 		Network.logout();
 		new UISpecAdapter() {
 			public Window getMainWindow() {
@@ -491,5 +499,5 @@ public class MainWindowTest extends UISpecTestCase {
 			}
 		};
 	}
-	
+	*/
 }
