@@ -106,7 +106,7 @@ public class MainWindow extends JFrame {
 
 	public static boolean haveLogined() {
 		String str = network.getFriendList();
-		return (!str.equals("002") && !str.equals("200"));
+		return (!str.equals("000") && !str.equals("002") && !str.equals("200"));
 	}
 	
 	public void updateFriendsTimetable(boolean prompt) {
@@ -176,6 +176,10 @@ public class MainWindow extends JFrame {
 	public static Timetable own_table;
 	
 	public static ArrayList<Course> allCourses;
+	
+	{
+		timetableTabpage.setName("timetableTabpage");
+	}
 	
 	
 	//public static java.util.HashMap<JPanel, TimeTableGUI> linkage = new java.util.HashMap<JPanel, TimeTableGUI>();
