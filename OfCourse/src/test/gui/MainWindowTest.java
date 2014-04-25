@@ -49,16 +49,29 @@ public class MainWindowTest extends UISpecTestCase {
 			.process(new WindowHandler() {
 					public Trigger process(Window dialog) {
 					assertTrue(dialog.titleEquals("Login"));
-					dialog.getInputTextBox("username").setText("a");
+					dialog.getInputTextBox("username").setText("ctestdab");
+					dialog.getPasswordField("password").setPassword("ctestdab");
 					return dialog.getButton("Login").triggerClick();
 					}
 			})
 			.run();
-		Window dialog = WindowInterceptor.run(win.getMenuBar().getMenu("Account")
-						.getSubMenu("Login").triggerClick());
-		assertTrue(dialog.titleEquals("Login"));
-		dialog.getInputTextBox("username").setText("ctestdab");
-		dialog.getPasswordField("password").setPassword("ctestdab");
+	}
+	
+	@Test
+	public void testClickRegister() {
+		
+		Window win = getMainWindow();
+	
+		// click Register
+		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Register").triggerClick())
+			.process(new WindowHandler() {
+					public Trigger process(Window dialog) {
+					assertTrue(dialog.titleEquals("Register"));
+					dialog.getInputTextBox("username").setText("ctestdab");
+					return dialog.getButton("Register").triggerClick();
+					}
+			})
+			.run();
 	}
 	
 }

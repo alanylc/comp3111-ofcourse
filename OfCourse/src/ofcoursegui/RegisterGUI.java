@@ -27,6 +27,8 @@ public class RegisterGUI extends JDialog {
 		JButton btnRegister = new JButton("Register");
 		final JTextField usernameTextField = new JTextField(10);
 		
+		usernameTextField.setName("username");
+		
 		btnRegister.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
