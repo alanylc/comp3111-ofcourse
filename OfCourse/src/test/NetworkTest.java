@@ -27,7 +27,9 @@ public class NetworkTest {
 
 	@Before
 	public void setUp() throws Exception {
-		
+		Network.initialize();
+		Network a=Network.getOurNetwork();
+		a.registerB("testcad");
 	}
 
 	@After
@@ -102,13 +104,13 @@ public class NetworkTest {
 	public void testRegisterB() {//Case for successful register
 		Network a=Network.getOurNetwork();
 		String expected="100";
-		assertEquals(expected,a.registerB("testcad"));
+		assertEquals(expected,a.registerB("testckx"));
 	}
 	@Test
 	public void testRegisterB2() {//Case for duplicate entries
 		Network a=Network.getOurNetwork();
 		String expected="001";
-		assertEquals(expected,a.registerB("testcad"));
+		assertEquals(expected,a.registerB("thkong"));
 	}
 	@Test
 	public void testRegisterB3() {//Case for invalid characters (special char on username)
