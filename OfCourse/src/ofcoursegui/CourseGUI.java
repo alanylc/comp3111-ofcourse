@@ -1,7 +1,7 @@
 package ofcoursegui;
 
-import java.awt.Component;
-import java.awt.Container;
+
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,23 +10,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.TreeMap;
 
-import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableModel;
+
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.Sizes;
 
 import ofcourse.Course;
 import ofcourse.Instructor;
@@ -34,11 +31,13 @@ import ofcourse.Network;
 import ofcourse.Ratable.Comments;
 import ofcourse.TimePeriod;
 import ofcourse.TimetableError;
+import javax.swing.ScrollPaneConstants;
 
+@SuppressWarnings("serial")
 public class CourseGUI extends JPanel {
 	public final HashMap<Integer, Course.Session> linkage = new HashMap<Integer, Course.Session>();
 	public final Course course;
-	
+	ArrayList<Comments> comments = new ArrayList<Comments>();
 	JLabel courseCodeLabel = new JLabel("CourseCode");
 	JLabel courseNameLabel = new JLabel("CoureName");
 	JButton enrollButton = new JButton("Enroll");
@@ -49,7 +48,7 @@ public class CourseGUI extends JPanel {
 	JLabel avgRating = new JLabel("Average rating:");
 	JLabel avgRatingN = new JLabel("5");
 	public final JTable sessionTable = new JTable();
-	@SuppressWarnings("serial")
+
 	DefaultTableModel sessionTableModel = new DefaultTableModel(
 			new Object[][] {
 			},
@@ -58,9 +57,11 @@ public class CourseGUI extends JPanel {
 			}
 			
 		) {
+			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
 				String.class, String.class, String.class, String.class
 			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
@@ -68,38 +69,6 @@ public class CourseGUI extends JPanel {
 				return false;
 			}
 	};
-	@SuppressWarnings("serial")
-	CommentTableModel model = new CommentTableModel();
-	private class CommentTableModel extends AbstractTableModel {
-		 ArrayList<Comments> objs = new ArrayList<Comments>();
-	      public Object getValueAt(int rowIndex, int columnIndex) {
-	        return objs.get(rowIndex);
-	      }
-	      public void addRow(Comments obj) {
-	    	  objs.add(obj);
-	    	  int new_size = objs.size();
-	    	  this.fireTableRowsInserted(new_size-1, new_size-1);
-	      }
-	      public void addAll(ArrayList<Comments> objs) {
-	    	  for (Comments c : objs) {
-	    		  this.addRow(c);
-	    	  }
-	      }
-	      public void removeAllRows() {
-	    	  int last_row = objs.size()-1;
-	    	  if (last_row < 0) last_row = 0;
-	    	  objs.clear();
-	    	  this.fireTableRowsDeleted(0, last_row);
-	      }
-	      public int getColumnCount() {
-	        return 1;
-	      }
-	      public int getRowCount() {
-	        return objs.size();
-	      }
-	      public Class getColumnClass(int columnIndex) { return CommentGUI.class; }
-	      public String getColumnName(int columnIndex) { return "Comments for this course:"; }
-	    };
 	{
 		//JPanel coursePanel = new JPanel();
 		//MainWindow.searchTabpage.addTab("New tab", null, this, null);
@@ -157,47 +126,7 @@ public class CourseGUI extends JPanel {
 		add(commentButton);
 		commentButton.addActionListener(new CommentButtonListener());
 
-		commentTable.setModel(model);
-		commentTable.getColumnModel().getColumn(0).setCellRenderer(new CommentRenderer());
-		commentTable.getColumnModel().getColumn(0).setCellEditor(new CommentEditor());
-		commentTable.getColumnModel().getColumn(0).setResizable(false);
-		commentTable.setRowHeight(115);
-		
-	    JScrollPane pane = new JScrollPane(commentTable);
-	    pane.setBounds(12, 307, 504, 199);
-	    add(pane);
 	}
-	@SuppressWarnings("serial")
-	public class CommentEditor extends AbstractCellEditor implements TableCellEditor{
-		public Component getTableCellEditorComponent(JTable table, Object value,
-			      boolean isSelected, int row, int column) {
-			Comments cm=(Comments)value;
-		    CommentGUI comment=new CommentGUI(cm.getCommentorName(),cm.getRating(),cm.getComments(),cm.getDate());
-		    return comment;
-			//return cm;
-			  }
-
-		@Override
-		public Object getCellEditorValue() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-	}
-	@SuppressWarnings("serial")
-	public class CommentRenderer extends DefaultTableCellRenderer {
-
-		  /*
-		   * @see TableCellRenderer#getTableCellRendererComponent(JTable, Object, boolean, boolean, int, int)
-		   */
-		  public Component getTableCellRendererComponent(JTable table, Object value,
-		                                                 boolean isSelected, boolean hasFocus, 
-		                                                 int row, int column) {
-			Comments cm=(Comments)value;
-		    CommentGUI comment=new CommentGUI(cm.getCommentorName(),cm.getRating(),cm.getComments(),cm.getDate());
-		    return comment;
-		  }
-		}
 	private class CommentButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -285,10 +214,32 @@ public class CourseGUI extends JPanel {
 	private void setCommentRating(Course c) {
 		System.out.println(String.valueOf(c.getAvgRating()));
 		c.parseComments();
-		model.removeAllRows();
-		model.addAll(c.getComments());
-		System.out.println(String.valueOf(c.getAvgRating()));
+		comments=c.getComments();
+		System.out.println(comments.size()+"cmsize");
 		avgRatingN.setText(String.valueOf(c.getAvgRating()));
+		
+		ColumnSpec[] cs = new ColumnSpec[1];
+		cs[0] = new ColumnSpec(Sizes.pixel(504));
+		RowSpec[] rs = new RowSpec[comments.size()];
+		for(int i = 0; i < comments.size(); i++) {
+			rs[i] = new RowSpec(Sizes.pixel(115));
+		}
+		JLayeredPane commentTable = new JLayeredPane();
+		commentTable.setBounds(0, 0, 504, 115*comments.size());
+		commentTable.setPreferredSize(new Dimension(504,115*comments.size()));
+		int i=0;	
+		for(Comments cm:comments){
+			i++;
+			CommentGUI comment=new CommentGUI(cm.getCommentorName(),cm.getRating(),cm.getComments(),cm.getDate());
+			System.out.println(cm.getCommentorName());
+			comment.setBounds(0, 115*i-115, 504, 115);
+			commentTable.add(comment,new Integer(i), 0);
+		}
+	    JScrollPane pane = new JScrollPane(commentTable);
+	    pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	    pane.setBounds(12, 307, 504, 199);
+	    add(pane);
+	    setVisible(true);
 	}
 	
 	public void updateGUI() {

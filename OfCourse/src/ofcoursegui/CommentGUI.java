@@ -1,27 +1,27 @@
 package ofcoursegui;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
 
 import java.awt.Font;
-import java.awt.Color;
 import java.awt.SystemColor;
 
+@SuppressWarnings("serial")
 public class CommentGUI extends JPanel {
 	public CommentGUI(String Name,String rating,String comment,String dateTime) {
 		nameLabel.setText(Name);
 		ratingLabel.setText(rating);
+		commentsTextArea.setLineWrap(true);
+		commentsTextArea.setEditable(false);
 		//commentsTextArea.setEditable(false);
 		commentsTextArea.setText(comment);
 		timeLabel.setText(dateTime);
+		
 	}
 	Date dNow = new Date();
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
@@ -43,7 +43,6 @@ public class CommentGUI extends JPanel {
 		String cm="comments\r\ncomments line2\r\ncomments third veryvery very ..................................................................................................very very very very very very very very very very very very very very very long line on line 3\nline 4.\nline5\n6\n7\n8\n9\n10\n11\n12";
 		commentsTextArea.setText(cm);
 		JScrollPane scroll = new JScrollPane(commentsTextArea);
-	    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 	    scroll.setBounds(76, 22, 390, 67);
 	    add(scroll);
 		//commentsTextPane
