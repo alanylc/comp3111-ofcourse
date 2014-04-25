@@ -32,6 +32,7 @@ public class MainWindowTest extends UISpecTestCase {
 		
 	@Before
 	public void setUp() throws Exception {
+		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 	}
 		
 	@After
@@ -40,7 +41,6 @@ public class MainWindowTest extends UISpecTestCase {
 
 	@Test
 	public void testClickLogin() {
-		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		
 		Window win = getMainWindow();
 	
