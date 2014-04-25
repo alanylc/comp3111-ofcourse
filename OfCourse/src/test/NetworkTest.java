@@ -1,17 +1,19 @@
 package test;
 
 import static org.junit.Assert.*;
-
 import ofcourse.Network;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 //Account used in this test:
 //{username,password}
 //{ctestcaa,aaa},{ctestcab,bbb},{ctestcac,ccc}
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class NetworkTest {
 	String[] username={"ctestcaa","ctestcab","ctestcac"};
 	String[] password={"aaa","bbb","ccc"};
@@ -28,8 +30,6 @@ public class NetworkTest {
 	@Before
 	public void setUp() throws Exception {
 		Network.initialize();
-		Network a=Network.getOurNetwork();
-		a.registerB("testcad");
 	}
 
 	@After
@@ -104,13 +104,14 @@ public class NetworkTest {
 	public void testRegisterB() {//Case for successful register
 		Network a=Network.getOurNetwork();
 		String expected="100";
-		assertEquals(expected,a.registerB("testckx"));
+		assertEquals(expected,a.registerB("testcad"));
 	}
 	@Test
 	public void testRegisterB2() {//Case for duplicate entries
 		Network a=Network.getOurNetwork();
+		assertEquals("100",a.registerB("testcad"));
 		String expected="001";
-		assertEquals(expected,a.registerB("thkong"));
+		assertEquals(expected,a.registerB("testcad"));
 	}
 	@Test
 	public void testRegisterB3() {//Case for invalid characters (special char on username)
@@ -245,6 +246,7 @@ public class NetworkTest {
 	@Test
 	public void testChkFirstPW() {//case for firstPw = true
 		Network a=Network.getOurNetwork();
+		a.register("testcad");
 		Network.login("testcad","");
 		boolean expected=true;
 		assertEquals(expected,a.chkFirstPW());
