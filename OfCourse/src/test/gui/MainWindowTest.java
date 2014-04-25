@@ -1,7 +1,5 @@
 package test.gui;
 
-import javax.swing.JLabel;
-
 import ofcourse.Network;
 import ofcoursegui.MainWindow;
 
@@ -9,7 +7,9 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.uispec4j.Trigger;
 import org.uispec4j.UISpec4J;
 import org.uispec4j.UISpecTestCase;
@@ -18,6 +18,7 @@ import org.uispec4j.interception.MainClassAdapter;
 import org.uispec4j.interception.WindowHandler;
 import org.uispec4j.interception.WindowInterceptor;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MainWindowTest extends UISpecTestCase {
 
 	private Window win = null;
@@ -48,6 +49,17 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	private void logout() {
 		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Logout").triggerClick());
+	}
+	
+	@Test
+	public void testButtons() {
+		win.getButton("Delete Last").click();
+		win.getButton("See Friend").click();
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick());
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Upload My Time Table").triggerClick());
+		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Update Friends' Time Table").triggerClick());
+		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Check Friend Requests").triggerClick());
+		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Add New Friend").triggerClick());
 	}
 
 	@Test
@@ -199,305 +211,20 @@ public class MainWindowTest extends UISpecTestCase {
 		Network.login("ctestdae", "eee");
 		assertTrue(MainWindow.haveLogined());
 	}
-	// the following codes are wrong
-	/*
-	@Test
-	public void testClickSeeFriend() {
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
-		.process(new WindowHandler("LoginGUI") {
-				public Trigger process(Window dialog) {
-					assertTrue(dialog.titleEquals("Login"));
-					dialog.getInputTextBox("username").setText("ctestdab");
-					dialog.getPasswordField("password").setPassword("bbb");
-					return dialog.getButton("Login").triggerClick();
-				}
-		})
-		.run();
-		win.getPanel("contentPane").getButton("See Friend").click();
-		System.out.println(">>>>>>>> "+win.getTabGroup("timetableTabpage").getAwtComponent().getTabCount());
-		assertEquals(2, win.getTabGroup("timetableTabpage").getAwtComponent().getTabCount());
-		
-		logout();
-		assertEquals(1, win.getTabGroup("timetableTabpage").getAwtComponent().getTabCount());
-		win.getButton("See Friend").click();
-		assertEquals(1, win.getTabGroup("timetableTabpage").getAwtComponent().getTabCount());
-	}
-	/*
-	@Test
-	public void testClickAddFriend01() {
-		final Window win = getMainWindow();
-		Network.login("ctestdae", "eee");
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("Friend").getSubMenu("Add New Friend").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNotNull(window);
-						window.getInputTextBox().setText("firstLogin");
-						return window.getButton("OK").triggerClick();
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickAddFriend02() {
-		final Window win = getMainWindow();
-		Network.logout();
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("Friend").getSubMenu("Add New Friend").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickCheckFriendRequest() {
-		final Window win = getMainWindow();
-		Network.login("ctestdab", "ctestdab");
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("Friend").getSubMenu("Check Friend Requests").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNotNull(window);
-						return window.getButton("Ignore").triggerClick();
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickUpdateFriendsTimeTable() {
-		final Window win = getMainWindow();
-		Network.login("ctestdab", "ctestdab");
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("Friend").getSubMenu("Update Friends' Time Table").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickUploadMyTimeTable01() {
-		final Window win = getMainWindow();
-		Network.login("ctestdab", "ctestdab");
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("File").getSubMenu("Upload My Time Table").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickUploadMyTimeTable02() {
-		final Window win = getMainWindow();
-		Network.logout();
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("File").getSubMenu("Upload My Time Table").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickDownloadMyTimeTable01() {
-		final Window win = getMainWindow();
-		Network.login("ctestdab", "ctestdab");
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickDownloadMyTimeTable02() {
-		final Window win = getMainWindow();
-		Network.logout();
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
 	
 	@Test
 	public void testClickImportTimeTable() {
-		final Window win = getMainWindow();
-		Network.logout();
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("File").getSubMenu("Import Time Table...").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Import Time Table...").triggerClick());
 	}
 	
 	@Test
 	public void testClickExportTimeTable() {
-		final Window win = getMainWindow();
-		Network.logout();
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table...").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table...").triggerClick());
 	}
 	
 	@Test
 	public void testClickExportTimeTableAsImage() {
-		final Window win = getMainWindow();
-		Network.logout();
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table as image...").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table as image...").triggerClick());
 	}
 	
-	@Test
-	public void testClickDeleteLast01() {
-		final Window win = getMainWindow();
-		Network.login("ctestdab", "bbb");
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getButton("See Friend").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						assertTrue(win.findSwingComponent(JTabbedPane.class, "timtableTabpage").getTabCount()==2);
-						WindowInterceptor.run(win.getButton("Delete Last").triggerClick());
-						assertTrue(win.findSwingComponent(JTabbedPane.class, "timtableTabpage").getTabCount()==1);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickDeleteLast02() {
-		final Window win = getMainWindow();
-		Network.logout();
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getButton("See Friend").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						assertTrue(win.findSwingComponent(JTabbedPane.class, "timtableTabpage").getTabCount()==1);
-						WindowInterceptor.run(win.getButton("Delete Last").triggerClick());
-						assertTrue(win.findSwingComponent(JTabbedPane.class, "timtableTabpage").getTabCount()==1);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickCommonFreeTime01() {
-		final Window win = getMainWindow();
-		Network.login("ctestdab", "bbb");
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getButton("Common Free Time").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	
-	@Test
-	public void testClickCommonFreeTime02() {
-		final Window win = getMainWindow();
-		Network.logout();
-		new UISpecAdapter() {
-			public Window getMainWindow() {
-				WindowInterceptor.init(win.getButton("Common Free Time").triggerClick())
-				.process(new WindowHandler() {
-					public Trigger process(Window window) throws Exception {
-						assertNull(window);
-						return Trigger.DO_NOTHING;
-					}
-				}).run();
-				return null;
-			}
-		};
-	}
-	*/
 }
