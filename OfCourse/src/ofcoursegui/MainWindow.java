@@ -171,7 +171,7 @@ public class MainWindow extends JFrame {
 	public static JPanel contentPane = new JPanel();
 	public static JTabbedPane timetableTabpage = new JTabbedPane(JTabbedPane.TOP);
 	public static JTabbedPane searchTabpage = new JTabbedPane(JTabbedPane.TOP);
-	public static MyFavPanel myFavPanel = new MyFavPanel(contentPane);
+	public static MyFavPanelGUI myFavPanel = new MyFavPanelGUI(contentPane);
 
 	private static JFileChooser fc = new JFileChooser();;
 	
