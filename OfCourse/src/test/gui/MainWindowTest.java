@@ -15,7 +15,7 @@ import org.uispec4j.interception.MainClassAdapter;
 import org.uispec4j.interception.WindowInterceptor;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class MainWindowOfflineTest extends UISpecTestCase {
+public class MainWindowTest extends UISpecTestCase {
 
 	private Window win = null;
 	
@@ -27,7 +27,7 @@ public class MainWindowOfflineTest extends UISpecTestCase {
 	public void setUp() throws Exception {
 		this.setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		win = this.getMainWindow();
-		Network.logout();
+		Network.login("ctestdab", "bbb");
 	}
 		
 	@After
