@@ -243,6 +243,9 @@ public class CourseGUI extends JPanel {
 	}
 	
 	public void updateGUI() {
+		while (sessionTableModel.getRowCount()>0) {
+			sessionTableModel.removeRow(0);
+		}
 		setCourse(this.course);
 		setCommentRating(this.course);
 	}
