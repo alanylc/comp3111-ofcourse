@@ -5,13 +5,12 @@ import java.util.Collection;
 
 import javax.swing.AbstractListModel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 
 import ofcourse.Course;
-import ofcourse.SearchAllCourse;
 import ofcourse.SearchCourse;
 import ofcourse.SearchSubject;
 
+@SuppressWarnings("serial")
 public class SearchSubjectGUI extends JList implements SearchCriteriaComponent {
 	
 	public final AbstractListModel subjectListModel = new SubjectListModel();

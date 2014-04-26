@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import ofcourse.Network;
 
+@SuppressWarnings("serial")
 public class ChangePwGUI extends JDialog {
 	private boolean firstChange = false;
 	private Frame parent = null;

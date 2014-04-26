@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import ofcourse.Course;
 import ofcourse.Network;
 
+@SuppressWarnings("serial")
 public class MyFavPanel extends JPanel {
 	
 	private class FavListModel extends AbstractListModel {
@@ -35,11 +36,6 @@ public class MyFavPanel extends JPanel {
 			values.add(_value);
 			this.fireContentsChanged(this, old_size, old_size);
 			this.sort();
-		}
-		public void addAll(String[] _values) {
-			for (String v : _values) {
-				this.add(v);
-			}
 		}
 		public void remove(String code) {
 			int index0 = this.values.indexOf(code);

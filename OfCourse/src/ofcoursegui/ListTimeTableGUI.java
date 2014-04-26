@@ -20,10 +20,10 @@ import javax.swing.table.DefaultTableModel;
 
 import ofcourse.Course;
 import ofcourse.Course.Session;
-import ofcourse.Network;
 import ofcourse.TimePeriod;
 import ofcourse.Timetable;
 
+@SuppressWarnings("serial")
 public class ListTimeTableGUI extends JFrame {
 	
 	private Timetable table = null;

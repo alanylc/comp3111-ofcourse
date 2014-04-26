@@ -1,37 +1,24 @@
 package ofcoursegui;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.AbstractAction;
-import javax.swing.AbstractListModel;
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.InputMap;
 import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.KeyStroke;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import ofcourse.Course;
 import ofcourse.SearchAllCourse;
-import ofcourse.SearchCodeInterval;
 import ofcourse.SearchCourse;
-import ofcourse.SearchSubject;
 
+@SuppressWarnings("serial")
 public class NewSearchGUI extends JPanel {
 
 	private static int searchCount = 0;
