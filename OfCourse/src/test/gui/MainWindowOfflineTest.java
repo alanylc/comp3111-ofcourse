@@ -42,18 +42,18 @@ public class MainWindowOfflineTest extends UISpecTestCase {
 		win.getButton("Search").click();
 		win.getButton("Swap...").click();
 		win.getButton("Drop...").click();
-		WindowInterceptor.run(win.getButton("List View").triggerClick());
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Upload My Time Table").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table...").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Import Time Table...").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table as image...").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Update Friends' Time Table").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Check Friend Requests").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Add New Friend").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Register").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick()).dispose();
-		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Logout").triggerClick()).dispose();;
+//		WindowInterceptor.run(win.getButton("List View").triggerClick());
+//		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Upload My Time Table").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table...").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Import Time Table...").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table as image...").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Update Friends' Time Table").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Check Friend Requests").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Add New Friend").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Register").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick()).dispose();
+//		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Logout").triggerClick()).dispose();;
 	}
 }
