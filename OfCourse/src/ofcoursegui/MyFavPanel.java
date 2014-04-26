@@ -80,6 +80,7 @@ public class MyFavPanel extends JPanel {
 		pane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		pane.setLayout(new GridLayout(1, 0, 0, 0));
 		favList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		favList.setName("myfavlist");
 		JScrollPane favPane = new JScrollPane(favList);
 		pane.add(favPane);
 		updateFav();

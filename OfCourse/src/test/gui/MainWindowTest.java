@@ -55,161 +55,21 @@ public class MainWindowTest extends UISpecTestCase {
 	public void testButtons() {
 		win.getButton("Delete Last").click();
 		win.getButton("See Friend").click();
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick());
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Upload My Time Table").triggerClick());
-		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Update Friends' Time Table").triggerClick());
-		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Check Friend Requests").triggerClick());
-		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Add New Friend").triggerClick());
-	}
-
-	@Test
-	public void testClickLogin01() {
-		assertFalse(MainWindow.haveLogined());
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
-			.process(new WindowHandler("LoginGUI") {
-					public Trigger process(Window dialog) {
-						assertTrue(dialog.titleEquals("Login"));
-						dialog.getInputTextBox("username").setText("ctestdab");
-						dialog.getPasswordField("password").setPassword("bbb");
-						return dialog.getButton("Login").triggerClick();
-					}
-			})
-			.run();
-		assertTrue(MainWindow.haveLogined());
-	}
-	
-	@Test
-	public void testClickLogin02() {
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
-			.process(new WindowHandler("LoginGUI") {
-					public Trigger process(Window dialog) {
-						assertTrue(dialog.titleEquals("Login"));
-						dialog.getInputTextBox("username").setText("ctestdab");
-						dialog.getPasswordField("password").setPassword("bbbx");
-						return dialog.getButton("Login").triggerClick();
-					}
-			})
-			.run();
-		assertFalse(MainWindow.haveLogined());
-	}
-	
-	@Test
-	public void testClickLogin03() {
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
-			.process(new WindowHandler("LoginGUI") {
-					public Trigger process(Window dialog) {
-						assertTrue(dialog.titleEquals("Login"));
-						dialog.getInputTextBox("username").setText("");
-						dialog.getPasswordField("password").setPassword("bbb");
-						return dialog.getButton("Login").triggerClick();
-					}
-			})
-			.run();
-		assertFalse(MainWindow.haveLogined());
-	}
-	
-	@Test
-	public void testClickLogin04() {
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick())
-			.process(new WindowHandler("LoginGUI") {
-					public Trigger process(Window dialog) {
-						assertTrue(dialog.titleEquals("Login"));
-						dialog.getInputTextBox("username").setText("firstLogin");
-						dialog.getPasswordField("password").setPassword("");
-						return dialog.getButton("Login").triggerClick();
-					}
-			})
-			.run();
-		assertFalse(MainWindow.haveLogined());
-	}
-	
-	@Test
-	public void testClickRegister01() {
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Register").triggerClick())
-			.process(new WindowHandler("RegisterGUI") {
-					public Trigger process(Window dialog) {
-						assertTrue(dialog.titleEquals("Register"));
-						dialog.getInputTextBox("username").setText("ctestdab");
-						return dialog.getButton("Register").triggerClick();
-					}
-			})
-			.run();
-		assertFalse(MainWindow.haveLogined());
-	}
-	
-	@Test
-	public void testClickRegister02() {
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Register").triggerClick())
-			.process(new WindowHandler("RegisterGUI") {
-					public Trigger process(Window dialog) {
-						assertTrue(dialog.titleEquals("Register"));
-						dialog.getInputTextBox("username").setText("ctestd/;ab+x*%a#");
-						return dialog.getButton("Register").triggerClick();
-					}
-			})
-			.run();
-		assertFalse(MainWindow.haveLogined());
-	}
-	
-	@Test
-	public void testClickChangePassword01() {
-		Network.login("ctestdae", "eee");
-		assertTrue(MainWindow.haveLogined());
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick())
-		.process(new WindowHandler() {
-				public Trigger process(Window dialog) {
-					assertTrue(dialog.titleEquals("Change Password"));
-					dialog.getPasswordField("opw").setPassword("eee");
-					dialog.getPasswordField("npw").setPassword("eee1");
-					dialog.getPasswordField("cpw").setPassword("eee1");
-					return dialog.getButton("Submit").triggerClick();
-				}
-		})
-		.run();
-		assertTrue(MainWindow.haveLogined());
-		Network.login("ctestdae", "eee1");
-		assertTrue(MainWindow.haveLogined());
-		Network.getOurNetwork().newPW("eee1", "eee");
-		Network.login("ctestdae", "eee");
-		assertTrue(MainWindow.haveLogined());
-	}
-	
-	@Test
-	public void testClickChangePassword02() {
-		Network.login("ctestdae", "eee");
-		assertTrue(MainWindow.haveLogined());
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick())
-		.process(new WindowHandler() {
-				public Trigger process(Window dialog) {
-					assertTrue(dialog.titleEquals("Change Password"));
-					dialog.getPasswordField("opw").setPassword("eee");
-					dialog.getPasswordField("npw").setPassword("eeex");
-					dialog.getPasswordField("cpw").setPassword("eeexxxx");
-					return dialog.getButton("Submit").triggerClick();
-				}
-		})
-		.run();
-		Network.login("ctestdae", "eee");
-		assertTrue(MainWindow.haveLogined());
-	}
-	
-	@Test
-	public void testClickChangePassword03() {
-		Network.login("ctestdae", "eee");
-		assertTrue(MainWindow.haveLogined());
-		WindowInterceptor.init(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick())
-		.process(new WindowHandler() {
-				public Trigger process(Window dialog) {
-					assertTrue(dialog.titleEquals("Change Password"));
-					dialog.getPasswordField("opw").setPassword("eeexxy");
-					dialog.getPasswordField("npw").setPassword("eee3");
-					dialog.getPasswordField("cpw").setPassword("eee3");
-					return dialog.getButton("Submit").triggerClick();
-				}
-		})
-		.run();
-		Network.login("ctestdae", "eee");
-		assertTrue(MainWindow.haveLogined());
+		win.getButton("Search").click();
+		win.getButton("Swap...").click();
+		win.getButton("Drop...").click();
+		WindowInterceptor.run(win.getButton("List View").triggerClick());
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Upload My Time Table").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table...").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Import Time Table...").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table as image...").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Update Friends' Time Table").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Check Friend Requests").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("Friend").getSubMenu("Add New Friend").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Register").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick()).dispose();
 	}
 	
 	@Test

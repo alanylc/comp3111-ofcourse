@@ -128,7 +128,9 @@ public class MainWindow extends JFrame {
 			if (table==null) {
 				table = new Timetable(fdname);
 			}
-			table.importString(oneRecord[1]); 
+			if (oneRecord.length > 1) {	
+				table.importString(oneRecord[1]); 
+			}
 			friends.put(fdname, table);
 		}
 		if (prompt) JOptionPane.showMessageDialog(contentPane, "Timetables of friends updated successfully.");
