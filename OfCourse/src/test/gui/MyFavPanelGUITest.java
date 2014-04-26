@@ -13,7 +13,7 @@ import org.uispec4j.interception.MainClassAdapter;
 import org.uispec4j.interception.WindowHandler;
 import org.uispec4j.interception.WindowInterceptor;
 
-public class MyFavPanelTest extends UISpecTestCase {
+public class MyFavPanelGUITest extends UISpecTestCase {
 
 	private Window win = null;
 	

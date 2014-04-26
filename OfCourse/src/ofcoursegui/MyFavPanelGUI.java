@@ -21,7 +21,7 @@ import ofcourse.Course;
 import ofcourse.Network;
 
 @SuppressWarnings("serial")
-public class MyFavPanel extends JPanel {
+public class MyFavPanelGUI extends JPanel {
 	
 	private class FavListModel extends AbstractListModel {
 		ArrayList<String> values = new ArrayList<String>();
@@ -68,7 +68,7 @@ public class MyFavPanel extends JPanel {
 	private FavListModel favModel = new FavListModel();
 	private final JList favList = new JList(favModel);
 	
-	public MyFavPanel(Component _parent) {
+	public MyFavPanelGUI(Component _parent) {
 		this.parent = _parent;
 		
 		this.setLayout(new BorderLayout());
