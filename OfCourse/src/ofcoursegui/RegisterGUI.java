@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import ofcourse.Network;
 
+@SuppressWarnings("serial")
 public class RegisterGUI extends JDialog {
 	public RegisterGUI(final Frame parent) {
 		super(parent, true);

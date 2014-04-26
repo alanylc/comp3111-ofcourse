@@ -1,5 +1,6 @@
 package test.gui;
 
+import ofcourse.Network;
 import ofcoursegui.MainWindow;
 
 import org.junit.After;
@@ -14,7 +15,7 @@ import org.uispec4j.interception.MainClassAdapter;
 import org.uispec4j.interception.WindowInterceptor;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class MainWindowTest extends UISpecTestCase {
+public class MainWindowOnlineTest extends UISpecTestCase {
 
 	private Window win = null;
 	
@@ -26,16 +27,12 @@ public class MainWindowTest extends UISpecTestCase {
 	public void setUp() throws Exception {
 		this.setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		win = this.getMainWindow();
-		logout();
+		Network.login("ctestdab", "bbb");
 	}
 		
 	@After
 	public void tearDown() throws Exception {
-		logout();
-	}
-	
-	private void logout() {
-		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Logout").triggerClick());
+		Network.logout();
 	}
 	
 	@Test
@@ -57,21 +54,6 @@ public class MainWindowTest extends UISpecTestCase {
 		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Login").triggerClick()).dispose();
 		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Register").triggerClick()).dispose();
 		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Change Password").triggerClick()).dispose();
+		WindowInterceptor.run(win.getMenuBar().getMenu("Account").getSubMenu("Logout").triggerClick()).dispose();;
 	}
-	
-	@Test
-	public void testClickImportTimeTable() {
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Import Time Table...").triggerClick());
-	}
-	
-	@Test
-	public void testClickExportTimeTable() {
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table...").triggerClick());
-	}
-	
-	@Test
-	public void testClickExportTimeTableAsImage() {
-		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Export Time Table as image...").triggerClick());
-	}
-	
 }

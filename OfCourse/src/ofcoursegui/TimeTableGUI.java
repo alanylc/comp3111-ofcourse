@@ -32,6 +32,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.Sizes;
 
+@SuppressWarnings("serial")
 public class TimeTableGUI extends JPanel{
 	public String guititle = "";
 	

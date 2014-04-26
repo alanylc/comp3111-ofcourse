@@ -5,13 +5,12 @@ import java.util.Collection;
 
 import javax.swing.AbstractListModel;
 import javax.swing.JList;
-import javax.swing.JScrollPane;
 
 import ofcourse.Course;
-import ofcourse.SearchAllCourse;
-import ofcourse.SearchCourse;
 import ofcourse.SearchCodeInterval;
+import ofcourse.SearchCourse;
 
+@SuppressWarnings("serial")
 public class SearchCodeIntervalGUI extends JList implements SearchCriteriaComponent {
 	
 	SearchCodeInterval sci = null;
