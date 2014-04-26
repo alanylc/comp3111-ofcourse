@@ -1,6 +1,5 @@
 package test.gui;
 
-import ofcourse.Network;
 import ofcoursegui.MainWindow;
 
 import org.junit.After;
@@ -10,12 +9,10 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.uispec4j.Trigger;
 import org.uispec4j.UISpec4J;
 import org.uispec4j.UISpecTestCase;
 import org.uispec4j.Window;
 import org.uispec4j.interception.MainClassAdapter;
-import org.uispec4j.interception.WindowHandler;
 import org.uispec4j.interception.WindowInterceptor;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -25,14 +22,6 @@ public class MainWindowTest extends UISpecTestCase {
 	
 	{
 		UISpec4J.init();
-	}
-	  
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-  
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
 	}
 		
 	@Before
