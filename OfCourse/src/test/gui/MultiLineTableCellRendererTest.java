@@ -10,9 +10,7 @@ import ofcoursegui.SearchCodeIntervalGUI;
 import ofcoursegui.SearchSubjectGUI;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.uispec4j.ListBox;
 import org.uispec4j.Panel;
@@ -24,14 +22,6 @@ import org.uispec4j.finder.ComponentMatcher;
 import org.uispec4j.interception.MainClassAdapter;
 
 public class MultiLineTableCellRendererTest extends UISpecTestCase {
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
 
 	@Before
 	public void setUp() throws Exception {
