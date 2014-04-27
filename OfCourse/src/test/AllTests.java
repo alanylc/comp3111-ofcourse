@@ -14,12 +14,9 @@ import test.gui.MainWindowTest;
 import test.gui.MultiLineTableCellRendererTest;
 import test.gui.MyFavPanelGUITest;
 import test.gui.RegisterGUITest;
-import test.gui.SearchTest;
-import test.gui.TimeTableOperationsTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
-	//TimeTableOperationsTest.class, 
 	CodeTest.class, 
 	CourseTest.class, 
 	NetworkTest.class, 
@@ -42,7 +39,6 @@ import test.gui.TimeTableOperationsTest;
 	AddNewFriendTest.class, 
 	CheckFriendRequestsTest.class, 
 	ListTimeTableGUITest.class, 
-	//SearchTest.class, 
 	MainWindowTest.class
 	})
 public class AllTests { }
