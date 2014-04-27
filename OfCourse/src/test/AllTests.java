@@ -14,9 +14,11 @@ import test.gui.MainWindowTest;
 import test.gui.MultiLineTableCellRendererTest;
 import test.gui.MyFavPanelGUITest;
 import test.gui.RegisterGUITest;
+import test.gui.SearchTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
+	SearchTest.class,
 	CodeTest.class, 
 	CourseTest.class, 
 	NetworkTest.class, 
