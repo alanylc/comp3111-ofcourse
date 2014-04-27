@@ -149,7 +149,9 @@ public class SearchTest extends UISpecTestCase {
 		Mouse.click(clabel);
 		Mouse.click(mine);
 		Mouse.click(clabel);
+		win.getPanel("contentPane").getButton("Swap").click();
 		win.getPanel("contentPane").getButton("Drop").click();
+		win.getPanel("contentPane").getButton("Common Free Time").click();
 		
 
 		win.getTabGroup("searchTabpage").selectTab("New Search");
