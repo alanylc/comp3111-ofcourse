@@ -2,11 +2,9 @@ package ofcourse;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.Map.Entry;
-import java.lang.IllegalArgumentException;
-import java.math.BigDecimal;
 
 public class TimePeriod {
 	//private WeekDay day;

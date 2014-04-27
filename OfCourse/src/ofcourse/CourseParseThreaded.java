@@ -82,6 +82,7 @@ public class CourseParseThreaded extends CourseParse{
 			for (Element courseE : courses) {
 				SubjectList.add(courseE.text());			//It first find a list of majors from /COMP,
 			}
+			@SuppressWarnings("rawtypes")
 			ArrayList<Future> futures = new ArrayList<Future>();
 			ExecutorService es = Executors.newFixedThreadPool(nThreads);
 			for (final String subject : SubjectList) {
@@ -95,7 +96,8 @@ public class CourseParseThreaded extends CourseParse{
 					}
 				}));
 			}
-			for (Future f : futures) {
+			
+			for (@SuppressWarnings("rawtypes") Future f : futures) {
 				f.get();
 			}
 			es.shutdown();

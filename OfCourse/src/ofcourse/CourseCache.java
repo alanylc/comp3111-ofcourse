@@ -10,13 +10,10 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map.Entry;
 import java.util.Scanner;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 /**
  * This class represents the cache for all courses quota pages, indexed by the 4-character subject code. 
@@ -71,6 +68,7 @@ public class CourseCache {
 				historyFileLock.readLock().unlock();
 			}
 		
+			@SuppressWarnings("unused")
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			int start = 0, middle = -1, end = -1;
 			while(historyFileContent != null && start < historyFileContent.length()) {

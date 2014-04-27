@@ -1,24 +1,19 @@
 package ofcourse;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import ofcourse.Course.Session;
@@ -526,6 +521,7 @@ public class Timetable implements ofcoursegui.CourseSelectListener {
 		boolean addSuccess = true; // check whether all courses are added successfully
 		// back up old data
 		String old_tid = this.getTableId();
+		@SuppressWarnings("unchecked")
 		HashMap<Course, ArrayList<Course.Session>> old_enrolled = (HashMap<Course, ArrayList<Session>>) getEnrolled().clone();
 		// drop all courses in old_enrolled, so that the gui will be updated
 		for (Course aCourse : old_enrolled.keySet()) {

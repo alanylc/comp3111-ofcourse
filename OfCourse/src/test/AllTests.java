@@ -10,12 +10,15 @@ import test.gui.CheckFriendRequestsTest;
 import test.gui.ListTimeTableGUITest;
 import test.gui.LoginGUITest;
 import test.gui.MainWindowTest;
+import test.gui.MultiLineTableCellRendererTest;
 import test.gui.MyFavPanelGUITest;
 import test.gui.RegisterGUITest;
 import test.gui.SearchTest;
+import test.gui.TimeTableOperationsTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
+	TimeTableOperationsTest.class, 
 	CodeTest.class, 
 	CourseTest.class, 
 	NetworkTest.class, 
@@ -29,7 +32,7 @@ import test.gui.SearchTest;
 	CommentsTest.class,
 	CourseParseTest.class, 
 	CourseParseThreadedTest.class, 
-	MainWindowTest.class,
+	MultiLineTableCellRendererTest.class, 
 	LoginGUITest.class, 
 	RegisterGUITest.class, 
 	ChangePwGUITest.class,
@@ -37,7 +40,7 @@ import test.gui.SearchTest;
 	AddNewFriendTest.class, 
 	CheckFriendRequestsTest.class, 
 	ListTimeTableGUITest.class, 
-	SearchTest.class})
-public class AllTests {
-
-}
+	SearchTest.class, 
+	MainWindowTest.class
+	})
+public class AllTests { }

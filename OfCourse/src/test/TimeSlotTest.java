@@ -1,18 +1,18 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 
 import ofcourse.Course;
+import ofcourse.Course.Session;
 import ofcourse.CourseParseThreaded;
 import ofcourse.TimePeriod;
 import ofcourse.TimeSlot;
 import ofcourse.WeekDay;
-import ofcourse.CourseParse;
-import ofcourse.Course.Session;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -73,7 +73,7 @@ public class TimeSlotTest {
 	}
 	@Test(expected=IllegalArgumentException.class)
 	public void testGetTimeSlotByStrings4() {
-		TimeSlot t=TimeSlot.getTimeSlotByStrings("We","23:30");
+		TimeSlot.getTimeSlotByStrings("We","23:30");
 	}
 
 
@@ -194,7 +194,7 @@ public class TimeSlotTest {
 		TimeSlot t=TimeSlot.getTimeSlotByStrings("AA","22:30");
 
 			try {
-				WeekDay w=t.getDay();
+				t.getDay();
 			} catch (Exception e) {
 				assertEquals(1,1);
 			}
