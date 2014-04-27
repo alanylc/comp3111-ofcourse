@@ -64,6 +64,7 @@ public class MyFavPanelGUI extends JPanel {
 	}
 	
 	private String favStr = "";
+	@SuppressWarnings("unused")
 	private Component parent = null;
 	private FavListModel favModel = new FavListModel();
 	private final JList favList = new JList(favModel);

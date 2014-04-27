@@ -5,11 +5,9 @@ import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
-
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
@@ -32,6 +30,7 @@ import org.apache.http.message.BasicNameValuePair;
  * @author hin
  *
  */
+@SuppressWarnings("deprecation")
 public class Network {//chk courseParse.out() for implementation of 
 	private String username;
 	private String password; //store user password, always encrypted
@@ -390,6 +389,7 @@ public class Network {//chk courseParse.out() for implementation of
 		try {
 			String furl = URL + url;
 
+			@SuppressWarnings({ "resource" })
 			DefaultHttpClient client = new DefaultHttpClient();
 			HttpPost post = new HttpPost(furl);
 

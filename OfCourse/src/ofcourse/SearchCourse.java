@@ -3,7 +3,6 @@ package ofcourse;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.ArrayList;
 
 /**
  * This abstract class is the main interface for one course 

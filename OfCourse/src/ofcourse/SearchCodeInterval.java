@@ -3,10 +3,6 @@ package ofcourse;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.swing.JOptionPane;
-
-import ofcoursegui.MainWindow;
-
 public class SearchCodeInterval extends SearchCourse {
 	private ArrayList<int[]> intervals = new ArrayList<int[]>();
 	public SearchCodeInterval(Collection<Course> prevPipe) {

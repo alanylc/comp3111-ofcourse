@@ -1,13 +1,13 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 
 import java.util.ArrayList;
 
 import ofcourse.Course;
-import ofcourse.CourseParseThreaded;
 import ofcourse.Course.Code;
-import ofcourse.CourseParse;
+import ofcourse.CourseParseThreaded;
 
 import org.junit.After;
 import org.junit.AfterClass;

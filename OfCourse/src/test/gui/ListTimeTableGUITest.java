@@ -16,7 +16,7 @@ import org.uispec4j.interception.WindowInterceptor;
 
 public class ListTimeTableGUITest extends UISpecTestCase {
 	
-	private Button dropbtn, closebtn;
+	private Button closebtn;
  
 	@Before
 	public void setUp() throws Exception {
@@ -38,7 +38,6 @@ public class ListTimeTableGUITest extends UISpecTestCase {
 				Window msg = WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick());
 				assertTrue(msg.getTextBox("OptionPane.label").getText().contains("success"));
 				Window lv = WindowInterceptor.run(win.getTabGroup("timetableTabpage").getSelectedTab().getButton("List View").triggerClick());
-				//dropbtn = lv.getButton("Drop");
 				closebtn = lv.getButton("Close");
 				return lv;
 			}
@@ -46,9 +45,6 @@ public class ListTimeTableGUITest extends UISpecTestCase {
 		Window listview = getMainWindow();
 		assertTrue(listview.titleContains("Mine"));	
 		listview.getTable().clearSelection();
-//		dropbtn.click();
-//		listview.getTable().selectRow(0);
-//		dropbtn.click();
 		closebtn.click();
 	}
 	

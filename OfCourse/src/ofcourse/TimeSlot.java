@@ -3,8 +3,6 @@ package ofcourse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.JLabel;
-
 public class TimeSlot {
 	@Override
 	public String toString() {
@@ -13,6 +11,7 @@ public class TimeSlot {
 
 	public int ID;
 	
+	@SuppressWarnings("unused")
 	private static final int min = 0;
 	private static final int max = 27;
 	
@@ -32,6 +31,7 @@ public class TimeSlot {
 	}
 	
 	//can return null if provided strings cannot be parsed
+	@SuppressWarnings("deprecation")
 	public static TimeSlot getTimeSlotByStrings(String wd,String time) {
 		SimpleDateFormat ft = new SimpleDateFormat ("hh:mm"); //it cannot parse hh:mma :(
 		String map [] []=				//cannot use switch since 1.7 blahblahblah

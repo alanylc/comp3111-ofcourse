@@ -1,14 +1,12 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 
-
-
 import ofcourse.Course;
 import ofcourse.Course.Session;
-import ofcourse.CourseParse;
 import ofcourse.CourseParseThreaded;
 
 import org.jsoup.Jsoup;

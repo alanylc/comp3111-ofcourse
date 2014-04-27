@@ -1,19 +1,16 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Set;
 
-
-
 import ofcourse.Course;
+import ofcourse.Course.Session;
 import ofcourse.CourseParseThreaded;
 import ofcourse.Instructor;
 import ofcourse.SessionType;
 import ofcourse.TimePeriod;
-import ofcourse.Course.Session;
-import ofcourse.CourseParse;
 
 import org.junit.After;
 import org.junit.AfterClass;

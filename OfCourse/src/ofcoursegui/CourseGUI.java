@@ -43,7 +43,7 @@ public class CourseGUI extends JPanel {
 	JButton enrollButton = new JButton("Enroll");
 	JButton btnAddFav = new JButton("Add to My Favourite");
 	JButton commentButton = new JButton("Comment");
-	public final JTable commentTable=new JTable();
+	//public final JTable commentTable=new JTable();
 
 	JLabel avgRating = new JLabel("Average rating:");
 	JLabel avgRatingN = new JLabel("5");
@@ -77,6 +77,8 @@ public class CourseGUI extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 62, 504, 199);
 		add(scrollPane);
+		
+		sessionTable.setName("sessionTable");
 		
 		sessionTable.setModel(sessionTableModel);
 		sessionTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);

@@ -1,22 +1,11 @@
 package ofcourse;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
-
-import ofcourse.Course.Session;
-import ofcourse.Ratable.Comments;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -142,8 +131,11 @@ public class CourseParse {
 					d1 = dateFormat.parse(historyContent.substring(start + subject.length(), end));
 					//in milliseconds 
 					long diff = dNow.getTime() - d1.getTime();
+					@SuppressWarnings("unused")
 					long diffMinutes = diff / (60 * 1000) % 60;
+					@SuppressWarnings("unused")
 					long diffHours = diff / (60 * 60 * 1000) % 24;
+					@SuppressWarnings("unused")
 					long diffDays = diff / (24 * 60 * 60 * 1000);
 					if (diff >= expireTime) {
 						updateNeeded = true;
