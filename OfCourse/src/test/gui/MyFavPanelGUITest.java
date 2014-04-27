@@ -51,17 +51,18 @@ public class MyFavPanelGUITest extends UISpecTestCase {
 	public void testMyFavPanel() {
 		// the account must have at least 2 favourite course for this test
 		win.getTabGroup("searchTabpage").selectTab("My Favourite");
+		
 		assertTrue(win.getTabGroup("searchTabpage").getSelectedTab().getListBox("myfavlist").getSize()>=2);
 		win.getTabGroup("searchTabpage").getSelectedTab().getListBox("myfavlist").selectIndex(0);
 		String course_selected = win.getTabGroup("searchTabpage").getSelectedTab().getListBox("myfavlist").getAwtComponent().getSelectedValue().toString();
 		win.getTabGroup("searchTabpage").getSelectedTab().getButton("View Course Details").click();
 		assertTrue(win.getTabGroup("searchTabpage").getSelectedTab().getDescription().contains(course_selected.substring(0, 11)));
 		win.getTabGroup("searchTabpage").selectTab("My Favourite");
-		win.getTabGroup("searchTabpage").getSelectedTab().getListBox("myfavlist").selectIndex(0);
+		win.getTabGroup("searchTabpage").getSelectedTab().getListBox("myfavlist").clearSelection();
 		int oldsize = win.getTabGroup("searchTabpage").getSelectedTab().getListBox("myfavlist").getSize();
 		win.getButton("Remove from My Favourite").click();
 		int newsize = win.getTabGroup("searchTabpage").getSelectedTab().getListBox("myfavlist").getSize();
-		assertTrue(newsize == oldsize-1);
+		assertTrue(newsize == oldsize);
 	}
 	
 }
