@@ -403,6 +403,7 @@ public class MainWindow extends JFrame {
 		                String filename = file.getAbsolutePath();
 		                if (filename.length() <= 0) filename += "timetable";
 		                if (!filename.endsWith(".png")) filename += ".png";
+						@SuppressWarnings("unused")
 						boolean result = ImageIO.write(image, "png", new File(filename));
 						JOptionPane.showMessageDialog(MainWindow.this, "Image is saved as " + filename);
 		            } 
