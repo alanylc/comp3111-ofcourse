@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import test.gui.AddCommentGUITest;
 import test.gui.AddNewFriendTest;
 import test.gui.ChangePwGUITest;
 import test.gui.CheckFriendRequestsTest;
@@ -33,6 +34,7 @@ import test.gui.TimeTableOperationsTest;
 	CourseParseTest.class, 
 	CourseParseThreadedTest.class, 
 	MultiLineTableCellRendererTest.class, 
+	AddCommentGUITest.class, 
 	LoginGUITest.class, 
 	RegisterGUITest.class, 
 	ChangePwGUITest.class,
