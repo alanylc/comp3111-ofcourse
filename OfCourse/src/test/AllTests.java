@@ -19,7 +19,7 @@ import test.gui.TimeTableOperationsTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
-	TimeTableOperationsTest.class, 
+	//TimeTableOperationsTest.class, 
 	CodeTest.class, 
 	CourseTest.class, 
 	NetworkTest.class, 
@@ -34,15 +34,15 @@ import test.gui.TimeTableOperationsTest;
 	CourseParseTest.class, 
 	CourseParseThreadedTest.class, 
 	MultiLineTableCellRendererTest.class, 
-	AddCommentGUITest.class, 
+	//AddCommentGUITest.class, 
 	LoginGUITest.class, 
 	RegisterGUITest.class, 
 	ChangePwGUITest.class,
-	MyFavPanelGUITest.class, 
+	//MyFavPanelGUITest.class, 
 	AddNewFriendTest.class, 
 	CheckFriendRequestsTest.class, 
 	ListTimeTableGUITest.class, 
-	SearchTest.class, 
+	//SearchTest.class, 
 	MainWindowTest.class
 	})
 public class AllTests { }
