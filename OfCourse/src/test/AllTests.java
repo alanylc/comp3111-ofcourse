@@ -15,12 +15,29 @@ import test.gui.RegisterGUITest;
 import test.gui.SearchTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ CodeTest.class, CourseTest.class, NetworkTest.class, WeekDayTest.class, InstructorTest.class, 
-		SessionTest.class, TimetableTest.class, TimeSlotTest.class, TimePeriodTest.class, 
-		CourseParseTest.class, CourseParseThreadedTest.class, MainWindowTest.class,
-		LoginGUITest.class, RegisterGUITest.class, ChangePwGUITest.class,
-		MyFavPanelGUITest.class, AddNewFriendTest.class, CheckFriendRequestsTest.class, 
-		ListTimeTableGUITest.class, SearchTest.class})
+@SuiteClasses({ 
+	CodeTest.class, 
+	CourseTest.class, 
+	NetworkTest.class, 
+	WeekDayTest.class, 
+	InstructorTest.class, 
+	SessionTest.class, 
+	TimetableTest.class, 
+	TimeSlotTest.class, 
+	TimePeriodTest.class, 
+	RatableTest.class,
+	CommentsTest.class,
+	CourseParseTest.class, 
+	CourseParseThreadedTest.class, 
+	MainWindowTest.class,
+	LoginGUITest.class, 
+	RegisterGUITest.class, 
+	ChangePwGUITest.class,
+	MyFavPanelGUITest.class, 
+	AddNewFriendTest.class, 
+	CheckFriendRequestsTest.class, 
+	ListTimeTableGUITest.class, 
+	SearchTest.class})
 public class AllTests {
 
 }
