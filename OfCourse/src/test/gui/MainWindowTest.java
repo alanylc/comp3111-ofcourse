@@ -48,11 +48,11 @@ public class MainWindowTest extends UISpecTestCase {
 		
 		Network.login("ctestdab", "bbb");
 		
-		win.getButton("Delete Last").click();
-		win.getButton("See Friend").click();
-		win.getButton("Search").click();
-		win.getButton("Swap...").click();
-		win.getButton("Drop...").click();
+//		win.getButton("Delete Last").click();
+//		win.getButton("See Friend").click();
+//		win.getButton("Search").click();
+//		win.getButton("Swap...").click();
+//		win.getButton("Drop...").click();
 		
 		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick()).dispose();
 		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Upload My Time Table").triggerClick()).dispose();
