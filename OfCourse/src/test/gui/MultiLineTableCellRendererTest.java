@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.uispec4j.ListBox;
 import org.uispec4j.Panel;
 import org.uispec4j.Table;
+import org.uispec4j.UISpec4J;
 import org.uispec4j.UISpecTestCase;
 import org.uispec4j.Window;
 import org.uispec4j.finder.ComponentMatcher;
@@ -42,6 +43,7 @@ public class MultiLineTableCellRendererTest extends UISpecTestCase {
 
 	@Test
 	public void testGetTableCellRendererComponent() {
+		UISpec4J.init();
 		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		Window win = getMainWindow();
 		
