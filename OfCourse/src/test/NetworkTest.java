@@ -245,8 +245,8 @@ public class NetworkTest {
 	@Test
 	public void testChkFirstPW() {//case for firstPw = true
 		Network a=Network.getOurNetwork();
-		a.register("testcad");
-		Network.login("testcad","");
+		//a.register("testcad");
+		Network.login("firstLogin","");
 		boolean expected=true;
 		assertEquals(expected,a.chkFirstPW());
 	}
