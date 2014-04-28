@@ -17,18 +17,13 @@ import org.uispec4j.interception.WindowInterceptor;
 public class ListTimeTableGUITest extends UISpecTestCase {
 	
 	private Button closebtn;
+	
+	{
+		UISpec4J.init();
+	}
  
 	@Before
 	public void setUp() throws Exception {
-		UISpec4J.init();
-	}
-		
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void testListTimeTableGUI() {
 		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		final Window win = this.getMainWindow();
 		setAdapter(new UISpecAdapter() {
@@ -42,6 +37,16 @@ public class ListTimeTableGUITest extends UISpecTestCase {
 				return lv;
 			}
 		});
+	}
+		
+	@After
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+
+	@Test
+	public void testListTimeTableGUI() {
+		
 		Window listview = getMainWindow();
 		assertTrue(listview.titleContains("Mine"));	
 		listview.getTable().clearSelection();

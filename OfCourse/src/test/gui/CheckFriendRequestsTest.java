@@ -35,6 +35,7 @@ public class CheckFriendRequestsTest extends UISpecTestCase {
 	@After
 	public void tearDown() throws Exception {
 		Network.logout();
+		super.tearDown();
 	}
 
 	@Test

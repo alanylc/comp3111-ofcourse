@@ -22,20 +22,28 @@ import org.uispec4j.finder.ComponentMatcher;
 import org.uispec4j.interception.MainClassAdapter;
 
 public class MultiLineTableCellRendererTest extends UISpecTestCase {
+	
+	private Window win = null;
 
+	{
+		UISpec4J.init();
+	}
+	
 	@Before
 	public void setUp() throws Exception {
+
+		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
+		win = getMainWindow();
+		
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		super.tearDown();
 	}
 
 	@Test
 	public void testGetTableCellRendererComponent() {
-		UISpec4J.init();
-		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
-		Window win = getMainWindow();
 		
 		win.getTabGroup("searchTabpage").selectTab("New Search");
 		

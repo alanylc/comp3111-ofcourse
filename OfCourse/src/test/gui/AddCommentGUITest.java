@@ -22,10 +22,14 @@ import org.uispec4j.interception.MainClassAdapter;
 import org.uispec4j.interception.WindowInterceptor;
 
 public class AddCommentGUITest extends UISpecTestCase {
+	
+	{
+		UISpec4J.init();
+	}
 	  
 	@Before
 	public void setUp() throws Exception {
-		UISpec4J.init();
+		
 		this.setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		final Window win = this.getMainWindow();
 		Network.login("ctestdae", "eee");
@@ -69,6 +73,7 @@ public class AddCommentGUITest extends UISpecTestCase {
 	@After
 	public void tearDown() throws Exception {
 		Network.logout();
+		super.tearDown();
 	}
 
 	@Test
