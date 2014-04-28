@@ -22,6 +22,7 @@ import org.uispec4j.UISpecTestCase;
 import org.uispec4j.Window;
 import org.uispec4j.finder.ComponentMatcher;
 import org.uispec4j.interception.MainClassAdapter;
+import org.uispec4j.interception.WindowInterceptor;
 
 public class SearchTest extends UISpecTestCase {
 
@@ -115,11 +116,13 @@ public class SearchTest extends UISpecTestCase {
 		cgui.getButton("Enroll").click();
 		
 		Panel mine = win.getTabGroup("timetableTabpage").getSelectedTab();
+		WindowInterceptor.run(win.getMenuBar().getMenu("File").getSubMenu("Download My Time Table").triggerClick());
+		System.out.println(mine.getDescription());
 		Component[] comps = mine.getSwingComponents(new ComponentMatcher() {
 			@Override
 			public boolean matches(Component component) {
 				if (component.getClass().equals(JLabel.class)) {
-					if (((JLabel) component).getText().contains("ACCT"))
+					if (((JLabel) component).getText().contains("COMP1001"))
 						return true;
 					else
 						return false;
@@ -128,13 +131,13 @@ public class SearchTest extends UISpecTestCase {
 					return false;
 			}
 		});
-		assertEquals(2, comps.length);
+		assertTrue(comps.length>0);
 		found = false;
 		TextBox clabel = mine.getTextBox(new ComponentMatcher() {
 			@Override
 			public boolean matches(Component component) {
 				if (component.getClass().equals(JLabel.class)) {
-					if (((JLabel) component).getText().contains("ACCT") && !found) {
+					if (((JLabel) component).getText().contains("COMP1001") && !found) {
 						found = true;
 						return true;
 					}
