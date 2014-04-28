@@ -17,6 +17,7 @@ public class CheckFriendRequestsTest extends UISpecTestCase {
 
 	{
 		UISpec4J.init();
+		UISpec4J.setWindowInterceptionTimeLimit(100000);
 	}
 	  
 	@Before
