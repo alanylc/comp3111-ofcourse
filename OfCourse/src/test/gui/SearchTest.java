@@ -27,20 +27,25 @@ import org.uispec4j.interception.WindowInterceptor;
 public class SearchTest extends UISpecTestCase {
 
 	private boolean found = false;
+	
+	{
+		UISpec4J.init();
+		UISpec4J.setWindowInterceptionTimeLimit(100000);
+	}
 
 	@Before
 	public void setUp() throws Exception {
+		
 	}
 		
 	@After
 	public void tearDown() throws Exception {
 		Network.logout();
-		super.tearDown();
+		//super.tearDown();
 	}
 
 	@Test
 	public void testSearch() {
-		UISpec4J.init();
 		this.setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		Window win = this.getMainWindow();
 		

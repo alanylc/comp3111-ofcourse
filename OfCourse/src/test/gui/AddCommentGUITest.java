@@ -25,6 +25,7 @@ public class AddCommentGUITest extends UISpecTestCase {
 	
 	{
 		UISpec4J.init();
+		UISpec4J.setWindowInterceptionTimeLimit(100000);
 	}
 	  
 	@Before

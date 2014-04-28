@@ -27,6 +27,7 @@ public class MultiLineTableCellRendererTest extends UISpecTestCase {
 
 	{
 		UISpec4J.init();
+		UISpec4J.setWindowInterceptionTimeLimit(100000);
 	}
 	
 	@Before
@@ -39,7 +40,7 @@ public class MultiLineTableCellRendererTest extends UISpecTestCase {
 
 	@After
 	public void tearDown() throws Exception {
-		super.tearDown();
+		//super.tearDown();
 	}
 
 	@Test

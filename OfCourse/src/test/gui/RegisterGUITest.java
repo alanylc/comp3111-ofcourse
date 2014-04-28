@@ -19,6 +19,7 @@ public class RegisterGUITest extends UISpecTestCase {
 	
 	{
 		UISpec4J.init();
+		UISpec4J.setWindowInterceptionTimeLimit(100000);
 	}
 		
 	@Before
@@ -31,7 +32,7 @@ public class RegisterGUITest extends UISpecTestCase {
 	@After
 	public void tearDown() throws Exception {
 		logout();
-		super.tearDown();
+		//super.tearDown();
 	}
 	
 	private void logout() {
