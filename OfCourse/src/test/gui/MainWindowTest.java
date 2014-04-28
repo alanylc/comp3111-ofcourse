@@ -17,20 +17,28 @@ import org.uispec4j.interception.WindowInterceptor;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MainWindowTest extends UISpecTestCase {
 	
+	private Window win = null;
+	
+	{
+		UISpec4J.init();
+	}
+	
 	@Before
 	public void setUp() throws Exception {
+
+		this.setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
+		win = this.getMainWindow();
+		
 	}
 		
 	@After
 	public void tearDown() throws Exception {
 		Network.logout();
+		super.tearDown();
 	}
 	
 	@Test
 	public void testUI() { // test clicking buttons, search course, and timetable operations
-		UISpec4J.init();
-		this.setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
-		Window win = this.getMainWindow();
 		
 		Network.login("ctestdab", "bbb");
 		

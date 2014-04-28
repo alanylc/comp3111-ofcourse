@@ -49,6 +49,7 @@ public class MyFavPanelGUITest extends UISpecTestCase {
 	@After
 	public void tearDown() throws Exception {
 		logout();
+		super.tearDown();
 	}
 	
 	private void logout() {
