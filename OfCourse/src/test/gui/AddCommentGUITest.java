@@ -23,13 +23,11 @@ import org.uispec4j.interception.WindowInterceptor;
 
 public class AddCommentGUITest extends UISpecTestCase {
 	
-	{
-		UISpec4J.init();
-		UISpec4J.setWindowInterceptionTimeLimit(100000);
-	}
-	  
 	@Before
 	public void setUp() throws Exception {
+		UISpec4J.init();
+		long s = 180;
+		UISpec4J.setWindowInterceptionTimeLimit(s*1000);
 		
 		this.setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		final Window win = this.getMainWindow();
