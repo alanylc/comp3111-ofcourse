@@ -18,14 +18,12 @@ import org.uispec4j.interception.WindowInterceptor;
 public class MainWindowTest extends UISpecTestCase {
 	
 	private Window win = null;
-	
-	{
-		UISpec4J.init();
-		UISpec4J.setWindowInterceptionTimeLimit(100000);
-	}
-	
+
 	@Before
 	public void setUp() throws Exception {
+		UISpec4J.init();
+		long s = 180;
+		UISpec4J.setWindowInterceptionTimeLimit(s*1000);
 		this.setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		win = this.getMainWindow();
 		
@@ -34,7 +32,7 @@ public class MainWindowTest extends UISpecTestCase {
 	@After
 	public void tearDown() throws Exception {
 		Network.logout();
-		//super.tearDown();
+		super.tearDown();
 	}
 	
 	@Test

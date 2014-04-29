@@ -18,13 +18,12 @@ public class ListTimeTableGUITest extends UISpecTestCase {
 	
 	private Button closebtn;
 	
-	{
-		UISpec4J.init();
-		UISpec4J.setWindowInterceptionTimeLimit(100000);
-	}
- 
 	@Before
 	public void setUp() throws Exception {
+		UISpec4J.init();
+		long s = 180;
+		UISpec4J.setWindowInterceptionTimeLimit(s*1000);
+		
 		setAdapter(new MainClassAdapter(MainWindow.class, new String[0]));
 		final Window win = this.getMainWindow();
 		setAdapter(new UISpecAdapter() {
