@@ -53,13 +53,13 @@ public class CourseGUI extends JPanel {
 			new Object[][] {
 			},
 			new String[] {
-				"Session", "Time", "Room", "Instructor"
+				"Session", "Time", "Room", "Instructor", "Avail", "Quota"
 			}
 			
 		) {
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
-				String.class, String.class, String.class, String.class
+				String.class, String.class, String.class, String.class, String.class, String.class
 			};
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
@@ -90,14 +90,20 @@ public class CourseGUI extends JPanel {
 		sessionTable.getColumnModel().getColumn(0).setPreferredWidth(55);
 		sessionTable.getColumnModel().getColumn(0).setResizable(false);
 		
-		sessionTable.getColumnModel().getColumn(1).setMinWidth(65);
-		sessionTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+		sessionTable.getColumnModel().getColumn(1).setMinWidth(80);
+		sessionTable.getColumnModel().getColumn(1).setPreferredWidth(200);
 		
-		sessionTable.getColumnModel().getColumn(2).setMinWidth(65);
+		sessionTable.getColumnModel().getColumn(2).setMinWidth(60);
 		sessionTable.getColumnModel().getColumn(2).setPreferredWidth(150);
 		
-		sessionTable.getColumnModel().getColumn(3).setMinWidth(65);
+		sessionTable.getColumnModel().getColumn(3).setMinWidth(60);
 		sessionTable.getColumnModel().getColumn(3).setPreferredWidth(150);
+		
+		sessionTable.getColumnModel().getColumn(4).setMinWidth(30);
+		sessionTable.getColumnModel().getColumn(4).setPreferredWidth(40);
+		
+		sessionTable.getColumnModel().getColumn(5).setMinWidth(30);
+		sessionTable.getColumnModel().getColumn(5).setPreferredWidth(40);
 		
 		sessionTable.setDefaultRenderer(String.class, new MultiLineTableCellRenderer());
 		
@@ -277,7 +283,9 @@ public class CourseGUI extends JPanel {
 				if (it_i.hasNext()) instructorStr += "\n";
 			}
 			if (instructorStr.isEmpty()) instructorStr = "TBA";
-			sessionTableModel.addRow(new String[] {s.toString(), schStr, roomStr, instructorStr});
+			int availInt=s.getavailableQuota();
+			if (availInt==0)availInt=s.getwait()*-1;
+			sessionTableModel.addRow(new String[] {s.toString(), schStr, roomStr, instructorStr, String.valueOf(availInt) , String.valueOf(s.getQuota())});
 			linkage.put(sessionTableModel.getRowCount()-1, s);
 		}
 	}
