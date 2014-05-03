@@ -277,6 +277,11 @@ public class Course extends Ratable {
 		return null;
 	}
 
+	/**
+	 * Gets the session with the specified class number, usually 4-digit
+	 * @param classNo The class number of the session
+	 * @return The session with the class number. Null if none.
+	 */
 	public Session getSessionByClassNumber(int classNo) {
 		for(Session s : getSessions()) {
 			if (classNo == (s.getClassNo())) {
@@ -295,6 +300,11 @@ public class Course extends Ratable {
 		return code.toString();
 	}
 	
+	/**
+	 * Represents the course code of a course. 
+	 * @author Bob Lee
+	 *
+	 */
 	public class Code {
 		private final String dept;
 		private final int number;

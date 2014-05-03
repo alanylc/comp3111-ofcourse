@@ -432,6 +432,9 @@ public class Network {//chk courseParse.out() for implementation of
 	public static void main(String[] args) {
 		
 	}
+	/**
+	 * Use only during tests.
+	 */
 	public static void initialize() {
 		// TODO Auto-generated method stub
 		String[][] empty = { { "", "" } };

@@ -30,20 +30,35 @@ public class CourseParse {
 	
 	//
 
+	/**
+	 * Create a Course Parse.
+	 */
 	public CourseParse() {
 
 	}
 	
 	
-	
+	/**
+	 * Gets the subject name of the courses in this CourseParse
+	 * @return
+	 */
 	public String getSubject() {
 		return subject;
 	}
 
+	/**
+	 * Sets the subject name of the courses in this CourseParse
+	 * @param subject The subject name to be set. 
+	 */
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
 	
+	/**
+	 * Gets all courses in this CourseParse in an ArrayList.
+	 * @return ArrayList of all courses in this CourseParse. 
+	 * Any modification of the ArrayList is reflected and stored in this CourseParse.
+	 */
 	public ArrayList<Course> getCourses() {
 		return courses;
 	}
@@ -234,6 +249,12 @@ public class CourseParse {
 		return cpA;
 	}
 	
+	/**
+	 * Searches in the provided ArrayList of CourseParse to find the first occurrence that has the specified subject/major name.
+	 * @param cpA The ArrayList of CourseParse.
+	 * @param Major The subject/major name to search.
+	 * @return The first occurrence of CourseParse that has the specified subject/major name. Null if none.
+	 */
 	public static CourseParse searchP(ArrayList<CourseParse> cpA, String Major) {
 
 		for (CourseParse cp : cpA) {
@@ -245,6 +266,12 @@ public class CourseParse {
 
 	}
 
+	/**
+	 * Searches in the provided ArrayList of CourseParse to find the first Course that has the specified course code, in String.
+	 * @param cpA The ArrayList of CourseParse.
+	 * @param Course The specified course code in String. If it does not contains any mofiers, a space should be included as the last character.
+	 * @return
+	 */
 	public static Course search(ArrayList<CourseParse> cpA, String Course) {
 		Course target = null;
 

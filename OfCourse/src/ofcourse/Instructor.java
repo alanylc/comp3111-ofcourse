@@ -1,5 +1,9 @@
 package ofcourse;
-
+/**
+ * Represents an Instructor of a session. It has a name, and if two instances has the same name, they are equal.
+ * @author Bob Lee
+ *
+ */
 public class Instructor extends Ratable {
 	public Instructor(String name) {
 		super(name);
