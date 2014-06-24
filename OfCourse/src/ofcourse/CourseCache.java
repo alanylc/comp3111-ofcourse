@@ -25,7 +25,7 @@ import org.jsoup.nodes.Document;
  */
 public class CourseCache {
 	private Hashtable<String, Long> lastUpdateTime = new Hashtable<String, Long>();
-	public static final String mainURL = "https://w5.ab.ust.hk/wcq/cgi-bin/1330/subject/";
+	public static final String mainURL = CourseParse.URL;
 	private final File historyFile = new File("CACHEHISTORY.txt");
 
 	private final ReentrantReadWriteLock historyLock = new ReentrantReadWriteLock();
