@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
@@ -43,6 +44,7 @@ public class CourseGUI extends JPanel {
 	JButton enrollButton = new JButton("Enroll");
 	JButton btnAddFav = new JButton("Add to My Favourite");
 	JButton commentButton = new JButton("Comment");
+	JButton descriptionButton = new JButton("Description");
 	//public final JTable commentTable=new JTable();
 
 	JLabel avgRating = new JLabel("Average rating:");
@@ -133,7 +135,20 @@ public class CourseGUI extends JPanel {
 		commentButton.setBounds(130, 533, 98, 28);
 		add(commentButton);
 		commentButton.addActionListener(new CommentButtonListener());
+		
 
+		descriptionButton.setBounds(12, 533, 98, 28);
+		add(descriptionButton);
+		descriptionButton.addActionListener(new DescriptionButtonListener());
+
+
+	}
+	private class DescriptionButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {			  
+			JFrame frame = new JFrame();
+		    JOptionPane.showMessageDialog(frame, course.getDescription().replaceAll("(.{1,50})\\s+", "$1\n"));
+		}
 	}
 	private class CommentButtonListener implements ActionListener {
 		@Override
@@ -235,7 +250,7 @@ public class CourseGUI extends JPanel {
 		JLayeredPane commentTable = new JLayeredPane();
 		commentTable.setBounds(0, 0, 504, 115*comments.size());
 		commentTable.setPreferredSize(new Dimension(504,115*comments.size()));
-		int i=0;	
+		int i=0;
 		for(Comments cm:comments){
 			i++;
 			CommentGUI comment=new CommentGUI(cm.getCommentorName(),cm.getRating(),cm.getComments(),cm.getDate());
