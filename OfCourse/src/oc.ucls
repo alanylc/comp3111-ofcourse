@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.5" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="ofcoursegui.FriendRequestGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/FriendRequestGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="151" x="618" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="ofcourse.CourseParseThreaded" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/CourseParseThreaded.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="199" x="2362" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="ofcoursegui.MainWindow" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/MainWindow.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="459" width="313" x="871" y="414"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="ofcoursegui.MyFavPanelGUI.rmBtnListener" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/MyFavPanelGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="871" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="ofcoursegui.ListTimeTableGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/ListTimeTableGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="189" x="3011" y="414"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="ofcoursegui.MainWindow.MyListModel" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/MainWindow.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="148" x="127" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="ofcourse.TimePeriod" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/TimePeriod.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="209" x="2673" y="2934"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="ofcoursegui.CommentGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/CommentGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="216" x="901" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="ofcoursegui.CourseGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/CourseGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="210" x="2704" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="ofcourse.CourseCache.HistoryWriterRunner" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/CourseCache.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="141" x="3496" y="2934"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="ofcourse.SearchCourse" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/SearchCourse.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="387" width="198" x="1925" y="414"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="ofcoursegui.MyFavPanelGUI.viewBtnListener" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/MyFavPanelGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="1105" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="ofcoursegui.AddCommentGUI.SubmitCommentButtonListener" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/AddCommentGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="242" x="311" y="414"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="ofcourse.Course.Session" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/Course.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="585" width="178" x="2582" y="2309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="15" language="java" name="ofcourse.TimetableError" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/TimetableError.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="207" x="1250" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="16" language="java" name="ofcourse.Ratable.Comments" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/Ratable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="198" x="3324" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="ofcourse.SearchSubject" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/SearchSubject.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="286" x="1329" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="ofcourse.Timetable" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/Timetable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="639" width="374" x="3203" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="ofcoursegui.SearchSubjectGUI.SubjectListModel" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/SearchSubjectGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="148" x="221" y="2309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="ofcourse.SearchCodeInterval" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/SearchCodeInterval.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="299" x="1755" y="2309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="ofcourse.Ratable" project="OfCourse" file="/OfCourse/src/ofcourse/Ratable.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="209" x="2954" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="ofcoursegui.RegisterGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/RegisterGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="121" x="1591" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="ofcourse.SearchAllCourse" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/SearchAllCourse.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="209" x="1655" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="ofcoursegui.NewSearchGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/NewSearchGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="133" x="442" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="ofcoursegui.AddCommentGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/AddCommentGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="176" x="311" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="ofcourse.Course.Code" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/Course.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="126" x="2094" y="2309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="ofcourse.Instructor" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/Instructor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="138" x="3318" y="2934"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="28" language="java" name="ofcourse.ISerialize" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/ISerialize.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="114" x="1847" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="29" language="java" name="ofcoursegui.MyFavPanelGUI.FavListModel" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/MyFavPanelGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="148" x="1339" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="ofcoursegui.SearchSubjectGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/SearchSubjectGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="285" x="221" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="ofcourse.SearchCourse.CourseSearchIterator" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/SearchCourse.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="148" x="1925" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="ofcourse.CourseCache.CacheWriterRunner" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/CourseCache.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="208" x="3677" y="2934"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="ofcoursegui.ChangePwGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/ChangePwGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="206" x="2097" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="ofcourse.CourseCache" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/CourseCache.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="387" width="302" x="3583" y="2309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="ofcoursegui.MainWindow.GraySep" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/MainWindow.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="87" x="315" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="ofcoursegui.CourseGUI.EnrollButtonListener" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/CourseGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="2622" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="ofcoursegui.TimeTableGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/TimeTableGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="531" width="339" x="3242" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="ofcourse.CourseParse" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/CourseParse.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="291" x="2373" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="ofcoursegui.SearchResultGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/SearchResultGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="199" x="2134" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="40" language="java" name="ofcoursegui.SearchCriteriaComponent" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/SearchCriteriaComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="285" x="409" y="2309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <enumeration id="41" language="java" name="ofcourse.SessionType" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/SessionType.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="147" x="2486" y="2934"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="42" language="java" name="ofcourse.Course" project="OfCourse" file="/OfCourse/src/ofcourse/Course.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="567" width="218" x="2094" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="ofcoursegui.TimeTableGUI.ListViewBtnListener" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/TimeTableGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="1691" y="414"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="ofcoursegui.CourseGUI.CommentButtonListener" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/CourseGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="2856" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="ofcoursegui.CourseGUI.AddFavListener" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/CourseGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="3090" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="ofcourse.TimeSlot" project="OfCourse" file="/OfCourse/src/ofcourse/TimeSlot.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="387" width="238" x="2673" y="3217"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="47" language="java" name="ofcourse.WeekDay" project="OfCourse" 
+    file="/OfCourse/src/ofcourse/WeekDay.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="119" x="2673" y="3654"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <interface id="48" language="java" name="ofcoursegui.CourseSelectListener" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/CourseSelectListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="161" x="3598" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="49" language="java" name="ofcoursegui.LoginGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/LoginGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="107" x="2439" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="ofcoursegui.SearchCodeIntervalGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/SearchCodeIntervalGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="285" x="546" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="ofcoursegui.MyFavPanelGUI" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/MyFavPanelGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="163" x="1105" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="ofcourse.Network" project="OfCourse" file="/OfCourse/src/ofcourse/Network.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="729" width="206" x="615" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="ofcoursegui.MainWindow.DropButtonListener" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/MainWindow.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="871" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="ofcoursegui.MultiLineTableCellRenderer" project="OfCourse" 
+    file="/OfCourse/src/ofcoursegui/MultiLineTableCellRenderer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="421" x="2683" y="-157"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="55">    
+    <bendpoint x="3230" y="414"/>    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="56" name="table"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="58">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="59" name="AllCourses"/>      
+      <multiplicity id="60" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <bendpoint x="2591" y="1692"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="62" name="linkage"/>      
+      <multiplicity id="63" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="64">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="53"/>  
+  </nesting>  
+  <nesting id="65">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="44"/>  
+  </nesting>  
+  <association id="66">    
+    <end type="SOURCE" refId="50" navigable="false">      
+      <attribute id="67" name="sci"/>      
+      <multiplicity id="68" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="69">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="70" name="newSearchPanel"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="72">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="73" name="network"/>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="75">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <association id="76">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="77" name="sType"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="80" name="code"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="82">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="13"/>  
+  </nesting>  
+  <association id="83">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="84" name="linkage"/>      
+      <multiplicity id="85" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="86">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="43"/>  
+  </nesting>  
+  <association id="87">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="88" name="myFavPanel"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="91" name="table"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="93">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="19"/>  
+  </nesting>  
+  <nesting id="94">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="36"/>  
+  </nesting>  
+  <association id="95">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="96" name="instances"/>      
+      <multiplicity id="97" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="98">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="99" name="fdListModel"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="101">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <nesting id="102">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="29"/>  
+  </nesting>  
+  <nesting id="103">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="45"/>  
+  </nesting>  
+  <generalization id="104">    
+    <bendpoint x="3552" y="2309"/>    
+    <bendpoint x="3552" y="1692"/>    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="105">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="38"/>  
+  </generalization>  
+  <association id="106">    
+    <bendpoint x="2103" y="913"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="107" name="prevPipe"/>      
+      <multiplicity id="108" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="109">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="16"/>  
+  </nesting>  
+  <association id="110">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="111" name="own_table"/>      
+      <multiplicity id="112" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="113">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="114" name="comments"/>      
+      <multiplicity id="115" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="116">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="117" name="sessions"/>      
+      <multiplicity id="118" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="119">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="120" name="listViewTimeTable"/>      
+      <multiplicity id="121" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="122">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </nesting>  
+  <nesting id="123">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
+  <association id="124">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="125" name="endSlot"/>      
+      <multiplicity id="126" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="127">    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="128" name="favModel"/>      
+      <multiplicity id="129" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="131" name="courses"/>      
+      <multiplicity id="132" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="133">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="134">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="135" name="instructors"/>      
+      <multiplicity id="136" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="137">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="138" name="next"/>      
+      <multiplicity id="139" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="140">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="141" name="comments"/>      
+      <multiplicity id="142" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="143">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="144" name="subjectJList"/>      
+      <multiplicity id="145" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="146">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="32"/>  
+  </nesting>  
+  <generalization id="147">    
+    <bendpoint x="1894" y="1692"/>    
+    <bendpoint x="1894" y="913"/>    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <realization id="148">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <association id="149">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="150" name="friends"/>      
+      <multiplicity id="151" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="152">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="26"/>  
+  </nesting>  
+  <association id="153">    
+    <bendpoint x="1298" y="913"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="154" name="allCourses"/>      
+      <multiplicity id="155" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="156">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="157" name="selectedCourse"/>      
+      <multiplicity id="158" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="159">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="14"/>  
+  </nesting>  
+  <association id="160">    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="161" name="ourNetwork"/>      
+      <multiplicity id="162" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="163">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="164" name="course"/>      
+      <multiplicity id="165" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="166">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="48"/>  
+  </realization>  
+  <nesting id="167">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="4"/>  
+  </nesting>  
+  <association id="168">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="169" name="schedule"/>      
+      <multiplicity id="170" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="171">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="172" name="startSlot"/>      
+      <multiplicity id="173" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="174">    
+    <bendpoint x="3628" y="414"/>    
+    <bendpoint x="3628" y="913"/>    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="175" name="courseSelectListeners"/>      
+      <multiplicity id="176" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="177">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="31"/>  
+  </nesting>  
+  <association id="178">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="179" name="levelList"/>      
+      <multiplicity id="180" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="181">    
+    <bendpoint x="3251" y="414"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="182" name="gui"/>      
+      <multiplicity id="183" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="184">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="185" name="day"/>      
+      <multiplicity id="186" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="187">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <nesting id="188">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="12"/>  
+  </nesting>  
+  <association id="189">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="190" name="cacheManager"/>      
+      <multiplicity id="191" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="192">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="35"/>  
+  </nesting>  
+  <association id="193">    
+    <bendpoint x="3607" y="414"/>    
+    <bendpoint x="3607" y="913"/>    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="194" name="panelUnselectListeners"/>      
+      <multiplicity id="195" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

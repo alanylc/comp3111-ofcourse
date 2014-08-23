@@ -23,7 +23,7 @@ import org.jsoup.select.Elements;
 public class CourseParse {
 	private String subject;
 	private ArrayList<Course> courses = new ArrayList<Course>();
-	public final static String URL = "https://w5.ab.ust.hk/wcq/cgi-bin/1330/subject/";
+	public final static String URL = "https://w5.ab.ust.hk/wcq/cgi-bin/1410/subject/";
 	public final static long expireTime = 15 * 60 * 1000; //TTL for the local cache of quota page , 15 min
 	//14 summer would change to /1340/, fall would change to /1410/, 
 	//need to figure out some ways to change semester
